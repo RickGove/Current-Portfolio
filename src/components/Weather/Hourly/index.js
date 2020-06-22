@@ -142,8 +142,8 @@ function Hourly() {
 						className={showAll ? 'show-all-hours' : 'hide-extra-hours'}>
 						{renderHourly()}
 					</div>
+					<MoreArrow>{renderShowHideButton()}</MoreArrow>
 				</HourlyDiv>
-				<MoreArrow>{renderShowHideButton()}</MoreArrow>
 			</React.Fragment>
 		);
 	} else {

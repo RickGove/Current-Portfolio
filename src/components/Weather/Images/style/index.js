@@ -3,6 +3,8 @@ import styled from 'styled-components';
 // const border = `solid`;
 const border = 'none';
 
+const media900 = `@media (maxwidth: 900)`;
+
 export const ImagesDiv = styled.div`
 	background-color: rgba(0, 0, 0, 0.8);
 	color: white;
@@ -208,6 +210,9 @@ export const Modal = styled.div`
 		left: 0.8rem;
 		font-size: 3rem;
 		cursor: pointer;
+		@media (max-width: 600px) {
+			font-size: 2rem;
+		}
 	}
 
 	.huge-x:hover {
@@ -248,7 +253,7 @@ export const Modal = styled.div`
 		grid-area: image;
 		background: rgba(255, 255, 255, 1);
 		color: black;
-		height: 80%;
+		height: 95%;
 		width: 100%;
 		border: 0.5px solid black;
 		border-radius: 1rem;
@@ -256,7 +261,9 @@ export const Modal = styled.div`
 
 	.image-image {
 		width: auto;
-		height: 75%;
+		max-width: 70vw;
+		height: auto;
+		max-height: 70vh;
 		position: relative;
 		top: 3%;
 		cursor: pointer;

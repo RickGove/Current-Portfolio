@@ -168,14 +168,14 @@ function Daily() {
 		return (
 			<React.Fragment>
 				<DailyContainer>
-					<h1>Forecast for the next week</h1>
+					<h1>Forecast for the next few days</h1>
 					<div
 						id="daily-con"
 						className={showAll ? 'show-all-days' : 'hide-extra-days'}>
 						{renderDaily()}
 					</div>
+					<MoreArrow>{renderShowHideButton()}</MoreArrow>
 				</DailyContainer>
-				<MoreArrow>{renderShowHideButton()}</MoreArrow>
 			</React.Fragment>
 		);
 	} else {

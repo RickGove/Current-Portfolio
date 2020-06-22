@@ -19,29 +19,19 @@ function Images() {
 	// state
 
 	const [images, setImages] = useState({});
-	const [canSearch, setCanSearch] = useState(true);
 	const [firstImage, setFirstImage] = useState(0);
 	const [showNext, setShowNext] = useState(true);
 	const [showPrev, setShowPrev] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [modalImage, setModalImage] = useState('');
 	const [modalImageIndex, setModalImageIndex] = useState(null);
+	const [modalUserLink, setModalUserLink] = useState('');
 	const [modalImageUser, setModalImageUser] = useState('');
 	const [modalImageAvatar, setModalImageAvatar] = useState('');
 
 	// redux
 
-	const location = useSelector((state) => state.location);
-	const searchedWeatherData = useSelector((state) => state.searchedWeatherData);
-	const searchWeatherData = useSelector((state) => state.searchWeatherData);
-	const fullSearchName = useSelector((state) => state.fullSearchName);
-	const searchLocation = useSelector((state) => state.searchedLocation);
-	const imageSearchDone = useSelector((state) => state.imageSearchDone);
 	const imagesFound = useSelector((state) => state.imagesFound);
-
-	const errorInSearch = useSelector((state) => state.errorInSearch);
-	const hideOrShow = useSelector((state) => state.hideOrShow);
-	const shouldShowImages = useSelector((state) => state.shouldShowImages);
 
 	function initImages() {
 		setShowNext(true);
@@ -52,8 +42,8 @@ function Images() {
 
 	useEffect(() => {
 		if (imagesFound !== images) {
-			console.log('NEW IAMGES!!!');
 			initImages();
+			document.addEventListener('keydown', keyDown);
 		}
 	});
 
@@ -81,6 +71,7 @@ function Images() {
 								className="image__preview"
 								username={i.user.name}
 								avatar={i.user.profile_image.medium}
+								modaluserlink={i.user.links.html}
 								src={i.urls.regular}
 							/>
 							<span className="image__taker">
@@ -97,6 +88,7 @@ function Images() {
 	function handleImageClick(i) {
 		setModalImageUser(i.target.attributes.username);
 		setModalImageAvatar(i.target.attributes.avatar);
+		setModalUserLink(i.target.attributes.modaluserlink);
 		displayModal(i.target.src);
 	}
 
@@ -111,21 +103,23 @@ function Images() {
 	}
 
 	function hideModal() {
-		setShowModal(false);
-		window.setTimeout(() => {
-			setModalImage('');
-			modal.current.style.display = 'none';
-			prev.current.style.display = 'inline';
-			next.current.style.display = 'inline';
-		}, 1000);
-		window.setTimeout(() => {
-			modal.current.style.display = 'grid';
-			setModalImage('');
-		}, 1000);
+		if (modal.current !== null) {
+			setShowModal(false);
+			window.setTimeout(() => {
+				setModalImage('');
+				modal.current.style.display = 'none';
+				prev.current.style.display = 'inline';
+				next.current.style.display = 'inline';
+			}, 1000);
+			window.setTimeout(() => {
+				modal.current.style.display = 'grid';
+				setModalImage('');
+			}, 1000);
+		}
 	}
 
 	function keyDown(i) {
-		if (i.code === 'Escape' && showModal === true) {
+		if (i.code === 'Escape') {
 			hideModal();
 		}
 	}
@@ -136,10 +130,15 @@ function Images() {
 		);
 	}
 
+	function openNewWindow() {
+		var win = window.open(modalUserLink.value, '_blank');
+		win.focus();
+	}
+
 	function renderModalUsername() {
 		return (
 			<div className="user-name-and-avatar">
-				<span>
+				<span onClick={openNewWindow}>
 					<img
 						className="user-name-and-avatar__avatar"
 						src={modalImageAvatar.value}
@@ -271,20 +270,6 @@ function Images() {
 	}
 
 	return showImages();
-
-	// console.log(imagesFound);
-	// // if (imagesFound !== '') {
-	// // 	return (
-	// // 		<React.Fragment>
-	// // 			<ImagesDiv>
-
-	// 			</ImagesDiv>
-	//
-	// 		</React.Fragment>
-	// 	);
-	// } else {
-	// 	return <React.Fragment></React.Fragment>;
-	// }
 }
 
 export default Images;

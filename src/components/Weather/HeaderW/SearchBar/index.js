@@ -31,6 +31,7 @@ function SearchBar() {
 	const [value, setValue] = useState('Search here');
 	const [highlighted, setHighlighted] = useState();
 	const [fullCountry, setFullCountry] = useState('');
+
 	//////////////////////////////////////////////////////////////
 	//// for favourites in the future, might be better in redux
 	// const [favesList, setFavesList] = useState([])
@@ -55,7 +56,6 @@ function SearchBar() {
 	}
 
 	function searchImagesByCountry(country) {
-		console.log(country);
 		axios
 			.get('https://api.unsplash.com/search/photos', {
 				params: { query: country, orientation: 'landscape' },
@@ -65,7 +65,6 @@ function SearchBar() {
 				},
 			})
 			.then((res) => {
-				console.log(res);
 				if (res.data.total === 0) {
 				} else {
 					organizeImages(res);
@@ -79,7 +78,6 @@ function SearchBar() {
 	function searchImagesByCity(city, country) {
 		dispatch(setImagesFound(''));
 		dispatch(imageSearchHasBeenDoneFN(false));
-		console.log('unsplash city search');
 		axios
 			.get('https://api.unsplash.com/search/photos', {
 				params: { query: city, orientation: 'landscape' },
@@ -121,42 +119,42 @@ function SearchBar() {
 
 	function handleEnter() {
 		inputRef.current.blur();
-		let city, country;
-		let currentHighlight = totalButtons[highlighted];
-		if (currentHighlight !== undefined) {
-			// GPS location choses
-			if (currentHighlight.attributes.name !== undefined) {
-				// city = currentHighlight.attributes.name.value;
-				// set to redux state
-				dispatch(
-					logFullSearchName(`${currentLocation[0]}, ${currentLocation[2]}`)
-				);
-				let el = document.getElementById('but-location');
-				country = el.attributes.country.value;
-				searchLocation(
-					currentLocation[0],
-					currentLocation[4],
-					currentLocation[5],
-					country
-				);
-			}
-			// suggestions chosen
-			else if (currentHighlight.attributes.fullsearchname !== undefined) {
-				searchForLatLonHere(
-					currentHighlight.attributes.locationId.value,
-					currentHighlight.attributes.displayname.value,
-					currentHighlight.attributes.country.value
-				);
-				dispatch(
-					logFullSearchName(currentHighlight.attributes.displayname.value)
-				);
-			}
-		} else {
-			// only typing, no choice
-			// search by name 'city'
-			city = inputRef.current.value;
-			searchSubmit(city);
-		}
+		// let city, country;
+		// let currentHighlight = totalButtons[highlighted];
+		// if (currentHighlight !== undefined) {
+		// 	// GPS location choses
+		// 	if (currentHighlight.attributes.name !== undefined) {
+		// 		// city = currentHighlight.attributes.name.value;
+		// 		// set to redux state
+		// 		dispatch(
+		// 			logFullSearchName(`${currentLocation[0]}, ${currentLocation[2]}`)
+		// 		);
+		// 		let el = document.getElementById('but-location');
+		// 		country = el.attributes.country.value;
+		// 		searchLocation(
+		// 			currentLocation[0],
+		// 			currentLocation[4],
+		// 			currentLocation[5],
+		// 			country
+		// 		);
+		// 	}
+		// 	// suggestions chosen
+		// 	else if (currentHighlight.attributes.fullsearchname !== undefined) {
+		// 		searchForLatLonHere(
+		// 			currentHighlight.attributes.locationid.value,
+		// 			currentHighlight.attributes.displayname.value,
+		// 			currentHighlight.attributes.country.value
+		// 		);
+		// 		dispatch(
+		// 			logFullSearchName(currentHighlight.attributes.displayname.value)
+		// 		);
+		// 	}
+		// } else {
+		// 	// only typing, no choice
+		// 	// search by name 'city'
+		// 	city = inputRef.current.value;
+		// 	searchSubmit(city);
+		// }
 	}
 
 	function handleEsc() {
@@ -282,7 +280,12 @@ function SearchBar() {
 	function getFlagImg(countryCode) {
 		if (countryCode !== undefined) {
 			const flagImage = require(`../../img/flags/${countryCode}.png`);
-			return <img src={flagImage} onClick={handleImageClick} />;
+			return (
+				<img
+					src={flagImage}
+					// onClick={handleImageClick}
+				/>
+			);
 		}
 	}
 
@@ -290,24 +293,23 @@ function SearchBar() {
 
 	function handleMouseOver(e) {
 		clearAllHighlights();
-		setHighlighted(undefined);
+		setHighlighted(e.target);
 		if (e.target.src !== undefined) {
 		} else {
 		}
 	}
 
+	function handleMouseLeave() {
+		setHighlighted();
+	}
+
 	function handleChange() {
 		// register new value
 		let search = inputRef.current.value;
-		console.log('handling change');
-		console.log(search);
 
 		// set timeout to prevent spamming search
 		window.setTimeout(() => {
 			if (search === inputRef.current.value) {
-				console.log(
-					`if ${search} and ${inputRef.current.value} are the same ... show results`
-				);
 				// begin search for places
 				setTotalButtons([]);
 				findSuggestions();
@@ -460,10 +462,14 @@ function SearchBar() {
 					country={fullCountry}
 					lat={currentLocation[4]}
 					lon={currentLocation[5]}
-					onClick={handleClickLocation}
+					// onClick={handleClickLocation}
+					onMouseLeave={handleMouseLeave}
 					onMouseOver={handleMouseOver}>
 					{getFlagImg(flag)}
-					<img src={gps} onClick={handleClickLocation} />
+					<img
+						src={gps}
+						// onClick={handleClickLocation}
+					/>
 					{'   '}
 					{currentLocation[0]}
 				</button>
@@ -487,6 +493,7 @@ function SearchBar() {
 	// 					fullsearchname={item.fullName}
 	// 					displayname={item.displayName}
 	// 					onClick={handleClick}
+	// onMouseLeave={handleMouseLeave}
 	// 					onMouseOver={handleMouseOver}>
 	// 					{getFlagImg(item.countryCode)}
 	// 					{'   '}
@@ -511,9 +518,10 @@ function SearchBar() {
 						id={idName}
 						country={fullCountry}
 						fullsearchname={item.fullName}
-						locationId={item.id}
+						locationid={item.id}
 						displayname={item.displayName}
-						onClick={handleClick}
+						// onClick={handleClick}
+						onMouseLeave={handleMouseLeave}
 						onMouseOver={handleMouseOver}>
 						{getFlagImg(item.countryCode)}
 						{'   '}
@@ -642,6 +650,47 @@ function SearchBar() {
 		searchLocation(city, country);
 	}
 
+	function handleBlur() {
+		console.log('BLURRED');
+		// works for
+		if (highlighted === undefined) {
+			console.log('do nothing');
+		} else if (highlighted.id === 'but-location' || highlighted === 0) {
+			console.log('search the current location');
+			handleClickLocation();
+		} else {
+			let selection = suggestions[highlighted - 1];
+			if (selection !== undefined) {
+				console.log(selection);
+				let fullCountry = convert2toFull(selection.countryCode.toUpperCase());
+				let cityName = reverseLabel(selection.fullName);
+				console.log(selection.id, cityName, fullCountry);
+				searchForLatLonHere(selection.id, cityName, fullCountry);
+				dispatch(logFullSearchName(cityName));
+			} else {
+				console.log(
+					highlighted.attributes.locationid.value,
+					highlighted.attributes.displayname.value,
+					highlighted.attributes.country.value
+				);
+				dispatch(logFullSearchName(highlighted.attributes.displayname.value));
+				searchForLatLonHere(
+					highlighted.attributes.locationid.value,
+					highlighted.attributes.displayname.value,
+					highlighted.attributes.country.value
+				);
+			}
+			// console.log(selection); //works for enter
+			// console.log(highlighted); // works for click
+			// searchForLatLonHere(
+			// 	selection.id,
+			// 	selection.displayname,
+			// 	selection.country
+			// );
+			// dispatch(logFullSearchName(selection.displayname));
+		}
+	}
+
 	return (
 		<React.Fragment>
 			<input
@@ -654,7 +703,7 @@ function SearchBar() {
 				className="search"
 				// onFocus={this.showModal}
 				onChange={() => setValue(inputRef.current.value)}
-				// onBlur={this.hideModal}
+				onBlur={handleBlur}
 				onKeyUp={handleKey}
 				// onKeyPress={handleChange}
 				autoFocus="true"

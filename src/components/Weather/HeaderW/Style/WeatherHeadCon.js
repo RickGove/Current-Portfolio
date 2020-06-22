@@ -5,6 +5,9 @@ let border = `solid`;
 
 let blue = `#1E7CFF`;
 
+const media1100 = `@media (max-width: 1100px)`;
+const media850 = `@media (max-width: 850px)`;
+
 export const WeatherHeadCon = styled.div`
 	
 	* {
@@ -18,12 +21,17 @@ export const WeatherHeadCon = styled.div`
 	width: 100vw;
 	height: 4.3rem;
 	display: grid;
-	grid-template-columns: auto 12rem 5% 3rem 6% 2rem 5% 35% auto 5% auto;
+	grid-template-columns: auto 15% 3% 7% 6% 5% 5% 35% auto 5% auto;
 	grid-template-areas: '. logo . weather-image temp flag . search . switch .';
 	grid-column-gap: 0.2rem;
 	justify-items: center;
 	align-items: center;
 	background: black;
+	${media1100}{
+		grid-template-columns: auto 15% 3% 7% 6% 7% 5% 35% auto 5% auto;
+		grid-template-areas: '. logo . weather-image temp flag . search . switch .';
+
+	}
 	
 	.hide__modal {
 		position: fixed;
@@ -48,14 +56,7 @@ export const WeatherHeadCon = styled.div`
 		transition: transform 0.5s, opacity 1s;
 	}
 
-	#slash{
-	/* MUST MAKE GO AWAY ONCE THE LETTERS GO ON TOP OF EACH OTHER ON MOBILE VIEW
-	@1100 px */
-
-	@media (max-width: 1100px){
-		display: none;
-	}
-	}
+	
 
 	#C{
 		@media (max-width: 1100px){
@@ -64,6 +65,7 @@ export const WeatherHeadCon = styled.div`
 
 	.logo {
 		grid-area: logo;
+		height: auto;
 		width: 100%;
 		z-index: 50;
 	}
@@ -75,8 +77,14 @@ export const WeatherHeadCon = styled.div`
 
 	.temp {
 		grid-area: temp;
-
 		font-size: 2.5rem;
+
+		${media850} {
+			font-size: 1rem;
+		}
+
+	
+
 	}
 
 	.flag {
