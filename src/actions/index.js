@@ -59,3 +59,45 @@ export const imageSearchHasBeenDoneFN = (done) => {
 		payload: done,
 	};
 };
+
+export const hideAllComps = (hide) => {
+	return {
+		type: 'HIDE_ALL_COMPS',
+		payload: hide,
+	};
+};
+
+export const showImages = (imagesStatus) => {
+	return {
+		type: 'SHOW_IMAGES',
+		payload: imagesStatus,
+	};
+};
+
+export const setInitialLocationData = (data) => {
+	return {
+		type: 'INITIAL_SEARCH_DATA',
+		payload: data,
+	};
+};
+
+export const setLatLonToSearch = (latLon) => {
+	return {
+		type: 'SET_LAT_LON',
+		payload: latLon,
+	};
+};
+
+export const setOnlyShowTitle = (show) => {
+	return {
+		type: 'SET_LAT_LON',
+		payload: show,
+	};
+};
+
+export const setImagesFound = (images) => {
+	return {
+		type: 'SET_IMAGES',
+		payload: images,
+	};
+};

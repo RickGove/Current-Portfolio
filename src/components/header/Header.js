@@ -61,7 +61,7 @@ class Header extends React.Component {
 						</li>
 						{this.renderSections()}
 						<li key="weather" className="project">
-							<a className="project" href="/weather">
+							<a className="project" href="/#/weather">
 								<img
 									alt="Gove Weather"
 									className="project__icon"

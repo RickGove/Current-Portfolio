@@ -6,6 +6,9 @@ export const TitleCon = styled.div`
 		margin: 0;
 	}
 
+	.fill-screen {
+		height: 1.5rem;
+	}
 	padding-top: 2rem;
 	background: rgba(255, 255, 255, 0.5);
 

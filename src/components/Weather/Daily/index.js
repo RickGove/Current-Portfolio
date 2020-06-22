@@ -1,40 +1,46 @@
-import React from 'react';
-import { connect } from 'react-redux';
-
-import {
-	changeSystem,
-	inputLocation,
-	newSearchLocation,
-	searchedWeatherData,
-	locationError,
-	logFullSearchName,
-	enterTimeAtSearch,
-	enterDateAtSearch,
-} from '../../../actions';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { DailyContainer } from './style';
 import { MoreArrow } from '../Hourly/style';
 
 import chevron from '../img/chevron.png';
 
-class Daily extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { showAll: false };
-	}
+function Daily() {
+	// state
+	const [showAll, setShowAll] = useState(false);
 
-	calcTemp = (temp) => {
+	//redux
+	const system = useSelector((state) => state.system);
+	const location = useSelector((state) => state.location);
+	const searchLocation = useSelector((state) => state.searchedLocation);
+	const searchWeatherData = useSelector((state) => state.searchWeatherData);
+	const errorInSearch = useSelector((state) => state.errorInSearch);
+	const fullSearchName = useSelector((state) => state.fullSearchName);
+	const timeAtSearch = useSelector((state) => state.timeAtSearch);
+	const dateAtSearch = useSelector((state) => state.dateAtSearch);
+
+	function calcTemp(temp) {
 		let newTemp;
-		if (this.props.system === 'C') {
+		if (system === 'F') {
 			let x = Math.round(parseFloat(temp - 273.15) * 9) / 5 + 32;
 			return Math.round(x);
 		} else {
 			let x = Math.round(parseFloat(temp) - 273.15);
 			return Math.round(x);
 		}
-	};
+	}
 
-	timeConverter = (UNIX_timestamp) => {
+	function dayOfWeekConverter(unix) {
+		const xx = new Date();
+		xx.setTime(unix * 1000); // javascript timestamps are in milliseconds
+		const dayInt = xx.getDay(); // the Day
+		const dayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		return dayArr[dayInt];
+	}
+
+	function timeConverter(UNIX_timestamp) {
+		dayOfWeekConverter(UNIX_timestamp);
 		var a = new Date(UNIX_timestamp * 1000);
 		var months = [
 			'Jan',
@@ -57,30 +63,33 @@ class Daily extends React.Component {
 		var min = a.getMinutes();
 		var sec = a.getSeconds();
 		var time = [date, month, year, hour, min, sec];
-		return time;
-	};
 
-	getImage(img) {
+		return time;
+	}
+
+	function getImage(img) {
 		return `http://openweathermap.org/img/wn/${img}@2x.png`;
 	}
 
-	getTemp(temp) {
-		return this.calcTemp(temp);
+	function getTemp(temp) {
+		return calcTemp(temp);
 	}
 
-	getDate(unix) {
-		let fullTime = this.timeConverter(unix);
-		let date = `${fullTime[0]} ${fullTime[1]} ${fullTime[2]}`;
+	function getDate(unix) {
+		let fullTime = timeConverter(unix);
+		let day = dayOfWeekConverter(unix);
+		let date = `${day} ${fullTime[1]} ${fullTime[0]}`;
+		// ${fullTime[2]} -- year if wanted
 		return date;
 	}
 
-	getSunTimes(unix) {
-		let fullTime = this.timeConverter(unix);
+	function getSunTimes(unix) {
+		let fullTime = timeConverter(unix);
 		let time = `${fullTime[3]}:${fullTime[4]}`;
 		return time;
 	}
 
-	getPrec(prec) {
+	function getPrec(prec) {
 		if (prec === undefined) {
 			return '0';
 		} else {
@@ -88,133 +97,90 @@ class Daily extends React.Component {
 		}
 	}
 
-	getUVI(uvi) {
+	function getUVI(uvi) {
 		return uvi;
 	}
 
-	getWeatherDesc(desc) {
+	function getWeatherDesc(desc) {
 		return desc;
 	}
 
-	renderDaily = () => {
-		return this.props.searchWeatherData.data.daily.map((item, i) => {
+	function renderDaily() {
+		return searchWeatherData.data.daily.map((item, i) => {
 			return (
 				<div key={i} className="day">
 					<div className="date">
-						{this.getDate(this.props.searchWeatherData.data.daily[i].sunrise)}
+						{getDate(searchWeatherData.data.daily[i].sunrise)}
 					</div>
 					<div className="description">
-						{this.getWeatherDesc(
-							this.props.searchWeatherData.data.daily[i].weather[0].description
+						{getWeatherDesc(
+							searchWeatherData.data.daily[i].weather[0].description
 						)}
 					</div>
 					<div className="weather-image">
 						<img
 							alt="weather image"
-							src={this.getImage(
-								this.props.searchWeatherData.data.daily[i].weather[0].icon
-							)}
+							src={getImage(searchWeatherData.data.daily[i].weather[0].icon)}
 						/>
 					</div>
+					<div>High: {getTemp(searchWeatherData.data.daily[i].temp.day)}°</div>
+					<div>Low: {getTemp(searchWeatherData.data.daily[i].temp.min)}°</div>
 					<div>
-						High:{' '}
-						{this.getTemp(this.props.searchWeatherData.data.daily[i].temp.day)}°
+						Sunrise: {getSunTimes(searchWeatherData.data.daily[i].sunrise)}
 					</div>
 					<div>
-						Low:{' '}
-						{this.getTemp(this.props.searchWeatherData.data.daily[i].temp.min)}°
+						Sunset: {getSunTimes(searchWeatherData.data.daily[i].sunset)}
 					</div>
 					<div>
-						Sunrise:{' '}
-						{this.getSunTimes(
-							this.props.searchWeatherData.data.daily[i].sunrise
-						)}
-					</div>
-					<div>
-						Sunset:{' '}
-						{this.getSunTimes(
-							this.props.searchWeatherData.data.daily[i].sunset
-						)}
-					</div>
-					<div>
-						Rain:{' '}
-						{this.getPrec(this.props.searchWeatherData.data.daily[i].rain)}
+						Rain: {getPrec(searchWeatherData.data.daily[i].rain)}
 						mm
 					</div>
 					<div>
-						Snow:{' '}
-						{this.getPrec(this.props.searchWeatherData.data.daily[i].snow)}
+						Snow: {getPrec(searchWeatherData.data.daily[i].snow)}
 						mm
 					</div>
-					<div>
-						UV Index:{' '}
-						{this.getUVI(this.props.searchWeatherData.data.daily[i].uvi)}
-					</div>
+					<div>UV Index: {getUVI(searchWeatherData.data.daily[i].uvi)}</div>
 				</div>
 			);
 		});
-	};
+	}
 
-	showOrHide = () => {
-		this.setState({ showAll: !this.state.showAll });
-	};
+	function showOrHide() {
+		setShowAll(!showAll);
+	}
 
-	renderShowHideButton = () => {
+	function renderShowHideButton() {
 		return (
-			<div className="chevron" onClick={this.showOrHide}>
+			<div className="chevron" onClick={showOrHide}>
 				<img
 					src={chevron}
-					className={this.state.showAll ? 'show-all-btn' : 'hide-extra-btn'}
+					className={showAll ? 'show-all-btn' : 'hide-extra-btn'}
 				/>
 			</div>
 		);
-	};
+	}
 
-	render = () => {
-		if (
-			this.props.searchLocation !== 'none' &&
-			this.props.searchWeatherData.data !== undefined
-		) {
-			return (
-				<React.Fragment>
-					<DailyContainer>
-						<div
-							id="daily-con"
-							className={
-								this.state.showAll ? 'show-all-days' : 'hide-extra-days'
-							}>
-							{this.renderDaily()}
-						</div>
-					</DailyContainer>
-					<MoreArrow>{this.renderShowHideButton()}</MoreArrow>
-				</React.Fragment>
-			);
-		} else {
-			return <div></div>;
-		}
-	};
+	if (
+		searchLocation !== 'none' &&
+		searchWeatherData.data !== undefined &&
+		errorInSearch === 'none'
+	) {
+		return (
+			<React.Fragment>
+				<DailyContainer>
+					<h1>Forecast for the next week</h1>
+					<div
+						id="daily-con"
+						className={showAll ? 'show-all-days' : 'hide-extra-days'}>
+						{renderDaily()}
+					</div>
+				</DailyContainer>
+				<MoreArrow>{renderShowHideButton()}</MoreArrow>
+			</React.Fragment>
+		);
+	} else {
+		return <div></div>;
+	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		system: state.system,
-		location: state.location,
-		searchLocation: state.searchedLocation,
-		searchWeatherData: state.searchWeatherData,
-		errorInSearch: state.errorInSearch,
-		fullSearchName: state.fullSearchName,
-		timeAtSearch: state.timeAtSearch,
-		dateAtSearch: state.dateAtSearch,
-	};
-};
-
-export default connect(mapStateToProps, {
-	changeSystem,
-	inputLocation,
-	newSearchLocation,
-	searchedWeatherData,
-	locationError,
-	logFullSearchName,
-	enterTimeAtSearch,
-	enterDateAtSearch,
-})(Daily);
+export default Daily;

@@ -80,7 +80,6 @@ export const MoreArrow = styled.div`
 		top: -1.3rem;
 		left: 0.3rem;
 		width: auto;
-		padding-bottom: 7rem;
 	}
 
 	.chevron img {

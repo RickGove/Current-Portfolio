@@ -15,7 +15,7 @@ export const WeatherHeadCon = styled.div`
 	
 	position: sticky;
 	top: 0;
-	width: 100%;
+	width: 100vw;
 	height: 4.3rem;
 	display: grid;
 	grid-template-columns: auto 12rem 5% 3rem 6% 2rem 5% 35% auto 5% auto;
@@ -24,7 +24,7 @@ export const WeatherHeadCon = styled.div`
 	justify-items: center;
 	align-items: center;
 	background: black;
-
+	
 	.hide__modal {
 		position: fixed;
 		opacity: 0;
@@ -48,7 +48,19 @@ export const WeatherHeadCon = styled.div`
 		transition: transform 0.5s, opacity 1s;
 	}
 
-	
+	#slash{
+	/* MUST MAKE GO AWAY ONCE THE LETTERS GO ON TOP OF EACH OTHER ON MOBILE VIEW
+	@1100 px */
+
+	@media (max-width: 1100px){
+		display: none;
+	}
+	}
+
+	#C{
+		@media (max-width: 1100px){
+		}
+	}
 
 	.logo {
 		grid-area: logo;
@@ -101,11 +113,16 @@ export const WeatherHeadCon = styled.div`
 		color: black;
 		border-radius: 10px;
 		z-index:50;
+		font-weight: bold;
 	}
 
 	.search:focus {
+		
 		outline: none;
 		border-radius: 10px 10px 0 0;
+		box-shadow: 0 0 0 3pt red;
+		caret-color: ${blue};
+
 	}
 
 	.search:focus + div {
@@ -151,7 +168,7 @@ export const WeatherHeadCon = styled.div`
 		padding: 8px;
 	}
 
-	.search__results button:hover {
+	.search__results button:hover  {
 		background: grey;
 		opacity: 0.8;
 	}
@@ -162,6 +179,10 @@ export const WeatherHeadCon = styled.div`
 		opacity: 0.8;
 	}
 
+	.highlight{
+		background-color: black;
+		opacity: 0.5;
+	}
 
 	.search__results img {
 		margin-left: 1rem;

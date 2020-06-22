@@ -19,50 +19,25 @@ class HeaderDeterminer extends React.Component {
 	};
 
 	findActiveSection = () => {
-		// console.log(sections);
+		// console.loKg(sections);
 		let activeSection = '';
 		sections.map((sec) => {
 			// Get the current component
 			let comp = document.getElementById(sec);
 
 			// Get it's position in the viewport
-			let bounding = comp.getBoundingClientRect();
+			if (comp !== null) {
+				let bounding = comp.getBoundingClientRect();
 
-			////////////////////////////////////
-			//
-			// TESTING
-			//
-			// console.log(` ${sec} ${bounding.top}`);
-			// Log the results
-			// console.log(comp);
-			// console.log(bounding);
-			// if (sec === 'Tools') {
-			// console.log(comp);
-			// console.log(bounding);
-			// }
-			//
-			// console.log(~bounding.height);
-			//
-			///////////////////////////////////////
-			//
-			// doesn't work on scroll...
-			// if (bounding.top <= 0 && bounding.top >= ~bounding.height) {
-			//
-			if (bounding.top < 0 && bounding.top >= ~bounding.height) {
-				//////////////////////////////////
-				// console.log(`${sec} In the viewport`);
-				// console.log(bounding);
-				////////////////////
-				activeSection = sec;
+				if (bounding.top < 0 && bounding.top >= ~bounding.height) {
+					activeSection = sec;
+				}
+				return activeSection;
 			}
-			return activeSection;
 		});
 		if (this.state.active !== activeSection) {
 			this.setState({ active: activeSection });
 		}
-		///////////////////////////
-		// console.log(this.state);
-		////////////////////////
 	};
 
 	chooseHeader = () => {

@@ -1,28 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-
-import {
-	changeSystem,
-	inputLocation,
-	newSearchLocation,
-	searchedWeatherData,
-	locationError,
-	logFullSearchName,
-	enterTimeAtSearch,
-	enterDateAtSearch,
-} from '../../../actions';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { HourlyDiv, MoreArrow } from './style';
 
 import chevron from '../img/chevron.png';
 
-class Hourly extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { showAll: false };
-	}
+function Hourly() {
+	// redux
 
-	timeConverter = (UNIX_timestamp) => {
+	const system = useSelector((state) => state.system);
+	const location = useSelector((state) => state.location);
+	const searchLocation = useSelector((state) => state.searchedLocation);
+	const searchWeatherData = useSelector((state) => state.searchWeatherData);
+	const errorInSearch = useSelector((state) => state.errorInSearch);
+	const fullSearchName = useSelector((state) => state.fullSearchName);
+	const timeAtSearch = useSelector((state) => state.timeAtSearch);
+	const dateAtSearch = useSelector((state) => state.dateAtSearch);
+	const hideOrShow = useSelector((state) => state.hideOrShow);
+
+	// state
+	const [showAll, setShowAll] = useState(false);
+	//
+
+	useEffect(() => {});
+
+	function timeConverter(UNIX_timestamp) {
 		var a = new Date(UNIX_timestamp * 1000);
 		var months = [
 			'Jan',
@@ -47,24 +49,21 @@ class Hourly extends React.Component {
 		var time =
 			date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
 		return time;
-	};
+	}
 
-	getIcon(icon) {
+	function getIcon(icon) {
 		return `http://openweathermap.org/img/wn/${icon}@2x.png`;
 	}
 
-	displayTime() {
-		if (
-			this.props.searchLocation !== 'none' &&
-			this.props.searchWeatherData.data !== undefined
-		) {
-			// console.log(this.props.timeAtSearch);
+	function displayTime() {
+		if (searchLocation !== 'none' && searchWeatherData.data !== undefined) {
+			// console.log( timeAtSearch);
 		}
 	}
 
-	calcTemp = (temp) => {
+	function calcTemp(temp) {
 		let newTemp;
-		if (this.props.system === 'C') {
+		if (system === 'F') {
 			let x = Math.round(parseFloat(temp - 273.15) * 9) / 5 + 32;
 
 			return Math.round(x);
@@ -72,32 +71,33 @@ class Hourly extends React.Component {
 			let x = Math.round(parseFloat(temp) - 273.15);
 			return Math.round(x);
 		}
-	};
+	}
 
-	renderHourly = () => {
-		if (
-			this.props.searchLocation !== 'none' &&
-			this.props.searchWeatherData.data !== undefined
-		) {
-			let weatherData = this.props.searchWeatherData.data.hourly;
+	function renderHourly() {
+		if (searchLocation !== 'none' && searchWeatherData.data !== undefined) {
+			let weatherData = searchWeatherData.data.hourly;
 			return weatherData.map((item, i) => {
 				return (
 					<div key={i} className="hour">
-						<p className="hour-top">{this.getHour(i)}</p>
+						<p className="hour-top">{getHour(i)}</p>
 						<p className="icon">
-							<img src={this.getIcon(weatherData[i].weather[0].icon)} alt={i} />{' '}
+							<img src={getIcon(weatherData[i].weather[0].icon)} alt={i} />{' '}
 						</p>
-						<p className="degree">{this.calcTemp(weatherData[i].temp)}°</p>
+						<p className="degree">{calcTemp(weatherData[i].temp)}°</p>
 					</div>
 				);
 			});
 		}
-	};
+	}
 
-	getHour(i) {
-		let fullTime = this.props.timeAtSearch.split(':');
+	function getHour(i) {
+		// split time at :
+		let fullTime = timeAtSearch.split(':');
+		// find just hour
 		let justHour = fullTime[0];
+		// turn into integer
 		let justHourInt = parseInt(justHour);
+		// now
 		if (i === 0) {
 			return 'Now';
 		} else if (justHourInt + i === 24) {
@@ -113,66 +113,42 @@ class Hourly extends React.Component {
 		}
 	}
 
-	showOrHide = () => {
-		this.setState({ showAll: !this.state.showAll });
-	};
+	function showOrHide() {
+		setShowAll(!showAll);
+	}
 
-	renderShowHideButton = () => {
+	function renderShowHideButton() {
 		return (
-			<div className="chevron" onClick={this.showOrHide}>
+			<div className="chevron" onClick={showOrHide}>
 				<img
 					src={chevron}
-					className={this.state.showAll ? 'show-all-btn' : 'hide-extra-btn'}
+					className={showAll ? 'show-all-btn' : 'hide-extra-btn'}
 				/>
 			</div>
 		);
-	};
+	}
 
-	render() {
-		if (
-			this.props.searchLocation !== 'none' &&
-			this.props.searchWeatherData.data !== undefined
-		) {
-			return (
-				<React.Fragment>
-					<HourlyDiv id="hourly">
-						<div
-							id="hourly-container"
-							className={
-								this.state.showAll ? 'show-all-hours' : 'hide-extra-hours'
-							}>
-							{this.renderHourly()}
-						</div>
-					</HourlyDiv>
-					<MoreArrow>{this.renderShowHideButton()}</MoreArrow>
-				</React.Fragment>
-			);
-		} else {
-			return <div></div>;
-		}
+	if (
+		searchLocation !== 'none' &&
+		searchWeatherData.data !== undefined &&
+		errorInSearch === 'none'
+	) {
+		return (
+			<React.Fragment>
+				<HourlyDiv id="hourly">
+					<h1>Hourly forecast for {fullSearchName}</h1>
+					<div
+						id="hourly-container"
+						className={showAll ? 'show-all-hours' : 'hide-extra-hours'}>
+						{renderHourly()}
+					</div>
+				</HourlyDiv>
+				<MoreArrow>{renderShowHideButton()}</MoreArrow>
+			</React.Fragment>
+		);
+	} else {
+		return <div></div>;
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		system: state.system,
-		location: state.location,
-		searchLocation: state.searchedLocation,
-		searchWeatherData: state.searchWeatherData,
-		errorInSearch: state.errorInSearch,
-		fullSearchName: state.fullSearchName,
-		timeAtSearch: state.timeAtSearch,
-		dateAtSearch: state.dateAtSearch,
-	};
-};
-
-export default connect(mapStateToProps, {
-	changeSystem,
-	inputLocation,
-	newSearchLocation,
-	searchedWeatherData,
-	locationError,
-	logFullSearchName,
-	enterTimeAtSearch,
-	enterDateAtSearch,
-})(Hourly);
+export default Hourly;

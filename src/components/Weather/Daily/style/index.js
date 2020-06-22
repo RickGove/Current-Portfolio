@@ -7,6 +7,10 @@ export const DailyContainer = styled.div`
 		padding: 0;
 	}
 
+	h1 {
+		background: rgba(255, 255, 255, 0.5);
+	}
+
 	#daily-con {
 		background: rgba(255, 255, 255, 0.5);
 	}

@@ -8,7 +8,15 @@ export const ImagesDiv = styled.div`
 	color: white;
 	overflow-x: scroll;
 	overflow: hidden;
-	padding: 4rem;
+
+	.fill-screen {
+		height: 50px;
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.hide-main {
+		display: none;
+	}
 
 	* {
 		box-sizing: border-box;
@@ -43,6 +51,7 @@ export const ImagesDiv = styled.div`
 	.images-grid {
 		display: grid;
 		grid-template-columns: repeat(4, 25%);
+		grid-template-rows: 300px;
 	}
 
 	.image-container-individual {
@@ -57,7 +66,6 @@ export const ImagesDiv = styled.div`
 	.image-container-individual:hover {
 		transform: scale(1.4);
 		transition: 0.4s;
-		z-index: 5;
 		opacity: 0.9;
 	}
 
@@ -82,7 +90,7 @@ export const ImagesDiv = styled.div`
 
 	.image__taker {
 		position: relative;
-		top: -3.2rem;
+		top: -5rem;
 		left: 0.5rem;
 		text-decoration: none;
 		color: white;
@@ -108,10 +116,10 @@ export const ImagesDiv = styled.div`
 
 	.next-image {
 		justify-self: end;
-		position: relative;
 		height: 3rem;
-		top: -13rem;
-		right: -3rem;
+		position: relative;
+		top: -16rem;
+		right: 1rem;
 		z-index: 5;
 		cursor: pointer;
 		transition: 0.3s;
@@ -119,9 +127,9 @@ export const ImagesDiv = styled.div`
 
 	.prev-image {
 		position: relative;
-		top: -13rem;
-		left: -3rem;
 		height: 3rem;
+		top: -16rem;
+		left: 1rem;
 		cursor: pointer;
 		transition: 0.3s;
 		z-index: 5;
@@ -217,12 +225,12 @@ export const Modal = styled.div`
 		width: 100%;
 		height: 100%;
 		margin: auto;
+		text-align: center;
 	}
 
 	.user-name-and-avatar span {
 		position: relative;
 		top: 25%;
-		left: 1rem;
 		cursor: pointer;
 	}
 

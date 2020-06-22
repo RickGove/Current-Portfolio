@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
 	searchedWeatherData,
@@ -14,19 +15,22 @@ import clearskyNight from '../img/clearskynight.jpg';
 import rain from '../img/rain.jpg';
 import snow from '../img/snow.jpg';
 import clouds from '../img/clouds.jpg';
+import earth from '../img/earth.jpg';
 
-class Wallpaper extends React.Component {
-	constructor(props) {
-		super(props);
+function Wallpaper() {
+	//redux
+	const searchWeatherData = useSelector((state) => state.searchWeatherData);
+	const errorInSearch = useSelector((state) => state.errorInSearch);
+	const timeAtSearch = useSelector((state) => state.timeAtSearch);
+	const searchLocation = useSelector((state) => state.searchedLocation); //may break shit
+
+	function renderWallPaper() {
+		let wp;
+		wp = getTypeOfWp();
+		return getSrc(wp);
 	}
 
-	renderWallPaper = () => {
-		let wp;
-		wp = this.getTypeOfWp();
-		return this.getSrc(wp);
-	};
-
-	getSrc(arr) {
+	function getSrc(arr) {
 		if (arr[2] === 'Rain') {
 			return <img src={rain} />;
 		} else if (arr[2] === 'Snow') {
@@ -40,22 +44,22 @@ class Wallpaper extends React.Component {
 		}
 	}
 
-	getTypeOfWp() {
+	function getTypeOfWp() {
 		let hour, day, clouds, rainSnowNone;
 
 		// night or day; hour
-		hour = this.getHour();
-		day = this.determineDay(hour);
+		hour = getHour();
+		day = determineDay(hour);
 
 		// cloudiness; clouds
-		clouds = this.getClouds();
+		clouds = getClouds();
 
 		// rain / snow;
-		rainSnowNone = this.getPrec();
+		rainSnowNone = getPrec();
 		let toRet = [day, clouds, rainSnowNone];
 		return toRet;
 	}
-	determineDay(hour) {
+	function determineDay(hour) {
 		if (hour > 8 && hour < 22) {
 			return 'day';
 		} else {
@@ -63,13 +67,13 @@ class Wallpaper extends React.Component {
 		}
 	}
 
-	getPrec = () => {
-		return this.props.searchWeatherData.data.current.weather[0].main;
-	};
+	function getPrec() {
+		return searchWeatherData.data.current.weather[0].main;
+	}
 
-	getClouds = () => {
-		if (this.props.searchWeatherData.data !== undefined) {
-			let clouds = this.props.searchWeatherData.data.current.clouds;
+	function getClouds() {
+		if (searchWeatherData.data !== undefined) {
+			let clouds = searchWeatherData.data.current.clouds;
 			if (clouds > 60) {
 				return 'clouds';
 			} else {
@@ -77,47 +81,31 @@ class Wallpaper extends React.Component {
 			}
 		} else {
 		}
-	};
+	}
 
-	getHour(i) {
-		let fullTime = this.props.timeAtSearch.split(':');
+	function getHour(i) {
+		let fullTime = timeAtSearch.split(':');
 		let justHour = fullTime[0];
 		let justHourInt = parseInt(justHour);
 		return justHourInt;
 	}
 
-	render() {
-		if (
-			this.props.searchLocation !== 'none' &&
-			this.props.searchWeatherData.data !== undefined
-		) {
-			return <WallPic>{this.renderWallPaper()}</WallPic>;
-		} else {
-			return (
-				<WallPic>
-					<div id="load-pics">
-						<img src={rain} />
-						<img src={snow} />
-						<img src={clouds} />
-						<img src={clearskyNight} />
-						<img src={clearsky} />
-					</div>
-				</WallPic>
-			);
-		}
+	if (searchLocation !== 'none' && searchWeatherData.data !== undefined) {
+		return <WallPic>{renderWallPaper()}</WallPic>;
+	} else {
+		return (
+			<WallPic>
+				<img src={earth} />
+				<div id="load-pics">
+					<img src={rain} />
+					<img src={snow} />
+					<img src={clouds} />
+					<img src={clearskyNight} />
+					<img src={clearsky} />
+				</div>
+			</WallPic>
+		);
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		searchWeatherData: state.searchWeatherData,
-		errorInSearch: state.errorInSearch,
-		timeAtSearch: state.timeAtSearch,
-	};
-};
-
-export default connect(mapStateToProps, {
-	searchedWeatherData,
-	locationError,
-	enterTimeAtSearch,
-})(Wallpaper);
+export default Wallpaper;

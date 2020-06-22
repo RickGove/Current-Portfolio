@@ -8,7 +8,7 @@ const searchedLocation = (loc = 'none', action) => {
 	}
 };
 
-const selectedSystem = (system = 'F', action) => {
+const selectedSystem = (system = 'C', action) => {
 	if (action.type === 'CHANGE_SYSTEM') {
 		let newSystem;
 		system === 'C' ? (newSystem = 'F') : (newSystem = 'C');
@@ -74,6 +74,54 @@ const imageSearchDone = (done = false, action) => {
 	}
 };
 
+const hideOrShow = (show = false, action) => {
+	if (action.type === 'HIDE_ALL_COMPS') {
+		return action.payload;
+	} else {
+		return show;
+	}
+};
+
+const onlyShowTitle = (show = false, action) => {
+	if (action.type === 'SHOW_ONLY_TITLE') {
+		return action.payload;
+	} else {
+		return show;
+	}
+};
+
+const shouldShowImages = (display = false, action) => {
+	if (action.type === 'SHOW_IMAGES') {
+		return action.payload;
+	} else {
+		return display;
+	}
+};
+
+const dataFromInitialLocationSearch = (data = {}, action) => {
+	if (action.type === 'INITIAL_SEARCH_DATA') {
+		return action.payload;
+	} else {
+		return data;
+	}
+};
+
+const latLonToSearch = (coord = [0, 0], action) => {
+	if (action.type === 'SET_LAT_LON') {
+		return action.payload;
+	} else {
+		return coord;
+	}
+};
+
+const imagesFound = (images = '', action) => {
+	if (action.type === 'SET_IMAGES') {
+		return action.payload;
+	} else {
+		return images;
+	}
+};
+
 const weatherApp = combineReducers({
 	system: selectedSystem,
 	location: inputLocation,
@@ -84,6 +132,12 @@ const weatherApp = combineReducers({
 	timeAtSearch: timeAtSearch,
 	dateAtSearch: dateAtSearch,
 	imageSearchDone: imageSearchDone,
+	hideOrShow: hideOrShow,
+	shouldShowImages: shouldShowImages,
+	dataFromInitialLocationSearch: dataFromInitialLocationSearch,
+	latLonToSearch: latLonToSearch,
+	onlyShowTitle: onlyShowTitle,
+	imagesFound: imagesFound,
 });
 
 export default weatherApp;

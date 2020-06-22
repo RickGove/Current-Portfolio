@@ -4,7 +4,8 @@ export const FootCon = styled.div`
 	* {
 		box-sizing: border-box;
 	}
-	max-width: 100%;
+
+	width: 100%;
 	/* border: 3px solid pink; */
 	padding: 0;
 	margin: 0;
