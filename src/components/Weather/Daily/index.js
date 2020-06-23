@@ -68,7 +68,7 @@ function Daily() {
 	}
 
 	function getImage(img) {
-		return `http://openweathermap.org/img/wn/${img}@2x.png`;
+		return `https://openweathermap.org/img/wn/${img}@2x.png`;
 	}
 
 	function getTemp(temp) {
@@ -110,7 +110,7 @@ function Daily() {
 			return (
 				<div key={i} className="day">
 					<div className="date">
-						{getDate(searchWeatherData.data.daily[i].sunrise)}
+						<h3>{getDate(searchWeatherData.data.daily[i].sunrise)}</h3>
 					</div>
 					<div className="description">
 						{getWeatherDesc(
@@ -123,8 +123,12 @@ function Daily() {
 							src={getImage(searchWeatherData.data.daily[i].weather[0].icon)}
 						/>
 					</div>
-					<div>High: {getTemp(searchWeatherData.data.daily[i].temp.day)}°</div>
-					<div>Low: {getTemp(searchWeatherData.data.daily[i].temp.min)}°</div>
+					<div>
+						<h3>High: {getTemp(searchWeatherData.data.daily[i].temp.day)}°</h3>
+					</div>
+					<div>
+						<h3>Low: {getTemp(searchWeatherData.data.daily[i].temp.min)}°</h3>
+					</div>
 					<div>
 						Sunrise: {getSunTimes(searchWeatherData.data.daily[i].sunrise)}
 					</div>

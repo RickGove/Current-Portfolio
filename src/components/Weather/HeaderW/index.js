@@ -260,6 +260,14 @@ function HeaderW() {
 	useEffect(() => {
 		// click listener
 		// document.addEventListener('click', buttonClick);
+		var systemCookie = localStorage.getItem('system');
+		console.log(systemCookie);
+		if (systemCookie === null) {
+			localStorage.setItem('system', 'C');
+		}
+		if (system !== systemCookie) {
+			dispatch(changeSystem());
+		}
 
 		//get curent city and write it to the reux state
 		if (location[0] === '') {
@@ -408,6 +416,9 @@ function HeaderW() {
 
 	function switchSystem() {
 		dispatch(changeSystem());
+		system === 'C'
+			? localStorage.setItem('system', 'F')
+			: localStorage.setItem('system', 'C');
 	}
 
 	function calcHeaderTemp() {

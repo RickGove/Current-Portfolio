@@ -79,11 +79,11 @@ function Hourly() {
 			return weatherData.map((item, i) => {
 				return (
 					<div key={i} className="hour">
-						<p className="hour-top">{getHour(i)}</p>
+						<h3 className="hour-top">{getHour(i)}</h3>
 						<p className="icon">
 							<img src={getIcon(weatherData[i].weather[0].icon)} alt={i} />{' '}
 						</p>
-						<p className="degree">{calcTemp(weatherData[i].temp)}°</p>
+						<h3 className="degree">{calcTemp(weatherData[i].temp)}°</h3>
 					</div>
 				);
 			});
