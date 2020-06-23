@@ -95,7 +95,7 @@ function Title() {
 					<h4>{cloudiness()}</h4>
 					<h1 className="huge-temp">
 						{getCurrentWeatherForSearchLocation()}
-						<img className="icon" alt="weather-icon" src={getIcon()} />
+						<img className="icon" alt={flagImage} src={getIcon()} />
 					</h1>
 					<h4>
 						High: {calcTemp(searchWeatherData.data.daily[0].temp.day)} Low:{' '}
@@ -111,7 +111,7 @@ function Title() {
 	function getIcon() {
 		if (searchWeatherData.data.current.weather[0].icon !== undefined) {
 			let icon = searchWeatherData.data.current.weather[0].icon;
-			return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+			return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 		} else {
 			return <p>hello</p>;
 		}

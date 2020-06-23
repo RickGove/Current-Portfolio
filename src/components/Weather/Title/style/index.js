@@ -4,6 +4,7 @@ export const TitleCon = styled.div`
 	* {
 		box-sizing: border-box;
 		margin: 0;
+		overflow: hidden;
 	}
 
 	.fill-screen {

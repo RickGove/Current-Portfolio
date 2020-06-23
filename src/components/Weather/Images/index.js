@@ -107,13 +107,17 @@ function Images() {
 			setShowModal(false);
 			window.setTimeout(() => {
 				setModalImage('');
-				modal.current.style.display = 'none';
-				prev.current.style.display = 'inline';
-				next.current.style.display = 'inline';
+				if (modal.current !== undefined) {
+					modal.current.style.display = 'none';
+					prev.current.style.display = 'inline';
+					next.current.style.display = 'inline';
+				}
 			}, 1000);
 			window.setTimeout(() => {
-				modal.current.style.display = 'grid';
-				setModalImage('');
+				if (modal.current !== undefined) {
+					modal.current.style.display = 'grid';
+					setModalImage('');
+				}
 			}, 1000);
 		}
 	}
@@ -242,7 +246,7 @@ function Images() {
 				<React.Fragment>
 					<ImagesDiv>
 						<div id="main" ref={imagesDiv}>
-							<div className="title">Images From Unsplash</div>
+							<div className="title">Images</div>
 							<div className="images-grid">{renderImages()}</div>
 							{renderUnsplashNotice()}
 							<div ref={navButtons} className="next-and-prev">

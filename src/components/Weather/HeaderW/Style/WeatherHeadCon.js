@@ -151,6 +151,10 @@ export const WeatherHeadCon = styled.div`
 		transform: scale(0);
 		transition: 350ms;
 		border-radius: 0 0 10px 10px;
+		${media850}{
+			width: auto;
+		}
+
 	}
 
 	.search__results ul {
@@ -196,6 +200,12 @@ export const WeatherHeadCon = styled.div`
 		margin-left: 1rem;
 		height: 1rem;
 		text-align: left;
+		
+		${media850} {
+			height:0.5rem
+		}
+
+		
 	}
 
 	.switch {
