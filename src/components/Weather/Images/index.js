@@ -242,7 +242,7 @@ function Images() {
 				<React.Fragment>
 					<ImagesDiv>
 						<div id="main" ref={imagesDiv}>
-							<div className="title">Images</div>
+							<div className="title">Images From Unsplash</div>
 							<div className="images-grid">{renderImages()}</div>
 							{renderUnsplashNotice()}
 							<div ref={navButtons} className="next-and-prev">

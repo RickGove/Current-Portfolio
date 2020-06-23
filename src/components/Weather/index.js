@@ -15,34 +15,33 @@ import Wallpaper from './Wallpaper';
 function Weather() {
 	const hide = useSelector((state) => state.hideOrShow);
 
-	if (hide) {
-		return (
-			<>
-				<GlobalStyle />
-				<HeaderDeterminerW />
-				<Wallpaper />
-				<FillScreen />
-				<Footer />
-				<ScrollToTop />
-			</>
-		);
-	} else {
-		return (
-			<>
-				<GlobalStyle />
-				<HeaderDeterminerW />
-				<Wallpaper />
-
-				<Title />
-				<Hourly />
-				<Daily />
-				<Images />
-				<FillScreen />
-				<Footer />
-				<ScrollToTop />
-			</>
-		);
-	}
+	// if (hide) {
+	// 	return (
+	// 		<>
+	// 			<GlobalStyle />
+	// 			<HeaderDeterminerW />
+	// 			<Wallpaper />
+	// 			<FillScreen />
+	// 			<Footer />
+	// 			<ScrollToTop />
+	// 		</>
+	// 	);
+	// } else {
+	return (
+		<>
+			<GlobalStyle />
+			<HeaderDeterminerW />
+			<Wallpaper />
+			<Title />
+			<Hourly />
+			<Daily />
+			<Images />
+			<FillScreen />
+			<Footer />
+			<ScrollToTop />
+		</>
+	);
+	// }
 }
 
 export default Weather;
