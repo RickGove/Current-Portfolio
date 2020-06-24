@@ -260,8 +260,9 @@ function HeaderW() {
 	useEffect(() => {
 		// click listener
 		// document.addEventListener('click', buttonClick);
+
+		// dealing with the saved system selection cookie
 		var systemCookie = localStorage.getItem('system');
-		console.log(systemCookie);
 		if (systemCookie === null) {
 			localStorage.setItem('system', 'C');
 		}

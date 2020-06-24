@@ -19,6 +19,7 @@ import {
 	enterTimeAtSearch,
 	enterDateAtSearch,
 	setImagesFound,
+	setNeededForFavorite,
 } from '../../../../actions';
 
 function SearchBar() {
@@ -30,7 +31,6 @@ function SearchBar() {
 	const [suggestions, setSuggestions] = useState([]);
 	const [value, setValue] = useState('Search here');
 	const [highlighted, setHighlighted] = useState();
-	const [fullCountry, setFullCountry] = useState('');
 
 	//////////////////////////////////////////////////////////////
 	//// for favourites in the future, might be better in redux
@@ -40,11 +40,7 @@ function SearchBar() {
 	// redux
 	// state
 	const dispatch = useDispatch();
-	const hideAllCompsState = useSelector((state) => state.hideOrShow);
 	const currentLocation = useSelector((state) => state.location);
-	const searchedLocation = useSelector((state) => state.searchedLocation);
-	const searchWeatherData = useSelector((state) => state.searchWeatherData);
-	const imagesFound = useSelector((state) => state.imagesFound);
 
 	// axios things
 	const hereKey = `YVh-b0HlW3jpI3qPgzG4VZWtBDwhe4a42U4wlaNYB7w`;
@@ -112,6 +108,7 @@ function SearchBar() {
 				break;
 			case 'Escape':
 				handleEsc();
+				break;
 			default:
 				handleChange();
 		}
@@ -208,6 +205,7 @@ function SearchBar() {
 			// toUnhighlight = document.getElementById(i);
 			if (i !== null) {
 				i.style = '';
+				return;
 			}
 		});
 	}
@@ -437,6 +435,13 @@ function SearchBar() {
 		let country = el.attributes.country.value;
 
 		dispatch(logFullSearchName(`${currentLocation[0]}, ${currentLocation[2]}`));
+		dispatch(
+			setNeededForFavorite({
+				id: currentLocation[0],
+				name: currentLocation[4],
+				country: currentLocation[5],
+			})
+		);
 		searchLocation(
 			currentLocation[0],
 			currentLocation[4],
@@ -651,21 +656,25 @@ function SearchBar() {
 	}
 
 	function handleBlur() {
-		console.log('BLURRED');
 		// works for
 		if (highlighted === undefined) {
-			console.log('do nothing');
 		} else if (highlighted.id === 'but-location' || highlighted === 0) {
-			console.log('search the current location');
+			// search location
 			handleClickLocation();
 		} else {
 			let selection = suggestions[highlighted - 1];
 			if (selection !== undefined) {
-				console.log(selection);
 				let fullCountry = convert2toFull(selection.countryCode.toUpperCase());
 				let cityName = reverseLabel(selection.fullName);
 				console.log(selection.id, cityName, fullCountry);
 				searchForLatLonHere(selection.id, cityName, fullCountry);
+				dispatch(
+					setNeededForFavorite({
+						id: selection.id,
+						name: cityName,
+						country: fullCountry,
+					})
+				);
 				dispatch(logFullSearchName(cityName));
 			} else {
 				console.log(
@@ -674,6 +683,13 @@ function SearchBar() {
 					highlighted.attributes.country.value
 				);
 				dispatch(logFullSearchName(highlighted.attributes.displayname.value));
+				dispatch(
+					setNeededForFavorite({
+						id: highlighted.attributes.locationid.value,
+						name: highlighted.attributes.displayname.value,
+						country: highlighted.attributes.country.value,
+					})
+				);
 				searchForLatLonHere(
 					highlighted.attributes.locationid.value,
 					highlighted.attributes.displayname.value,
@@ -706,7 +722,7 @@ function SearchBar() {
 				onBlur={handleBlur}
 				onKeyUp={handleKey}
 				// onKeyPress={handleChange}
-				autoFocus="true"
+				autoFocus={true}
 			/>
 			<div className="search__results" id="search-results">
 				<ul>

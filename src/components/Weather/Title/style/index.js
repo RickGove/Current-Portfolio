@@ -4,7 +4,7 @@ export const TitleCon = styled.div`
 	* {
 		box-sizing: border-box;
 		margin: 0;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 
 	.fill-screen {
@@ -15,6 +15,33 @@ export const TitleCon = styled.div`
 
 	text-align: center;
 
+	@keyframes BEAT {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.4);
+		}
+		
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	.fave-img {
+		padding-right: 1rem;
+		height: 2.5rem;
+		vertical-align: middle;
+		transition: 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.6;
+			animation: BEAT 0.5s 0s 25;
+		}
+	}
+
 	h1 {
 		vertical-align: middle;
 		font-size: 2rem;
@@ -22,7 +49,7 @@ export const TitleCon = styled.div`
 
 	img {
 		margin-left: 1rem;
-		/* vertical-align: middle; */
+		vertical-align: middle;
 		height: 2rem;
 	}
 

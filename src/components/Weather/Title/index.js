@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { TitleCon } from './style';
 
+import faveImg from '../img/fave.png';
+import faveImgEmpty from '../img/faveEmpty.png';
+
 import { showImages } from '../../../actions';
 
 function Title() {
@@ -16,6 +19,7 @@ function Title() {
 	const errorInSearch = useSelector((state) => state.errorInSearch);
 	const fullSearchName = useSelector((state) => state.fullSearchName);
 	const system = useSelector((state) => state.system);
+	const faveouriteInfo = useSelector((state) => state.neededForFavorite);
 
 	//////
 
@@ -46,6 +50,20 @@ function Title() {
 			);
 			return str;
 		}
+	}
+
+	function handleFaveClick() {}
+
+	function renderFaveImg() {
+		return (
+			<img
+				className="fave-img"
+				onClick={handleFaveClick}
+				isfave="True"
+				src={faveImgEmpty}
+				alt="favourite"
+			/>
+		);
 	}
 
 	function renderTitle() {
@@ -88,9 +106,10 @@ function Title() {
 			dispatch(showImages(true));
 
 			return (
-				<>
+				<React.Fragment>
 					<h1>
-						{fullSearchName} <img src={flagImage} alt={country} />
+						{renderFaveImg()}
+						{fullSearchName} <img src={flagImage} alt={country} />{' '}
 					</h1>
 					<h4>{cloudiness()}</h4>
 					<h1 className="huge-temp">
@@ -101,7 +120,7 @@ function Title() {
 						High: {calcTemp(searchWeatherData.data.daily[0].temp.day)} Low:{' '}
 						{calcTemp(searchWeatherData.data.daily[0].temp.min)}
 					</h4>
-				</>
+				</React.Fragment>
 			);
 		} else {
 			dispatch(showImages(false));

@@ -12,16 +12,11 @@ function Daily() {
 
 	//redux
 	const system = useSelector((state) => state.system);
-	const location = useSelector((state) => state.location);
 	const searchLocation = useSelector((state) => state.searchedLocation);
 	const searchWeatherData = useSelector((state) => state.searchWeatherData);
 	const errorInSearch = useSelector((state) => state.errorInSearch);
-	const fullSearchName = useSelector((state) => state.fullSearchName);
-	const timeAtSearch = useSelector((state) => state.timeAtSearch);
-	const dateAtSearch = useSelector((state) => state.dateAtSearch);
 
 	function calcTemp(temp) {
-		let newTemp;
 		if (system === 'F') {
 			let x = Math.round(parseFloat(temp - 273.15) * 9) / 5 + 32;
 			return Math.round(x);
@@ -119,7 +114,7 @@ function Daily() {
 					</div>
 					<div className="weather-image">
 						<img
-							alt="weather image"
+							alt="current conditions"
 							src={getImage(searchWeatherData.data.daily[i].weather[0].icon)}
 						/>
 					</div>
@@ -157,6 +152,7 @@ function Daily() {
 		return (
 			<div className="chevron" onClick={showOrHide}>
 				<img
+					alt="show/hide"
 					src={chevron}
 					className={showAll ? 'show-all-btn' : 'hide-extra-btn'}
 				/>

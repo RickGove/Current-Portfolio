@@ -33,6 +33,7 @@ export const ImagesDiv = styled.div`
 
 	.unsplash-notice {
 		padding: 0.3rem;
+		padding-top: 2rem;
 		border: 2px ${border} blue;
 	}
 
@@ -52,8 +53,9 @@ export const ImagesDiv = styled.div`
 
 	.images-grid {
 		display: grid;
-		grid-template-columns: repeat(4, 25%);
-		grid-template-rows: 300px;
+		grid-template-columns: 5% repeat(4, 22.5%) 5%;
+		grid-template-areas: 'prev 0 1 2 3 next';
+		grid-template-rows: 185px;
 	}
 
 	.image-container-individual {
@@ -85,15 +87,17 @@ export const ImagesDiv = styled.div`
 
 	.image__preview {
 		cursor: zoom-in;
-		vertical-align: top;
+		/* vertical-align: top; */
+		align-self: center;
+		justify-self: center;
 		height: auto;
 		width: 95%;
 	}
 
 	.image__taker {
+		align-self: center;
 		position: relative;
-		top: -5rem;
-		left: 0.5rem;
+		justify-self: end;
 		text-decoration: none;
 		color: white;
 		cursor: zoom-in;
@@ -111,28 +115,22 @@ export const ImagesDiv = styled.div`
 		vertical-align: middle;
 	}
 
-	.next-and-prev {
-		display: grid;
-		grid-template-columns: 50% 50%;
-	}
-
 	.next-image {
-		justify-self: end;
-		height: 3rem;
-		position: relative;
-		top: -16rem;
-		right: 1rem;
+		grid-area: next;
+		width: 100%;
 		z-index: 5;
+		align-self: center;
+		justify-self: center;
 		cursor: pointer;
 		transition: 0.3s;
 	}
 
 	.prev-image {
-		position: relative;
-		height: 3rem;
-		top: -16rem;
-		left: 1rem;
+		grid-area: prev;
+		width: 100%;
 		cursor: pointer;
+		align-self: center;
+		justify-self: center;
 		transition: 0.3s;
 		z-index: 5;
 	}
@@ -145,14 +143,7 @@ export const ImagesDiv = styled.div`
 	}
 
 	.inactive {
-		opacity: 0.1;
-		cursor: default;
-	}
-
-	.inactive:hover {
-		opacity: 0;
-		transform: scale(0);
-		transition: 0.3s;
+		visibility: hidden;
 	}
 `;
 
@@ -192,15 +183,18 @@ export const Modal = styled.div`
 	}
 
 	.main-grid {
+		display: grid;
 		text-align: middle;
 		width: 100%;
 		height: 100%;
 	}
 
 	.prev {
+		grid-area: prev;
 	}
 
 	.next {
+		grid-area: next;
 	}
 
 	.huge-x {
@@ -221,6 +215,9 @@ export const Modal = styled.div`
 
 	.user-name-and-avatar {
 		text-align: left;
+		display: grid;
+		grid-template-columns: 33% 33% 33%;
+		grid-template-areas: "modal-prev user modal-next"
 		grid-area: username;
 		vertical-align: middle;
 		background: rgba(255, 255, 255, 1);
@@ -233,10 +230,41 @@ export const Modal = styled.div`
 		text-align: center;
 	}
 
-	.user-name-and-avatar span {
-		position: relative;
-		top: 25%;
+	.modal-prev {
+		display: inline-block;
+		text-align: left;
+		height: 2rem;
+		margin-top: auto;
+		margin-bottom: auto;
+		padding-left: 3rem;
 		cursor: pointer;
+		&:hover{
+			opacity: 0.6;
+
+		}
+	}
+
+	.modal-next {
+		display: inline-block;
+		text-align: right;
+		height: 2rem;
+		margin-top: auto;
+		margin-bottom: auto;
+		padding-right: 3rem;
+		cursor: pointer;
+		&:hover{
+			opacity: 0.6;
+
+		}
+	}
+
+	.user-name-and-avatar span {
+		/* position: relative; */
+		/* top: 25%; */
+		cursor: pointer;
+		margin: auto;
+		vertical-align: middle;
+
 	}
 
 	.user-name-and-avatar span:hover {
@@ -249,6 +277,8 @@ export const Modal = styled.div`
 		height: 2rem;
 	}
 
+	
+
 	.image {
 		grid-area: image;
 		background: rgba(255, 255, 255, 1);
@@ -259,7 +289,9 @@ export const Modal = styled.div`
 		border-radius: 1rem;
 	}
 
+
 	.image-image {
+		grid-area: main-image;
 		width: auto;
 		max-width: 70vw;
 		height: auto;
@@ -269,4 +301,6 @@ export const Modal = styled.div`
 		cursor: pointer;
 		transition: 0.3s;
 	}
+
+	
 `;

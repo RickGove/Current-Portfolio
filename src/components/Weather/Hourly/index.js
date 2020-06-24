@@ -9,14 +9,11 @@ function Hourly() {
 	// redux
 
 	const system = useSelector((state) => state.system);
-	const location = useSelector((state) => state.location);
 	const searchLocation = useSelector((state) => state.searchedLocation);
 	const searchWeatherData = useSelector((state) => state.searchWeatherData);
 	const errorInSearch = useSelector((state) => state.errorInSearch);
 	const fullSearchName = useSelector((state) => state.fullSearchName);
 	const timeAtSearch = useSelector((state) => state.timeAtSearch);
-	const dateAtSearch = useSelector((state) => state.dateAtSearch);
-	const hideOrShow = useSelector((state) => state.hideOrShow);
 
 	// state
 	const [showAll, setShowAll] = useState(false);
@@ -24,45 +21,11 @@ function Hourly() {
 
 	useEffect(() => {});
 
-	function timeConverter(UNIX_timestamp) {
-		var a = new Date(UNIX_timestamp * 1000);
-		var months = [
-			'Jan',
-			'Feb',
-			'Mar',
-			'Apr',
-			'May',
-			'Jun',
-			'Jul',
-			'Aug',
-			'Sep',
-			'Oct',
-			'Nov',
-			'Dec',
-		];
-		var year = a.getFullYear();
-		var month = months[a.getMonth()];
-		var date = a.getDate();
-		var hour = a.getHours();
-		var min = a.getMinutes();
-		var sec = a.getSeconds();
-		var time =
-			date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-		return time;
-	}
-
 	function getIcon(icon) {
 		return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 	}
 
-	function displayTime() {
-		if (searchLocation !== 'none' && searchWeatherData.data !== undefined) {
-			// console.log( timeAtSearch);
-		}
-	}
-
 	function calcTemp(temp) {
-		let newTemp;
 		if (system === 'F') {
 			let x = Math.round(parseFloat(temp - 273.15) * 9) / 5 + 32;
 
@@ -121,6 +84,7 @@ function Hourly() {
 		return (
 			<div className="chevron" onClick={showOrHide}>
 				<img
+					alt="show/hide"
 					src={chevron}
 					className={showAll ? 'show-all-btn' : 'hide-extra-btn'}
 				/>

@@ -101,3 +101,10 @@ export const setImagesFound = (images) => {
 		payload: images,
 	};
 };
+
+export const setNeededForFavorite = (objData) => {
+	return {
+		type: 'SET_FAVE_INFO',
+		payload: objData,
+	};
+};

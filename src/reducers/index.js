@@ -122,6 +122,17 @@ const imagesFound = (images = '', action) => {
 	}
 };
 
+const neededForFavorite = (
+	obj = { id: 0, name: 'none', country: 'unknown' },
+	action
+) => {
+	if (action.type === 'SET_FAVE_INFO') {
+		return action.payload;
+	} else {
+		return obj;
+	}
+};
+
 const weatherApp = combineReducers({
 	system: selectedSystem,
 	location: inputLocation,
@@ -138,6 +149,7 @@ const weatherApp = combineReducers({
 	latLonToSearch: latLonToSearch,
 	onlyShowTitle: onlyShowTitle,
 	imagesFound: imagesFound,
+	neededForFavorite: neededForFavorite,
 });
 
 export default weatherApp;

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import nextImg from '../img/next.png';
 import prevImg from '../img/prev.png';
 
-import { ImagesDiv, Modal } from './style';
+import { ImagesDiv, Modal, ImageContainer } from './style';
 
 function Images() {
 	// refs
@@ -86,9 +86,9 @@ function Images() {
 	}
 
 	function handleImageClick(i) {
-		setModalImageUser(i.target.attributes.username);
-		setModalImageAvatar(i.target.attributes.avatar);
-		setModalUserLink(i.target.attributes.modaluserlink);
+		setModalImageUser(i.target.attributes.username.value);
+		setModalImageAvatar(i.target.attributes.avatar.value);
+		setModalUserLink(i.target.attributes.modaluserlink.value);
 		displayModal(i.target.src);
 	}
 
@@ -96,8 +96,8 @@ function Images() {
 	////// modal stuff /////
 
 	function displayModal(url) {
-		prev.current.style.display = 'none';
-		next.current.style.display = 'none';
+		prev.current.style.visibility = 'hidden';
+		next.current.style.visibility = 'hidden';
 		setShowModal(true);
 		setModalImage(url);
 	}
@@ -109,8 +109,9 @@ function Images() {
 				setModalImage('');
 				if (modal.current !== undefined) {
 					modal.current.style.display = 'none';
-					prev.current.style.display = 'inline';
-					next.current.style.display = 'inline';
+
+					prev.current.style.visibility = 'visible';
+					next.current.style.visibility = 'visible';
 				}
 			}, 1000);
 			window.setTimeout(() => {
@@ -130,25 +131,99 @@ function Images() {
 
 	function renderModalImage() {
 		return (
-			<img className="image-image" src={modalImage} alt="Unsplash Image" />
+			<React.Fragment>
+				<img
+					className="image-image"
+					src={modalImage}
+					alt="Unsplash Image"
+					onClick={openImageNewWindow}
+				/>
+			</React.Fragment>
 		);
 	}
 
+	function renderModalPrev() {
+		if (
+			images.data !== undefined &&
+			modalImage !== images.data.results[0].urls.regular
+		) {
+			return (
+				<h3 onClick={showPrevModalImg} className="modal-prev">
+					{'<<< Previous Image'}
+				</h3>
+			);
+		} else {
+			return <span></span>;
+		}
+	}
+
+	function renderModalNext() {
+		if (
+			images.data !== undefined &&
+			modalImage !==
+				images.data.results[images.data.results.length - 1].urls.regular
+		) {
+			return (
+				<h3 onClick={showNextModalImg} className="modal-next">
+					{'Next Image >>>'}
+				</h3>
+			);
+		}
+	}
+
+	function showPrevModalImg() {
+		images.data.results.map((item, index) => {
+			if (images.data.results[index - 1] !== undefined) {
+				if (modalImage === images.data.results[index].urls.regular) {
+					setModalImageUser(images.data.results[index - 1].user.name);
+					setModalImageAvatar(
+						images.data.results[index - 1].user.profile_image.medium
+					);
+					setModalUserLink(images.data.results[index - 1].user.links.html);
+					setModalImage(images.data.results[index - 1].urls.regular);
+				}
+			}
+		});
+	}
+
+	function showNextModalImg() {
+		images.data.results.map((item, index) => {
+			if (images.data.results[index + 1] !== undefined) {
+				if (modalImage === images.data.results[index].urls.regular) {
+					setModalImageUser(images.data.results[index + 1].user.name);
+					setModalImageAvatar(
+						images.data.results[index + 1].user.profile_image.medium
+					);
+					setModalUserLink(images.data.results[index + 1].user.links.html);
+					setModalImage(images.data.results[index + 1].urls.regular);
+				}
+			}
+		});
+	}
+
 	function openNewWindow() {
-		var win = window.open(modalUserLink.value, '_blank');
+		var win = window.open(modalUserLink, '_blank');
+		win.focus();
+	}
+
+	function openImageNewWindow() {
+		var win = window.open(modalImage, '_blank');
 		win.focus();
 	}
 
 	function renderModalUsername() {
 		return (
 			<div className="user-name-and-avatar">
+				{renderModalPrev()}
 				<span onClick={openNewWindow}>
 					<img
+						id="modal-user-avatar"
 						className="user-name-and-avatar__avatar"
-						src={modalImageAvatar.value}
+						src={modalImageAvatar}
 					/>{' '}
-					{modalImageUser.value}
+					<span id="modal-image-user-name">{modalImageUser}</span>
 				</span>
+				{renderModalNext()}
 			</div>
 		);
 	}
@@ -247,12 +322,12 @@ function Images() {
 					<ImagesDiv>
 						<div id="main" ref={imagesDiv}>
 							<div className="title">Images</div>
-							<div className="images-grid">{renderImages()}</div>
-							{renderUnsplashNotice()}
-							<div ref={navButtons} className="next-and-prev">
+							<div className="images-grid">
 								{renderPrevButton()}
+								{renderImages()}
 								{renderNextButton()}
 							</div>
+							{renderUnsplashNotice()}
 						</div>
 					</ImagesDiv>
 					<Modal>
