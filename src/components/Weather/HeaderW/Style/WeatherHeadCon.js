@@ -117,7 +117,7 @@ export const WeatherHeadCon = styled.div`
 		height: 40%;
 		padding: 0.5rem;
 		font: inherit;
-		font-size: 1rem;
+		font-size: 17px;
 		color: black;
 		border-radius: 10px;
 		z-index:50;
@@ -143,7 +143,7 @@ export const WeatherHeadCon = styled.div`
 		z-index:50;
 		position: absolute;
 		height: auto;
-		width: 100%;
+		width: auto;
 		background: white;
 		color: black;
 		padding: 1px;

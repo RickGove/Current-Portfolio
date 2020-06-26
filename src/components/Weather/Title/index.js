@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,6 +11,7 @@ import { showImages } from '../../../actions';
 
 function Title() {
 	//// redux /////
+
 	const dispatch = useDispatch();
 	const hideAllCompsState = useSelector((state) => state.hideOrShow);
 	const currentLocation = useSelector((state) => state.location);
@@ -19,7 +20,7 @@ function Title() {
 	const errorInSearch = useSelector((state) => state.errorInSearch);
 	const fullSearchName = useSelector((state) => state.fullSearchName);
 	const system = useSelector((state) => state.system);
-	const faveouriteInfo = useSelector((state) => state.neededForFavorite);
+	const favouriteInfo = useSelector((state) => state.neededForFavorite);
 
 	//////
 
@@ -52,18 +53,128 @@ function Title() {
 		}
 	}
 
-	function handleFaveClick() {}
+	function getCurrentFaves() {
+		//get faves from local store
+		let fave0 = window.localStorage.getItem('favourite0');
+		let fave1 = window.localStorage.getItem('favourite1');
+		let fave2 = window.localStorage.getItem('favourite2');
+
+		// make array of faves
+		return [fave0, fave1, fave2];
+	}
+
+	function removeFave(pos) {
+		let stor = window.localStorage;
+		stor.setItem(pos, 'none');
+		stor.setItem(`${pos}-Name`, 'none');
+		stor.setItem(`${pos}-flag`, 'none');
+	}
+
+	function setFave(pos, id) {
+		let stor = window.localStorage;
+		stor.setItem(pos, id);
+		stor.setItem(`${pos}-Name`, favouriteInfo.name.trim());
+		stor.setItem(`${pos}-flag`, favouriteInfo.flag);
+	}
+
+	function handleFaveClick() {
+		// get current faves
+		let faveArray = getCurrentFaves();
+
+		// store current search ID to var
+		let currentId = searchLocation.data.id;
+
+		// set variable of whether id was saved, if not store in #3
+		let stored = false;
+
+		// search the array of faves
+		faveArray.map((item, index) => {
+			// set the current localstorage key name
+			let current = `favourite${index}`;
+
+			//check if storage is empty, and init
+			if (item === null) {
+				// init
+				removeFave(current);
+
+				// see if item is already saved
+			} else if (item == currentId) {
+				// remove item
+				removeFave(current);
+
+				// change heart
+				let el = document.getElementById('fave-img');
+				el.src = faveImgEmpty;
+
+				// prevent any more alterations
+				stored = true;
+				return;
+			} else if (item === 'none' && stored === false) {
+				// if not saved, save it to local Storage
+				setFave(current, currentId);
+
+				// prevent future storage at the moment
+				stored = true;
+
+				//change heart logo
+				let el = document.getElementById('fave-img');
+				el.src = faveImg;
+			}
+		});
+
+		// if all poistions were already full, replace 0
+		if (stored === false) {
+			//change heart
+			let el = document.getElementById('fave-img');
+			el.src = faveImg;
+			setFave(`favourite0`, currentId);
+		}
+	}
 
 	function renderFaveImg() {
-		return (
-			<img
-				className="fave-img"
-				onClick={handleFaveClick}
-				isfave="True"
-				src={faveImgEmpty}
-				alt="favourite"
-			/>
-		);
+		// build array of faves
+		let faveArray = getCurrentFaves();
+
+		// store current search id
+		let currentId = searchLocation.data.id;
+
+		// set var to tell if item is found in faves
+		let found = false;
+
+		// set what to return
+		faveArray.map((item, index) => {
+			if (item == currentId && found === false) {
+				found = true;
+			}
+		});
+		if (found === false) {
+			return (
+				<img
+					id="fave-img"
+					className="fave-img"
+					onClick={handleFaveClick}
+					src={faveImgEmpty}
+					alt="favourite"
+				/>
+			);
+		} else {
+			return (
+				<img
+					id="fave-img"
+					className="fave-img"
+					onClick={handleFaveClick}
+					src={faveImg}
+					alt="favourite"
+				/>
+			);
+		}
+
+		//
+		/* if (returnItem === 'faveItem') {
+			
+		} else {
+			
+		} */
 	}
 
 	function renderTitle() {

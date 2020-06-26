@@ -6,7 +6,9 @@ import axios from 'axios';
 import iso3 from '../../../../json/iso3.json';
 import names from '../../../../json/twoToName.json';
 
+//images
 import gps from '../../img/gps.png';
+import fave from '../../img/fave.png';
 
 // redux actions
 import {
@@ -41,7 +43,7 @@ function SearchBar() {
 	// state
 	const dispatch = useDispatch();
 	const currentLocation = useSelector((state) => state.location);
-
+	const currentLocationInfo = useSelector((state) => state.searchedLocation);
 	// axios things
 	const hereKey = `YVh-b0HlW3jpI3qPgzG4VZWtBDwhe4a42U4wlaNYB7w`;
 	const hereSite = `https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json
@@ -116,42 +118,6 @@ function SearchBar() {
 
 	function handleEnter() {
 		inputRef.current.blur();
-		// let city, country;
-		// let currentHighlight = totalButtons[highlighted];
-		// if (currentHighlight !== undefined) {
-		// 	// GPS location choses
-		// 	if (currentHighlight.attributes.name !== undefined) {
-		// 		// city = currentHighlight.attributes.name.value;
-		// 		// set to redux state
-		// 		dispatch(
-		// 			logFullSearchName(`${currentLocation[0]}, ${currentLocation[2]}`)
-		// 		);
-		// 		let el = document.getElementById('but-location');
-		// 		country = el.attributes.country.value;
-		// 		searchLocation(
-		// 			currentLocation[0],
-		// 			currentLocation[4],
-		// 			currentLocation[5],
-		// 			country
-		// 		);
-		// 	}
-		// 	// suggestions chosen
-		// 	else if (currentHighlight.attributes.fullsearchname !== undefined) {
-		// 		searchForLatLonHere(
-		// 			currentHighlight.attributes.locationid.value,
-		// 			currentHighlight.attributes.displayname.value,
-		// 			currentHighlight.attributes.country.value
-		// 		);
-		// 		dispatch(
-		// 			logFullSearchName(currentHighlight.attributes.displayname.value)
-		// 		);
-		// 	}
-		// } else {
-		// 	// only typing, no choice
-		// 	// search by name 'city'
-		// 	city = inputRef.current.value;
-		// 	searchSubmit(city);
-		// }
 	}
 
 	function handleEsc() {
@@ -169,21 +135,22 @@ function SearchBar() {
 			newArray[0] = el;
 		}
 
-		//////////////////////////
-		/// add faves
-		///// doesn't exist yet through
+		////////////////////////
+		// / add faves
+		/// doesn't exist yet through
 
 		// add favesList to state, or redux or something
 
-		// el = document.getElementById('but-fave-0');
-		// if (el !== null) {
-		// 	// run through the list of faves and add each to the array
-		// 	for (let i = 0; i < favesList.length; i++) {
-		// 		el = document.getElementById(`but-${i}`);
-
-		// 		newArray.push(el);
-		// 	}
-		// }
+		el = document.getElementById('but-fave-0');
+		if (el !== null) {
+			// run through the list of faves and add each to the array
+			for (let i = 0; i < 3; i++) {
+				el = document.getElementById(`but-fave-${i}`);
+				if (el !== null) {
+					newArray.push(el);
+				}
+			}
+		}
 
 		//////////////////////////////////////
 		/// add searches
@@ -205,7 +172,6 @@ function SearchBar() {
 			// toUnhighlight = document.getElementById(i);
 			if (i !== null) {
 				i.style = '';
-				return;
 			}
 		});
 	}
@@ -276,7 +242,9 @@ function SearchBar() {
 	}
 
 	function getFlagImg(countryCode) {
-		if (countryCode !== undefined) {
+		if (countryCode === undefined) {
+			console.log('flag is undefined');
+		} else {
 			const flagImage = require(`../../img/flags/${countryCode}.png`);
 			return (
 				<img
@@ -415,21 +383,6 @@ function SearchBar() {
 			});
 	}
 
-	function handleClick(e) {
-		e.preventDefault();
-		// for suggestion
-		if (e.target.attributes.id !== undefined) {
-			dispatch(hideAllComps(true));
-
-			dispatch(logFullSearchName(e.target.attributes.displayname.value));
-			searchForLatLonHere(
-				e.target.attributes.locationId.value,
-				e.target.attributes.displayname.value,
-				e.target.attributes.country.value
-			);
-		}
-	}
-
 	function handleClickLocation() {
 		let el = document.getElementById('but-location');
 		let country = el.attributes.country.value;
@@ -437,11 +390,14 @@ function SearchBar() {
 		dispatch(logFullSearchName(`${currentLocation[0]}, ${currentLocation[2]}`));
 		dispatch(
 			setNeededForFavorite({
-				id: currentLocation[0],
-				name: currentLocation[4],
-				country: currentLocation[5],
+				name: currentLocation[0],
+				lat: currentLocation[4],
+				lon: currentLocation[5],
+				flag: currentLocation[2],
 			})
 		);
+		// need info for all this
+
 		searchLocation(
 			currentLocation[0],
 			currentLocation[4],
@@ -465,6 +421,7 @@ function SearchBar() {
 					orderindex="location"
 					id="but-location"
 					country={fullCountry}
+					countrycode={currentLocation[2]}
 					lat={currentLocation[4]}
 					lon={currentLocation[5]}
 					// onClick={handleClickLocation}
@@ -485,36 +442,68 @@ function SearchBar() {
 	///////////////////////////////////////////
 	// for showing the favourites
 	/////////////////////////////
-	// function showFaves() {
-	// 	if (favesList.length !== 0) {
-	// 		return favesList.map((item, i) => {
-	// 			let idName = `but-fave-${i}`;
-	// 			// build buttons with the suggestions
-	// 			return (
-	// 				<button
-	// 					key={item.fullName}
-	// 					orderindex={i}
-	// 					id={idName}
-	// 					fullsearchname={item.fullName}
-	// 					displayname={item.displayName}
-	// 					onClick={handleClick}
-	// onMouseLeave={handleMouseLeave}
-	// 					onMouseOver={handleMouseOver}>
-	// 					{getFlagImg(item.countryCode)}
-	// 					{'   '}
-	// 					{item.displayName}
-	// 				</button>
-	// 			);
-	// 		});
-	// 	}
-	// }
+	function showFaves() {
+		// add localStorage to stor
+		let stor = window.localStorage;
+
+		// init favesList
+		let favesList = [];
+
+		// build array of favesList
+		for (let x = 0; x <= 2; x++) {
+			// set key for stor
+			let cur = `favourite${x}`;
+			if (stor.getItem(cur) === null) {
+				stor.setItem(cur, 'none');
+				stor.getItem(`${cur}-Name`, 'none');
+				stor.getItem(`${cur}-flag`, 'none');
+			}
+			// check if fave exists
+			else if (stor.getItem(cur) !== 'none') {
+				// build array
+				let newArr = [
+					stor.getItem(cur),
+					stor.getItem(`${cur}-Name`),
+					stor.getItem(`${cur}-flag`),
+				];
+
+				//add to favesList array
+				favesList.push(newArr);
+			}
+		}
+
+		if (favesList.length !== 0) {
+			return favesList.map((item, i) => {
+				let idName = `but-fave-${i}`;
+				// build buttons with the faves
+				return (
+					<button
+						key={item[0]}
+						orderindex={i}
+						id={idName}
+						searchid={item[0]}
+						fullsearchname={item[1]}
+						countrycode={item[2]}
+						displayname={item[1]}
+						// onClick={handleClick}
+						onMouseLeave={handleMouseLeave}
+						onMouseOver={handleMouseOver}>
+						{getFlagImg(item[2].toLowerCase())}
+						<img src={fave} />
+						{'   '}
+						{item[1]}
+					</button>
+				);
+			});
+		}
+	}
 
 	function showSearchResults() {
 		if (suggestions.length !== 0) {
 			return suggestions.map((item, i) => {
 				let fullCountry = convert2toFull(item.countryCode.toUpperCase());
-
 				let idName = `but-${i}`;
+
 				// build buttons with the suggestions
 				return (
 					<button
@@ -522,6 +511,7 @@ function SearchBar() {
 						orderindex={i}
 						id={idName}
 						country={fullCountry}
+						countrycode={item.countryCode.toUpperCase()}
 						fullsearchname={item.fullName}
 						locationid={item.id}
 						displayname={item.displayName}
@@ -561,10 +551,7 @@ function SearchBar() {
 				getFullWeatherInfo(lat, lon, city, country);
 				dispatch(newSearchLocation(response));
 				dispatch(logFullSearchName(city));
-
-				// change the site to the onecall API
-				// let timezone = response.data.timezone;
-				// getTimeAtSearch(timezone);
+				window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 			})
 			.catch((err) => {
 				getFullWeatherInfo(lat, lon, city, country);
@@ -645,67 +632,176 @@ function SearchBar() {
 		return [timeStr, dateStr];
 	}
 
-	function searchSubmit(city, country) {
-		// get city name
-
-		// set redux state to hide all other components
-		dispatch(hideAllComps(true));
-
-		// search location
-		searchLocation(city, country);
+	function searchByOpenWeatherId(id, city, country) {
+		// for searching the faves
+		const key = `f63ee05c044c91f80348c4e021c7d476`;
+		const site = `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${key}`;
+		axios
+			.get(site)
+			.then((response) => {
+				let latitude = response.data.coord.lat;
+				let longitude = response.data.coord.lon;
+				// must search for lat and lon and then pass it off to the same thing as
+				// latLon here search Fn
+				searchLocation(city, latitude, longitude, country);
+			})
+			.catch((err) => {
+				alert(err);
+			});
 	}
 
 	function handleBlur() {
 		// works for
-		if (highlighted === undefined) {
-		} else if (highlighted.id === 'but-location' || highlighted === 0) {
-			// search location
-			handleClickLocation();
-		} else {
-			let selection = suggestions[highlighted - 1];
-			if (selection !== undefined) {
-				let fullCountry = convert2toFull(selection.countryCode.toUpperCase());
-				let cityName = reverseLabel(selection.fullName);
-				console.log(selection.id, cityName, fullCountry);
-				searchForLatLonHere(selection.id, cityName, fullCountry);
-				dispatch(
-					setNeededForFavorite({
-						id: selection.id,
-						name: cityName,
-						country: fullCountry,
-					})
-				);
-				dispatch(logFullSearchName(cityName));
+		// console.log(highlighted);
+		if (highlighted !== undefined) {
+			if (highlighted.id === undefined) {
+				console.log('search by totalButtons array');
+
+				// store button info
+				let searchBut = totalButtons[highlighted];
+				console.log(searchBut);
+
+				// if button is location, search location
+				if (searchBut.id === 'but-location') {
+					//pressing enter on location
+					// works
+					handleClickLocation();
+
+					//fave info works
+				} // else if it's fave
+				else if (searchBut.id.includes('fave')) {
+					// pressing enter on fave
+					// searchOpenWeatherById(searchBut.attributes.searchid.value);
+					// needs to be written still
+
+					// set faveoutite info
+					let id = searchBut.attributes.searchid.value;
+					let cityName = searchBut.attributes.displayname.value;
+					let countryArr = searchBut.attributes.displayname.value.split(',');
+					let flagCode = searchBut.attributes.countrycode.value;
+					let fullCountry = countryArr[countryArr.length - 1].trim();
+					dispatch(
+						setNeededForFavorite({
+							id: id,
+							name: cityName,
+							country: fullCountry,
+							flag: flagCode,
+						})
+					);
+
+					// search for weather
+					searchByOpenWeatherId(id, cityName, fullCountry);
+				} else {
+					// pressing enter on suggestion
+					//works
+					let fullCountry = searchBut.attributes.country.value;
+					let cityName = reverseLabel(
+						searchBut.attributes.fullsearchname.value
+					);
+					let id = searchBut.attributes.locationid.value;
+					let flagCode = searchBut.attributes.countrycode.value;
+
+					// 		console.log(selection.id, cityName, fullCountry);
+					dispatch(
+						setNeededForFavorite({
+							id: id,
+							name: cityName,
+							country: fullCountry,
+							flag: flagCode,
+						})
+					);
+
+					searchForLatLonHere(id, cityName, fullCountry);
+				}
+			} else if (highlighted.id !== undefined) {
+				if (highlighted.id === 'but-location') {
+					// clicking location
+					// works
+					handleClickLocation();
+				} else if (highlighted.id.includes('fave')) {
+					// clicking a fave
+					// works
+					let id = highlighted.attributes.searchid.value;
+					let cityName = highlighted.attributes.displayname.value;
+					let countryArr = highlighted.attributes.displayname.value.split(',');
+					let fullCountry = countryArr[countryArr.length - 1].trim();
+					let flagCode = highlighted.attributes.countrycode.value;
+
+					// set fave info
+					dispatch(
+						setNeededForFavorite({
+							id: id,
+							name: cityName,
+							country: fullCountry,
+							flag: flagCode,
+						})
+					);
+
+					searchByOpenWeatherId(id, cityName, fullCountry);
+				} else {
+					//clicking on suggestion
+					// works
+					let id = highlighted.attributes.locationid.value;
+					let cityName = highlighted.attributes.displayname.value;
+					let fullCountry = highlighted.attributes.country.value;
+					let flagCode = highlighted.attributes.countrycode.value;
+
+					dispatch(
+						setNeededForFavorite({
+							id: id,
+							name: cityName,
+							country: fullCountry,
+							flag: flagCode,
+						})
+					);
+
+					searchForLatLonHere(id, cityName, fullCountry);
+				}
 			} else {
-				console.log(
-					highlighted.attributes.locationid.value,
-					highlighted.attributes.displayname.value,
-					highlighted.attributes.country.value
-				);
-				dispatch(logFullSearchName(highlighted.attributes.displayname.value));
-				dispatch(
-					setNeededForFavorite({
-						id: highlighted.attributes.locationid.value,
-						name: highlighted.attributes.displayname.value,
-						country: highlighted.attributes.country.value,
-					})
-				);
-				searchForLatLonHere(
-					highlighted.attributes.locationid.value,
-					highlighted.attributes.displayname.value,
-					highlighted.attributes.country.value
-				);
+				// search suggestion
 			}
-			// console.log(selection); //works for enter
-			// console.log(highlighted); // works for click
-			// searchForLatLonHere(
-			// 	selection.id,
-			// 	selection.displayname,
-			// 	selection.country
-			// );
-			// dispatch(logFullSearchName(selection.displayname));
 		}
 	}
+
+	// search suggestion
+	// else {
+	// 	let selection = suggestions[highlighted - 1];
+	// 	if (selection !== undefined) {
+	// 		// enter key
+	// 		let fullCountry = convert2toFull(selection.countryCode.toUpperCase());
+	// 		let cityName = reverseLabel(selection.fullName);
+	// 		console.log(selection.id, cityName, fullCountry);
+	// 		searchForLatLonHere(selection.id, cityName, fullCountry);
+	// 		console.log(selection);
+	// 		dispatch(
+	// 			setNeededForFavorite({
+	// 				id: selection.id,
+	// 				fullCountry: fullCountry,
+	// 				flag: selection.countryCode.toUpperCase(),
+	// 				name: cityName,
+	// 			})
+	// 		);
+	// 		dispatch(logFullSearchName(cityName));
+	// 	} else {
+	// 		//click
+
+	// 		dispatch(logFullSearchName(highlighted.attributes.displayname.value));
+	// 		dispatch(
+	// 			setNeededForFavorite({
+	// 				id: highlighted.attributes.locationid.value,
+	// 				fullCountry: highlighted.attributes.country.value,
+	// 				flag: highlighted.attributes.countrycode.value,
+	// 				name: highlighted.attributes.displayname.value,
+	// 			})
+	// 		);
+	// 		searchForLatLonHere(
+	// 			highlighted.attributes.locationid.value,
+	// 			highlighted.attributes.displayname.value,
+	// 			highlighted.attributes.country.value
+	// 		);
+	// 	}
+	// }
+	// }
 
 	return (
 		<React.Fragment>
@@ -727,8 +823,7 @@ function SearchBar() {
 			<div className="search__results" id="search-results">
 				<ul>
 					{showLocation()}
-					{/* favourites to be added later */}
-					{/* {showFaves()} */}
+					{showFaves()}
 					{showSearchResults()}
 				</ul>
 			</div>

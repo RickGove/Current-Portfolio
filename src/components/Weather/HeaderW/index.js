@@ -82,7 +82,6 @@ function HeaderW() {
 	function searchImagesByCity(city, country) {
 		dispatch(setImagesFound(''));
 		dispatch(imageSearchHasBeenDoneFN(false));
-		console.log('unsplash city search');
 		axios
 			.get('https://api.unsplash.com/search/photos', {
 				params: { query: city, orientation: 'landscape' },
@@ -116,7 +115,6 @@ function HeaderW() {
 
 	function getLocation() {
 		// build location from gps
-		console.log('getLocation fired');
 		getCoords();
 	}
 
@@ -207,7 +205,6 @@ function HeaderW() {
 		// initial weather info, just for location
 		if (location[0] === '');
 		{
-			console.log('axios ran for location');
 			let key = `f63ee05c044c91f80348c4e021c7d476`;
 			let site = `https://api.openweathermap.org/data/2.5/weather?lat=${latLon[0]}&lon=${latLon[1]}&appid=${key}`;
 			axios
@@ -246,14 +243,6 @@ function HeaderW() {
 			return flagImage;
 		} else {
 			return '';
-		}
-	}
-
-	function buttonClick(e) {
-		// console.log(e.target);
-		// hack work around because the clicking is fucked up
-		if (e.target.id === 'root') {
-			searchSubmit();
 		}
 	}
 
