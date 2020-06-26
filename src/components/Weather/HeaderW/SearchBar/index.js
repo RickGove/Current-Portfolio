@@ -248,19 +248,31 @@ function SearchBar() {
 			return (
 				<img
 					src={flagImage}
-					// onClick={handleImageClick}
+					onMouseLeave={handleMouseLeave}
+					onMouseOver={handleMouseOverImg}
 				/>
 			);
 		}
 	}
 
-	function handleImageClick(e) {}
+	function handleMouseOverImg(e) {
+		console.log(e.target.parentElement);
+		clearAllHighlights();
+		setHighlighted(e.target.parentElement);
+		if (e.target.src !== undefined) {
+		} else {
+		}
+	}
 
 	function handleMouseOver(e) {
 		clearAllHighlights();
-		setHighlighted(e.target);
 		if (e.target.src !== undefined) {
+			console.log(e.target.parentElement);
+			setHighlighted(e.target.parentElement);
 		} else {
+			console.log(e.target);
+
+			setHighlighted(e.target);
 		}
 	}
 
@@ -490,6 +502,8 @@ function SearchBar() {
 					<img
 						className="gps-img"
 						src={gps}
+						onMouseLeave={handleMouseLeave}
+						onMouseOver={handleMouseOverImg}
 						// onClick={handleClickLocation}
 					/>
 					{'   '}
@@ -591,7 +605,12 @@ function SearchBar() {
 						onMouseLeave={handleMouseLeave}
 						onMouseOver={handleMouseOver}>
 						{getFlagImg(item[2].toLowerCase())}
-						<img src={fave} />
+						<img
+							src={fave}
+							onMouseLeave={handleMouseLeave}
+							onMouseOver={handleMouseOverImg}
+						/>
+
 						{'   '}
 						{item[1]}
 					</button>

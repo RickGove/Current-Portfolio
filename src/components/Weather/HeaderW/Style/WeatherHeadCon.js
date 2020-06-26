@@ -6,6 +6,7 @@ let border = `solid`;
 let blue = `#1E7CFF`;
 
 const media1100 = `@media (max-width: 1100px)`;
+const mobile = `@media (max-width: 768px)`;
 const media850 = `@media (max-width: 850px)`;
 
 export const WeatherHeadCon = styled.div`
@@ -15,7 +16,7 @@ export const WeatherHeadCon = styled.div`
 		color: ${blue};
 	}
 
-	
+	z-index: 1;
 	position: sticky;
 	top: 0;
 	width: 100vw;
@@ -27,6 +28,14 @@ export const WeatherHeadCon = styled.div`
 	justify-items: center;
 	align-items: center;
 	background: black;
+
+	${mobile}{
+		height: 8.6rem;
+		grid-template-columns: 5% auto 3% 15% 5%;
+		grid-template-rows: repeat(2, 4.3rem);
+		grid-template-areas: '. logo . switch .'
+							 ' . search search search .';
+	}
 
 	
 	.hide__modal {
@@ -141,7 +150,7 @@ export const WeatherHeadCon = styled.div`
 		z-index:50;
 		position: absolute;
 		height: auto;
-		width: auto;
+		width: 100%;
 		background: white;
 		color: black;
 		padding: 1px;
@@ -150,13 +159,14 @@ export const WeatherHeadCon = styled.div`
 		transition: 350ms;
 		border-radius: 0 0 10px 10px;
 		${media850}{
-			width: auto;
+			/* width: auto; */
 		}
 
 	}
 
 	.search__results ul {
 		list-style: none;
+		width:100%
 		margin: 0;
 		padding: 0;
 	}

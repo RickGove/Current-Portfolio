@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const mobile = `@media (max-width: 1100px)`;
+
 export const TitleCon = styled.div`
 	* {
 		box-sizing: border-box;
@@ -39,6 +41,11 @@ export const TitleCon = styled.div`
 		&:hover {
 			opacity: 0.6;
 			animation: BEAT 0.5s 0s 25;
+
+			${mobile}{
+			animation: BEAT 0.5s 0s 4;
+
+			}
 		}
 	}
 

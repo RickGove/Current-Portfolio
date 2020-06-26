@@ -8,7 +8,6 @@ const media900 = `@media (maxwidth: 900)`;
 export const ImagesDiv = styled.div`
 	background-color: rgba(0, 0, 0, 0.8);
 	color: white;
-	overflow-x: scroll;
 	overflow: hidden;
 
 	.fill-screen {
@@ -30,11 +29,10 @@ export const ImagesDiv = styled.div`
 		padding: 0.6rem;
 		font-size: 2rem;
 	}
-
 	.unsplash-notice {
 		padding: 0.3rem;
-		padding-top: 2rem;
-		border: 2px ${border} blue;
+		padding-top: 6rem;
+		/* border: 2px ${border} blue; */
 	}
 
 	.unsplash-notice a {
@@ -71,6 +69,10 @@ export const ImagesDiv = styled.div`
 		transform: scale(1.4);
 		transition: 0.4s;
 		opacity: 0.9;
+
+		${media900} {
+			transform: scale(1);
+		}
 	}
 
 	.image-container-individual:hover .image__taker {
@@ -87,7 +89,6 @@ export const ImagesDiv = styled.div`
 
 	.image__preview {
 		cursor: zoom-in;
-		/* vertical-align: top; */
 		align-self: center;
 		justify-self: center;
 		height: auto;
@@ -118,7 +119,6 @@ export const ImagesDiv = styled.div`
 	.next-image {
 		grid-area: next;
 		width: 100%;
-		z-index: 5;
 		align-self: center;
 		justify-self: center;
 		cursor: pointer;
@@ -132,7 +132,6 @@ export const ImagesDiv = styled.div`
 		align-self: center;
 		justify-self: center;
 		transition: 0.3s;
-		z-index: 5;
 	}
 
 	.next-image:hover,
@@ -148,19 +147,24 @@ export const ImagesDiv = styled.div`
 `;
 
 export const Modal = styled.div`
+	
 	* {
 		box-sizing: border-box;
-		z-index: 10000;
+		z-index: 2;
 		margin: 0;
 		padding: 0;
 	}
+
 	text-align: center;
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 2;
+
 
 	.modal {
 		color: white;
+		z-index: 2;
 		position: sticky;
 		top: 0;
 		background: rgba(0, 0, 0, 0.9);
@@ -259,8 +263,6 @@ export const Modal = styled.div`
 	}
 
 	.user-name-and-avatar span {
-		/* position: relative; */
-		/* top: 25%; */
 		cursor: pointer;
 		margin: auto;
 		vertical-align: middle;

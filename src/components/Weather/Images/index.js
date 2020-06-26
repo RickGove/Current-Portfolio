@@ -327,19 +327,18 @@ function Images() {
 								{renderImages()}
 								{renderNextButton()}
 							</div>
+
 							{renderUnsplashNotice()}
 						</div>
 					</ImagesDiv>
 					<Modal>
-						{' '}
 						<div ref={modal} className={showModal ? 'modal' : 'hide-modal'}>
-							{' '}
 							<span className="huge-x" onClick={hideModal}>
 								X{' '}
 							</span>
 							{renderModalUsername()}
 							<div className="image">{renderModalImage()}</div>{' '}
-						</div>{' '}
+						</div>
 					</Modal>
 				</React.Fragment>
 			);
