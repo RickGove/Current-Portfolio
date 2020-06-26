@@ -21,17 +21,13 @@ export const WeatherHeadCon = styled.div`
 	width: 100vw;
 	height: 4.3rem;
 	display: grid;
-	grid-template-columns: auto 15% 3% 7% 6% 5% 5% 35% auto 5% auto;
-	grid-template-areas: '. logo . weather-image temp flag . search . switch .';
+	grid-template-columns: auto 30% 3% 35% auto 15% auto;
+	grid-template-areas: '. logo . search . switch .';
 	grid-column-gap: 0.2rem;
 	justify-items: center;
 	align-items: center;
 	background: black;
-	${media1100}{
-		grid-template-columns: auto 15% 3% 7% 6% 7% 5% 35% auto 5% auto;
-		grid-template-areas: '. logo . weather-image temp flag . search . switch .';
 
-	}
 	
 	.hide__modal {
 		position: fixed;
@@ -66,7 +62,7 @@ export const WeatherHeadCon = styled.div`
 	.logo {
 		grid-area: logo;
 		height: auto;
-		width: 100%;
+		width: 85%;
 		z-index: 50;
 	}
 
@@ -133,6 +129,8 @@ export const WeatherHeadCon = styled.div`
 
 	}
 
+	
+
 	.search:focus + div {
 		transform: scale(1);
 		transition: 350ms;
@@ -191,6 +189,8 @@ export const WeatherHeadCon = styled.div`
 		opacity: 0.8;
 	}
 
+	
+
 	.highlight{
 		background-color: black;
 		opacity: 0.5;
@@ -207,6 +207,8 @@ export const WeatherHeadCon = styled.div`
 
 		
 	}
+
+	
 
 	.switch {
 		grid-area: switch;

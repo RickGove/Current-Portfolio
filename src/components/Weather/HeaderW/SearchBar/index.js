@@ -33,6 +33,7 @@ function SearchBar() {
 	const [suggestions, setSuggestions] = useState([]);
 	const [value, setValue] = useState('Search here');
 	const [highlighted, setHighlighted] = useState();
+	const [locationRefused, setLocationRefused] = useState(false);
 
 	//////////////////////////////////////////////////////////////
 	//// for favourites in the future, might be better in redux
@@ -42,8 +43,6 @@ function SearchBar() {
 	// redux
 	// state
 	const dispatch = useDispatch();
-	const currentLocation = useSelector((state) => state.location);
-	const currentLocationInfo = useSelector((state) => state.searchedLocation);
 	// axios things
 	const hereKey = `YVh-b0HlW3jpI3qPgzG4VZWtBDwhe4a42U4wlaNYB7w`;
 	const hereSite = `https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json
@@ -382,67 +381,165 @@ function SearchBar() {
 				alert(err + ' latLonById');
 			});
 	}
-
+	function locationAvailable() {
+		// check if geolocation avaialable
+		if ('geolocation' in navigator) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	function handleClickLocation() {
-		let el = document.getElementById('but-location');
-		let country = el.attributes.country.value;
+		getCoords();
 
-		dispatch(logFullSearchName(`${currentLocation[0]}, ${currentLocation[2]}`));
+		// searchLocation(
+		// 	currentLocation[0],
+		// 	currentLocation[4],
+		// 	currentLocation[5],
+		// 	country
+		// );
+	}
+
+	//// searching by location ///
+
+	function buildLocationForState(fullWeatherInfo) {
+		// set the current location
+		console.log(fullWeatherInfo);
+		let icon = fullWeatherInfo.data.weather[0].icon;
+		let cityName = fullWeatherInfo.data.name;
+		let tempHere = fullWeatherInfo.data.main.temp;
+		let flagCode = fullWeatherInfo.data.sys.country;
+		let lat = fullWeatherInfo.data.coord.lat;
+		let lon = fullWeatherInfo.data.coord.lon;
+		let newLocation = [cityName, tempHere, flagCode, icon, lat, lon];
+		let countryName = convert2toFull(flagCode.toUpperCase());
+
 		dispatch(
 			setNeededForFavorite({
-				name: currentLocation[0],
-				lat: currentLocation[4],
-				lon: currentLocation[5],
-				flag: currentLocation[2],
+				// id: id,
+				name: cityName,
+				country: countryName,
+				flag: flagCode,
 			})
 		);
-		// need info for all this
+		searchLocation(cityName, lat, lon, countryName);
+		// searchForLatLonHere(id, cityName, fullCountry);
+		// searchImagesByCity(cityName, countryName);
+	}
 
-		searchLocation(
-			currentLocation[0],
-			currentLocation[4],
-			currentLocation[5],
-			country
-		);
+	function findWeatherInfo(latLon) {
+		// initial weather info, just for location
+		// if (location[0] === '');
+		// {
+		let key = `f63ee05c044c91f80348c4e021c7d476`;
+		let site = `https://api.openweathermap.org/data/2.5/weather?lat=${latLon[0]}&lon=${latLon[1]}&appid=${key}`;
+		axios
+			.get(site)
+			.then((response) => {
+				buildLocationForState(response);
+			})
+			.catch((err) => {
+				alert(`There appears to be an error on the weather site: ${err}`);
+			});
+		// }
+	}
+
+	function locateSuccess(pos) {
+		let latLon = extractCoords(pos);
+		findWeatherInfo(latLon);
+	}
+
+	function extractCoords(pos) {
+		const lat = pos.coords.latitude;
+		const lon = pos.coords.longitude;
+		return [lat, lon];
+	}
+
+	function locateFail(err) {
+		alert('User denied geolocation');
+		let el = document.getElementById('but-location');
+		if (el !== null) {
+			el.style = 'display: none;';
+		}
+		setLocationRefused(true);
+	}
+
+	function getCoords() {
+		navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
 	}
 
 	////////////////////////////////////////////////////////
 	/// buttons
 
 	function showLocation() {
-		if (currentLocation[0] !== '') {
-			let flag = currentLocation[2].toLowerCase();
-			let fullCountry = convert2toFull(currentLocation[2]);
-
+		if (locationRefused === true) {
+		} else if (locationAvailable()) {
 			return (
 				<button
 					key="location-but"
-					name={currentLocation[0]}
-					orderindex="location"
+					// name={currentLocation[0]}
+					// orderindex="location"
 					id="but-location"
-					country={fullCountry}
-					countrycode={currentLocation[2]}
-					lat={currentLocation[4]}
-					lon={currentLocation[5]}
-					// onClick={handleClickLocation}
+					// country={fullCountry}
+					// countrycode={currentLocation[2]}
+					// lat={currentLocation[4]}
+					// lon={currentLocation[5]}
+					onClick={handleClickLocation}
 					onMouseLeave={handleMouseLeave}
 					onMouseOver={handleMouseOver}>
-					{getFlagImg(flag)}
 					<img
+						className="gps-img"
 						src={gps}
 						// onClick={handleClickLocation}
 					/>
 					{'   '}
-					{currentLocation[0]}
+					Search Current Location
 				</button>
 			);
 		}
 	}
 
+	// if (currentLocation[0] !== '') {
+	// 	let flag = currentLocation[2].toLowerCase();
+	// 	let fullCountry = convert2toFull(currentLocation[2]);
+
+	// 	return (
+	// 		<button
+	// 			key="location-but"
+	// 			name={currentLocation[0]}
+	// 			orderindex="location"
+	// 			id="but-location"
+	// 			country={fullCountry}
+	// 			countrycode={currentLocation[2]}
+	// 			lat={currentLocation[4]}
+	// 			lon={currentLocation[5]}
+	// 			// onClick={handleClickLocation}
+	// 			onMouseLeave={handleMouseLeave}
+	// 			onMouseOver={handleMouseOver}>
+	// 			{getFlagImg(flag)}
+	// 			<img
+	// 				src={gps}
+	// 				// onClick={handleClickLocation}
+	// 			/>
+	// 			{'   '}
+	// 			{currentLocation[0]}
+	// 		</button>
+	// 	);
+	// }
+
 	///////////////////////////////////////////
 	// for showing the favourites
 	/////////////////////////////
-	function showFaves() {
+
+	function favesDivider() {
+		let favesList = buildFaves();
+
+		if (favesList.length !== 0) {
+			return <span>___ Favourites ___</span>;
+		}
+	}
+
+	function buildFaves() {
 		// add localStorage to stor
 		let stor = window.localStorage;
 
@@ -471,6 +568,11 @@ function SearchBar() {
 				favesList.push(newArr);
 			}
 		}
+		return favesList;
+	}
+
+	function showFaves() {
+		let favesList = buildFaves();
 
 		if (favesList.length !== 0) {
 			return favesList.map((item, i) => {
@@ -495,6 +597,12 @@ function SearchBar() {
 					</button>
 				);
 			});
+		}
+	}
+
+	function resultsDivider() {
+		if (suggestions.length !== 0) {
+			return <span>___ Search Results ___</span>;
 		}
 	}
 
@@ -652,7 +760,6 @@ function SearchBar() {
 
 	function handleBlur() {
 		// works for
-		// console.log(highlighted);
 		if (highlighted !== undefined) {
 			if (highlighted.id === undefined) {
 				console.log('search by totalButtons array');
@@ -807,7 +914,6 @@ function SearchBar() {
 		<React.Fragment>
 			<input
 				ref={inputRef}
-				className="search"
 				id="search"
 				type="text"
 				autoComplete="off"
@@ -823,8 +929,10 @@ function SearchBar() {
 			<div className="search__results" id="search-results">
 				<ul>
 					{showLocation()}
-					{showFaves()}
+					{resultsDivider()}
 					{showSearchResults()}
+					{favesDivider()}
+					{showFaves()}
 				</ul>
 			</div>
 		</React.Fragment>

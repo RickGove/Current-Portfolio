@@ -260,9 +260,9 @@ function HeaderW() {
 		}
 
 		//get curent city and write it to the reux state
-		if (location[0] === '') {
-			getLocation();
-		}
+		// if (location[0] === '') {
+		// 	getLocation();
+		// }
 
 		// display location and weather info
 		setSearchValue();
@@ -291,14 +291,14 @@ function HeaderW() {
 					<span id="C" className="system-choice">
 						C
 					</span>
-					{'     '}
+					{'     '}/{'     '}
 					<span id="F">F</span>
 				</>
 			);
 		} else {
 			return (
 				<>
-					<span id="C">C</span> {'     '}
+					<span id="C">C</span> {'     '}/{'     '}
 					<span id="F" className="system-choice">
 						F
 					</span>
@@ -695,11 +695,6 @@ function HeaderW() {
 			<WeatherHeadCon>
 				<div id="modal-for-search-focus"></div>
 				<img alt="logo" className="logo" src={logo} />
-				<img id="flag" alt="" className="flag" src={loadFlag()} />
-				<img className="weather-image" alt="" src={loadIcon()} />
-				<div id="temp" className="temp">
-					{calcHeaderTemp()}
-				</div>
 
 				<div className="search-container">
 					<SearchBar />
