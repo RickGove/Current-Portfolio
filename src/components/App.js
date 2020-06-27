@@ -7,6 +7,7 @@ import HomePage from './HomePage';
 import Weather from './Weather/';
 import SuperHeroSmackdown from './SuperHeroSmackdown/';
 import history from '../history';
+import Nastya from './Nastya';
 
 import weatherApp from '../reducers/';
 
@@ -30,6 +31,7 @@ class App extends React.Component {
 								exact
 								component={SuperHeroSmackdown}
 							/>
+							<Route path="/AnastaciaKorotkevich" exact component={Nastya} />
 						</Switch>
 					</>
 				</Router>
