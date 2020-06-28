@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const mobile = `@media (max-width: 850px)`;
+
 export const TitleDiv = styled.div`
 	@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 	font-family: 'Bangers', cursive;
@@ -8,6 +10,10 @@ export const TitleDiv = styled.div`
 	letter-spacing: 2px;
 	font-size: 1.5rem;
 	align-self: bottom;
+
+	${mobile} {
+		font-size: 0.9rem;
+	}
 
 	h1 {
 		height: 100%;

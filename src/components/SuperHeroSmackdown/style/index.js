@@ -14,9 +14,9 @@ export const SuperHeroMainDiv = styled.div`
 
 	.grid-div {
 		display: grid;
-		grid-template-columns: 10% auto 10%;
-		grid-template-rows: 3% 6% auto 3%;
-		/* 6% must be bigger when the screensize forces wordwrap */
+		grid-template-columns: 3% auto 3%;
+		grid-template-rows: 1% 6% auto 1%;
+		grid-gap: 0.5rem;
 		grid-template-areas:
 			' . . .'
 			' . title .'
@@ -24,7 +24,7 @@ export const SuperHeroMainDiv = styled.div`
 			'. . .';
 
 		background: white;
-		height: 100%;
+		height: 100vh;
 		width: 100%;
 	}
 	.gap-top {

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { SearchDiv, Button } from './style/';
 
 import HeroInfo from '../HeroInfo/';
+import Loading from '../Loading';
 
 import rickImg from '../../../img/RBG.jpg';
 
@@ -51,7 +52,9 @@ function Search() {
 		}
 	}
 
-	function setPlaceHolder() {}
+	function setPlaceHolder(n) {
+		return `Search Fighter ${n}`;
+	}
 
 	function showResultsA() {
 		if (resultsDivA.current != undefined) {
@@ -103,6 +106,8 @@ function Search() {
 		const key = `684260262142283`;
 		const cors = `https://cors-anywhere.herokuapp.com/`;
 		const site = `${cors}https://superheroapi.com/api/${key}/search/${s}`;
+		// const site = `https://superheroapi.com/api/${key}/search/${s}`;
+
 		const results = [];
 		let name = s.toLowerCase();
 		let rick = addRick(name);
@@ -114,7 +119,6 @@ function Search() {
 			.get(site)
 			.then((response) => {
 				if (response.data.response != 'error') {
-					console.log(`*****`);
 					setCanSearch(false);
 					response.data.results.map((a, b) => {
 						let arr = [a.name, a.image.url, a.id, a.powerstats];
@@ -168,7 +172,7 @@ function Search() {
 				if (x === inputA.current.value) {
 					search(x);
 				}
-			}, 800);
+			}, 400);
 		}
 	}
 
@@ -186,8 +190,6 @@ function Search() {
 	function renderSearchA() {
 		return (
 			<div>
-				<h1>COMBATANT A</h1>
-
 				<input
 					autoFocus
 					id="searchA"
@@ -196,7 +198,7 @@ function Search() {
 					onKeyUp={handleChangeA}
 					onFocus={showResultsA}
 					onBlur={hideResults}
-					placeholder={setPlaceHolder()}
+					placeholder={setPlaceHolder(1)}
 				/>
 				<div id="results-div" ref={resultsDivA} className="results-shown">
 					<ul>{resultsA()}</ul>
@@ -215,7 +217,7 @@ function Search() {
 			if (searchResults === '') {
 				return (
 					<li key="no-results">
-						<button className="no-results">No Results</button>
+						<Button>No Results</Button>
 					</li>
 				);
 			} else {
@@ -257,43 +259,12 @@ function Search() {
 	}
 
 	function resultsB() {
-		return (
-			<ul id="myUL">
-				<li key="hello">
-					<Button float="left" onClick={handleClick}>
-						<img src={venomPic} className="hero-img" />
-						{'   '}Venom
-					</Button>
-				</li>
-				<li>
-					<a href="#">Apocalyptico</a>
-				</li>
-
-				<li>
-					<a href="#">Batman</a>
-				</li>
-				<li>
-					<a href="#">Helboy</a>
-				</li>
-
-				<li>
-					<a href="#">Venom</a>
-				</li>
-				<li>
-					<a href="#">Deadpool</a>
-				</li>
-				<li>
-					<a href="#">Iron Man</a>
-				</li>
-			</ul>
-		);
+		return <ul id="myUL">{resultsMap('B')}</ul>;
 	}
 
 	function renderSearchB() {
 		return (
 			<div>
-				<h1>COMBATANT B</h1>
-
 				<input
 					id="searchA"
 					type="text"
@@ -301,7 +272,7 @@ function Search() {
 					onKeyUp={handleChangeB}
 					onFocus={showResultsB}
 					onBlur={hideResults}
-					placeholder={setPlaceHolder()}
+					placeholder={setPlaceHolder(2)}
 				/>
 				<div id="results-div" ref={resultsDivB} className="results">
 					{resultsB()}
@@ -314,12 +285,12 @@ function Search() {
 		<SearchDiv>
 			<div className="search-a">
 				{renderSearchA()}
-				{/* <HeroInfo name="a" id="heroA" /> */}
+				<Loading />
 			</div>
-
+			<div id="vs"></div>
 			<div className="search-b">
 				{renderSearchB()}
-				{/* <HeroInfo name="b" id="heroB" className="heroB" /> */}
+				<Loading />
 			</div>
 		</SearchDiv>
 	);

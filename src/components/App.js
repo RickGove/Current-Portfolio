@@ -8,6 +8,7 @@ import Weather from './Weather/';
 import SuperHeroSmackdown from './SuperHeroSmackdown/';
 import history from '../history';
 import Nastya from './Nastya';
+import My404Component from './404';
 
 import weatherApp from '../reducers/';
 
@@ -32,6 +33,7 @@ class App extends React.Component {
 								component={SuperHeroSmackdown}
 							/>
 							<Route path="/AnastaciaKorotkevich" exact component={Nastya} />
+							<Route path="*" exact component={My404Component} />
 						</Switch>
 					</>
 				</Router>
