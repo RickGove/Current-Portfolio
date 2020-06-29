@@ -26,6 +26,8 @@ export const SuperHeroMainDiv = styled.div`
 		background: white;
 		height: 100vh;
 		width: 100%;
+
+		v
 	}
 	.gap-top {
 		grid-area: gap-top;
