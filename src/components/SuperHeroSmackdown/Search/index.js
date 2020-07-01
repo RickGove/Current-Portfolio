@@ -31,7 +31,14 @@ function Search() {
 	const [suggestionsB, setSuggestionsB] = useState([]);
 	const [highlighted, setHighlighted] = useState();
 	const [highlightedB, setHighlightedB] = useState();
-
+	const [fighterAUsableStats, setFighterAUsableStats] = useState('');
+	const [fighterBUsableStats, setFighterBUsableStats] = useState('');
+	const [intelWin, setIntelWin] = useState('');
+	const [combatWin, setCombatWin] = useState('');
+	const [duraWin, setDuraWin] = useState('');
+	const [strengthWin, setStrengthWin] = useState('');
+	const [powerWin, setPowerWin] = useState('');
+	const [speedWin, setSpeedWin] = useState('');
 	const [aWins, setAWins] = useState(0);
 	const [bWins, setBWins] = useState(0);
 	const [aFullInfo, setAFullInfo] = useState('');
@@ -40,16 +47,18 @@ function Search() {
 
 	//global variables
 	let champVar = '';
-	let intelWin = '';
-	let combatWin = '';
-	let duraWin = '';
-	let strengthWin = '';
-	let powerWin = '';
-	let speedWin = '';
-	let fighterAUsableStats = '';
-	let fighterBUsableStats = '';
+	let intelWinVar = '';
+	let combatWinVar = '';
+	let duraWinVar = '';
+	let strengthWinVar = '';
+	let powerWinVar = '';
+	let speedWinVar = '';
+	let fighterAUsableStatsVar = '';
+	let fighterBUsableStatsVar = '';
 	let fullDataA = '';
 	let fullDataB = '';
+	let bCount = 0,
+		aCount = 0;
 
 	// refs
 	const inputA = useRef(null);
@@ -584,28 +593,18 @@ function Search() {
 	}
 
 	function stringsOfCatsWon(arr) {
-		let str = '';
-		for (let i = 0; i < arr.length; i++) {
-			str = str.concat(`, ${arr[i]}`);
-		}
-
-		return str;
+		console.log(arr);
+		return arr;
 	}
 
 	function writeMatchReport() {
-		console.log(fullDataA.data);
 		const a = fullDataA.data;
 		const b = fullDataB.data;
-
-		t;
-
-		console.log(fullDataB.data);
-		console.log(powerWin);
 
 		let winner, loser;
 
 		if (champVar !== 'tie') {
-			if (champ === 'A') {
+			if (champVar === 'A') {
 				winner = a.data;
 				loser = b.data;
 			} else {
@@ -643,13 +642,12 @@ function Search() {
 				aCount,
 				bCount;
 			cats.map((item, index) => {
+				// need to find a way to create a list of the names of the categories won by each combatant
 				console.log(item);
 				if (item === 'A') {
 					aWinCats.push(cats[index]);
-					aCount++;
 				} else {
 					bWinCats.push(cats[index]);
-					bCount++;
 				}
 			});
 
@@ -939,83 +937,98 @@ function Search() {
 	function decideWinner() {
 		let fighterAStats = convertStrToIntAndRemoveNulls(fighterA[3]);
 		let fighterBStats = convertStrToIntAndRemoveNulls(fighterB[3]);
-		fighterAUsableStats = fighterAStats;
-		fighterBUsableStats = fighterBStats;
+		fighterAUsableStatsVar = fighterAStats;
+		fighterBUsableStatsVar = fighterBStats;
+		setFighterAUsableStats(fighterAStats);
+		setFighterBUsableStats(fighterBStats);
 		// removeNullsAnd100s(fighterAStats, fighterBStats);
-		let aCount = 0,
-			bCount = 0;
+
 		//intel
 		if (fighterAStats.intelligence > fighterBStats.intelligence) {
-			intelWin = 'A';
+			intelWinVar = 'A';
+			setIntelWin('A');
 			aCount++;
 		} else if (fighterAStats.intelligence === fighterBStats.intelligence) {
-			intelWin = 'tie';
+			intelWinVar = 'tie';
+			setIntelWin('tie');
 		} else {
-			intelWin = 'B';
+			intelWinVar = 'B';
+			setIntelWin('B');
 			bCount++;
 		}
 
 		//strength
 		if (fighterAStats.strength > fighterBStats.strength) {
-			strengthWin = 'A';
+			strengthWinVar = 'A';
+			setStrengthWin('A');
 			aCount++;
 		} else if (fighterAStats.strength === fighterBStats.strength) {
-			strengthWin = 'tie';
+			strengthWinVar = 'tie';
+			setStrengthWin('tie');
 		} else {
-			strengthWin = 'B';
+			strengthWinVar = 'B';
+			setStrengthWin('B');
 			bCount++;
 		}
 
 		//speed
 		if (fighterAStats.speed > fighterBStats.speed) {
-			speedWin = 'A';
+			speedWinVar = 'A';
 			aCount++;
 		} else if (fighterAStats.speed === fighterBStats.speed) {
-			speedWin = 'tie';
+			speedWinVar = 'tie';
 		} else {
-			speedWin = 'B';
+			speedWinVar = 'B';
 			bCount++;
 		}
 
 		//combat
 		if (fighterAStats.combat > fighterBStats.combat) {
-			combatWin = 'A';
+			combatWinVar = 'A';
+			setCombatWin('A');
 			aCount++;
 		} else if (fighterAStats.speed === fighterBStats.speed) {
-			combatWin = 'tie';
+			combatWinVar = 'tie';
+			setCombatWin('tie');
 		} else {
-			combatWin = 'B';
+			combatWinVar = 'B';
+			setCombatWin('B');
 			bCount++;
 		}
 
 		//durability
 		if (fighterAStats.durability > fighterBStats.durability) {
-			duraWin = 'A';
+			duraWinVar = 'A';
+			setDuraWin('A');
 			aCount++;
 		} else if (fighterAStats.durability === fighterBStats.durability) {
-			duraWin = 'tie';
+			duraWinVar = 'tie';
+			setDuraWin('tie');
 		} else {
-			duraWin = 'B';
+			duraWinVar = 'B';
+			setDuraWin('B');
 			bCount++;
 		}
 
 		//power
 		if (fighterAStats.power > fighterBStats.power) {
-			powerWin = 'A';
+			powerWinVar = 'A';
+			setPowerWin('A');
 			aCount++;
 		} else if (fighterAStats.power === fighterBStats.power) {
-			powerWin = 'tie';
+			powerWinVar = 'tie';
+			setPowerWin('tie');
 		} else {
-			powerWin = 'B';
+			powerWinVar = 'B';
+			setPowerWin('B');
 			bCount++;
 		}
 
-		console.log(aCount, bCount);
-		decideChamp(aCount, bCount);
+		decideChamp();
 		getFullInfo(fighterA[2], fighterB[2]);
 	}
 
-	function decideChamp(aCount, bCount) {
+	function decideChamp() {
 		if (aCount > bCount) {
 			setChamp(fighterA[0]);
 			champVar = 'A';
