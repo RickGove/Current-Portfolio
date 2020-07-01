@@ -598,6 +598,7 @@ function Search() {
 	}
 
 	function writeMatchReport() {
+		console.log('Write Match Report Run');
 		const a = fullDataA.data;
 		const b = fullDataB.data;
 
@@ -628,35 +629,16 @@ function Search() {
 
 			//closeness
 			//winningcats
-			let cats = [
-				intelWin,
-				combatWin,
-				duraWin,
-				strengthWin,
-				powerWin,
-				speedWin,
-			];
 
-			let aWinCats = [],
-				bWinCats = [],
-				aCount,
-				bCount;
-			cats.map((item, index) => {
-				// need to find a way to create a list of the names of the categories won by each combatant
-				console.log(item);
-				if (item === 'A') {
-					aWinCats.push(cats[index]);
-				} else {
-					bWinCats.push(cats[index]);
-				}
-			});
+			// need to find a way to create a list of the
+			// categories won by each combatant
 
 			// make strings of the categories won
-			let aStrWins = stringsOfCatsWon(aWinCats);
-			let bStrWins = stringsOfCatsWon(bWinCats);
+			// let aStrWins = stringsOfCatsWon(aWinCats);
+			// let bStrWins = stringsOfCatsWon(bWinCats);
 
-			console.log(aStrWins);
-			console.log(bStrWins);
+			// console.log(aStrWins);
+			// console.log(bStrWins);
 
 			// figure out how close the battle was
 
@@ -974,11 +956,14 @@ function Search() {
 		//speed
 		if (fighterAStats.speed > fighterBStats.speed) {
 			speedWinVar = 'A';
+			setSpeedWin('A');
 			aCount++;
 		} else if (fighterAStats.speed === fighterBStats.speed) {
 			speedWinVar = 'tie';
+			setSpeedWin('tie');
 		} else {
 			speedWinVar = 'B';
+			setSpeedWin('B');
 			bCount++;
 		}
 
