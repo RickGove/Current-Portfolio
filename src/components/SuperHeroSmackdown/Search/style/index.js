@@ -56,24 +56,23 @@ export const SearchDiv = styled.div`
 			font-size: 1.4rem;
 		}
 	}
-
-	#vs {
-		grid-area: vs;
-		display: grid;
-		grid-template-rows: 50% 50%;
-		grid-template-areas: 'begin' 'reset';
-		background: url(${vs});
-		background-size: cover;
-		background-repeat: no-repeat;
-		overflow: visible;
-		background-position: center;
+	.winner {
 		text-align: center;
-		${mobile} {
-			background-size: 160px;
-		}
+		color: white;
+		transform: scale(1.2);
+		transition: 100ms;
+		opacity: 0;
 	}
 
+	.loser {
+		text-align: center;
+		color: black;
+		transform: scale(0.8);
+		transition: 500ms;
+		opacity: 0;
+	}
 	.search-a {
+		position: relative;
 		grid-area: search-a;
 		width: 100%;
 		background-color: blue;
@@ -89,6 +88,7 @@ export const SearchDiv = styled.div`
 	}
 
 	.search-b {
+		position: relative;
 		border-radius: 2rem;
 		grid-area: search-b;
 		border-radius: 1.5rem;
@@ -97,10 +97,41 @@ export const SearchDiv = styled.div`
 		height: 350px;
 		width: 250px;
 		margin: auto;
+
 		${mobile} {
 			height: 200px;
-			width: 300px;
+			width: 250px;
 		}
+	}
+
+	.battlingA {
+		transform: translateX(1rem) scale(1.6);
+		transition: 1s;
+
+		${mobile} {
+			transform: translateY(3rem) scale(1.3);
+		}
+	}
+
+	.battlingB {
+		transform: translateX(-1rem) scale(1.6);
+		transition: 1s;
+
+		${mobile} {
+			transform: translateY(-3rem) scale(1.3);
+		}
+	}
+
+	.fade {
+		opacity: 0.2;
+		transition: 1s;
+	}
+
+	.stats-hidden {
+		position: absolute;
+		top: 2.6rem;
+		left: 4.2rem;
+		display: none;
 	}
 
 	@keyframes shake {
@@ -139,6 +170,22 @@ export const SearchDiv = styled.div`
 		}
 	}
 
+	#vs {
+		grid-area: vs;
+		display: grid;
+		grid-template-rows: 50% 50%;
+		grid-template-areas: 'begin' 'reset';
+		background: url(${vs});
+		background-size: cover;
+		background-repeat: no-repeat;
+		overflow: visible;
+		background-position: center;
+		text-align: center;
+		${mobile} {
+			background-size: 160px;
+		}
+	}
+
 	.begin-button {
 		grid-area: begin;
 		padding: 1rem;
@@ -153,7 +200,7 @@ export const SearchDiv = styled.div`
 		&:focus {
 			transform: scale(1.5);
 			transition: 500ms;
-			border: 2px solid yellow;
+			border: 2px solid red;
 			animation: shake 4s;
 			animation-iteration-count: infinite;
 		}
@@ -174,17 +221,18 @@ export const SearchDiv = styled.div`
 		display: block;
 		margin: auto;
 		padding: 1rem;
-		position: relative;
-		top: 65%;
+		background: black;
 		color: red;
 		font-size: 1.4rem;
+		justify-self: center;
+		/* align-self: */
 
 		${mobile} {
 			display: inline-block;
-
-			top: 100%;
-			/* left: 2%; */
 			font-size: 0.8rem;
+			padding: 0.2rem;
+			margin: 0;
+			align-self: end;
 		}
 	}
 
