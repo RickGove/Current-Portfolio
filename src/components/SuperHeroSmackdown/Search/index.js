@@ -31,19 +31,25 @@ function Search() {
 	const [suggestionsB, setSuggestionsB] = useState([]);
 	const [highlighted, setHighlighted] = useState();
 	const [highlightedB, setHighlightedB] = useState();
-	const [intelWin, setIntelWin] = useState('A');
-	const [combatWin, setCombatWin] = useState('A');
-	const [duraWin, setDuraWin] = useState('A');
-	const [strengthWin, setStrengthWin] = useState('A');
-	const [powerWin, setPowerWin] = useState('A');
-	const [speedWin, setSpeedWin] = useState('A');
-	const [fighterAUsableStats, setFighterAUsableStats] = useState('none');
-	const [fighterBUsableStats, setFighterBUsableStats] = useState('none');
+
 	const [aWins, setAWins] = useState(0);
 	const [bWins, setBWins] = useState(0);
 	const [aFullInfo, setAFullInfo] = useState('');
 	const [bFullInfo, setBFullInfo] = useState('');
 	const [champ, setChamp] = useState(null);
+
+	//global variables
+	let champVar = '';
+	let intelWin = '';
+	let combatWin = '';
+	let duraWin = '';
+	let strengthWin = '';
+	let powerWin = '';
+	let speedWin = '';
+	let fighterAUsableStats = '';
+	let fighterBUsableStats = '';
+	let fullDataA = '';
+	let fullDataB = '';
 
 	// refs
 	const inputA = useRef(null);
@@ -78,186 +84,7 @@ function Search() {
 
 	// const dispatch = useDispatch();
 
-	useEffect(() => {
-		let aTemp = {
-			data: {
-				response: 'success',
-				id: '353',
-				name: 'James T. Kirk',
-				powerstats: {
-					intelligence: '69',
-					strength: '11',
-					speed: '17',
-					durability: '30',
-					power: '30',
-					combat: '75',
-				},
-				biography: {
-					'full-name': 'James T. Kirk',
-					'alter-egos': 'No alter egos found.',
-					aliases: ['Jim', 'Captain Kirk'],
-					'place-of-birth': 'Riverside, Iowa, Earth',
-					'first-appearance': 'Star Trek S01E01: The Man Trap',
-					publisher: 'Star Trek',
-					alignment: 'good',
-				},
-				appearance: {
-					gender: 'Male',
-					race: 'Human',
-					height: ["5'10", '178 cm'],
-					weight: ['170 lb', '77 kg'],
-					'eye-color': 'Hazel',
-					'hair-color': 'Brown',
-				},
-				work: {
-					occupation: 'Captain',
-					base: '-',
-				},
-				connections: {
-					'group-affiliation': 'Federation, Starfleet',
-					relatives:
-						'Winona Kirk (mother), George Kirk (father), George Samuel Kirk (brother), Michele Suzanne Kirk (sister)',
-				},
-				image: {
-					url:
-						'https://www.superherodb.com/pictures2/portraits/10/100/10565.jpg',
-				},
-			},
-			status: 200,
-			statusText: 'OK',
-			headers: {
-				'access-control-allow-credentials': 'true',
-				'access-control-allow-headers':
-					'Origin, X-Requested-With, Content-Type, Accept',
-				'access-control-allow-methods': 'GET',
-				'access-control-allow-origin': '*',
-				'access-control-max-age': '86400',
-				'cf-cache-status': 'DYNAMIC',
-				'cf-ray': '5abe817c1d1dea8a-IAD',
-				'cf-request-id': '03aaef418d0000ea8a0f366200000001',
-				connection: 'keep-alive',
-				'content-encoding': 'br',
-				'content-type': 'application/json',
-				date: 'Wed, 01 Jul 2020 07:45:08 GMT',
-				'expect-ct':
-					'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
-				server: 'cloudflare',
-				'transfer-encoding': 'chunked',
-				'x-final-url':
-					'https://www.superheroapi.com/api.php/684260262142283/353',
-				'x-powered-by': 'PHP/7.2.29',
-				'x-turbo-charged-by': 'LiteSpeed',
-			},
-			config: {
-				url:
-					'https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/684260262142283/353',
-				method: 'get',
-				headers: {
-					Accept: 'application/json, text/plain, */*',
-				},
-				transformRequest: [null],
-				transformResponse: [null],
-				timeout: 0,
-				xsrfCookieName: 'XSRF-TOKEN',
-				xsrfHeaderName: 'X-XSRF-TOKEN',
-				maxContentLength: -1,
-			},
-			request: {},
-		};
-
-		let bTemp = {
-			data: {
-				response: 'success',
-				id: '127',
-				name: 'Boba Fett',
-				powerstats: {
-					intelligence: '63',
-					strength: '10',
-					speed: '38',
-					durability: '36',
-					power: '68',
-					combat: '70',
-				},
-				biography: {
-					'full-name': '',
-					'alter-egos': 'No alter egos found.',
-					aliases: [
-						'Teff',
-						'Sava Brek Madak',
-						'Jaster Mereel',
-						'Mandalore',
-						"Mand'alor",
-					],
-					'place-of-birth': 'Kamino',
-					'first-appearance': '-',
-					publisher: 'George Lucas',
-					alignment: 'bad',
-				},
-				appearance: {
-					gender: 'Male',
-					race: 'Human / Clone',
-					height: ["6'0", '183 cm'],
-					weight: ['- lb', '0 kg'],
-					'eye-color': 'Brown',
-					'hair-color': 'Black',
-				},
-				work: {
-					occupation: 'Bounty Hunter',
-					base: '-',
-				},
-				connections: {
-					'group-affiliation': '-',
-					relatives: '-',
-				},
-				image: {
-					url:
-						'https://www.superherodb.com/pictures2/portraits/10/100/10467.jpg',
-				},
-			},
-			status: 200,
-			statusText: 'OK',
-			headers: {
-				'access-control-allow-credentials': 'true',
-				'access-control-allow-headers':
-					'Origin, X-Requested-With, Content-Type, Accept',
-				'access-control-allow-methods': 'GET',
-				'access-control-allow-origin': '*',
-				'access-control-max-age': '86400',
-				'cf-cache-status': 'DYNAMIC',
-				'cf-ray': '5abe81779da20df3-IAD',
-				'cf-request-id': '03aaef3ebd00000df3b0221200000001',
-				connection: 'keep-alive',
-				'content-encoding': 'br',
-				'content-type': 'application/json',
-				date: 'Wed, 01 Jul 2020 07:45:07 GMT',
-				'expect-ct':
-					'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
-				server: 'cloudflare',
-				'transfer-encoding': 'chunked',
-				'x-final-url':
-					'https://www.superheroapi.com/api.php/684260262142283/127',
-				'x-powered-by': 'PHP/7.2.29',
-				'x-turbo-charged-by': 'LiteSpeed',
-			},
-			config: {
-				url:
-					'https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/684260262142283/127',
-				method: 'get',
-				headers: {
-					Accept: 'application/json, text/plain, */*',
-				},
-				transformRequest: [null],
-				transformResponse: [null],
-				timeout: 0,
-				xsrfCookieName: 'XSRF-TOKEN',
-				xsrfHeaderName: 'X-XSRF-TOKEN',
-				maxContentLength: -1,
-			},
-			request: {},
-		};
-
-		writeMatchReport(aTemp, bTemp);
-	});
+	useEffect(() => {});
 
 	const venomPic = `https://www.superherodb.com/pictures2/portraits/10/100/1042.jpg`;
 
@@ -756,17 +583,34 @@ function Search() {
 		}
 	}
 
-	function writeMatchReport(a, b) {
-		console.log(a);
-		console.log(b);
-		let winner;
-		if (champ !== 'tie') {
+	function stringsOfCatsWon(arr) {
+		let str = '';
+		for (let i = 0; i < arr.length; i++) {
+			str = str.concat(`, ${arr[i]}`);
+		}
+
+		return str;
+	}
+
+	function writeMatchReport() {
+		console.log(fullDataA.data);
+		const a = fullDataA.data;
+		const b = fullDataB.data;
+
+		console.log(fullDataB.data);
+		console.log(powerWin);
+
+		let winner, loser;
+
+		if (champVar !== 'tie') {
 			if (champ === 'A') {
-				let winner = a;
+				winner = a.data;
+				loser = b.data;
 			} else {
-				winner = b;
+				winner = b.data;
+				loser = a.data;
 			}
-			console.log(winner);
+
 			let closeness,
 				height,
 				Lheight,
@@ -791,14 +635,30 @@ function Search() {
 				powerWin,
 				speedWin,
 			];
+
+			let aWinCats = [],
+				bWinCats = [],
+				aCount,
+				bCount;
 			cats.map((item, index) => {
+				console.log(item);
 				if (item === 'A') {
-					aWinCats.push(item);
+					aWinCats.push(cats[index]);
 					aCount++;
 				} else {
+					bWinCats.push(cats[index]);
 					bCount++;
 				}
 			});
+
+			// make strings of the categories won
+			let aStrWins = stringsOfCatsWon(aWinCats);
+			let bStrWins = stringsOfCatsWon(bWinCats);
+
+			console.log(aStrWins);
+			console.log(bStrWins);
+
+			// figure out how close the battle was
 
 			//height
 
@@ -827,10 +687,12 @@ function Search() {
 		axios
 			.get(site)
 			.then((responseA) => {
+				fullDataA = responseA;
 				axios
 					.get(siteB)
 					.then((responseB) => {
-						writeMatchReport(responseA, responseB);
+						fullDataB = responseB;
+						writeMatchReport();
 					})
 					.catch((err) => {});
 			})
@@ -839,7 +701,6 @@ function Search() {
 
 	function beginBattle() {
 		console.log('battle begun');
-		let aFull = getFullInfo(fighterA[2], fighterB[2]);
 
 		console.log(fighterA);
 		console.log(fighterB);
@@ -895,12 +756,6 @@ function Search() {
 			combatA.current.style = 'opacity: 1;';
 		}, 8200);
 		//determine winner
-		window.setTimeout(() => {
-			if (champ !== null) {
-				alert(`winner is ${champ}`);
-			}
-		}, 9200);
-		//animate winner
 	}
 
 	function resultsMap() {
@@ -1082,89 +937,92 @@ function Search() {
 	function decideWinner() {
 		let fighterAStats = convertStrToIntAndRemoveNulls(fighterA[3]);
 		let fighterBStats = convertStrToIntAndRemoveNulls(fighterB[3]);
-		setFighterAUsableStats(fighterAStats);
-		setFighterBUsableStats(fighterBStats);
+		fighterAUsableStats = fighterAStats;
+		fighterBUsableStats = fighterBStats;
 		// removeNullsAnd100s(fighterAStats, fighterBStats);
 		let aCount = 0,
 			bCount = 0;
 		//intel
 		if (fighterAStats.intelligence > fighterBStats.intelligence) {
-			setIntelWin('A');
+			intelWin = 'A';
 			aCount++;
 		} else if (fighterAStats.intelligence === fighterBStats.intelligence) {
-			setIntelWin('tie');
+			intelWin = 'tie';
 		} else {
-			setIntelWin('B');
+			intelWin = 'B';
 			bCount++;
 		}
 
 		//strength
 		if (fighterAStats.strength > fighterBStats.strength) {
-			setStrengthWin('A');
+			strengthWin = 'A';
 			aCount++;
 		} else if (fighterAStats.strength === fighterBStats.strength) {
-			setStrengthWin('tie');
+			strengthWin = 'tie';
 		} else {
-			setStrengthWin('B');
+			strengthWin = 'B';
 			bCount++;
 		}
 
 		//speed
 		if (fighterAStats.speed > fighterBStats.speed) {
-			setSpeedWin('A');
+			speedWin = 'A';
 			aCount++;
 		} else if (fighterAStats.speed === fighterBStats.speed) {
-			setSpeedWin('tie');
+			speedWin = 'tie';
 		} else {
-			setSpeedWin('B');
+			speedWin = 'B';
 			bCount++;
 		}
 
 		//combat
 		if (fighterAStats.combat > fighterBStats.combat) {
-			setCombatWin('A');
+			combatWin = 'A';
 			aCount++;
 		} else if (fighterAStats.speed === fighterBStats.speed) {
-			setCombatWin('tie');
+			combatWin = 'tie';
 		} else {
-			setCombatWin('B');
+			combatWin = 'B';
 			bCount++;
 		}
 
 		//durability
 		if (fighterAStats.durability > fighterBStats.durability) {
-			setDuraWin('A');
+			duraWin = 'A';
 			aCount++;
 		} else if (fighterAStats.durability === fighterBStats.durability) {
-			setDuraWin('tie');
+			duraWin = 'tie';
 		} else {
-			setDuraWin('B');
+			duraWin = 'B';
 			bCount++;
 		}
 
 		//power
 		if (fighterAStats.power > fighterBStats.power) {
-			setPowerWin('A');
+			powerWin = 'A';
 			aCount++;
 		} else if (fighterAStats.power === fighterBStats.power) {
-			setPowerWin('tie');
+			powerWin = 'tie';
 		} else {
-			setPowerWin('B');
+			powerWin = 'B';
 			bCount++;
 		}
 
 		console.log(aCount, bCount);
-
 		decideChamp(aCount, bCount);
+		getFullInfo(fighterA[2], fighterB[2]);
 	}
 
 	function decideChamp(aCount, bCount) {
 		if (aCount > bCount) {
 			setChamp(fighterA[0]);
+			champVar = 'A';
 		} else if (bCount > aCount) {
 			setChamp(fighterB[0]);
+			champVar = 'B';
 		} else {
-			setChamp('Batt is a draw');
+			setChamp('Battle is a draw');
+			champVar = 'tie';
 		}
 	}
 
