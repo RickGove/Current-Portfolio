@@ -597,6 +597,8 @@ function Search() {
 		const a = fullDataA.data;
 		const b = fullDataB.data;
 
+		t;
+
 		console.log(fullDataB.data);
 		console.log(powerWin);
 
