@@ -64,9 +64,15 @@ export const WeatherHeadCon = styled.div`
 		top: 30%;
 		left: 48%;
 		height: 6rem;
+		opacity: 1;
+		transition: 600ms;
 		animation : SPIN 3s 200;
 	}
 
+	.hidden {
+		opacity: 0;
+		transition: 600ms;
+	}
 	
 
 	#C{

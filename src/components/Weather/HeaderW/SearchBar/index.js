@@ -23,6 +23,7 @@ import {
 	setImagesFound,
 	setNeededForFavorite,
 	setShowModal,
+	setShowLoader,
 } from '../../../../actions';
 
 function SearchBar() {
@@ -783,11 +784,8 @@ function SearchBar() {
 
 		if (highlighted !== undefined) {
 			if (highlighted.id === undefined) {
-				console.log('search by totalButtons array');
-
 				// store button info
 				let searchBut = totalButtons[highlighted];
-				console.log(searchBut);
 
 				// if button is location, search location
 				if (searchBut.id === 'but-location') {
@@ -818,6 +816,7 @@ function SearchBar() {
 					);
 
 					// search for weather
+					dispatch(showLoader(true));
 					searchByOpenWeatherId(id, cityName, fullCountry);
 				} else {
 					// pressing enter on suggestion
@@ -838,6 +837,7 @@ function SearchBar() {
 							flag: flagCode,
 						})
 					);
+					dispatch(showLoader(true));
 
 					searchForLatLonHere(id, cityName, fullCountry);
 				}
@@ -864,6 +864,7 @@ function SearchBar() {
 							flag: flagCode,
 						})
 					);
+					dispatch(showLoader(true));
 
 					searchByOpenWeatherId(id, cityName, fullCountry);
 				} else {
@@ -882,7 +883,8 @@ function SearchBar() {
 							flag: flagCode,
 						})
 					);
-
+					dispatch(showLoader(true));
+					// check if the loader is showing when search is started
 					searchForLatLonHere(id, cityName, fullCountry);
 				}
 			} else {

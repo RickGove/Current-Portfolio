@@ -115,3 +115,10 @@ export const setShowModal = (bool) => {
 		payload: bool,
 	};
 };
+
+export const setShowLoader = (bool) => {
+	return {
+		type: 'SET_SHOW_LOADER',
+		payload: bool,
+	};
+};

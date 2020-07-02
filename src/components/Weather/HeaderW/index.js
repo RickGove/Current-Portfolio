@@ -52,6 +52,7 @@ function HeaderW() {
 	const dateAtSearch = useSelector((state) => state.dateAtSearch);
 	const hideOrShow = useSelector((state) => state.hideOrShow);
 	const showModal = useSelector((state) => state.showModal);
+	const showLoader = useSelector((state) => state.showLoader);
 
 	const dataFromInitialLocationSearch = useSelector(
 		(state) => state.dataFromInitialLocationSearch
@@ -676,7 +677,7 @@ function HeaderW() {
 			<GlobalStyle />
 			<WeatherHeadCon>
 				<div ref={modal} className={showModal ? 'modal show-modal' : 'modal'}>
-					<img className="loader" src={loader} />
+					<img className={showLoader ? 'loader' : 'hidden'} src={loader} />
 				</div>
 				<div id="modal-for-search-focus"></div>
 				<img alt="logo" className="logo" src={logo} />

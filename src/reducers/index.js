@@ -141,6 +141,14 @@ const showModal = (show = false, action) => {
 	}
 };
 
+const showLoader = (show = false, action) => {
+	if (action.type === 'SET_SHOW_MODAL') {
+		return action.payload;
+	} else {
+		return show;
+	}
+};
+
 const weatherApp = combineReducers({
 	system: selectedSystem,
 	location: inputLocation,
@@ -159,6 +167,7 @@ const weatherApp = combineReducers({
 	imagesFound: imagesFound,
 	neededForFavorite: neededForFavorite,
 	showModal: showModal,
+	showLoader: showLoader,
 });
 
 export default weatherApp;
