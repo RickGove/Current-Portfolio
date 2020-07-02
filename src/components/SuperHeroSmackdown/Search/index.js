@@ -46,18 +46,18 @@ function Search() {
 	const [champ, setChamp] = useState(null);
 
 	//global variables
-	let champVar = '';
-	let intelWinVar = '';
-	let combatWinVar = '';
-	let duraWinVar = '';
-	let strengthWinVar = '';
-	let powerWinVar = '';
-	let speedWinVar = '';
-	let fighterAUsableStatsVar = '';
-	let fighterBUsableStatsVar = '';
-	let fullDataA = '';
-	let fullDataB = '';
-	let bCount = 0,
+	let champVar = '',
+		intelWinVar = '',
+		combatWinVar = '',
+		duraWinVar = '',
+		strengthWinVar = '',
+		powerWinVar = '',
+		speedWinVar = '',
+		fighterAUsableStatsVar = '',
+		fighterBUsableStatsVar = '',
+		fullDataA = '',
+		fullDataB = '',
+		bCount = 0,
 		aCount = 0;
 
 	// refs
@@ -599,50 +599,117 @@ function Search() {
 
 	function writeMatchReport() {
 		console.log('Write Match Report Run');
+		console.log('In this ');
 		const a = fullDataA.data;
 		const b = fullDataB.data;
+		console.log(a);
+		console.log(b);
 
-		let winner, loser;
+		let winner,
+			loser,
+			winnerCount,
+			loserCount,
+			closeness,
+			height,
+			Lheight,
+			eyeColor,
+			LeyeColor,
+			hairColor,
+			LhairColor,
+			placeOfBirth,
+			LplaceOfBirth,
+			publisher,
+			Lpublisher,
+			genderPronoun,
+			winningCats;
 
 		if (champVar !== 'tie') {
 			if (champVar === 'A') {
 				winner = a.data;
 				loser = b.data;
+				winnerCount = aCount;
+				loserCount = bCount;
 			} else {
 				winner = b.data;
 				loser = a.data;
+				winnerCount = bCount;
+				loserCount = aCount;
 			}
 
-			let closeness,
-				height,
-				Lheight,
-				eyeColor,
-				LeyeColor,
-				hairColor,
-				LhairColor,
-				placeOfBirth,
-				LplaceOfBirth,
-				publisher,
-				Lpublisher,
-				genderPronoun,
-				winningCats;
-
 			//closeness
+			switch (winnerCount - loserCount) {
+				case 6:
+					closeness = 'absolute destruction of a';
+					break;
+				case 5:
+					closeness = 'completely lopsided';
+					break;
+				case 4:
+					closeness = 'far from close';
+					break;
+				case 3:
+					closeness = 'hard-fought';
+					break;
+				case 2:
+					closeness = 'intriguing';
+					break;
+				default:
+					closeness = 'epic battle';
+					break;
+			}
+			console.log(closeness);
+
 			//winningcats
-
-			// need to find a way to create a list of the
 			// categories won by each combatant
+			// asked question on stackOverflow
+			let arr = [
+				intelWinVar,
+				combatWinVar,
+				duraWinVar,
+				strengthWinVar,
+				powerWinVar,
+				speedWinVar,
+			];
 
-			// make strings of the categories won
-			// let aStrWins = stringsOfCatsWon(aWinCats);
-			// let bStrWins = stringsOfCatsWon(bWinCats);
+			let names = [
+				' intelligence',
+				' combat',
+				' durability',
+				' strength',
+				' power',
+				' speed',
+			];
 
-			// console.log(aStrWins);
-			// console.log(bStrWins);
+			let aWins = [],
+				bWins = [],
+				champWins = [],
+				loserWins = [];
 
-			// figure out how close the battle was
+			arr.map((item, index) => {
+				console.log(item);
+				if (item === 'A') {
+					aWins.push(names[index]);
+				} else {
+					bWins.push(names[index]);
+				}
+			});
+
+			if (champ !== 'A') {
+				champWins = aWins;
+				loserWins = bWins;
+			} else {
+				champWins = bWins;
+				loserWins = aWins;
+			}
+
+			console.log(`The champ has won at ${champWins}`);
+			console.log(`The loser won at ${loserWins}`);
 
 			//height
+			height = winner.appearance.height[1];
+			Lheight = loser.appearance.height[1];
+			console.log(`with a height of ${height}`);
+			console.log(`with a loser height of ${Lheight}`);
 
 			//eyecolor
 
