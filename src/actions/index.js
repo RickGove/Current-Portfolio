@@ -108,3 +108,10 @@ export const setNeededForFavorite = (objData) => {
 		payload: objData,
 	};
 };
+
+export const setShowModal = (bool) => {
+	return {
+		type: 'SET_SHOW_MODAL',
+		payload: bool,
+	};
+};

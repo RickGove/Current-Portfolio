@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -9,6 +9,8 @@ import SearchBar from './SearchBar/';
 
 import logo from '../img/Logo.png';
 import { GlobalStyle } from '../../GlobalStyle';
+// import loader from
+//download and find loader, set to spin during search
 
 import iso3 from '../../../json/iso3.json';
 import names from '../../../json/twoToName.json';
@@ -28,16 +30,17 @@ import {
 	hideAllComps,
 	setInitialLocationData,
 	setImagesFound,
+	setShowModal,
 } from '../../../actions';
 
 function HeaderW() {
 	// state
-
 	const [value, setValue] = useState('');
 	const [suggestions, setSuggestions] = useState('');
 	const [suggsFlags, setSuggsFlag] = useState('');
 	const [currentlyHighlighted, setCurrentlyHighlighted] = useState('');
 	const [suggsStates, setSuggsStates] = useState();
+
 	// redux
 	const dispatch = useDispatch();
 	const system = useSelector((state) => state.system);
@@ -48,11 +51,15 @@ function HeaderW() {
 	const fullSearchName = useSelector((state) => state.fullSearchName);
 	const timeAtSearch = useSelector((state) => state.timeAtSearch);
 	const dateAtSearch = useSelector((state) => state.dateAtSearch);
-
 	const hideOrShow = useSelector((state) => state.hideOrShow);
+	const showModal = useSelector((state) => state.showModal);
+
 	const dataFromInitialLocationSearch = useSelector(
 		(state) => state.dataFromInitialLocationSearch
 	);
+
+	// refs
+	const modal = useRef();
 
 	function organizeImages(res) {
 		dispatch(setImagesFound(res));
@@ -567,34 +574,10 @@ function HeaderW() {
 		}
 	}
 
-	function handleInputChange(e) {
-		handleKeysOnInput(e);
-		// set state
-		//  setStateValue();
-	}
-
-	function showModal() {
-		let modal = document.getElementById('modal-for-search-focus');
-		modal.classList.remove('hide__modal');
-		modal.classList.add('show__modal');
-
-		// element.classList.toggle("mystyle");
-	}
-
-	function hideModal() {
-		const modal = document.getElementById('modal-for-search-focus');
-		modal.classList.add('hide__modal');
-		modal.classList.remove('show__modal');
-
-		const search = document.getElementById('search');
-		search.blur();
-	}
-
 	function handleKeysOnInput(event) {
 		if (event.key === 'Enter') {
 			// event.preventDefault();
 			searchSubmit();
-			hideModal();
 		} else if (event.which === 38) {
 			event.preventDefault();
 			upArrow();
@@ -693,6 +676,9 @@ function HeaderW() {
 		<>
 			<GlobalStyle />
 			<WeatherHeadCon>
+				<div ref={modal} className={showModal ? 'modal show-modal' : 'modal'}>
+					<img className="loader" src={logo} />
+				</div>
 				<div id="modal-for-search-focus"></div>
 				<img alt="logo" className="logo" src={logo} />
 

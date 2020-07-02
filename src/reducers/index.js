@@ -133,6 +133,14 @@ const neededForFavorite = (
 	}
 };
 
+const showModal = (show = false, action) => {
+	if (action.type === 'SET_SHOW_MODAL') {
+		return action.payload;
+	} else {
+		return show;
+	}
+};
+
 const weatherApp = combineReducers({
 	system: selectedSystem,
 	location: inputLocation,
@@ -150,6 +158,7 @@ const weatherApp = combineReducers({
 	onlyShowTitle: onlyShowTitle,
 	imagesFound: imagesFound,
 	neededForFavorite: neededForFavorite,
+	showModal: showModal,
 });
 
 export default weatherApp;

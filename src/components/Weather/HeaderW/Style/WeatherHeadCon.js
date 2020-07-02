@@ -15,11 +15,11 @@ export const WeatherHeadCon = styled.div`
 		box-sizing: border-box;
 		color: ${blue};
 	}
-
+	
 	z-index: 1;
 	position: sticky;
 	top: 0;
-	width: 100vw;
+	width: 99vw;
 	height: 4.3rem;
 	display: grid;
 	grid-template-columns: auto 30% 3% 35% auto 15% auto;
@@ -37,31 +37,28 @@ export const WeatherHeadCon = styled.div`
 							 ' . search search search .';
 	}
 
-	
-	.hide__modal {
-		position: fixed;
-		opacity: 0;
-		transform: scale(0);
-		width: 100%;
-		height: 100%;
-		transition: 0.5s;
-		/* border: 2px ${border} blue; */
-
-	}
-
-	.show__modal {
-		position: fixed;
+	.modal {
 		background: black;
-		opacity: 0.95;
-		z-index: 10;
-		width: 100%;
-		height: 100%;
-		/* border: 2px ${border} red; */
-		transform: scale(1);
-		transition: transform 0.5s, opacity 1s;
+		height: 100vh;
+		width: 100vw;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index:10;
+		transition: 400ms;
 	}
 
-	
+	.show-modal{
+		opacity: 0.9;
+		transition: 400ms;
+	}
+
+	.loader {
+		position: aboslute;
+		top: 50%;
+		left: 50%;
+	}
 
 	#C{
 		@media (max-width: 1100px){

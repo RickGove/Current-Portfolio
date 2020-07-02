@@ -22,6 +22,7 @@ import {
 	enterDateAtSearch,
 	setImagesFound,
 	setNeededForFavorite,
+	setShowModal,
 } from '../../../../actions';
 
 function SearchBar() {
@@ -778,7 +779,8 @@ function SearchBar() {
 	}
 
 	function handleBlur() {
-		// works for
+		dispatch(setShowModal(false));
+
 		if (highlighted !== undefined) {
 			if (highlighted.id === undefined) {
 				console.log('search by totalButtons array');
@@ -889,45 +891,9 @@ function SearchBar() {
 		}
 	}
 
-	// search suggestion
-	// else {
-	// 	let selection = suggestions[highlighted - 1];
-	// 	if (selection !== undefined) {
-	// 		// enter key
-	// 		let fullCountry = convert2toFull(selection.countryCode.toUpperCase());
-	// 		let cityName = reverseLabel(selection.fullName);
-	// 		console.log(selection.id, cityName, fullCountry);
-	// 		searchForLatLonHere(selection.id, cityName, fullCountry);
-	// 		console.log(selection);
-	// 		dispatch(
-	// 			setNeededForFavorite({
-	// 				id: selection.id,
-	// 				fullCountry: fullCountry,
-	// 				flag: selection.countryCode.toUpperCase(),
-	// 				name: cityName,
-	// 			})
-	// 		);
-	// 		dispatch(logFullSearchName(cityName));
-	// 	} else {
-	// 		//click
-
-	// 		dispatch(logFullSearchName(highlighted.attributes.displayname.value));
-	// 		dispatch(
-	// 			setNeededForFavorite({
-	// 				id: highlighted.attributes.locationid.value,
-	// 				fullCountry: highlighted.attributes.country.value,
-	// 				flag: highlighted.attributes.countrycode.value,
-	// 				name: highlighted.attributes.displayname.value,
-	// 			})
-	// 		);
-	// 		searchForLatLonHere(
-	// 			highlighted.attributes.locationid.value,
-	// 			highlighted.attributes.displayname.value,
-	// 			highlighted.attributes.country.value
-	// 		);
-	// 	}
-	// }
-	// }
+	function showModal() {
+		dispatch(setShowModal(true));
+	}
 
 	return (
 		<React.Fragment>
@@ -938,7 +904,7 @@ function SearchBar() {
 				autoComplete="off"
 				placeholder={value}
 				className="search"
-				// onFocus={this.showModal}
+				onFocus={showModal}
 				onChange={() => setValue(inputRef.current.value)}
 				onBlur={handleBlur}
 				onKeyUp={handleKey}
