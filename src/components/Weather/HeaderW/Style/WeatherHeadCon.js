@@ -54,11 +54,20 @@ export const WeatherHeadCon = styled.div`
 		transition: 400ms;
 	}
 
-	.loader {
-		position: aboslute;
-		top: 50%;
-		left: 50%;
+	@keyframes SPIN {
+		from {transform:rotate(0deg);}
+    	to {transform:rotate(360deg);}
 	}
+
+	.loader {
+		position: absolute;
+		top: 30%;
+		left: 48%;
+		height: 6rem;
+		animation : SPIN 3s 200;
+	}
+
+	
 
 	#C{
 		@media (max-width: 1100px){

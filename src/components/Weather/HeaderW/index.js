@@ -9,8 +9,7 @@ import SearchBar from './SearchBar/';
 
 import logo from '../img/Logo.png';
 import { GlobalStyle } from '../../GlobalStyle';
-// import loader from
-//download and find loader, set to spin during search
+import loader from '../img/loader.png';
 
 import iso3 from '../../../json/iso3.json';
 import names from '../../../json/twoToName.json';
@@ -677,7 +676,7 @@ function HeaderW() {
 			<GlobalStyle />
 			<WeatherHeadCon>
 				<div ref={modal} className={showModal ? 'modal show-modal' : 'modal'}>
-					<img className="loader" src={logo} />
+					<img className="loader" src={loader} />
 				</div>
 				<div id="modal-for-search-focus"></div>
 				<img alt="logo" className="logo" src={logo} />
