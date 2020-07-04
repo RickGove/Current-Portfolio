@@ -41,6 +41,7 @@ export const ShowImg = styled.img`
 `;
 
 export const ShowH1 = styled.span`
+	text-decoration: none;
 	letter-spacing: 4px;
 	font-size: 35px;
 	font-weight: bold;

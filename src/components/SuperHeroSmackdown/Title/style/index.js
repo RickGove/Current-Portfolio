@@ -6,7 +6,7 @@ export const TitleDiv = styled.div`
 	@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 	font-family: 'Bangers', cursive;
 	text-align: center;
-	color: #ff6c23;
+	color: red;
 	letter-spacing: 2px;
 	font-size: 1.5rem;
 	align-self: bottom;

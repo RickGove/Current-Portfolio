@@ -1,41 +1,38 @@
 import React from 'react';
 
-import { HeadCon, Hamburger } from './HeadStyle';
+import { HeadCon } from './HeadStyle';
+// import {  Hamburger } from './HeadStyle';
+
 import { sections } from '../data/Data';
 import logo from '../../img/logo.png';
 import weather from '../../img/weatherIconNew.png';
-import navigate from '../../img/navigate.png';
+import superHSD from '../../img/superIcon.png';
 
-class Header extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { active: '' };
-	}
-
-	renderSections() {
+function Header() {
+	function renderSections() {
 		return sections.map((section, i) => {
 			let sect = section.toString();
 			if (i !== 0) {
 				return (
 					<li key={section}>
-						<a className="HeadLink" onClick={() => this.scrollToSection(sect)}>
+						<p className="HeadLink" onClick={() => scrollToSection(sect)}>
 							{section}
-						</a>
+						</p>
 					</li>
 				);
 			} else {
 				return (
 					<li key={section}>
-						<a className="HeadLink" key={section}>
+						<p className="HeadLink" key={section}>
 							{section}
-						</a>
+						</p>
 					</li>
 				);
 			}
 		});
 	}
 
-	scrollToSection = (s) => {
+	function scrollToSection(s) {
 		let elm = document.getElementById(s);
 		elm.scrollIntoView({
 			behavior: 'smooth',
@@ -49,39 +46,48 @@ class Header extends React.Component {
 				window.scrollBy(0, 5);
 			}
 		}, 1000);
-	};
+	}
 
-	render() {
-		return (
-			<HeadCon id="HeadCon">
-				<nav className="HeadNav">
-					<ul>
-						<li key="logo">
-							<img alt="logo" className="logo" src={logo} />
-						</li>
-						{this.renderSections()}
-						<li key="weather" className="project">
-							<a className="project" href="/#/weather">
+	return (
+		<HeadCon id="HeadCon">
+			<nav className="HeadNav">
+				<ul className="right-nav">
+					<li key="logo">
+						<img alt="logo" className="logo" src={logo} />
+					</li>
+					{renderSections()}
+				</ul>
+			</nav>
+			<nav className="projects-nav">
+				<ul>
+					{/* <li>
+						<Hamburger>
+							<div key="hamburger">
+								<div className="dropdown">
+									<img alt="menu" src={navigate} className="dropimg" />
+									<div className="dropdown-content">{renderSections()}</div>
+								</div>
+							</div>
+						</Hamburger>
+					</li> */}
+					<li key="weather" className="project">
+						<a className="project-icon-link" href="/#/weather">
+							<img alt="Gove Weather" className="project__icon" src={weather} />
+						</a>
+						<li>
+							<a className="project-icon-link" href="/#/SuperHeroSmackDown">
 								<img
-									alt="Gove Weather"
+									alt="Super Hero Smack Down"
 									className="project__icon"
-									src={weather}
+									src={superHSD}
 								/>
 							</a>
 						</li>
-					</ul>
-					<Hamburger>
-						<div key="hamburger">
-							<div className="dropdown">
-								<img alt="menu" src={navigate} className="dropimg" />
-								<div className="dropdown-content">{this.renderSections()}</div>
-							</div>
-						</div>
-					</Hamburger>
-				</nav>
-			</HeadCon>
-		);
-	}
+					</li>
+				</ul>
+			</nav>
+		</HeadCon>
+	);
 }
 
 export default Header;

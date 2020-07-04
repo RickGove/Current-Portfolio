@@ -9,6 +9,7 @@ export const ProjectsCon = styled.div`
 export const AlternatingColorCon = styled.div`
 	background-color: ${(props) => props.bgCol};
 	padding-top: 100px;
+	text-decoration: none;
 `;
 
 AlternatingColorCon.defaultProps = { bgCol: 'red' };
@@ -41,6 +42,9 @@ export const ProjectsMain = styled.div`
 
 export const ProjectsTitleCon = styled.div`
 	padding-left: 13%;
+	& :hover {
+		opacity: 0.3;
+	}
 `;
 
 export const ProjectsTitle = styled.h1`

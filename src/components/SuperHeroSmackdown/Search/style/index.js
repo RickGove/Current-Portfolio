@@ -7,22 +7,12 @@ const widthVMobile = 7;
 const width = `${widthV}rem`;
 const widthMobile = `${widthVMobile}rem`;
 
-const widthUlV = widthV - 2;
-const widthUl = `${widthUlV}rem`;
-const widthUlVMobile = widthVMobile - 2;
-const widthUlMobile = `${widthUlVMobile}rem`;
-
 const heroHeight = `3rem`;
 const heroHeightMobile = `1.7rem`;
 
 const imageTrans = `800ms`;
 
-const border = `solid`;
-// const border=`none`;
-
 const mobile = '@media (max-width: 700px)';
-const huge = `@media (max-width: 1000px)`;
-const mobilePort = `@media (max-width: 500px)`;
 
 export const SearchDiv = styled.div`
 	@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');

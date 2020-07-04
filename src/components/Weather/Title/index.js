@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -13,7 +13,6 @@ function Title() {
 	//// redux /////
 
 	const dispatch = useDispatch();
-	const hideAllCompsState = useSelector((state) => state.hideOrShow);
 	const currentLocation = useSelector((state) => state.location);
 	const searchLocation = useSelector((state) => state.searchedLocation); //may break shit
 	const searchWeatherData = useSelector((state) => state.searchWeatherData);
@@ -26,7 +25,6 @@ function Title() {
 
 	/////// utilities ////
 	function calcTemp(temp) {
-		let newTemp;
 		if (system === 'F') {
 			let x = Math.round(parseFloat(temp - 273.15) * 9) / 5 + 32;
 
@@ -42,7 +40,6 @@ function Title() {
 	/////// rendering /////////////////////
 
 	function cloudiness() {
-		let clouds, rain;
 		const weatherData = searchWeatherData.data;
 		if (weatherData !== undefined) {
 			let text = weatherData.current.weather[0].description;
@@ -98,7 +95,7 @@ function Title() {
 				removeFave(current);
 
 				// see if item is already saved
-			} else if (item == currentId) {
+			} else if (item === currentId) {
 				// remove item
 				removeFave(current);
 
@@ -143,7 +140,7 @@ function Title() {
 
 		// set what to return
 		faveArray.map((item, index) => {
-			if (item == currentId && found === false) {
+			if (item === currentId && found === false) {
 				found = true;
 			}
 		});

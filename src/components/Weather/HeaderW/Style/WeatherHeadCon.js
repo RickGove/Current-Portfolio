@@ -59,17 +59,20 @@ export const WeatherHeadCon = styled.div`
     	to {transform:rotate(360deg);}
 	}
 
+
 	.loader {
 		position: absolute;
-		top: 30%;
-		left: 48%;
-		height: 6rem;
+		top: 0.6rem;
+		left: 77%;
+		height: 3rem;
 		opacity: 1;
 		transition: 600ms;
 		animation : SPIN 3s 200;
 	}
 
 	.hidden {
+		position: absolute;
+
 		opacity: 0;
 		transition: 600ms;
 	}

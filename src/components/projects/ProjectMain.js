@@ -47,6 +47,12 @@ class ProjectMain extends React.Component {
 		}
 	}
 
+	renderProjectDesc(pro) {
+		console.log(pro);
+		return pro.description.map((item, i) => {
+			return <p>{pro.description[i]}</p>;
+		});
+	}
 	renderProjects = () => {
 		return projects.map((pro, i) => {
 			let random = Math.random();
@@ -54,9 +60,11 @@ class ProjectMain extends React.Component {
 			return (
 				<div key={key}>
 					<AlternatingColorCon id="AltColorCon" bgCol={this.renderBgColor(i)}>
-						<ProjectsTitleCon id={pro.name}>
-							<ShowH1 col={this.renderFontColor(i)}>{pro.name}</ShowH1>
-						</ProjectsTitleCon>
+						<a href={pro.link} style={{ textDecoration: 'none' }}>
+							<ProjectsTitleCon id={pro.name}>
+								<ShowH1 col={this.renderFontColor(i)}>{pro.name}</ShowH1>
+							</ProjectsTitleCon>
+						</a>
 
 						<ProjectsIndCon>
 							<ProjectsToolsSide>
@@ -67,7 +75,7 @@ class ProjectMain extends React.Component {
 							</ProjectsToolsSide>
 							<ProjectsMain id="ProjectsMain">
 								<ProjectsDesc col={this.renderFontColor(i)}>
-									{pro.description}
+									{this.renderProjectDesc(pro)}
 								</ProjectsDesc>
 							</ProjectsMain>
 							<div></div>

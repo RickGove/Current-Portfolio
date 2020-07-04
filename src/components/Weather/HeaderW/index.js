@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import axios from 'axios';
 
@@ -257,6 +257,9 @@ function HeaderW() {
 		// click listener
 		// document.addEventListener('click', buttonClick);
 
+		//change title based on site
+		document.title = "Rick Gove | Gove's Weather";
+
 		// dealing with the saved system selection cookie
 		var systemCookie = localStorage.getItem('system');
 		if (systemCookie === null) {
@@ -357,7 +360,7 @@ function HeaderW() {
 						return (
 							<button id="suggestion-0" key="0" onMouseOver={chooseSuggestion0}>
 								{item}
-								<img src={flagImage} />
+								<img alt="flag" src={flagImage} />
 							</button>
 						);
 						break;

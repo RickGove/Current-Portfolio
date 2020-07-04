@@ -360,15 +360,20 @@ function SearchBar() {
 	}
 
 	function findSuggestions() {
+		dispatch(setShowLoader(true));
+
 		// look for suggestions on Here API
 		axios
 			.get(hereSite)
 			.then((response) => {
 				// pass response to state setting Fn
+				dispatch(setShowLoader(false));
+
 				setStateSuggestions(response);
 			})
 			.catch((err) => {
 				alert(err + ': Here api');
+				dispatch(setShowLoader(false));
 			});
 
 		//return results
@@ -621,10 +626,8 @@ function SearchBar() {
 		}
 	}
 
-	function resultsDivider() {
-		if (suggestions.length !== 0) {
-			return <span>___ Search Results ___</span>;
-		}
+	function locationDivider() {
+		return <span>___ By Location ___</span>;
 	}
 
 	function showSearchResults() {
@@ -780,8 +783,6 @@ function SearchBar() {
 	}
 
 	function handleBlur() {
-		dispatch(setShowModal(false));
-
 		if (highlighted !== undefined) {
 			if (highlighted.id === undefined) {
 				// store button info
@@ -816,7 +817,7 @@ function SearchBar() {
 					);
 
 					// search for weather
-					dispatch(showLoader(true));
+					dispatch(setShowLoader(true));
 					searchByOpenWeatherId(id, cityName, fullCountry);
 				} else {
 					// pressing enter on suggestion
@@ -837,7 +838,7 @@ function SearchBar() {
 							flag: flagCode,
 						})
 					);
-					dispatch(showLoader(true));
+					dispatch(setShowLoader(true));
 
 					searchForLatLonHere(id, cityName, fullCountry);
 				}
@@ -864,7 +865,7 @@ function SearchBar() {
 							flag: flagCode,
 						})
 					);
-					dispatch(showLoader(true));
+					dispatch(setShowLoader(true));
 
 					searchByOpenWeatherId(id, cityName, fullCountry);
 				} else {
@@ -883,13 +884,15 @@ function SearchBar() {
 							flag: flagCode,
 						})
 					);
-					dispatch(showLoader(true));
+					dispatch(setShowLoader(true));
 					// check if the loader is showing when search is started
 					searchForLatLonHere(id, cityName, fullCountry);
 				}
 			} else {
 				// search suggestion
 			}
+		} else {
+			dispatch(setShowModal(false));
 		}
 	}
 
@@ -915,11 +918,11 @@ function SearchBar() {
 			/>
 			<div className="search__results" id="search-results">
 				<ul>
-					{showLocation()}
-					{resultsDivider()}
 					{showSearchResults()}
 					{favesDivider()}
 					{showFaves()}
+					{locationDivider()}
+					{showLocation()}
 				</ul>
 			</div>
 		</React.Fragment>

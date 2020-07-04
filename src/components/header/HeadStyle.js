@@ -18,6 +18,9 @@ export const HeadCon = styled.div`
 		box-sizing: border-box;
 	}
 
+	display: grid;
+	grid-template-columns: 40% auto;
+	grid-template-areas: ' nav projects ';
 	width: 100%;
 	position: -webkit-sticky;
 	position: sticky;
@@ -29,52 +32,74 @@ export const HeadCon = styled.div`
 	/* border: 2px solid orange; */
 	background: black;
 
+	${media} {
+		grid-template-columns: auto 70% 20% auto;
+		grid-template-areas: '. nav projects .';
+	}
+
 	li {
 		display: inline-block;
 		/* border: 3px solid purple; */
 	}
 
+	.right-nav {
+	}
+
 	ul {
 		/* border: 3px solid green; */
 		position: relative;
-		transform: translateY(-50%);
-		top: 50%;
+		top: 15%;
 		padding: 0;
 		margin: 0;
 	}
 
 	.logo {
 		padding-left: 25px;
-		padding-right: 40px;
+		/* padding-right: 40px; */
 		/* border: 2px solid blue; */
 		height: 50px;
 		vertical-align: middle;
 	}
 
+	.projects-nav {
+		grid-area: projects;
+		text-align: right;
+	}
+
 	.project {
-		display: none;
-		float: right;
-		padding-right: 25px;
-		:hover {
-			opacity: 0.6;
-		}
+		display: block;
 		@media (min-width: 700px) {
 			display: block;
 		}
 	}
 
+	.project-icon-link {
+		position: relative;
+		top: -0.2rem;
+		padding-right: 1.2rem;
+	}
+
 	.project__icon {
+		transition: 500ms;
 		height: 55px;
 		vertical-align: middle;
 		cursor: pointer;
+
+		:hover {
+			opacity: 0.6;
+			transform: scale(1.6) translateY(0.5em);
+			transition: 500ms;
+		}
 	}
 
 	.HeadNav {
 		/* border: 2px solid pink; */
+		grid-area: nav;
 		margin: auto;
 		color: white;
 		list-style: none;
 		height: 100%;
+		width: 100%;
 	}
 
 	.HeadLink {
@@ -97,9 +122,6 @@ export const HeadCon = styled.div`
 `;
 
 export const Hamburger = styled.div`
-	
-
-	
 	button {
 		background: none !important;
 		border: none;
@@ -109,7 +131,7 @@ export const Hamburger = styled.div`
 	}
 
 	.dropimg {
-		height: 25px;
+		height: 1rem;
 		cursor: pointer;
 		/* border: 3px solid pink; */
 		${media} {

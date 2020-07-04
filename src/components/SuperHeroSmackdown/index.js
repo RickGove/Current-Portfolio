@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { SuperHeroMainDiv as Wrapper } from './style/';
 
@@ -6,7 +6,10 @@ import Title from './Title/';
 import Search from './Search/';
 
 function SuperHeroSmackdown() {
-	const [state, setState] = useState('change later if needed');
+	useEffect(() => {
+		//change title based on site
+		document.title = 'Rick Gove | Super Hero Smackdown';
+	});
 
 	return (
 		<React.Fragment>

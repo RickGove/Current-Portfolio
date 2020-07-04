@@ -8,7 +8,7 @@ function Loading() {
 	let randomImg = require(`../img/${x}.png`);
 	return (
 		<SpinningLoader>
-			<img src={randomImg} />
+			<img alt="loading" src={randomImg} />
 		</SpinningLoader>
 	);
 }

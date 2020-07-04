@@ -142,7 +142,7 @@ const showModal = (show = false, action) => {
 };
 
 const showLoader = (show = false, action) => {
-	if (action.type === 'SET_SHOW_MODAL') {
+	if (action.type === 'SET_SHOW_LOADER') {
 		return action.payload;
 	} else {
 		return show;
