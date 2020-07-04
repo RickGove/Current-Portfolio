@@ -20,11 +20,12 @@ const composeEnhancers = composeWithDevTools({
 });
 export const store = createStore(weatherApp, composeEnhancers());
 function App() {
-	useEffect(() => {
-		document.addEventListener('click', (e) => {
-			console.log(e.target);
-		});
-	});
+	// useEffect(() => {
+	// 	document.addEventListener('click', (e) => {
+	// 		console.log(e.target);
+	// 	});
+	// });
+
 	return (
 		<Provider store={store}>
 			<Router history={history}>

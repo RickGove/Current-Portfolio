@@ -15,15 +15,13 @@ const imageTrans = `800ms`;
 const mobile = '@media (max-width: 700px)';
 
 export const SearchDiv = styled.div`
-	@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
-
 	display: grid;
 	grid-template-columns: 37% auto 37%;
 	grid-template-areas: 'search-a vs search-b';
 	grid-gap: 1rem;
 	text-align: center;
-	font-family: 'Gentium Book Basic', serif;
 	height: 100%;
+	overflow: hidden;
 
 	${mobile} {
 		grid-template-rows: 37% auto 37%;
@@ -46,21 +44,64 @@ export const SearchDiv = styled.div`
 			font-size: 1.4rem;
 		}
 	}
+
 	.winner {
-		text-align: center;
-		color: white;
-		transform: scale(1.2);
-		transition: 100ms;
+		color: black;
+		transition: 2000ms;
+		transform: scale(5000);
+		font-size: 1rem;
 		opacity: 0;
 	}
 
+	.hero-img {
+		/* z-index: 10000; */
+		height: 8rem;
+		width: 8rem;
+		border-radius: 8rem;
+		vertical-align: middle;
+	}
+
+	.grid-icons {
+		display: grid;
+		grid-template-columns: repeat(6, 16%);
+	}
+
+	.hidden-icon {
+		opacity: 0;
+		transition: 1500ms;
+	}
+
 	.loser {
-		text-align: center;
+		transform: scale(5000);
+		/* text-align: center; */
 		color: black;
-		transform: scale(0.8);
-		transition: 500ms;
+		transition: 2000ms;
+		font-size: 0.8rem;
 		opacity: 0;
 	}
+
+	.report {
+		margin: auto;
+		background: white;
+		box-shadow: 10px 10px 10px 10px #aaaaaa;
+		z-index: 500;
+		width: 300%;
+		height: auto;
+		position: relative;
+		right: 14rem;
+		top: 5rem;
+		padding: 1rem;
+		opacity: 0;
+		display: none;
+		transition: 2s;
+
+		${mobile} {
+			position: static;
+			width: 100%;
+			height: 300%;
+		}
+	}
+
 	.search-a {
 		position: relative;
 		grid-area: search-a;
@@ -119,8 +160,9 @@ export const SearchDiv = styled.div`
 
 	.stats-hidden {
 		position: absolute;
-		top: 2.6rem;
-		left: 4.2rem;
+		text-align: left;
+		top: 5.6rem;
+		left: 2.8rem;
 		display: none;
 	}
 
@@ -208,14 +250,21 @@ export const SearchDiv = styled.div`
 
 	.reset-button {
 		grid-area: reset;
+		cursor: pointer;
 		display: block;
 		margin: auto;
+		z-index: 50000;
 		padding: 1rem;
 		background: black;
 		color: red;
 		font-size: 1.4rem;
 		justify-self: center;
 		/* align-self: */
+
+		&:hover {
+			opacity: 0.8;
+			transform: scale(1.4);
+		}
 
 		${mobile} {
 			display: inline-block;
@@ -225,13 +274,16 @@ export const SearchDiv = styled.div`
 			align-self: end;
 		}
 	}
-
+	.match-report {
+		padding-top: 0.2rem;
+	}
 	.inputBar {
 		/* input */
 		width: ${width};
 		padding: 0.5rem;
 		margin-top: 0.5rem;
 		border-radius: 8px 8px 8px 8px;
+		font-size: 1.8rem;
 
 		&:focus {
 			border-radius: 8px 8px 0 0;

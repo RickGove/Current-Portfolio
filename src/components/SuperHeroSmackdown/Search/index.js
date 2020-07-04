@@ -4,11 +4,10 @@ import axios from 'axios';
 
 // import { newSearchLocation } from '../../../actions';
 
-import { SearchDiv, Button, LetsGo } from './style/';
+import { SearchDiv, Button } from './style/';
 
 import HeroInfo from '../HeroInfo/';
 import Loading from '../Loading';
-import BattleScreen from '../BattleScreen';
 
 import rickImg from '../../../img/RBG.jpg';
 
@@ -58,9 +57,12 @@ function Search() {
 		fullDataA = '',
 		fullDataB = '',
 		bCount = 0,
-		aCount = 0;
+		aCount = 0,
+		matchReport = 'init';
 
 	// refs
+	const winnerImg = useRef(null);
+	const matchReportRef = useRef(null);
 	const inputA = useRef(null);
 	const inputB = useRef(null);
 	const resultsDivA = useRef(null);
@@ -88,7 +90,19 @@ function Search() {
 	const speedA = useRef(null);
 	const speedB = useRef(null);
 	const resultsDiv = useRef(null);
-
+	const intelIconB = useRef(null);
+	const strengthIconB = useRef(null);
+	const speedIconB = useRef(null);
+	const duraIconB = useRef(null);
+	const powerIconB = useRef(null);
+	const combatIconB = useRef(null);
+	const intelIconA = useRef(null);
+	const strengthIconA = useRef(null);
+	const speedIconA = useRef(null);
+	const duraIconA = useRef(null);
+	const powerIconA = useRef(null);
+	const combatIconA = useRef(null);
+	const report = useRef(null);
 	// const reduxState = useSelector((state) => state.searchedLocation);
 
 	// const dispatch = useDispatch();
@@ -106,8 +120,6 @@ function Search() {
 		if (highlighted !== undefined) {
 			clearAllHighlights();
 			// search highlghted button
-			console.log(`Set ${searchResults[highlighted]} as chosen fighter
-			`);
 			setFighterA(searchResults[highlighted]);
 			if (inputB.current !== null) {
 				inputB.current.focus();
@@ -347,7 +359,7 @@ function Search() {
 	}
 
 	function setPlaceHolder(n) {
-		return `Search Fighter ${n}`;
+		return `Hero or Villain`;
 	}
 
 	function showResultsA() {
@@ -377,6 +389,9 @@ function Search() {
 	}
 
 	function addRick(x) {
+		return false;
+
+		// remove return false to add Rick back ... might be lots of work...
 		if (
 			x === 'r' ||
 			x === 'ri' ||
@@ -563,7 +578,10 @@ function Search() {
 	}
 
 	function handleClick(e) {
-		setFighterA(searchResults[e.target.attributes.result.value]);
+		if (e.target.attributes.result.value !== undefined) {
+			setFighterA(searchResults[e.target.attributes.result.value]);
+		} else {
+		}
 
 		if (fighterB !== 'none') {
 			setReady(true);
@@ -578,7 +596,10 @@ function Search() {
 	}
 
 	function handleClickB(e) {
-		setFighterB(searchResultsB[e.target.attributes.result.value]);
+		if (e.target.attributes.result.value !== undefined) {
+			setFighterB(searchResultsB[e.target.attributes.result.value]);
+		} else {
+		}
 
 		if (fighterA !== 'none') {
 			setReady(true);
@@ -592,28 +613,21 @@ function Search() {
 		}
 	}
 
-	function stringsOfCatsWon(arr) {
-		console.log(arr);
-		return arr;
-	}
-
 	function writeMatchReport() {
-		console.log('Write Match Report Run');
-		console.log('In this ');
 		const a = fullDataA.data;
 		const b = fullDataB.data;
-		console.log(a);
-		console.log(b);
 
 		let winner,
 			loser,
 			winnerCount,
 			loserCount,
 			closeness,
-			height,
+			Wheight,
 			Lheight,
 			eyeColor,
 			LeyeColor,
+			race,
+			Lrace,
 			hairColor,
 			LhairColor,
 			placeOfBirth,
@@ -621,17 +635,27 @@ function Search() {
 			publisher,
 			Lpublisher,
 			genderPronoun,
-			winningCats;
+			LgenderPronoun,
+			champName,
+			loserName;
+
+		if (champVar === 'A') {
+			champName = fighterA[0];
+			loserName = fighterB[0];
+		} else {
+			champName = fighterB[0];
+			loserName = fighterA[0];
+		}
 
 		if (champVar !== 'tie') {
 			if (champVar === 'A') {
-				winner = a.data;
-				loser = b.data;
+				winner = a;
+				loser = b;
 				winnerCount = aCount;
 				loserCount = bCount;
 			} else {
-				winner = b.data;
-				loser = a.data;
+				winner = b;
+				loser = a;
 				winnerCount = bCount;
 				loserCount = aCount;
 			}
@@ -657,7 +681,6 @@ function Search() {
 					closeness = 'epic battle';
 					break;
 			}
-			console.log(closeness);
 
 			//winningcats
 			// categories won by each combatant
@@ -686,44 +709,120 @@ function Search() {
 				loserWins = [];
 
 			arr.map((item, index) => {
-				console.log(item);
 				if (item === 'A') {
 					aWins.push(names[index]);
-				} else {
+				} else if (item === 'B') {
 					bWins.push(names[index]);
 				}
 			});
 
 			if (champ !== 'A') {
-				champWins = aWins;
-				loserWins = bWins;
-			} else {
 				champWins = bWins;
 				loserWins = aWins;
+			} else {
+				champWins = aWins;
+				loserWins = bWins;
 			}
 
-			console.log(`The champ has won at ${champWins}`);
-			console.log(`The loser won at ${loserWins}`);
+			// height
 
-			//height
-			height = winner.appearance.height[1];
-			Lheight = loser.appearance.height[1];
-			console.log(`with a height of ${height}`);
-			console.log(`with a loser height of ${Lheight}`);
+			Wheight = `${winner.appearance.height[1]} tall`;
+			Lheight = `${loser.appearance.height[1]} tall`;
+
+			if (Wheight === '0 cm tall') {
+				Wheight = '';
+			}
+			if (Lheight === '0 cm tall') {
+				Lheight = '';
+			}
 
 			//eyecolor
+			eyeColor = `${winner.appearance['eye-color']}-eyed`;
+			LeyeColor = `${loser.appearance['eye-color']}-eyed`;
+			if (eyeColor === '--eyed') {
+				eyeColor = '';
+			}
+			if (LeyeColor === '--eyed') {
+				LeyeColor = '';
+			}
 
 			// hair color
+			hairColor = winner.appearance['hair-color'];
+			LhairColor = loser.appearance['hair-color'];
+
+			if (hairColor === '-') {
+				hairColor = '';
+			} else if ((hairColor = 'no hair')) {
+				hairColor = '';
+			} else {
+				hairColor = `${hairColor}-haired`;
+			}
+
+			if (LhairColor === '-') {
+				LhairColor = '';
+			} else if ((LhairColor = 'no hair')) {
+				LhairColor = 'bald-headed';
+			} else {
+				LhairColor = `${LhairColor}-haired`;
+			}
 
 			// placeOfBirth
+			placeOfBirth = winner.biography['place-of-birth'];
+			LplaceOfBirth = loser.biography['place-of-birth'];
+
+			if (placeOfBirth === '-') {
+				placeOfBirth = 'parts unknown';
+			}
+			if (LplaceOfBirth === '-') {
+				LplaceOfBirth = 'parts unknown';
+			}
+
+			//race
+			race = winner.appearance['race'];
+			Lrace = loser.appearance['race'];
+			if (race === 'null') {
+				race = '';
+			}
+			if (Lrace === 'null') {
+				Lrace = '';
+			}
 
 			//publisher
-
+			publisher = winner.biography['publisher'];
+			Lpublisher = loser.biography['publisher'];
+			if (race === 'null') {
+				race = '';
+			}
+			if (Lrace === 'null') {
+				Lrace = '';
+			}
 			//genderPronoun
+			if (winner.appearance['gender'] === 'Male') {
+				genderPronoun = 'his';
+			}
+			if (winner.appearance['gender'] === 'Female') {
+				genderPronoun = 'her';
+			} else {
+				genderPronoun = 'their';
+			}
+			if (loser.appearance['gender'] === 'Male') {
+				LgenderPronoun = 'his';
+			}
+			if (loser.appearance['gender'] === 'Female') {
+				LgenderPronoun = 'her';
+			} else {
+				LgenderPronoun = 'their';
+			}
 
-			// In a ${closeness} battle, the ${height} tall ${eyeColor}-eyed ${hairColor} haired ${race} from ${placeOfBirth} in the ${publisher} universe known as ${winnerName} was able to use ${genderPronoun} ${winningCats} to defeat the ${Lheight} tall ${LeyeColor}-eyed ${LhairColor} haired ${Lrace} from ${LplaceOfBirth} in the ${Lpublisher} universe known as ${loserName}
+			matchReport = `In a ${closeness} battle, the ${Wheight} ${eyeColor} ${hairColor} ${race} from ${placeOfBirth} in the ${publisher} universe known as ${champName} was able to use their${champWins} to defeat the ${Lheight} ${LeyeColor} ${LhairColor} ${Lrace} from ${LplaceOfBirth} in the ${Lpublisher} universe known as ${loserName}`;
 		} else {
-			// write for a tie here
+			matchReport = `In a battle that drew to a stalemate, a tie was had between ${champName} and ${loserName}.`;
+		}
+		matchReportRef.current.innerText = matchReport;
+		if (champVar === 'A') {
+			winnerImg.current.src = fighterA[1];
+		} else if (champVar === 'B') {
+			winnerImg.current.src = fighterB[1];
 		}
 	}
 
@@ -749,10 +848,6 @@ function Search() {
 	}
 
 	function beginBattle() {
-		console.log('battle begun');
-
-		console.log(fighterA);
-		console.log(fighterB);
 		decideWinner();
 
 		//hide buttons
@@ -763,48 +858,188 @@ function Search() {
 		cardA.current.classList.add('battlingA');
 		cardB.current.classList.add('battlingB');
 
+		// set time between skills
+		const interval = 1700;
+
 		// fade image
 		window.setTimeout(() => {
 			imgA.current.classList.add('fade');
-			imgB.current.classList.add('fade');
-		}, 1100);
+		}, interval);
 
-		// show stats 1 by 1
+		window.setTimeout(() => {
+			imgB.current.classList.add('fade');
+		}, interval);
+
+		// make stats box display block
+		window.setTimeout(() => {
+			statsA.current.style = 'display: block';
+		}, interval * 2);
+
 		window.setTimeout(() => {
 			statsB.current.style = 'display: block';
-			statsA.current.style = 'display: block';
-		}, 2200);
+		}, interval * 2);
+
+		// begin displaying the stats
+
+		// intel
+		window.setTimeout(() => {
+			intelA.current.style = 'opacity: 1;';
+			intelA.current.style.transform = 'scale(1)';
+		}, interval * 4);
 
 		window.setTimeout(() => {
 			intelB.current.style = 'opacity: 1;';
-			intelA.current.style = 'opacity: 1;';
-		}, 3200);
+			intelB.current.style.transform = 'scale(1)';
+		}, interval * 6);
+
+		// strength
+		window.setTimeout(() => {
+			// set previous winner
+			if (intelWinVar === 'A') {
+				intelA.current.style.color = 'white';
+				intelIconA.current.style.opacity = 1;
+				intelIconB.current.style.opacity = 0.1;
+
+				intelB.current.style.color = 'grey';
+			} else if (intelWinVar === 'B') {
+				intelA.current.style.color = 'grey';
+				intelB.current.style.color = 'white';
+				intelIconB.current.style.opacity = 1;
+				intelIconA.current.style.opacity = 0.1;
+			}
+			strengthA.current.style = 'opacity: 1;';
+			strengthA.current.style.transform = 'scale(1)';
+		}, interval * 7);
 
 		window.setTimeout(() => {
 			strengthB.current.style = 'opacity: 1;';
-			strengthA.current.style = 'opacity: 1;';
-		}, 4200);
+			strengthB.current.style.transform = 'scale(1)';
+		}, interval * 9);
+
+		// speed
+
+		window.setTimeout(() => {
+			// set previous winner
+			if (strengthWinVar === 'A') {
+				strengthA.current.style.color = 'white';
+				strengthIconA.current.style.opacity = 1;
+				strengthIconB.current.style.opacity = 0.1;
+
+				strengthB.current.style.color = 'grey';
+			} else if (strengthWinVar === 'B') {
+				strengthA.current.style.color = 'grey';
+				strengthB.current.style.color = 'white';
+				strengthIconB.current.style.opacity = 1;
+				strengthIconA.current.style.opacity = 0.1;
+			}
+			speedA.current.style = 'opacity: 1;';
+			speedA.current.style.transform = 'scale(1)';
+		}, interval * 11);
 
 		window.setTimeout(() => {
 			speedB.current.style = 'opacity: 1;';
-			speedA.current.style = 'opacity: 1;';
-		}, 5200);
+			speedB.current.style.transform = 'scale(1)';
+		}, interval * 13);
+
+		// dura
+		window.setTimeout(() => {
+			// set previous winner
+			if (speedWinVar === 'A') {
+				speedA.current.style.color = 'white';
+				speedIconA.current.style.opacity = 1;
+				speedIconB.current.style.opacity = 0.1;
+
+				speedB.current.style.color = 'grey';
+			} else if (speedWinVar === 'B') {
+				speedA.current.style.color = 'grey';
+				speedB.current.style.color = 'white';
+				speedIconA.current.style.opacity = 0.1;
+
+				speedIconB.current.style.opacity = 1;
+			}
+			duraA.current.style = 'opacity: 1;';
+			duraA.current.style.transform = 'scale(1)';
+		}, interval * 15);
 
 		window.setTimeout(() => {
 			duraB.current.style = 'opacity: 1;';
-			duraA.current.style = 'opacity: 1;';
-		}, 6200);
+			duraB.current.style.transform = 'scale(1)';
+		}, interval * 17);
+
+		// power
+		window.setTimeout(() => {
+			// set previous winner
+			if (duraWinVar === 'A') {
+				duraA.current.style.color = 'white';
+				duraIconA.current.style.opacity = 1;
+				duraIconB.current.style.opacity = 0.1;
+
+				duraB.current.style.color = 'grey';
+			} else if (duraWinVar === 'B') {
+				duraA.current.style.color = 'grey';
+				duraB.current.style.color = 'white';
+				duraIconA.current.style.opacity = 0.1;
+
+				duraIconB.current.style.opacity = 1;
+			}
+			powerA.current.style = 'opacity: 1;';
+			powerA.current.style.transform = 'scale(1)';
+		}, interval * 19);
 
 		window.setTimeout(() => {
 			powerB.current.style = 'opacity: 1;';
-			powerA.current.style = 'opacity: 1;';
-		}, 7200);
+			powerB.current.style.transform = 'scale(1)';
+		}, interval * 21);
+
+		// combat
+		window.setTimeout(() => {
+			// set previous winner
+			if (powerWinVar === 'A') {
+				powerA.current.style.color = 'white';
+				powerIconA.current.style.opacity = 1;
+				powerIconB.current.style.opacity = 0.1;
+
+				powerB.current.style.color = 'grey';
+			} else if (powerWinVar === 'B') {
+				powerA.current.style.color = 'grey';
+				powerB.current.style.color = 'white';
+				powerIconB.current.style.opacity = 1;
+				powerIconA.current.style.opacity = 0.1;
+			}
+			combatA.current.style = 'opacity: 1;';
+			combatA.current.style.transform = 'scale(1)';
+		}, interval * 23);
 
 		window.setTimeout(() => {
 			combatB.current.style = 'opacity: 1;';
-			combatA.current.style = 'opacity: 1;';
-		}, 8200);
-		//determine winner
+			combatB.current.style.transform = 'scale(1)';
+		}, interval * 25);
+
+		window.setTimeout(() => {
+			// set previous winner
+			if (combatWinVar === 'A') {
+				combatA.current.style.color = 'white';
+				combatIconA.current.style.opacity = 1;
+				combatIconB.current.style.opacity = 0.1;
+
+				combatB.current.style.color = 'grey';
+			} else if (combatWinVar === 'B') {
+				combatA.current.style.color = 'grey';
+				combatB.current.style.color = 'white';
+				combatIconB.current.style.opacity = 1;
+				combatIconA.current.style.opacity = 0.1;
+			}
+		}, interval * 27);
+
+		// show report
+		window.setTimeout(() => {
+			report.current.style.display = 'unset';
+			report.current.style.opacity = 1;
+		}, interval * 29);
+
+		window.setTimeout(() => {
+			resetBtn.current.classList.remove('hidden');
+		}, interval * 31);
 	}
 
 	function resultsMap() {
@@ -851,7 +1086,7 @@ function Search() {
 										result={b}
 										float="right"
 										onClick={handleClick}>
-										<img src={a[1]} className="hero-img" />
+										<img result={b} src={a[1]} className="hero-img" />
 										{a[0]}
 									</Button>
 								</li>
@@ -909,7 +1144,7 @@ function Search() {
 										float="right"
 										result={b}
 										onClick={handleClickB}>
-										<img src={a[1]} className="hero-img" />
+										<img src={a[1]} result={b} className="hero-img" />
 										{a[0]}
 									</Button>
 								</li>
@@ -1143,7 +1378,6 @@ function Search() {
 						ref={combatA}>
 						Combat: {fighterAUsableStats.combat}
 					</p>
-					<p>{champ}</p>
 				</React.Fragment>
 			);
 		}
@@ -1186,7 +1420,7 @@ function Search() {
 							powerWin === 'B' || powerWin === 'tie' ? 'winner' : 'loser'
 						}
 						ref={powerB}>
-						Power: {fighterBUsableStats.power}
+						Power : {fighterBUsableStats.power}
 					</p>
 					<p
 						className={
@@ -1201,10 +1435,60 @@ function Search() {
 		}
 	}
 
+	function makeGridA() {
+		return (
+			<div className="grid-icons">
+				<p ref={intelIconA} className="hidden-icon">
+					🧠
+				</p>
+				<p ref={strengthIconA} className="hidden-icon">
+					💪
+				</p>
+				<p ref={speedIconA} className="hidden-icon">
+					💨
+				</p>
+				<p ref={duraIconA} className="hidden-icon">
+					🔋
+				</p>
+				<p ref={powerIconA} className="hidden-icon">
+					🦍
+				</p>
+				<p ref={combatIconA} className="hidden-icon">
+					⚔️
+				</p>
+			</div>
+		);
+	}
+
+	function makeGridB() {
+		return (
+			<div className="grid-icons">
+				<p ref={intelIconB} className="hidden-icon">
+					🧠
+				</p>
+				<p ref={strengthIconB} className="hidden-icon">
+					💪
+				</p>
+				<p ref={speedIconB} className="hidden-icon">
+					💨
+				</p>
+				<p ref={duraIconB} className="hidden-icon">
+					🔋
+				</p>
+				<p ref={powerIconB} className="hidden-icon">
+					🦍
+				</p>
+				<p ref={combatIconB} className="hidden-icon">
+					⚔️
+				</p>
+			</div>
+		);
+	}
+
 	function showStatsA() {
 		return (
 			<div ref={statsA} className="stats-hidden">
-				<p>Power Stats</p>
+				{makeGridA()}
 				{renderStatsA()}
 			</div>
 		);
@@ -1212,7 +1496,7 @@ function Search() {
 	function showStatsB() {
 		return (
 			<div ref={statsB} className="stats-hidden">
-				<p>Power Stats</p>
+				{makeGridB()}
 				{renderStatsB()}
 			</div>
 		);
@@ -1242,19 +1526,20 @@ function Search() {
 	}
 
 	function reset() {
-		setFighterA('none');
-		setFighterB('none');
-		setSearchResults('');
-		setSearchResultsB('');
-		setReady(false);
-		readyBtn.current.classList.remove = 'begin-button';
-		readyBtn.current.classList.add = 'hidden';
-
-		if (inputA.current !== null) {
-			inputA.current.focus();
-		}
+		window.location.reload(false);
 	}
 
+	function renderWinnerImg() {
+		return <img ref={winnerImg} className="hero-img" src={rickImg} />;
+	}
+
+	function renderChamp() {
+		if (champ !== 'Battle is a draw') {
+			return `Champion: ${champ}`;
+		} else {
+			return `BATTLE IS A DRAW!`;
+		}
+	}
 	return (
 		<React.Fragment>
 			<SearchDiv>
@@ -1267,6 +1552,13 @@ function Search() {
 					</div>
 				</div>
 				<div id="vs">
+					<div ref={report} className="report">
+						<h1>{renderChamp()}</h1>
+						{renderWinnerImg()}
+						<p className="match-report" ref={matchReportRef}>
+							hello world
+						</p>
+					</div>
 					<button
 						ref={readyBtn}
 						className={ready ? 'begin-button' : 'hidden'}
