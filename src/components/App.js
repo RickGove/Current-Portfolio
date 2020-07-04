@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from 'redux';
@@ -19,29 +19,32 @@ const composeEnhancers = composeWithDevTools({
 	traceLimit: 25,
 });
 export const store = createStore(weatherApp, composeEnhancers());
-class App extends React.Component {
-	render() {
-		return (
-			<Provider store={store}>
-				<Router history={history}>
-					<>
-						<Switch>
-							<Route path="/" exact component={HomePage} />
-							<Route path="/weather" exact component={Weather} />
-							<Route
-								path="/superherosmackdown"
-								exact
-								component={SuperHeroSmackdown}
-							/>
-							<Route path="/AnastaciaKorotkevich" exact component={Nastya} />
-							<Route path="/learn" exact component={understandState} />
-							<Route path="*" exact component={My404Component} />
-						</Switch>
-					</>
-				</Router>
-			</Provider>
-		);
-	}
+function App() {
+	useEffect(() => {
+		document.addEventListener('click', (e) => {
+			console.log(e.target);
+		});
+	});
+	return (
+		<Provider store={store}>
+			<Router history={history}>
+				<React.Fragment>
+					<Switch>
+						<Route path="/" exact component={HomePage} />
+						<Route path="/weather" exact component={Weather} />
+						<Route
+							path="/superherosmackdown"
+							exact
+							component={SuperHeroSmackdown}
+						/>
+						<Route path="/AnastaciaKorotkevich" exact component={Nastya} />
+						<Route path="/learn" exact component={understandState} />
+						<Route path="*" exact component={My404Component} />
+					</Switch>
+				</React.Fragment>
+			</Router>
+		</Provider>
+	);
 }
 
 export default App;

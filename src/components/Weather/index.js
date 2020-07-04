@@ -17,18 +17,18 @@ function Weather() {
 
 	if (hide) {
 		return (
-			<>
+			<React.Fragment>
 				<GlobalStyle />
 				<HeaderDeterminerW />
 				<Wallpaper />
 				<FillScreen />
 				<Footer />
 				<ScrollToTop />
-			</>
+			</React.Fragment>
 		);
 	} else {
 		return (
-			<>
+			<React.Fragment>
 				<GlobalStyle />
 				<HeaderDeterminerW />
 				<Wallpaper />
@@ -39,7 +39,7 @@ function Weather() {
 				<FillScreen />
 				<Footer />
 				<ScrollToTop />
-			</>
+			</React.Fragment>
 		);
 	}
 }

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import wallpaper from '../img/wp.jpg';
-
 export const SuperHeroMainDiv = styled.div`
 	* {
 		margin: 0;
@@ -15,7 +13,7 @@ export const SuperHeroMainDiv = styled.div`
 	.grid-div {
 		display: grid;
 		grid-template-columns: 3% auto 3%;
-		grid-template-rows: 1% 6% auto 1%;
+		grid-template-rows: 1% 9% auto 1%;
 		grid-gap: 0.5rem;
 		grid-template-areas:
 			' . . .'
@@ -27,7 +25,7 @@ export const SuperHeroMainDiv = styled.div`
 		height: 100vh;
 		width: 100%;
 
-		v
+		@media (max-width: );
 	}
 	.gap-top {
 		grid-area: gap-top;

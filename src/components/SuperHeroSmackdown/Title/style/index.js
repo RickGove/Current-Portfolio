@@ -17,6 +17,11 @@ export const TitleDiv = styled.div`
 
 	h1 {
 		height: 100%;
+		font-size: 5.5rem;
+
+		${mobile} {
+			font-size: 3rem;
+		}
 	}
 
 	div {

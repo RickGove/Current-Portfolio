@@ -381,7 +381,6 @@ function SearchBar() {
 
 	function searchForLatLonHere(id, name, country) {
 		const site = `https://geocoder.ls.hereapi.com/6.2/geocode.json?locationid=${id}&jsonattributes=1&gen=9&apiKey=${hereKey}`;
-		let coord;
 		axios
 			.get(site)
 			.then((response) => {
@@ -410,13 +409,7 @@ function SearchBar() {
 	}
 	function handleClickLocation() {
 		getCoords();
-
-		// searchLocation(
-		// 	currentLocation[0],
-		// 	currentLocation[4],
-		// 	currentLocation[5],
-		// 	country
-		// );
+		dispatch(setShowLoader(true));
 	}
 
 	//// searching by location ///
@@ -442,8 +435,6 @@ function SearchBar() {
 			})
 		);
 		searchLocation(cityName, lat, lon, countryName);
-		// searchForLatLonHere(id, cityName, fullCountry);
-		// searchImagesByCity(cityName, countryName);
 	}
 
 	function findWeatherInfo(latLon) {
@@ -706,12 +697,17 @@ function SearchBar() {
 				searchImagesByCity(city, country);
 				// window.setTimeout(() => {
 				dispatch(hideAllComps(false));
+				dispatch(setShowModal(false));
+				dispatch(setShowLoader(false));
 				// }, 600);
 			})
 			.catch((err) => {
 				// log error and city name to redux store
 				dispatch(locationError(city));
 				dispatch(setImagesFound(''));
+
+				dispatch(setShowModal(false));
+				dispatch(setShowLoader(false));
 				dispatch(hideAllComps(false));
 			});
 	}
@@ -792,6 +788,7 @@ function SearchBar() {
 				if (searchBut.id === 'but-location') {
 					//pressing enter on location
 					// works
+
 					handleClickLocation();
 
 					//fave info works
@@ -896,7 +893,11 @@ function SearchBar() {
 		}
 	}
 
-	function showModal() {
+	function showModal(e) {
+		e.preventDefault();
+		if (inputRef.current !== undefined) {
+			inputRef.current.value = value;
+		}
 		dispatch(setShowModal(true));
 	}
 
@@ -907,6 +908,7 @@ function SearchBar() {
 				id="search"
 				type="text"
 				autoComplete="off"
+				value={value}
 				placeholder={value}
 				className="search"
 				onFocus={showModal}

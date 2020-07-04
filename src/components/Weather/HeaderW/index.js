@@ -676,11 +676,14 @@ function HeaderW() {
 	}
 
 	return (
-		<>
+		<React.Fragment>
 			<GlobalStyle />
 			<WeatherHeadCon>
 				<div ref={modal} className={showModal ? 'modal show-modal' : 'modal'}>
-					<img className={showLoader ? 'loader' : 'hidden'} src={loader} />
+					<img
+						className={showLoader ? 'loader' : 'loader hidden'}
+						src={loader}
+					/>
 				</div>
 				<div id="modal-for-search-focus"></div>
 				<img alt="logo" className="logo" src={logo} />
@@ -693,7 +696,7 @@ function HeaderW() {
 					{displaySwitch()}
 				</div>
 			</WeatherHeadCon>
-		</>
+		</React.Fragment>
 	);
 }
 

@@ -19,7 +19,7 @@ export const WeatherHeadCon = styled.div`
 	z-index: 1;
 	position: sticky;
 	top: 0;
-	width: 99vw;
+	/* width: 100vw; */
 	height: 4.3rem;
 	display: grid;
 	grid-template-columns: auto 30% 3% 35% auto 15% auto;
@@ -30,6 +30,8 @@ export const WeatherHeadCon = styled.div`
 	background: black;
 
 	${mobile}{
+		width: 100vw;
+
 		height: 8.6rem;
 		grid-template-columns: 5% auto 3% 15% 5%;
 		grid-template-rows: repeat(2, 4.3rem);
@@ -38,20 +40,22 @@ export const WeatherHeadCon = styled.div`
 	}
 
 	.modal {
+		height: 0px;
+		width: 100%;
+		overflow: hidden;
 		background: black;
-		height: 100vh;
-		width: 100vw;
 		opacity: 0;
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index:10;
-		transition: 400ms;
+		transition: opacity 400ms;
 	}
 
 	.show-modal{
 		opacity: 0.9;
-		transition: 400ms;
+		height: 100vh;
+		transition: opacity 400ms;
 	}
 
 	@keyframes SPIN {
@@ -71,10 +75,8 @@ export const WeatherHeadCon = styled.div`
 	}
 
 	.hidden {
-		position: absolute;
-
-		opacity: 0;
 		transition: 600ms;
+		opacity: 0;
 	}
 	
 
