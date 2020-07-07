@@ -2,27 +2,31 @@ import styled from 'styled-components';
 
 import vs from '../../img/vs.png';
 
-const widthV = 88;
-const widthVMobile = 88;
-const width = `${widthV}%`;
-const widthMobile = `${widthVMobile}%`;
+const widthV = 11;
+const widthVMobile = 7;
+const width = `${widthV}rem`;
+const widthMobile = `${widthVMobile}rem`;
 
 const heroHeight = `3rem`;
 const heroHeightMobile = `1.7rem`;
 
 const imageTrans = `800ms`;
 
-const mobile = '@media (max-width: 550px)';
+const mobile = '@media (max-width: 700px)';
 
 export const SearchDiv = styled.div`
-	display: flex;
-	flex-direction: row;
-	max-height: 550px;
+	display: grid;
+	grid-template-columns: 37% auto 37%;
+	grid-template-areas: 'search-a vs search-b';
+	grid-gap: 1rem;
 	text-align: center;
 	height: 100%;
+	overflow: hidden;
 
 	${mobile} {
-		flex-direction: column;
+		grid-template-rows: 37% auto 37%;
+		grid-template-areas: 'search-a' 'vs' 'search-b';
+		grid-template-columns: auto;
 		height: 100%;
 	}
 
@@ -43,9 +47,9 @@ export const SearchDiv = styled.div`
 
 	.winner {
 		color: black;
-		font-size: 1.3rem;
 		transition: 2000ms;
 		transform: scale(5000);
+		font-size: 1rem;
 		opacity: 0;
 	}
 
@@ -63,47 +67,51 @@ export const SearchDiv = styled.div`
 	}
 
 	.hidden-icon {
-		font-size: 1rem;
 		opacity: 0;
 		transition: 1500ms;
 	}
 
 	.loser {
 		transform: scale(5000);
+		/* text-align: center; */
 		color: black;
-		font-size: 1.2rem;
 		transition: 2000ms;
+		font-size: 0.8rem;
 		opacity: 0;
 	}
 
 	.report {
+		margin: auto;
 		background: white;
 		box-shadow: 10px 10px 10px 10px #aaaaaa;
 		z-index: 500;
-		padding: 1.3rem;
+		width: 300%;
+		height: auto;
+		position: relative;
+		right: 14rem;
+		top: 5rem;
+		padding: 1rem;
 		opacity: 0;
 		display: none;
 		transition: 2s;
 
 		${mobile} {
-			position: relative;
-			width: 90%;
-			height: 600%;
-			top: -200px;
+			position: static;
+			width: 100%;
+			height: 300%;
 		}
 	}
-	.search-a,
-	.search-b {
-		display: flex;
-		flex-direction: column;
+
+	.search-a {
+		position: relative;
+		grid-area: search-a;
 		width: 100%;
 		background-color: blue;
 		border-radius: 1.5rem;
 		box-shadow: 10px 10px 5px #aaaaaa;
 		margin: auto;
-		max-height: 350px;
-		height: 90%;
-		width: 30%;
+		height: 350px;
+		width: 250px;
 		${mobile} {
 			height: 200px;
 			width: 250px;
@@ -111,24 +119,37 @@ export const SearchDiv = styled.div`
 	}
 
 	.search-b {
-		background: red;
+		position: relative;
+		border-radius: 2rem;
+		grid-area: search-b;
+		border-radius: 1.5rem;
+		background-color: red;
+		box-shadow: 10px 10px 5px #aaaaaa;
+		height: 350px;
+		width: 250px;
+		margin: auto;
+
+		${mobile} {
+			height: 200px;
+			width: 250px;
+		}
 	}
 
 	.battlingA {
-		transform: translateX(1rem) scale(1.2);
+		transform: translateX(1rem) scale(1.6);
 		transition: 1s;
 
 		${mobile} {
-			transform: translateY(3rem) scale(1.05);
+			transform: translateY(3rem) scale(1.3);
 		}
 	}
 
 	.battlingB {
-		transform: translateX(-1rem) scale(1.2);
+		transform: translateX(-1rem) scale(1.6);
 		transition: 1s;
 
 		${mobile} {
-			transform: translateY(-3rem) scale(1.05);
+			transform: translateY(-3rem) scale(1.3);
 		}
 	}
 
@@ -140,8 +161,8 @@ export const SearchDiv = styled.div`
 	.stats-hidden {
 		position: absolute;
 		text-align: left;
-		top: 2.6rem;
-		left: 3.8rem;
+		top: 5.6rem;
+		left: 2.8rem;
 		display: none;
 	}
 
@@ -182,36 +203,39 @@ export const SearchDiv = styled.div`
 	}
 
 	#vs {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 5rem;
-		margin-bottom: 5rem;
-		flex-direction: column;
+		grid-area: vs;
+		display: grid;
+		grid-template-rows: 50% 50%;
+		grid-template-areas: 'begin' 'reset';
 		background: url(${vs});
 		background-size: contain;
 		background-repeat: no-repeat;
 		overflow: visible;
 		background-position: center;
+		text-align: center;
 		${mobile} {
-			flex-direction: row;
-			justify-content: center;
-			height: 10%;
-			/* background-size: ; */
+			background-size: 160px;
 		}
 	}
 
 	.begin-button {
+		grid-area: begin;
 		padding: 1rem;
+		position: relative;
+		top: 20%;
 		font-size: 1.4rem;
 		cursor: pointer;
+		margin: auto;
 		display: block;
 		color: black;
 		background: yellow;
-		transform: scale(1.5);
-		transition: 500ms;
-		border: 2px solid red;
-		animation: shake 4s;
-		animation-iteration-count: infinite;
+		&:focus {
+			transform: scale(1.5);
+			transition: 500ms;
+			border: 2px solid red;
+			animation: shake 4s;
+			animation-iteration-count: infinite;
+		}
 
 		${mobile} {
 			display: block;
@@ -225,14 +249,17 @@ export const SearchDiv = styled.div`
 	}
 
 	.reset-button {
+		grid-area: reset;
 		cursor: pointer;
 		display: block;
+		margin: auto;
 		z-index: 50000;
 		padding: 1rem;
-		transition: 400ms;
 		background: black;
 		color: red;
 		font-size: 1.4rem;
+		justify-self: center;
+		/* align-self: */
 
 		&:hover {
 			opacity: 0.8;
@@ -240,12 +267,11 @@ export const SearchDiv = styled.div`
 		}
 
 		${mobile} {
-			padding: 0;
-			width: 33%;
-			background: black;
 			display: inline-block;
-			font-size: 1rem;
+			font-size: 0.8rem;
+			padding: 0.2rem;
 			margin: 0;
+			align-self: end;
 		}
 	}
 	.match-report {
@@ -254,23 +280,25 @@ export const SearchDiv = styled.div`
 	.inputBar {
 		/* input */
 		width: ${width};
-		/* height: 75%; */
 		padding: 0.5rem;
 		margin-top: 0.5rem;
 		border-radius: 8px 8px 8px 8px;
 		font-size: 1.8rem;
 
 		&:focus {
-			/* border-radius: 8px 8px 0 0; */
+			border-radius: 8px 8px 0 0;
 			box-shadow: 0 0 0 5pt yellow;
 			outline: red;
+		}
+
+		${mobile} {
+			width: ${widthMobile};
 		}
 	}
 
 	.fighter-a-img,
 	.fighter-b-img {
-		/* width: 75%; */
-		align-self: center;
+		width: 75%;
 		height: 75%;
 
 		${mobile} {
@@ -340,12 +368,12 @@ export const Button = styled.button`
 	z-index: 10;
 
 	${mobile} {
-	font-size: ${(props) => (props.length > 8 ? '0.9rem' : '1.1rem')};
+	font-size: ${(props) => (props.length > 8 ? '0.5rem' : '0.8rem')};
 	line-height: 30px;
 	}
 	@media (hover: hover) {
 		&:hover {
-		transform: scale(1.5);
+		transform: scale(2);
 		transition: 300ms;
 	}
 	/* &:hover .hero-img {

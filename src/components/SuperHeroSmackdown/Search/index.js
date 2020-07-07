@@ -425,6 +425,7 @@ function Search() {
 			}
 			const key = `684260262142283`;
 			const cors = `https://cors-anywhere.herokuapp.com/`;
+
 			const site = `${cors}https://superheroapi.com/api/${key}/search/${s}`;
 			// const site = `https://superheroapi.com/api/${key}/search/${s}`;
 			const results = [];
@@ -477,7 +478,7 @@ function Search() {
 				})
 				.catch((err) => {
 					hideSpinner();
-
+					alert('Error while searching: ' + err);
 					setCanSearch(true);
 					if (aOrB === 'A') {
 						setSearchResults('');
@@ -842,9 +843,13 @@ function Search() {
 						fullDataB = responseB;
 						writeMatchReport();
 					})
-					.catch((err) => {});
+					.catch((err) => {
+						alert('Error while searching: ' + err);
+					});
 			})
-			.catch((err) => {});
+			.catch((err) => {
+				alert('Error while searching: ' + err);
+			});
 	}
 
 	function beginBattle() {
@@ -885,12 +890,12 @@ function Search() {
 		window.setTimeout(() => {
 			intelA.current.style = 'opacity: 1;';
 			intelA.current.style.transform = 'scale(1)';
-		}, interval * 4);
+		}, interval * 3);
 
 		window.setTimeout(() => {
 			intelB.current.style = 'opacity: 1;';
 			intelB.current.style.transform = 'scale(1)';
-		}, interval * 6);
+		}, interval * 5.2);
 
 		// strength
 		window.setTimeout(() => {
@@ -899,7 +904,6 @@ function Search() {
 				intelA.current.style.color = 'white';
 				intelIconA.current.style.opacity = 1;
 				intelIconB.current.style.opacity = 0.1;
-
 				intelB.current.style.color = 'grey';
 			} else if (intelWinVar === 'B') {
 				intelA.current.style.color = 'grey';
@@ -909,7 +913,7 @@ function Search() {
 			}
 			strengthA.current.style = 'opacity: 1;';
 			strengthA.current.style.transform = 'scale(1)';
-		}, interval * 7);
+		}, interval * 7.6);
 
 		window.setTimeout(() => {
 			strengthB.current.style = 'opacity: 1;';
@@ -1338,42 +1342,44 @@ function Search() {
 				<React.Fragment>
 					<p
 						className={
-							intelWin === 'A' || intelWin === 'tie' ? 'winner' : 'loser'
+							intelWinVar === 'A' || intelWin === 'tie' ? 'winner' : 'loser'
 						}
 						ref={intelA}>
 						Intelligence: {fighterAUsableStats.intelligence}
 					</p>
 					<p
 						className={
-							strengthWin === 'A' || strengthWin === 'tie' ? 'winner' : 'loser'
+							strengthWinVar === 'A' || strengthWin === 'tie'
+								? 'winner'
+								: 'loser'
 						}
 						ref={strengthA}>
 						Strength: {fighterAUsableStats.strength}
 					</p>
 					<p
 						className={
-							speedWin === 'A' || speedWin === 'tie' ? 'winner' : 'loser'
+							speedWinVar === 'A' || speedWin === 'tie' ? 'winner' : 'loser'
 						}
 						ref={speedA}>
 						Speed: {fighterAUsableStats.speed}
 					</p>
 					<p
 						className={
-							duraWin === 'A' || duraWin === 'tie' ? 'winner' : 'loser'
+							duraWinVar === 'A' || duraWin === 'tie' ? 'winner' : 'loser'
 						}
 						ref={duraA}>
 						Durability: {fighterAUsableStats.durability}
 					</p>
 					<p
 						className={
-							powerWin === 'A' || powerWin === 'tie' ? 'winner' : 'loser'
+							powerWinVar === 'A' || powerWin === 'tie' ? 'winner' : 'loser'
 						}
 						ref={powerA}>
 						Power: {fighterAUsableStats.power}
 					</p>
 					<p
 						className={
-							combatWin === 'A' || combatWin === 'tie' ? 'winner' : 'loser'
+							combatWinVar === 'A' || combatWin === 'tie' ? 'winner' : 'loser'
 						}
 						ref={combatA}>
 						Combat: {fighterAUsableStats.combat}
@@ -1526,7 +1532,77 @@ function Search() {
 	}
 
 	function reset() {
-		window.location.reload(false);
+		// window.location.reload(false);
+		if (inputA.current !== null) inputA.current.value = '';
+		if (inputB.current !== null) inputB.current.value = '';
+		//end of input clearing
+		setSearchDone(false);
+		setCanSearch(true);
+		setFighterA('none');
+		setFighterB('none');
+		setReady(false);
+		setSearchResults(); //name, image, id, powerstats
+		setSearchResultsB(); //name, image, id, powerstats
+		setTotalButtons([]);
+		setTotalButtonsB([]);
+		setSuggestions([]);
+		setSuggestionsB([]);
+		setHighlighted();
+		setHighlightedB();
+		setFighterAUsableStats('');
+		setFighterBUsableStats('');
+		setIntelWin('');
+		setCombatWin('');
+		setDuraWin('');
+		setStrengthWin('');
+		setPowerWin('');
+		setSpeedWin('');
+		setAWins(0);
+		setBWins(0);
+		setAFullInfo('');
+		setBFullInfo('');
+		setChamp(null);
+		// end of state
+		champVar = '';
+		intelWinVar = '';
+		combatWinVar = '';
+		duraWinVar = '';
+		strengthWinVar = '';
+		powerWinVar = '';
+		speedWinVar = '';
+		fighterAUsableStatsVar = '';
+		fighterBUsableStatsVar = '';
+		fullDataA = '';
+		fullDataB = '';
+		bCount = 0;
+		aCount = 0;
+		matchReport = 'init';
+		// end of global vars
+
+		readyBtn.current.classList.add('hidden');
+		resetBtn.current.classList.remove('hidden');
+		// of button setting
+
+		cardA.current.classList.remove('battlingA');
+		cardB.current.classList.remove('battlingB');
+		cardA.current.classList.add('search-a');
+		cardA.current.style.background = 'blue';
+		cardA.current.classList.add('search-b');
+		// end of cards
+
+		if (imgA.current !== null) imgA.current.classList.remove('fade');
+		if (imgB.current !== null) imgB.current.classList.remove('fade');
+		if (imgA.current !== null) imgA.current.classList.add('fighter-b-img');
+		if (imgB.current !== null) imgB.current.classList.add('fighter-b-img');
+		// end of image fade
+
+		if (statsA.current !== null) statsA.current.classList.add('stats-hidden');
+		if (statsB.current !== null) statsB.current.classList.add('stats-hidden');
+		// end of the stats boxes
+
+		if (report.current !== null) report.current.classList.add('report');
+
+		// report doesn't go away, stats still show
 	}
 
 	function renderWinnerImg() {

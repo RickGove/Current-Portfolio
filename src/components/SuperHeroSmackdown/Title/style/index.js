@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const mobile = `@media (max-width: 850px)`;
+const mobileTitle = `@media (max-width: 850px)`;
 
 export const TitleDiv = styled.div`
 	@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
@@ -17,10 +18,10 @@ export const TitleDiv = styled.div`
 
 	h1 {
 		height: 100%;
-		font-size: 5.5rem;
+		font-size: 7rem;
 
-		${mobile} {
-			font-size: 3rem;
+		${mobileTitle} {
+			font-size: 4rem;
 		}
 	}
 

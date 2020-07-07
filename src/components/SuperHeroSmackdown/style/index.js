@@ -13,36 +13,22 @@ export const SuperHeroMainDiv = styled.div`
 	height: 100vh;
 
 	.grid-div {
-		display: grid;
-		grid-template-columns: 3% auto 3%;
-		grid-template-rows: 1% 9% auto 1%;
-		grid-gap: 0.5rem;
-		grid-template-areas:
-			' . . .'
-			' . title .'
-			'. search .'
-			'. . .';
-
+		display: flex;
+		flex-direction: column;
 		background: white;
 		height: 100vh;
 		width: 100%;
 
-		@media (max-width: );
-	}
+		
 	.gap-top {
-		grid-area: gap-top;
 	}
 
 	.title {
-		grid-area: title;
-		height: 100%;
 		width: 100%;
 	}
 
 	#myInput {
-		background-position: 10px 12px;
-		background-repeat: no-repeat;
-		width: 60%;
+		width: 100%;
 		font-size: 16px;
 		padding: 12px 20px 12px 40px;
 		border: 1px solid #ddd;
@@ -52,7 +38,7 @@ export const SuperHeroMainDiv = styled.div`
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
-		width: 60%;
+		width: 100%;
 	}
 
 	#myUL li a {
