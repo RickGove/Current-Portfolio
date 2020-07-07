@@ -19,7 +19,7 @@ export const TitleDiv = styled.div`
 	h1 {
 		height: 100%;
 		font-size: 7rem;
-
+		text-shadow: 7px 7px blue;
 		${mobileTitle} {
 			font-size: 4rem;
 		}

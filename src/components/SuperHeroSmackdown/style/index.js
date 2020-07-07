@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+import wallpaper from '../img/wp.jpg';
+
+let wallPaperSettings = `
+background-image: url(${wallpaper});
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+background-attachment: fixed;`;
+
 export const SuperHeroMainDiv = styled.div`
 	* {
 		margin: 0;
@@ -8,7 +18,8 @@ export const SuperHeroMainDiv = styled.div`
 		@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 		font-family: 'Bangers', cursive;
 	}
-
+	
+	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
 
@@ -16,6 +27,7 @@ export const SuperHeroMainDiv = styled.div`
 		display: flex;
 		flex-direction: column;
 		background: white;
+		${wallPaperSettings}
 		height: 100vh;
 		width: 100%;
 
@@ -56,24 +68,20 @@ export const SuperHeroMainDiv = styled.div`
 		background-color: #eee;
 	}
 	.search {
-		grid-area: search;
 		height: 100%;
 		width: 100%;
 	}
 
 	.heroA {
-		grid-area: heroA;
 		height: 100%;
 		width: 100%;
 	}
 
 	.heroB {
-		grid-area: heroB;
 		height: 100%;
 		width: 100%;
 	}
 
 	.gap-bottom {
-		grid-area: gap-bottom;
 	}
 `;

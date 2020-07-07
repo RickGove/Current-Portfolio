@@ -20,7 +20,9 @@ export const SearchDiv = styled.div`
 	max-height: 550px;
 	text-align: center;
 	height: 100%;
-
+	width: 100%;
+	max-width: 100%;
+	max-height: 100%; /* overflow-y: hidden; */
 	${mobile} {
 		flex-direction: column;
 		height: 100%;
@@ -63,8 +65,15 @@ export const SearchDiv = styled.div`
 	}
 
 	.hidden-icon {
-		font-size: 1rem;
+		transform: scale(10);
 		opacity: 0;
+		transition: 1500ms;
+	}
+
+	.shown-icon {
+		transform: scale(1);
+		font-size: 1rem;
+		opacity: 1;
 		transition: 1500ms;
 	}
 
@@ -114,9 +123,14 @@ export const SearchDiv = styled.div`
 		background: red;
 	}
 
-	.battlingA {
-		transform: translateX(1rem) scale(1.2);
+	.battlingA,
+	.battlingB {
+		overflow: hidden;
 		transition: 1s;
+	}
+
+	.battlingA {
+		transform: translateX(1rem) scale(1.2) translateY(-2rem);
 
 		${mobile} {
 			transform: translateY(3rem) scale(1.05);
@@ -124,8 +138,7 @@ export const SearchDiv = styled.div`
 	}
 
 	.battlingB {
-		transform: translateX(-1rem) scale(1.2);
-		transition: 1s;
+		transform: translateX(-4rem) scale(1.2) translateY(-2rem);
 
 		${mobile} {
 			transform: translateY(-3rem) scale(1.05);
@@ -140,7 +153,7 @@ export const SearchDiv = styled.div`
 	.stats-hidden {
 		position: absolute;
 		text-align: left;
-		top: 2.6rem;
+		top: 2rem;
 		left: 3.8rem;
 		display: none;
 	}
@@ -182,6 +195,8 @@ export const SearchDiv = styled.div`
 	}
 
 	#vs {
+		width: 25%;
+		max-height: 36%;
 		display: flex;
 		justify-content: space-between;
 		margin-top: 5rem;
@@ -193,6 +208,8 @@ export const SearchDiv = styled.div`
 		overflow: visible;
 		background-position: center;
 		${mobile} {
+			margin: 0;
+			width: 100%;
 			flex-direction: row;
 			justify-content: center;
 			height: 10%;
@@ -225,6 +242,9 @@ export const SearchDiv = styled.div`
 	}
 
 	.reset-button {
+		position: relative;
+		top: 100%;
+		left: 0;
 		cursor: pointer;
 		display: block;
 		z-index: 50000;
@@ -236,10 +256,14 @@ export const SearchDiv = styled.div`
 
 		&:hover {
 			opacity: 0.8;
-			transform: scale(1.4);
+			transform: scale(1.2);
 		}
 
 		${mobile} {
+			position: absolute;
+			top: 17%;
+			left: 31%;
+			height: 6%;
 			padding: 0;
 			width: 33%;
 			background: black;
@@ -345,7 +369,7 @@ export const Button = styled.button`
 	}
 	@media (hover: hover) {
 		&:hover {
-		transform: scale(1.5);
+		transform: scale(1.2);
 		transition: 300ms;
 	}
 	/* &:hover .hero-img {
