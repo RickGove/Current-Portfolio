@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // import { newSearchLocation } from '../../../actions';
 
-import { SearchDiv, Button } from './style/';
+import { SearchDiv, Button, MatchReport } from './style/';
 
 import HeroInfo from '../HeroInfo/';
 import Loading from '../Loading';
@@ -649,6 +649,9 @@ function Search() {
 			},
 		};
 	// refs
+	const vsRef = useRef(null);
+	const reportWrap = useRef(null);
+	const newMatch = useRef(null);
 	const winnerImg = useRef(null);
 	const matchReportRef = useRef(null);
 	const inputA = useRef(null);
@@ -696,8 +699,8 @@ function Search() {
 	// const dispatch = useDispatch();
 
 	// sounds
-	let woosh = new Audio('../sound/woosh.mp3');
-	woosh.type = 'audio/mp3';
+	// let woosh = new Audio('../sound/woosh.mp3');
+	// woosh.type = 'audio/mp3';
 
 	useEffect(() => {});
 
@@ -1468,7 +1471,8 @@ function Search() {
 
 		// set time between skills
 		// const interval = 1700;
-		const interval = 900;
+		// const interval = 900;
+		const interval = 500;
 
 		// fade image
 		window.setTimeout(() => {
@@ -1505,9 +1509,9 @@ function Search() {
 		window.setTimeout(() => {
 			// set previous winner
 			if (intelWinVar === 'A') {
+				// woosh.play();
 				intelA.current.style.color = 'white';
 				intelB.current.style.color = 'grey';
-				woosh.play();
 				intelIconA.current.classList.add('shown-icon');
 				intelIconA.current.classList.remove('hidden-icon');
 			} else if (intelWinVar === 'B') {
@@ -1635,15 +1639,20 @@ function Search() {
 
 		// show report and hide cards
 		window.setTimeout(() => {
+			vsRef.current.style.display = 'none';
 			cardA.current.style.display = 'none';
 			cardB.current.style.display = 'none';
-
+			reportWrap.current.style.display = 'flex';
 			report.current.style.display = 'unset';
-			report.current.style.opacity = 1;
+			window.setTimeout(() => {
+				report.current.classList.remove('match-report-hidden');
+				report.current.classList.add('match-report-main');
+			}, 200);
 		}, interval * 31);
 
 		window.setTimeout(() => {
-			resetBtn.current.classList.remove('hidden');
+			newMatch.current.classList.remove('hidden');
+			newMatch.current.classList.add('reset-from-report-btn');
 		}, interval * 35);
 	}
 
@@ -2132,6 +2141,131 @@ function Search() {
 		}
 	}
 
+	function resetFromReport() {
+		// window.location.reload(false);
+		if (inputA.current !== null) inputA.current.value = '';
+		if (inputB.current !== null) inputB.current.value = '';
+		//end of input clearing
+		setSearchDone(false);
+		setCanSearch(true);
+		setFighterA('none');
+		setFighterB('none');
+		setReady(false);
+		setSearchResults(); //name, image, id, powerstats
+		setSearchResultsB(); //name, image, id, powerstats
+		setTotalButtons([]);
+		setTotalButtonsB([]);
+		setSuggestions([]);
+		setSuggestionsB([]);
+		setHighlighted();
+		setHighlightedB();
+		setFighterAUsableStats('');
+		setFighterBUsableStats('');
+		setIntelWin('');
+		setCombatWin('');
+		setDuraWin('');
+		setStrengthWin('');
+		setPowerWin('');
+		setSpeedWin('');
+		setAWins(0);
+		setBWins(0);
+		setAFullInfo('');
+		setBFullInfo('');
+		setChamp(null);
+		// end of state
+		champVar = '';
+		intelWinVar = '';
+		combatWinVar = '';
+		duraWinVar = '';
+		strengthWinVar = '';
+		powerWinVar = '';
+		speedWinVar = '';
+		fighterAUsableStatsVar = '';
+		fighterBUsableStatsVar = '';
+		fullDataA = '';
+		fullDataB = '';
+		bCount = 0;
+		aCount = 0;
+		matchReport = 'init';
+		// end of global vars
+
+		vsRef.current.style.display = 'flex';
+		// end ofvs
+
+		readyBtn.current.classList.add('hidden');
+		resetBtn.current.classList.remove('hidden');
+		// end of button setting
+
+		cardA.current.classList.remove('battlingA');
+		cardB.current.classList.remove('battlingB');
+		cardA.current.classList.add('search-a');
+		cardB.current.classList.add('search-b');
+		cardA.current.style.background = 'blue';
+		cardA.current.style.display = 'block';
+		cardB.current.style.display = 'block';
+		// end of cards
+
+		if (imgA.current !== null) imgA.current.classList.remove('fade');
+		if (imgB.current !== null) imgB.current.classList.remove('fade');
+		if (imgA.current !== null) imgA.current.classList.add('fighter-b-img');
+		if (imgB.current !== null) imgB.current.classList.add('fighter-b-img');
+		// end of image fade
+
+		if (statsA.current !== null) statsA.current.classList.add('stats-hidden');
+		if (statsB.current !== null) statsB.current.classList.add('stats-hidden');
+		// end of the stats boxes
+
+		//A icons
+		if (intelIconA.current !== null) {
+			intelIconA.current.classList.add('hidden-icon');
+			strengthIconA.current.classList.add('hidden-icon');
+			speedIconA.current.classList.add('hidden-icon');
+			duraIconA.current.classList.add('hidden-icon');
+			powerIconA.current.classList.add('hidden-icon');
+			combatIconA.current.classList.add('hidden-icon');
+			// B icons
+			intelIconB.current.classList.add('hidden-icon');
+			strengthIconB.current.classList.add('hidden-icon');
+			speedIconB.current.classList.add('hidden-icon');
+			duraIconB.current.classList.add('hidden-icon');
+			powerIconB.current.classList.add('hidden-icon');
+			combatIconB.current.classList.add('hidden-icon');
+		}
+		// end of icons
+
+		// grids of icons
+		statsA.current.classList.add('stats-hidden');
+		statsB.current.classList.add('stats-hidden');
+		statsA.current.style = 'display: none';
+		statsB.current.style = 'display: none';
+
+		// A stats
+		if (intelA.current !== null) {
+			intelA.current.style.display = 'none';
+			strengthA.current.style.display = 'none';
+			speedA.current.style.display = 'none';
+			duraA.current.style.display = 'none';
+			powerA.current.style.display = 'none';
+			combatA.current.style.display = 'none';
+			// B stats
+			intelB.current.style.display = 'none';
+			strengthB.current.style.display = 'none';
+			speedB.current.style.display = 'none';
+			duraB.current.style.display = 'none';
+			powerB.current.style.display = 'none';
+			combatB.current.style.display = 'none';
+		}
+		// end of stats
+
+		if (report.current !== null) {
+			report.current.classList.remove('match-report-main');
+			report.current.classList.add('match-report-hidden');
+			report.current.style.display = 'none';
+			reportWrap.current.style.display = 'none';
+		}
+		//end of report
+	}
+
 	function reset() {
 		// window.location.reload(false);
 		if (inputA.current !== null) inputA.current.value = '';
@@ -2184,68 +2318,6 @@ function Search() {
 		readyBtn.current.classList.add('hidden');
 		resetBtn.current.classList.remove('hidden');
 		// of button setting
-
-		cardA.current.classList.remove('battlingA');
-		cardB.current.classList.remove('battlingB');
-		cardA.current.classList.add('search-a');
-		cardA.current.style.background = 'blue';
-		cardA.current.classList.add('search-b');
-		cardA.current.style.display = 'block';
-		cardA.current.style.display = 'block';
-
-		// end of cards
-
-		if (imgA.current !== null) imgA.current.classList.remove('fade');
-		if (imgB.current !== null) imgB.current.classList.remove('fade');
-		if (imgA.current !== null) imgA.current.classList.add('fighter-b-img');
-		if (imgB.current !== null) imgB.current.classList.add('fighter-b-img');
-
-		// end of image fade
-
-		if (statsA.current !== null) statsA.current.classList.add('stats-hidden');
-		if (statsB.current !== null) statsB.current.classList.add('stats-hidden');
-
-		// end of the stats boxes
-
-		//A icons
-		if (intelIconA.current !== null) {
-			intelIconA.current.classList.add('hidden-icon');
-			strengthIconA.current.classList.add('hidden-icon');
-			strengthIconA.current.classList.add('hidden-icon');
-			strengthIconA.current.classList.add('hidden-icon');
-			strengthIconA.current.classList.add('hidden-icon');
-			combatIconA.current.classList.add('hidden-icon');
-			// B icons
-			intelIconB.current.classList.add('hidden-icon');
-			strengthIconB.current.classList.add('hidden-icon');
-			strengthIconB.current.classList.add('hidden-icon');
-			strengthIconB.current.classList.add('hidden-icon');
-			strengthIconB.current.classList.add('hidden-icon');
-			combatIconB.current.classList.add('hidden-icon');
-		}
-		// end of icons
-
-		// A stats
-		if (intelA.current !== null) {
-			intelA.current.style.display = 'none';
-			strengthA.current.style.display = 'none';
-			strengthA.current.style.display = 'none';
-			strengthA.current.style.display = 'none';
-			strengthA.current.style.display = 'none';
-			combatA.current.style.display = 'none';
-			// B stats
-			intelB.current.style.display = 'none';
-			strengthB.current.style.display = 'none';
-			strengthB.current.style.display = 'none';
-			strengthB.current.style.display = 'none';
-			strengthB.current.style.display = 'none';
-			combatB.current.style.display = 'none';
-		}
-		// end of stats
-
-		if (report.current !== null) report.current.classList.add('report');
-
-		// report doesn't go away, stats still show
 	}
 
 	function renderWinnerImg() {
@@ -2259,8 +2331,21 @@ function Search() {
 			return `BATTLE IS A DRAW!`;
 		}
 	}
+
 	return (
 		<React.Fragment>
+			<MatchReport ref={reportWrap}>
+				<div className="match-report-hidden" ref={report}>
+					<h1>{renderChamp()}</h1>
+					{renderWinnerImg()}
+					<p className="match-report" ref={matchReportRef}>
+						hello world
+					</p>
+					<button ref={newMatch} className="hidden" onClick={resetFromReport}>
+						New Battle
+					</button>
+				</div>
+			</MatchReport>
 			<SearchDiv>
 				<div className="search-a" ref={cardA}>
 					{renderSearchA()}
@@ -2270,14 +2355,7 @@ function Search() {
 						<Loading />
 					</div>
 				</div>
-				<div id="vs">
-					<div ref={report} className="report">
-						<h1>{renderChamp()}</h1>
-						{renderWinnerImg()}
-						<p className="match-report" ref={matchReportRef}>
-							hello world
-						</p>
-					</div>
+				<div ref={vsRef} id="vs">
 					<button
 						ref={readyBtn}
 						className={ready ? 'begin-button' : 'hidden'}

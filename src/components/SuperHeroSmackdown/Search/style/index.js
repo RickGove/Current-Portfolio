@@ -85,22 +85,6 @@ export const SearchDiv = styled.div`
 		opacity: 0;
 	}
 
-	.report {
-		background: white;
-		box-shadow: 10px 10px 10px 10px #aaaaaa;
-		z-index: 500;
-		padding: 1.3rem;
-		opacity: 0;
-		display: none;
-		transition: 2s;
-
-		${mobile} {
-			position: relative;
-			width: 90%;
-			height: 600%;
-			top: -200px;
-		}
-	}
 	.search-a,
 	.search-b {
 		display: flex;
@@ -364,34 +348,19 @@ export const Button = styled.button`
 	z-index: 10;
 
 	${mobile} {
-	font-size: ${(props) => (props.length > 8 ? '0.9rem' : '1.1rem')};
-	line-height: 30px;
+		font-size: ${(props) => (props.length > 8 ? '0.9rem' : '1.1rem')};
+		line-height: 30px;
 	}
 	@media (hover: hover) {
 		&:hover {
-		transform: scale(1.2);
-		transition: 300ms;
+			transform: scale(1.2);
+			transition: 300ms;
+		}
 	}
-	/* &:hover .hero-img {
-		position: fixed;
-		transition: ${imageTrans};
-		transform: ${(props) =>
-			props.float === 'right'
-				? 'scale(2) translateX(6rem)'
-				: 'scale(2) translateX(-3rem)'};
-	} */
-	}
-	
-	}
-
-	.highlighted {
-		transform: scale(2);
-		transition: 300ms;
-	}
-
 
 	.hero-img {
 		/* z-index: 10000; */
+		align-self: center;
 		height: ${heroHeight};
 		width: ${heroHeight};
 		border-radius: 2rem;
@@ -400,13 +369,95 @@ export const Button = styled.button`
 		transition: ${imageTrans};
 		transform: scale(1) translateX(0);
 
-		${mobile}{
-		height: ${heroHeightMobile};
-		width: ${heroHeightMobile};
-		
-
+		${mobile} {
+			height: ${heroHeightMobile};
+			width: ${heroHeightMobile};
 		}
+	}
+
+	.highlighted {
+		transform: scale(2);
+		transition: 300ms;
 	}
 `;
 
 Button.defaultProps = { float: 'right' };
+
+export const MatchReport = styled.div`
+	text-align: center;
+	width: 100%;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+	display: none;
+
+	.match-report-main {
+		background: white;
+		display: flex;
+		align-self: center;
+		flex-direction: column;
+		box-shadow: 10px 10px 10px 10px #aaaaaa;
+		z-index: 500;
+		padding: 1.3rem;
+		height: auto;
+		width: 75vw;
+		height: 60vh;
+		text-align: center;
+		opacity: 1;
+		transition: 2s;
+
+		${mobile} {
+			width: 90%;
+			height: 600%;
+		}
+	}
+
+	.match-report-hidden {
+		opacity: 0;
+	}
+
+	.hero-img {
+		/* z-index: 10000; */
+		margin: auto;
+		align-self: center;
+		height: 9rem;
+		width: 9rem;
+		border-radius: 2rem;
+		float: ${(props) => props.float};
+		vertical-align: middle;
+		transition: ${imageTrans};
+		transform: scale(1) translateX(0);
+	}
+
+	.hidden {
+		display: none;
+		opacity: 0;
+		transition: 2s;
+	}
+
+	.reset-from-report-btn {
+		cursor: pointer;
+		align-self: center;
+		padding: 1rem;
+		opacity: 1;
+
+		margin: auto;
+		transition: 400ms;
+		background: black;
+		color: red;
+		font-size: 1.4rem;
+
+		&:hover {
+			opacity: 0.8;
+			transform: scale(1.2);
+		}
+
+		${mobile} {
+			height: 6%;
+			padding: 0;
+			width: 33%;
+			font-size: 1rem;
+			margin: 0;
+		}
+	}
+`;
