@@ -41,7 +41,7 @@ export const DDownDiv = styled.div`
 		z-index: 1;
 		${media.desktop} {
 			top: 50px;
-			display: block;
+			display: none;
 			box-shadow: none;
 			background-color: transparent;
 		}
@@ -120,12 +120,7 @@ export const DDownDivAnchored = styled.div`
 		min-width: 100px;
 		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 		z-index: 1;
-		${media.desktop} {
-			top: 50px;
-			display: block;
-			box-shadow: none;
-			background-color: transparent;
-		}
+		
 	}
 
 	/* Links inside the dropdown */

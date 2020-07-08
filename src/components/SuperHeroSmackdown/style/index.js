@@ -16,8 +16,13 @@ export const SuperHeroMainDiv = styled.div`
 		padding: 0;
 		box-sizing: border-box;
 		/* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); */
-		@import url('../../../font/Bangers-Regular.ttf');
-		font-family: 'Bangers', cursive;
+		/* @import url('../../../font/Bangers-Regular.ttf');
+		font-family: 'Bangers', cursive; */
+		/* Possible solution use ./ for relative whatever IDK try it i guess */
+		/* @font-face {
+  font-family: 'Bangers';
+  src: local('Bangers'), url(./fonts/MyFont.woff) format('woff'); */
+}
 	}
 	
 	overflow: hidden;

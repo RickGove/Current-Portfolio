@@ -83,7 +83,7 @@ export const HeadCon = styled.div`
 		vertical-align: middle;
 
 		&:hover {
-			opacity: 0;
+			opacity: 0.4;
 		}
 
 		@media (max-width: 760px) {
