@@ -695,6 +695,10 @@ function Search() {
 
 	// const dispatch = useDispatch();
 
+	// sounds
+	let woosh = new Audio('../sound/woosh.mp3');
+	woosh.type = 'audio/mp3';
+
 	useEffect(() => {});
 
 	const venomPic = `https://www.superherodb.com/pictures2/portraits/10/100/1042.jpg`;
@@ -1503,7 +1507,7 @@ function Search() {
 			if (intelWinVar === 'A') {
 				intelA.current.style.color = 'white';
 				intelB.current.style.color = 'grey';
-
+				woosh.play();
 				intelIconA.current.classList.add('shown-icon');
 				intelIconA.current.classList.remove('hidden-icon');
 			} else if (intelWinVar === 'B') {
