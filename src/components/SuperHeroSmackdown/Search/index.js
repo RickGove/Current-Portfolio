@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-// import { newSearchLocation } from '../../../actions';
+import axios from 'axios';
 
 import { SearchDiv, Button, MatchReport } from './style/';
 
 import HeroInfo from '../HeroInfo/';
 import Loading from '../Loading';
 
-import rickImg from '../../../img/RBG.jpg';
+import rickImg from '../../../img/superIcon.png';
 
 function Search() {
+	// history
+	const history = useHistory();
 	// // state
 	const [valueA, setValueA] = useState('Search For Hero A');
 	const [valueB, setValueB] = useState('Search For Hero B');
@@ -1361,7 +1362,7 @@ function Search() {
 			if (LhairColor === '-') {
 				LhairColor = '';
 			} else if ((LhairColor = 'no hair')) {
-				LhairColor = 'bald-headed';
+				LhairColor = '';
 			} else {
 				LhairColor = `${LhairColor}-haired`;
 			}
@@ -1418,6 +1419,7 @@ function Search() {
 		} else {
 			matchReport = `In a battle that drew to a stalemate, a tie was had between ${champName} and ${loserName}.`;
 		}
+		matchReportRef.current.style.fontsize = '1.3rem;';
 		matchReportRef.current.innerText = matchReport;
 		if (champVar === 'A') {
 			winnerImg.current.src = fighterA[1];
@@ -1472,7 +1474,7 @@ function Search() {
 		// set time between skills
 		// const interval = 1700;
 		// const interval = 900;
-		const interval = 500;
+		const interval = 800;
 
 		// fade image
 		window.setTimeout(() => {
@@ -1643,17 +1645,14 @@ function Search() {
 			cardA.current.style.display = 'none';
 			cardB.current.style.display = 'none';
 			reportWrap.current.style.display = 'flex';
-			report.current.style.display = 'unset';
+			report.current.style.display = 'flex';
 			window.setTimeout(() => {
 				report.current.classList.remove('match-report-hidden');
 				report.current.classList.add('match-report-main');
+				newMatch.current.classList.remove('hidden');
+				newMatch.current.classList.add('reset-from-report-btn');
 			}, 200);
 		}, interval * 31);
-
-		window.setTimeout(() => {
-			newMatch.current.classList.remove('hidden');
-			newMatch.current.classList.add('reset-from-report-btn');
-		}, interval * 35);
 	}
 
 	function resultsMap() {
@@ -1951,6 +1950,7 @@ function Search() {
 			return (
 				<React.Fragment>
 					<p
+						className="ind-stat"
 						className={
 							intelWinVar === 'A' || intelWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -1958,6 +1958,7 @@ function Search() {
 						Intelligence: {fighterAUsableStats.intelligence}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							strengthWinVar === 'A' || strengthWin === 'tie'
 								? 'winner'
@@ -1967,6 +1968,7 @@ function Search() {
 						Strength: {fighterAUsableStats.strength}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							speedWinVar === 'A' || speedWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -1974,6 +1976,7 @@ function Search() {
 						Speed: {fighterAUsableStats.speed}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							duraWinVar === 'A' || duraWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -1981,6 +1984,7 @@ function Search() {
 						Durability: {fighterAUsableStats.durability}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							powerWinVar === 'A' || powerWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -1988,6 +1992,7 @@ function Search() {
 						Power: {fighterAUsableStats.power}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							combatWinVar === 'A' || combatWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2004,6 +2009,7 @@ function Search() {
 			return (
 				<React.Fragment>
 					<p
+						className="ind-stat"
 						className={
 							intelWin === 'B' || intelWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2011,6 +2017,7 @@ function Search() {
 						Intelligence: {fighterBUsableStats.intelligence}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							strengthWin === 'B' || strengthWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2018,6 +2025,7 @@ function Search() {
 						Strength: {fighterBUsableStats.strength}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							speedWin === 'B' || speedWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2025,6 +2033,7 @@ function Search() {
 						Speed: {fighterBUsableStats.speed}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							duraWin === 'B' || duraWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2032,6 +2041,7 @@ function Search() {
 						Durability: {fighterBUsableStats.durability}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							powerWin === 'B' || powerWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2039,6 +2049,7 @@ function Search() {
 						Power : {fighterBUsableStats.power}
 					</p>
 					<p
+						className="ind-stat"
 						className={
 							combatWin === 'B' || combatWin === 'tie' ? 'winner' : 'loser'
 						}
@@ -2140,8 +2151,10 @@ function Search() {
 		} else {
 		}
 	}
-
 	function resetFromReport() {
+		history.push('Reset');
+	}
+	function resetFrodmReport() {
 		// window.location.reload(false);
 		if (inputA.current !== null) inputA.current.value = '';
 		if (inputB.current !== null) inputB.current.value = '';
@@ -2341,6 +2354,7 @@ function Search() {
 					<p className="match-report" ref={matchReportRef}>
 						hello world
 					</p>
+
 					<button ref={newMatch} className="hidden" onClick={resetFromReport}>
 						New Battle
 					</button>

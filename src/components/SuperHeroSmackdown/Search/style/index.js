@@ -36,19 +36,15 @@ export const SearchDiv = styled.div`
 		display: none;
 	}
 
+	.ind-stat {
+		font-size: 2rem;
+	}
+
 	#title {
 		font-size: 2rem;
 		${mobile} {
 			font-size: 1.4rem;
 		}
-	}
-
-	.winner {
-		color: black;
-		font-size: 1.3rem;
-		transition: 2000ms;
-		transform: scale(5000);
-		opacity: 0;
 	}
 
 	.hero-img {
@@ -80,9 +76,25 @@ export const SearchDiv = styled.div`
 	.loser {
 		transform: scale(5000);
 		color: black;
-		font-size: 1.2rem;
+		font-size: 1.6rem;
 		transition: 2000ms;
 		opacity: 0;
+
+		${mobile} {
+			font-size: 1.2rem;
+		}
+	}
+
+	.winner {
+		color: black;
+		font-size: 1.7rem;
+		transition: 2000ms;
+		transform: scale(5000);
+		opacity: 0;
+
+		${mobile} {
+			font-size: 1.3rem;
+		}
 	}
 
 	.search-a,
@@ -244,10 +256,9 @@ export const SearchDiv = styled.div`
 		}
 
 		${mobile} {
-			position: absolute;
 			top: 17%;
 			left: 31%;
-			height: 6%;
+			height: 3rem;
 			padding: 0;
 			width: 33%;
 			background: black;
@@ -257,7 +268,7 @@ export const SearchDiv = styled.div`
 		}
 	}
 	.match-report {
-		padding-top: 0.2rem;
+		font-size: 1.1rem;
 	}
 	.inputBar {
 		/* input */
@@ -391,6 +402,14 @@ export const MatchReport = styled.div`
 	justify-content: center;
 	display: none;
 
+	.match-report {
+		font-size: 1.6rem;
+
+		${mobile} {
+			font-size: 1rem;
+		}
+	}
+
 	.match-report-main {
 		background: white;
 		display: flex;
@@ -401,7 +420,7 @@ export const MatchReport = styled.div`
 		padding: 1.3rem;
 		height: auto;
 		width: 75vw;
-		height: 60vh;
+		height: auto;
 		text-align: center;
 		opacity: 1;
 		transition: 2s;

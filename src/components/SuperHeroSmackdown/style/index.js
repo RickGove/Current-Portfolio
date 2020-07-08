@@ -23,6 +23,20 @@ export const SuperHeroMainDiv = styled.div`
 	width: 100vw;
 	height: 100vh;
 
+	.hide-search{
+		opacity: 0;
+		transform: scale(0);
+		transition: 1s
+	}
+
+	.show-search{
+		opacity: 1;
+		transform: scale(1);
+		transition: 1s
+	}
+
+
+
 	.grid-div {
 		display: flex;
 		flex-direction: column;
