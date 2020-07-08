@@ -19,7 +19,6 @@ function Weather() {
 	if (hide) {
 		return (
 			<React.Fragment>
-				<Cookies />
 				<GlobalStyle />
 				<HeaderDeterminerW />
 				<Wallpaper />

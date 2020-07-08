@@ -15,7 +15,8 @@ export const SuperHeroMainDiv = styled.div`
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
-		@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+		/* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); */
+		@import url('../../../font/Bangers-Regular.ttf');
 		font-family: 'Bangers', cursive;
 	}
 	

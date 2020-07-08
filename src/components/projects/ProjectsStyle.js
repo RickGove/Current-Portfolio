@@ -45,6 +45,20 @@ export const ProjectsTitleCon = styled.div`
 	& :hover {
 		opacity: 0.3;
 	}
+
+	.gif {
+		height: 140px;
+		padding-top: 1rem;
+		transition: 1s;
+		vertical-align: middle;
+		padding-left: 0.3rem;
+
+		&:hover {
+			transform: scale(3) translateX(60px);
+			opacity: 1;
+			transition: 1s;
+		}
+	}
 `;
 
 export const ProjectsTitle = styled.h1`

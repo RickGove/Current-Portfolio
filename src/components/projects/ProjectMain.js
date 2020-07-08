@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
 	AlternatingColorCon,
 	ProjectsToolsImg,
@@ -9,9 +10,12 @@ import {
 	ProjectsTitleCon,
 	ToolsUsedImg,
 } from './ProjectsStyle';
+
 import { ShowH1 } from '../about/AboutStyle';
 import { projects } from '../data/Data'; //name, description, tools
+
 import toolsUsed from '../../img/logo_toolsUsed.png';
+import weatherGif from '../../img/weather.gif';
 
 class ProjectMain extends React.Component {
 	constructor(props) {
@@ -53,6 +57,10 @@ class ProjectMain extends React.Component {
 			return <p>{pro.description[i]}</p>;
 		});
 	}
+
+	renderGif(im) {
+		if (im !== 'none') return <img src={im} className="gif" />;
+	}
 	renderProjects = () => {
 		return projects.map((pro, i) => {
 			let random = Math.random();
@@ -63,6 +71,7 @@ class ProjectMain extends React.Component {
 						<a href={pro.link} style={{ textDecoration: 'none' }}>
 							<ProjectsTitleCon id={pro.name}>
 								<ShowH1 col={this.renderFontColor(i)}>{pro.name}</ShowH1>
+								{this.renderGif(pro.image)}
 							</ProjectsTitleCon>
 						</a>
 

@@ -7,7 +7,7 @@ function Title() {
 
 	useEffect(() => {
 		window.setTimeout(() => {
-			titleDiv.current.classList.add('grow');
+			if (titleDiv.current !== null) titleDiv.current.classList.add('grow');
 		}, 1200);
 	});
 

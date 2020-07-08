@@ -1025,68 +1025,68 @@ function Search() {
 			const site = `${cors}https://superheroapi.com/api/${key}/search/${s}`;
 			// const site = `https://superheroapi.com/api/${key}/search/${s}`;
 			const results = [];
-			let name = s.toLowerCase();
-			let rick = addRick(name);
-			console.log(site);
-			if (rick) {
-				let arr = ['Rick Gove', 'x', '6666666', 'GOD'];
-				results.push(arr);
-			}
-			// axios
-			// 	.get(site)
-			// 	.then((response) => {
-			///********************************** */
-			let response = fakeSearch;
-			////******************************** */
-			hideSpinner();
-			if (response.data.response != 'error') {
-				setCanSearch(true);
-				response.data.results.map((a, b) => {
-					let arr = [a.name, a.image.url, a.id, a.powerstats];
-					results.push(arr);
-				});
-				setSearchDone(true);
-				if (aOrB === 'A') {
-					setSearchResults(results);
-				} else {
-					setSearchResultsB(results);
-				}
-				window.setTimeout(() => {
-					setCanSearch(true);
-				}, 500);
-			} else {
-				if (results[0][0] === 'Rick Gove') {
-					if (aOrB === 'A') {
-						setSearchResults(results);
-					} else {
-						setSearchResultsB(results);
-					}
-
-					window.setTimeout(() => {
+			// let name = s.toLowerCase();
+			// let rick = addRick(name);
+			// console.log(site);
+			// if (rick) {
+			// 	let arr = ['Rick Gove', 'x', '6666666', 'GOD'];
+			// 	results.push(arr);
+			// }
+			axios
+				.get(site)
+				.then((response) => {
+					///********************************** */
+					// let response = fakeSearch;
+					////******************************** */
+					hideSpinner();
+					if (response.data.response != 'error') {
 						setCanSearch(true);
-					}, 500);
-				} else {
-					let arr = ['nothing', 0, 0, 0];
-					if (aOrB === 'A') {
-						setSearchResults(results);
+						response.data.results.map((a, b) => {
+							let arr = [a.name, a.image.url, a.id, a.powerstats];
+							results.push(arr);
+						});
+						setSearchDone(true);
+						if (aOrB === 'A') {
+							setSearchResults(results);
+						} else {
+							setSearchResultsB(results);
+						}
+						window.setTimeout(() => {
+							setCanSearch(true);
+						}, 500);
 					} else {
-						setSearchResultsB(results);
+						if (results[0][0] === 'Rick Gove') {
+							if (aOrB === 'A') {
+								setSearchResults(results);
+							} else {
+								setSearchResultsB(results);
+							}
+
+							window.setTimeout(() => {
+								setCanSearch(true);
+							}, 500);
+						} else {
+							let arr = ['nothing', 0, 0, 0];
+							if (aOrB === 'A') {
+								setSearchResults(results);
+							} else {
+								setSearchResultsB(results);
+							}
+							setCanSearch(true);
+						}
 					}
+				})
+				.catch((err) => {
+					hideSpinner();
+					alert('Error while searching: ' + err);
 					setCanSearch(true);
-				}
-			}
-			// })
-			// .catch((err) => {
-			// 	hideSpinner();
-			// 	alert('Error while searching: ' + err);
-			// 	setCanSearch(true);
-			// 	if (aOrB === 'A') {
-			// 		setSearchResults('');
-			// 	} else {
-			// 		setSearchResultsB('');
-			// 	}
-			// 	let arr = ['nothing', 0, 0, 0];
-			// });
+					if (aOrB === 'A') {
+						setSearchResults('');
+					} else {
+						setSearchResultsB('');
+					}
+					let arr = ['nothing', 0, 0, 0];
+				});
 		}
 	}
 
@@ -1433,31 +1433,32 @@ function Search() {
 		const cors = `https://cors-anywhere.herokuapp.com/`;
 		const site = `${cors}https://superheroapi.com/api/${key}/${id}`;
 		const siteB = `${cors}https://superheroapi.com/api/${key}/${idB}`;
-		console.log(site);
-		// axios
-		// 	.get(site)
-		// 	.then((responseA) => {
-		// *******************************
-		fullDataA = fakeData2;
-		// fullDataA = responseA;
-		// **************************************
-		// 		axios
-		// 			.get(siteB)
-		// 			.then((responseB) => {
-		// *******************************************
-		fullDataB = fakeData3;
 
-		// fullDataB = responseB;
-		//********************************* */
-		writeMatchReport();
-		// 			})
-		// 			.catch((err) => {
-		// 				alert('Error while searching: ' + err);
-		// 			});
-		// 	})
-		// 	.catch((err) => {
-		// 		alert('Error while searching: ' + err);
-		// 	});
+		console.log(site);
+		axios
+			.get(site)
+			.then((responseA) => {
+				// *******************************
+				// fullDataA = fakeData2;
+				fullDataA = responseA;
+				// **************************************
+				axios
+					.get(siteB)
+					.then((responseB) => {
+						// *******************************************
+						// fullDataB = fakeData3;
+
+						fullDataB = responseB;
+						//********************************* */
+						writeMatchReport();
+					})
+					.catch((err) => {
+						alert('Error while searching: ' + err);
+					});
+			})
+			.catch((err) => {
+				alert('Error while searching: ' + err);
+			});
 	}
 
 	function beginBattle() {

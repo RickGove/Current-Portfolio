@@ -12,6 +12,9 @@ import NPM from '../../img/logo_npm.png';
 import CONSTRUCT from '../../img/logo_construction.png';
 import GIT from '../../img/logo_git.png';
 import GITHUB from '../../img/logo_github.svg';
+import WEATHER from '../../img/weather.gif';
+import SUPER from '../../img/superherosmackdown.gif';
+
 // import LEET from '../'
 
 //
@@ -45,6 +48,7 @@ export const data = {
 export const projects = [
 	{
 		name: `Personal Website`,
+		image: 'none',
 		description: [
 			` The site you're currently on... A modern single page website with a goal of order, simplicity and user experience. Organized to ensure content and navigation stay on the same page and hoping to bring out a flawless and efficient user experience.`,
 			`Using cutting-edge CSS like flexbox and grid displays; React for modern HTML display; Styled-Components CSS for readable code, this page shows off what I have learned so far in React.`,
@@ -54,6 +58,7 @@ export const projects = [
 	},
 	{
 		name: `Gove's Weather`,
+		image: WEATHER,
 		description: [
 			`A weather site that's a cut above. Features a built-in image finder based on the search. `,
 			`
@@ -65,6 +70,7 @@ export const projects = [
 	},
 	{
 		name: `Super Hero Smackdown`,
+		image: SUPER,
 		description: [
 			`UNDER CONSTRUCTION: Have you ever wondered who would win in a battle between Superman and Captain Kirk? What about South Park's Captain Hindsight and Kick-Ass? Well, now you can with Super Hero Smackdown: Pit characters from the universes of DC, Marvel, Star Trek, Star Wars, Heros, and Kick-Ass, and many other characters against each other to see who would in a battle ...`,
 			`I read about the Super Hero API and I immediately wanted to make a project using it. I was very interested in manipulating DOM elements using JavaScript, React Refs and CSS animations, and I wanted to learn more about React reds. It also taught me about the useState hook.`,

@@ -181,6 +181,8 @@ export const Modal = styled.div`
 	}
 
 	.hide-modal {
+		height: 0;
+		width: 0;
 		transform: scale(0);
 		opacity: 0;
 		transition: 1s;

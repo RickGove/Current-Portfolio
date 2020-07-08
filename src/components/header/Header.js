@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { HeadCon } from './HeadStyle';
-// import {  Hamburger } from './HeadStyle';
+import { Hamburger } from './HeadStyle';
 
 import { sections } from '../data/Data';
 import logo from '../../img/logo.png';
 import weather from '../../img/weatherIconNew.png';
 import superHSD from '../../img/superIcon.png';
+import navigate from '../../img/navigate.png';
 
 function Header() {
 	function renderSections() {
@@ -14,19 +15,15 @@ function Header() {
 			let sect = section.toString();
 			if (i !== 0) {
 				return (
-					<li key={section}>
-						<p className="HeadLink" onClick={() => scrollToSection(sect)}>
-							{section}
-						</p>
-					</li>
+					<p className="head-link" onClick={() => scrollToSection(sect)}>
+						{section}
+					</p>
 				);
 			} else {
 				return (
-					<li key={section}>
-						<p className="HeadLink" key={section}>
-							{section}
-						</p>
-					</li>
+					<p className="head-link" key={section}>
+						{section}
+					</p>
 				);
 			}
 		});
@@ -50,42 +47,18 @@ function Header() {
 
 	return (
 		<HeadCon id="HeadCon">
-			<nav className="HeadNav">
-				<ul className="right-nav">
-					<li key="logo">
-						<img alt="logo" className="logo" src={logo} />
-					</li>
-					{renderSections()}
-				</ul>
-			</nav>
-			<nav className="projects-nav">
-				<ul>
-					{/* <li>
-						<Hamburger>
-							<div key="hamburger">
-								<div className="dropdown">
-									<img alt="menu" src={navigate} className="dropimg" />
-									<div className="dropdown-content">{renderSections()}</div>
-								</div>
-							</div>
-						</Hamburger>
-					</li> */}
-					<li key="weather" className="project">
-						<a className="project-icon-link" href="/#/weather">
-							<img alt="Gove Weather" className="project__icon" src={weather} />
-						</a>
-						<li>
-							<a className="project-icon-link" href="/#/SuperHeroSmackDown">
-								<img
-									alt="Super Hero Smack Down"
-									className="project__icon"
-									src={superHSD}
-								/>
-							</a>
-						</li>
-					</li>
-				</ul>
-			</nav>
+			<img alt="logo" className="logo" src={logo} />
+			{renderSections()}
+			<a className="first-right project-icon-link" href="/#/weather">
+				<img alt="Gove Weather" className="project__icon" src={weather} />
+			</a>
+			<a className="last-right project-icon-link" href="/#/SuperHeroSmackDown">
+				<img
+					alt="Super Hero Smack Down"
+					className="project__icon"
+					src={superHSD}
+				/>
+			</a>
 		</HeadCon>
 	);
 }
