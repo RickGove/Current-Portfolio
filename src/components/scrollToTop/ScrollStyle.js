@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const ScrollBtnDiv = styled.div`
 	border: 2px solid grey;
-	border-radius: 16px;
-	width: 12%;
+	border-radius: 35px 0 0 35px;
+	width: 9%;
 	height: auto;
 	cursor: pointer;
 	overflow: hidden;

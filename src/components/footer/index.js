@@ -13,7 +13,9 @@ function Footer() {
 			<div className="top__div">
 				<ul className="footer__top">
 					<li className="top__left">
-						<img alt="Rick Gove - Front End Engineer" src={logo} />
+						<a href="/#">
+							<img alt="Rick Gove - Front End Engineer" src={logo} />
+						</a>
 					</li>
 					<li className="top__right">
 						<img alt="Rick Gove" src={me} />

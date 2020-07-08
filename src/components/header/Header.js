@@ -2,8 +2,11 @@ import React from 'react';
 
 import { HeadCon } from './HeadStyle';
 import { Hamburger } from './HeadStyle';
+import { DDownDivAnchored } from '../DropDown/DropDownStyle';
 
 import { sections } from '../data/Data';
+
+import menu from '../../img/logo_menu.png';
 import logo from '../../img/logo.png';
 import weather from '../../img/weatherIconNew.png';
 import superHSD from '../../img/superIcon.png';
@@ -45,10 +48,30 @@ function Header() {
 		}, 1000);
 	}
 
+	function renderSectionsDrop() {
+		return sections.map(
+			(section) => {
+				let sect = section.toString();
+				return (
+					<a key={section} onClick={() => scrollToSection(sect)}>
+						{section}
+					</a>
+				);
+			}
+			// else statement here Deafult way{
+		);
+	}
+
 	return (
 		<HeadCon id="HeadCon">
 			<img alt="logo" className="logo" src={logo} />
 			{renderSections()}
+			<DDownDivAnchored>
+				<div className="dropdown">
+					<img alt="menu" src={menu} className="dropimg" />
+					<div className="dropdown-content">{renderSectionsDrop()}</div>
+				</div>
+			</DDownDivAnchored>
 			<a className="first-right project-icon-link" href="/#/weather">
 				<img alt="Gove Weather" className="project__icon" src={weather} />
 			</a>

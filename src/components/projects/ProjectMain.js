@@ -52,7 +52,6 @@ class ProjectMain extends React.Component {
 	}
 
 	renderProjectDesc(pro) {
-		console.log(pro);
 		return pro.description.map((item, i) => {
 			return <p>{pro.description[i]}</p>;
 		});

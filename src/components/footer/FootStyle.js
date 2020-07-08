@@ -18,7 +18,12 @@ export const FootCon = styled.div`
 		/* border: 3px solid red; */
 		margin: 5px 0;
 
+		a:hover {
+			opacity: 0.2;
+		}
+
 		img {
+			border-radius: 10px;
 			height: 30px;
 			@media (min-width: 500px) {
 				height: 60px;

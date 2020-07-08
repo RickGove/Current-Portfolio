@@ -72,12 +72,22 @@ export const projects = [
 		name: `Super Hero Smackdown`,
 		image: SUPER,
 		description: [
-			`UNDER CONSTRUCTION: Have you ever wondered who would win in a battle between Superman and Captain Kirk? What about South Park's Captain Hindsight and Kick-Ass? Well, now you can with Super Hero Smackdown: Pit characters from the universes of DC, Marvel, Star Trek, Star Wars, Heros, and Kick-Ass, and many other characters against each other to see who would in a battle ...`,
+			`Have you ever wondered who would win in a battle between Superman and Captain Kirk? What about South Park's Captain Hindsight and Kick-Ass? Well, now you can with Super Hero Smackdown: Pit characters from the universes of DC, Marvel, Star Trek, Star Wars, Heros, and Kick-Ass, and many other characters against each other to see who would in a battle ...`,
 			`I read about the Super Hero API and I immediately wanted to make a project using it. I was very interested in manipulating DOM elements using JavaScript, React Refs and CSS animations, and I wanted to learn more about React reds. It also taught me about the useState hook.`,
 			`So, this is the project I decided to build to create something fun and colourful using JavaScript timeouts, and CSS transitions, transformations, and keyframes.`,
 		],
-		tools: [CONSTRUCT, HTML, CSS, JS, logoREACT, STYLED, CONSTRUCT],
+		tools: [HTML, CSS, JS, logoREACT, STYLED],
 		link: [`#/SuperHeroSmackdown`],
+	},
+	{
+		name: `Unnamed Mad Libs Project`,
+		image: 'none',
+		description: [
+			`All websites deal with forms, and I wanted to make a site to get batter at dealing with them. I read about the MadLibs API, and, having used them while teaching English due to my fandom as a kid, I decided to make a simple project with the API. very under construction at the moment as I finish my JavaScript algortithms and advanced data structures course.`,
+			`COMING SOON`,
+		],
+		tools: [CONSTRUCT, CONSTRUCT, CONSTRUCT, CONSTRUCT],
+		link: 'none',
 	},
 ];
 
@@ -85,10 +95,11 @@ export const projects = [
 /////////////////////////////////
 /* 
   {
- 	name: ``,
- 	description: ``,
-	 tools: []
-	 link: []
+	 name: ``,
+	 image: 'none',
+ 	description: [``],
+	 tools: [],
+	 link: '',
    },
 */
 
