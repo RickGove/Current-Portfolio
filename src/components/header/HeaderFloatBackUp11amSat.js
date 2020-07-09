@@ -65,7 +65,6 @@ class Header extends React.Component {
 			///////////
 			// testing
 			//
-			console.log(act);
 			//
 			/////////
 
@@ -98,7 +97,6 @@ class Header extends React.Component {
 			});
 		}
 		setTimeout(() => {
-			console.log(s);
 			if (s === ' About') {
 				window.scrollBy(0, 500);
 			} else {

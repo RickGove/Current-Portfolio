@@ -1434,7 +1434,6 @@ function Search() {
 		const site = `${cors}https://superheroapi.com/api/${key}/${id}`;
 		const siteB = `${cors}https://superheroapi.com/api/${key}/${idB}`;
 
-		console.log(site);
 		axios
 			.get(site)
 			.then((responseA) => {
