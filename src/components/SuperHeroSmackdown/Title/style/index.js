@@ -5,7 +5,7 @@ const mobileTitle = `@media (max-width: 850px)`;
 
 export const TitleDiv = styled.div`
 	@import url('../../../../font');
-	font-family: 'Bangers', cursive;
+	font-family: 'Bangers', sans;
 	text-align: center;
 	color: red;
 	letter-spacing: 2px;

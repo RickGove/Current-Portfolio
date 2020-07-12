@@ -5,12 +5,10 @@ import { data } from './data/Data';
 export const GlobalStyle = createGlobalStyle`
 body {
     
-    // font-family: Arial, Helvetica, sans-serif;
-    // font-size:15px;
-    // line-height:1.5; // Space between lines 
-    // Can be shortened to:
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
+    line-height:1.5; 
     opacity: 0.95;
-    font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding:0;
     margin:0;
     background-color: ${data.styles.lightBg};

@@ -11,10 +11,11 @@ const heroHeight = `3rem`;
 const heroHeightMobile = `1.7rem`;
 
 const imageTrans = `800ms`;
-
 const mobile = '@media (max-width: 550px)';
 
 export const SearchDiv = styled.div`
+	@import url('../../../../font');
+	font-family: 'Bangers', sans;
 	display: flex;
 	flex-direction: row;
 	max-height: 550px;
