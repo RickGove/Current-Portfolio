@@ -11,47 +11,39 @@ background-size: cover;
 background-attachment: fixed;`;
 
 export const SuperHeroMainDiv = styled.div`
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		/* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); */
-		/* @import url('../../../font/Bangers-Regular.ttf');
-		font-family: 'Bangers', cursive; */
-		/* Possible solution use ./ for relative whatever IDK try it i guess */
-		/* @font-face {
-  font-family: 'Bangers';
-  src: local('Bangers'), url(./fonts/MyFont.woff) format('woff'); */
-}
-	}
-	
 	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
 
-	.hide-search{
+	* {
+		@import url('../../../../font');
+		font-family: 'Bangers', cursive;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.hide-search {
 		opacity: 0;
 		transform: scale(0);
-		transition: 1s
+		transition: 1s;
 	}
 
-	.show-search{
+	.show-search {
 		opacity: 1;
 		transform: scale(1);
-		transition: 1s
+		transition: 1s;
 	}
-
-
 
 	.grid-div {
 		display: flex;
 		flex-direction: column;
 		background: white;
-		${wallPaperSettings}
+		${wallPaperSettings};
 		height: 100vh;
 		width: 100%;
+	}
 
-		
 	.gap-top {
 	}
 
@@ -75,7 +67,7 @@ export const SuperHeroMainDiv = styled.div`
 
 	#myUL li a {
 		border: 1px solid #ddd;
-		margin-top: -1px; /* Prevent double borders */
+		margin-top: -1px;
 		background-color: #f6f6f6;
 		padding: 12px;
 		text-decoration: none;

@@ -27,7 +27,6 @@ export const DDownDiv = styled.div`
 		top: 25px;
 		display: inline-block;
 		/* border: 2px solid green; */
-		
 	}
 
 	/* Dropdown Content (Hidden by Default) */
@@ -56,19 +55,18 @@ export const DDownDiv = styled.div`
 		opacity: 0.8;
 		font-weight: bold;
 		cursor: pointer;
-		
-			&:hover {
-				opacity: 0.2;
-			}
+
+		&:hover {
+			opacity: 0.2;
 		}
 	}
 
 	.dropdown-content .active {
 		color: black;
 		cursor: pointer;
-        text-transform: uppercase;
-        text-decoration: underline;
-        font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: underline;
+		font-weight: bold;
 	}
 
 	/* Change color of dropdown links on hover */
@@ -86,7 +84,6 @@ export const DDownDiv = styled.div`
 	.dropdown:hover .dropimg {
 		opacity: 0.2;
 	}
-	
 `;
 
 export const DDownDivAnchored = styled.div`
@@ -109,18 +106,18 @@ export const DDownDivAnchored = styled.div`
 		top: 25px;
 		display: inline-block;
 		/* border: 2px solid green; */
-		
 	}
 
 	/* Dropdown Content (Hidden by Default) */
 	.dropdown-content {
 		display: none;
 		position: absolute;
+		top: 3.5rem;
+		left: 11rem;
+		box-shadow: 0px 0px 8px 1px #37b1fe;
 		background-color: #f9f9f9;
 		min-width: 100px;
-		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 		z-index: 1;
-		
 	}
 
 	/* Links inside the dropdown */
@@ -132,19 +129,18 @@ export const DDownDivAnchored = styled.div`
 		opacity: 0.8;
 		font-weight: bold;
 		cursor: pointer;
-		
-			&:hover {
-				opacity: 0.2;
-			}
+
+		&:hover {
+			opacity: 0.2;
 		}
 	}
 
 	.dropdown-content .active {
 		color: black;
 		cursor: pointer;
-        text-transform: uppercase;
-        text-decoration: underline;
-        font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: underline;
+		font-weight: bold;
 	}
 
 	/* Change color of dropdown links on hover */
@@ -162,5 +158,4 @@ export const DDownDivAnchored = styled.div`
 	.dropdown:hover .dropimg {
 		opacity: 0.2;
 	}
-	
 `;

@@ -4,7 +4,6 @@ const mobile = `@media (max-width: 850px)`;
 const mobileTitle = `@media (max-width: 850px)`;
 
 export const TitleDiv = styled.div`
-	/* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); */
 	@import url('../../../../font');
 	font-family: 'Bangers', cursive;
 	text-align: center;
