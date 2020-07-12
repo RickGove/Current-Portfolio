@@ -450,7 +450,8 @@ export const Button = styled.button`
 Button.defaultProps = { float: 'right' };
 
 export const MatchReport = styled.div`
-	font: inherit;
+	@import url('../../../../font');
+	font-family: 'Bangers', sans;
 	position: relative;
 	top: -7rem;
 	text-align: center;
@@ -478,7 +479,7 @@ export const MatchReport = styled.div`
 	.match-report-main {
 		font: inherit;
 		position: relative;
-		top: -1rem;
+		top: 4rem;
 		background: white;
 		display: flex;
 		align-self: center;
