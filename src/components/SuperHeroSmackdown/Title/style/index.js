@@ -4,6 +4,12 @@ const mobile = `@media (max-width: 850px)`;
 const mobileTitle = `@media (max-width: 850px)`;
 
 export const TitleDiv = styled.div`
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	text-align: center;
@@ -17,6 +23,7 @@ export const TitleDiv = styled.div`
 	}
 
 	h1 {
+		padding: 0;
 		height: 100%;
 		font-size: 7rem;
 		text-shadow: 7px 7px blue;

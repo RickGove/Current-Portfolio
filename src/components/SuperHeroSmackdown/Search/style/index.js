@@ -12,6 +12,7 @@ const heroHeightMobile = `1.7rem`;
 
 const imageTrans = `800ms`;
 const mobile = '@media (max-width: 550px)';
+const mobileTitle = `@media (max-width: 850px)`;
 
 export const SearchDiv = styled.div`
 	@import url('../../../../font');
@@ -29,19 +30,33 @@ export const SearchDiv = styled.div`
 		height: 100%;
 	}
 
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
 	.shown {
+		font: inherit;
+
 		display: block;
 	}
 
 	.hidden {
+		font: inherit;
+
 		display: none;
 	}
 
 	.ind-stat {
+		font: inherit;
+
 		font-size: 2rem;
 	}
 
 	#title {
+		font: inherit;
+
 		font-size: 2rem;
 		${mobile} {
 			font-size: 1.4rem;
@@ -75,6 +90,9 @@ export const SearchDiv = styled.div`
 	}
 
 	.loser {
+		font: inherit;
+		margin: 0;
+		padding: 0;
 		transform: scale(5000);
 		color: black;
 		font-size: 1.6rem;
@@ -87,6 +105,9 @@ export const SearchDiv = styled.div`
 	}
 
 	.winner {
+		font: inherit;
+		margin: 0;
+		padding: 0;
 		color: black;
 		font-size: 1.7rem;
 		transition: 2000ms;
@@ -100,6 +121,8 @@ export const SearchDiv = styled.div`
 
 	.search-a,
 	.search-b {
+		font: inherit;
+
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -122,6 +145,8 @@ export const SearchDiv = styled.div`
 
 	.battlingA,
 	.battlingB {
+		font: inherit;
+
 		overflow: hidden;
 		transition: 1s;
 	}
@@ -148,10 +173,12 @@ export const SearchDiv = styled.div`
 	}
 
 	.stats-hidden {
+		font: inherit;
+
 		position: absolute;
 		text-align: left;
 		top: 2rem;
-		left: 3.8rem;
+		left: 2.5rem;
 		display: none;
 	}
 
@@ -192,6 +219,8 @@ export const SearchDiv = styled.div`
 	}
 
 	#vs {
+		font: inherit;
+
 		width: 25%;
 		max-height: 36%;
 		display: flex;
@@ -215,6 +244,8 @@ export const SearchDiv = styled.div`
 	}
 
 	.begin-button {
+		font: inherit;
+
 		padding: 1rem;
 		font-size: 1.4rem;
 		cursor: pointer;
@@ -239,6 +270,8 @@ export const SearchDiv = styled.div`
 	}
 
 	.reset-button {
+		font: inherit;
+
 		position: relative;
 		top: 100%;
 		left: 0;
@@ -269,9 +302,13 @@ export const SearchDiv = styled.div`
 		}
 	}
 	.match-report {
+		font: inherit;
+
 		font-size: 1.1rem;
 	}
 	.inputBar {
+		font: inherit;
+
 		/* input */
 		width: ${width};
 		/* height: 75%; */
@@ -300,10 +337,14 @@ export const SearchDiv = styled.div`
 	}
 
 	#results-div {
+		font: inherit;
+
 		box-shadow: 0 0 0 2pt yellow;
 	}
 
 	.results {
+		font: inherit;
+
 		/* div */
 		border-radius: 0 0 8px 8px;
 		height: 0px;
@@ -317,6 +358,8 @@ export const SearchDiv = styled.div`
 	}
 
 	.results-shown {
+		font: inherit;
+
 		height: auto;
 		margin: auto;
 		width: ${width};
@@ -327,6 +370,8 @@ export const SearchDiv = styled.div`
 	}
 
 	#myUL {
+		font: inherit;
+
 		width: 100%;
 		background-color: grey;
 
@@ -345,6 +390,7 @@ export const SearchDiv = styled.div`
 `;
 
 export const Button = styled.button`
+	font: inherit;
 	vertical-align: middle;
 	width: 100%;
 	font: inherit;
@@ -358,6 +404,12 @@ export const Button = styled.button`
 	font-size: ${(props) => (props.length > 8 ? '1rem' : '1.5rem')};
 	text-align: center;
 	z-index: 10;
+
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
 
 	${mobile} {
 		font-size: ${(props) => (props.length > 8 ? '0.9rem' : '1.1rem')};
@@ -388,6 +440,8 @@ export const Button = styled.button`
 	}
 
 	.highlighted {
+		font: inherit;
+
 		transform: scale(2);
 		transition: 300ms;
 	}
@@ -396,6 +450,9 @@ export const Button = styled.button`
 Button.defaultProps = { float: 'right' };
 
 export const MatchReport = styled.div`
+	font: inherit;
+	position: relative;
+	top: -7rem;
 	text-align: center;
 	width: 100%;
 	height: auto;
@@ -403,15 +460,25 @@ export const MatchReport = styled.div`
 	justify-content: center;
 	display: none;
 
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
 	.match-report {
+		font: inherit;
 		font-size: 1.6rem;
 
-		${mobile} {
+		${mobileTitle} {
 			font-size: 1rem;
 		}
 	}
 
 	.match-report-main {
+		font: inherit;
+		position: relative;
+		top: -1rem;
 		background: white;
 		display: flex;
 		align-self: center;
@@ -430,6 +497,15 @@ export const MatchReport = styled.div`
 			width: 90%;
 			height: 600%;
 		}
+
+		${mobileTitle} {
+			top: 4rem;
+		}
+
+		@media (min-height: 460) {
+			/* font-size: 1.1rem; */
+			top: -3rem;
+		}
 	}
 
 	.match-report-hidden {
@@ -437,7 +513,6 @@ export const MatchReport = styled.div`
 	}
 
 	.hero-img {
-		/* z-index: 10000; */
 		margin: auto;
 		align-self: center;
 		height: 9rem;
@@ -456,6 +531,7 @@ export const MatchReport = styled.div`
 	}
 
 	.reset-from-report-btn {
+		font: inherit;
 		cursor: pointer;
 		align-self: center;
 		padding: 1rem;

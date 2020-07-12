@@ -404,6 +404,7 @@ function Search() {
 			window.setTimeout(() => {
 				// resultsDiv.current.classList.remove('results');
 				resultsDivB.current.classList.add('results-shown');
+				resultsDivB.current.classList.add('results');
 			}, 200);
 		}
 	}
@@ -415,8 +416,13 @@ function Search() {
 	function showResultsA() {
 		if (resultsDivA.current != undefined) {
 			resultsDivA.current.style = 'display: block;';
-			// resultsDivA.current.style = 'height: auto;';
+			resultsDivA.current.style = 'height: 0px;';
 			resultsDivA.current.style = 'box-shadow: 0 0 0 2pt yellow';
+			window.setTimeout(() => {
+				// resultsDiv.current.classList.remove('results');
+				resultsDivA.current.classList.add('results-shown');
+				resultsDivA.current.classList.add('results');
+			}, 200);
 		}
 	}
 
@@ -591,8 +597,37 @@ function Search() {
 						onBlur={hideResults}
 						placeholder={setPlaceHolder(1)}
 					/>
-					<div id="results-div" ref={resultsDivA} className="results-shown">
+					<div
+						id="results-div"
+						ref={resultsDivA}
+						className="results results-shown">
 						<ul>{resultsA()}</ul>
+					</div>
+				</div>
+			);
+		}
+	}
+
+	function renderSearchB() {
+		if (fighterB === 'none') {
+			return (
+				<div>
+					<input
+						id="searchB"
+						autoComplete="off"
+						className="inputBar"
+						type="text"
+						ref={inputB}
+						onKeyUp={handleChangeB}
+						onFocus={showResultsB}
+						onBlur={hideResultsB}
+						placeholder={setPlaceHolder(2)}
+					/>
+					<div
+						id="results-div"
+						ref={resultsDivB}
+						className="results results-shown">
+						{resultsB()}
 					</div>
 				</div>
 			);
@@ -891,7 +926,8 @@ function Search() {
 		cardB.current.classList.add('battlingB');
 
 		// set time between skills
-		const interval = 800;
+		// const interval = 2000;
+		const interval = 950;
 		// const interval = 100;
 
 		// fade image
@@ -1154,34 +1190,11 @@ function Search() {
 	}
 
 	function resultsA() {
-		return <ul id="myUL">{resultsMap()}</ul>;
+		return <li id="myUL">{resultsMap()}</li>;
 	}
 
 	function resultsB() {
-		return <ul id="myUL">{resultsMapB()}</ul>;
-	}
-
-	function renderSearchB() {
-		if (fighterB === 'none') {
-			return (
-				<div>
-					<input
-						id="searchB"
-						autoComplete="off"
-						className="inputBar"
-						type="text"
-						ref={inputB}
-						onKeyUp={handleChangeB}
-						onFocus={showResultsB}
-						onBlur={hideResultsB}
-						placeholder={setPlaceHolder(2)}
-					/>
-					<div id="results-div" ref={resultsDivB} className="results">
-						{resultsB()}
-					</div>
-				</div>
-			);
-		}
+		return <li id="myUL">{resultsMapB()}</li>;
 	}
 
 	function convertStrToIntAndRemoveNulls(obj) {
@@ -1450,24 +1463,48 @@ function Search() {
 	function makeGridA() {
 		return (
 			<div className="grid-icons">
-				<p ref={intelIconA} className="hidden-icon">
+				<span
+					role="img"
+					aria-label="intelligence"
+					ref={intelIconA}
+					className="hidden-icon">
 					🧠
-				</p>
-				<p ref={strengthIconA} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="strength"
+					ref={strengthIconA}
+					className="hidden-icon">
 					💪
-				</p>
-				<p ref={speedIconA} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="speed"
+					ref={speedIconA}
+					className="hidden-icon">
 					💨
-				</p>
-				<p ref={duraIconA} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="durability"
+					ref={duraIconA}
+					className="hidden-icon">
 					🔋
-				</p>
-				<p ref={powerIconA} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="power"
+					ref={powerIconA}
+					className="hidden-icon">
 					🦍
-				</p>
-				<p ref={combatIconA} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="combat"
+					ref={combatIconA}
+					className="hidden-icon">
 					⚔️
-				</p>
+				</span>
 			</div>
 		);
 	}
@@ -1475,24 +1512,48 @@ function Search() {
 	function makeGridB() {
 		return (
 			<div className="grid-icons">
-				<p ref={intelIconB} className="hidden-icon">
+				<span
+					role="img"
+					aria-label="intelligence"
+					ref={intelIconB}
+					className="hidden-icon">
 					🧠
-				</p>
-				<p ref={strengthIconB} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="strong"
+					ref={strengthIconB}
+					className="hidden-icon">
 					💪
-				</p>
-				<p ref={speedIconB} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="speed"
+					ref={speedIconB}
+					className="hidden-icon">
 					💨
-				</p>
-				<p ref={duraIconB} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="durability"
+					ref={duraIconB}
+					className="hidden-icon">
 					🔋
-				</p>
-				<p ref={powerIconB} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="power"
+					ref={powerIconB}
+					className="hidden-icon">
 					🦍
-				</p>
-				<p ref={combatIconB} className="hidden-icon">
+				</span>
+				<span
+					role="img"
+					aria-label="combat"
+					ref={combatIconB}
+					className="hidden-icon">
 					⚔️
-				</p>
+				</span>
 			</div>
 		);
 	}
