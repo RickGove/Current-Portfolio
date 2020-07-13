@@ -786,6 +786,9 @@ function Search() {
 				loserWins = aWins;
 			}
 
+			console.log(champVar);
+			console.log(champWins, loserWins);
+
 			// height
 
 			Wheight = `${winner.appearance.height[1]} tall`;
@@ -870,7 +873,7 @@ function Search() {
 			genderPronoun = 'their';
 			LgenderPronoun = 'their';
 
-			matchReport = `In a ${closeness} battle, the ${Wheight} ${eyeColor} ${hairColor} ${race} from ${placeOfBirth} in the ${publisher} universe known as ${champName} was able to use their${champWins} to defeat the ${Lheight} ${LeyeColor} ${LhairColor} ${Lrace} from ${LplaceOfBirth} in the ${Lpublisher} universe known as ${loserName}`;
+			matchReport = `In a ${closeness} battle, the ${Wheight} ${eyeColor} ${hairColor} ${race} from ${placeOfBirth} in the ${publisher} universe known as ${champName} was able to use their${loserWins} to defeat the ${Lheight} ${LeyeColor} ${LhairColor} ${Lrace} from ${LplaceOfBirth} in the ${Lpublisher} universe known as ${loserName}`;
 		} else {
 			matchReport = `In a battle that drew to a stalemate, a tie was had between ${champName} and ${loserName}.`;
 		}
@@ -1643,8 +1646,8 @@ function Search() {
 		speedWinVar = '';
 		fighterAUsableStatsVar = '';
 		fighterBUsableStatsVar = '';
-		fullDataA = '';
-		fullDataB = '';
+		setFullDataA('');
+		setFullDataB('');
 		bCount = 0;
 		aCount = 0;
 		matchReport = 'init';
