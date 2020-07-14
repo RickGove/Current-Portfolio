@@ -1,0 +1,16 @@
+body {
+	background: blue;
+}
+
+div {
+	box-shadow: 8px 8px grey;
+	display: flex;
+	justify-content: middle;
+}
+
+img {
+	position: absolute;
+	top: 2.5;
+	left: 40%;
+	height: 95%;
+}

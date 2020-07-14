@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import HomePage from './HomePage';
 import Weather from './Weather/';
 import SuperHeroSmackdown from './SuperHeroSmackdown/';
+import Intro from './SuperHeroSmackdown/Intro/';
 import Reset from './SuperHeroSmackdown/Reset/';
 import history from '../history';
 import Nastya from './Nastya';
@@ -34,6 +35,7 @@ function App() {
 							component={SuperHeroSmackdown}
 						/>
 						<Route path="/reset" exact component={Reset} />
+						<Route path="/intro" exact component={Intro} />
 						<Route path="/AnastaciaKorotkevich" exact component={Nastya} />
 						<Route path="/learn" exact component={understandState} />
 						<Route path="*" exact component={My404Component} />
