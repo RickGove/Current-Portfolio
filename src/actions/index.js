@@ -122,3 +122,15 @@ export const setShowLoader = (bool) => {
 		payload: bool,
 	};
 };
+
+///////////////////////
+//
+//  Begin Super Hero Smackdown
+//
+
+export const setIntroDone = (bool) => {
+	return {
+		type: 'SET_INTRO_DONE',
+		payload: bool,
+	};
+};

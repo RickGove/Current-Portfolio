@@ -149,6 +149,18 @@ const showLoader = (show = false, action) => {
 	}
 };
 
+///////////////////////////////////
+//
+//  Super Hero Smackdown State
+
+const introDone = (moveOn = false, action) => {
+	if (action.type === 'SET_INTRO_DONE') {
+		return action.payload;
+	} else {
+		return moveOn;
+	}
+};
+
 const weatherApp = combineReducers({
 	system: selectedSystem,
 	location: inputLocation,
@@ -168,6 +180,8 @@ const weatherApp = combineReducers({
 	neededForFavorite: neededForFavorite,
 	showModal: showModal,
 	showLoader: showLoader,
+	// begin Super Hero Smackdown
+	introDone: introDone,
 });
 
 export default weatherApp;
