@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 import { SearchDiv } from './style/';
+import SearchBar from '../SearchBar/';
 
 import searchImg from '../../img/intro/38.png';
 import spacer from '../../img/intro/spacer.png';
@@ -9,6 +10,7 @@ function Search() {
 	///refs
 	const image = useRef();
 	const mainDiv = useRef();
+	// state
 
 	window.onresize = setDivSize;
 
@@ -34,7 +36,7 @@ function Search() {
 	return (
 		<div id="image-div-search" ref={mainDiv}>
 			<img src={searchImg} ref={image} className="image-on-search" />
-			<p>BELOW IMAGE</p>
+			<SearchBar />
 		</div>
 	);
 }

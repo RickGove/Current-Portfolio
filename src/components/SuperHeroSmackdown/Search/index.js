@@ -495,6 +495,7 @@ function Search() {
 				setSearchResultsB('searching');
 			}
 			let response = searchData(s);
+			console.log('response:', response);
 			hideSpinner();
 			setCanSearch(true);
 			if (response === -1) {

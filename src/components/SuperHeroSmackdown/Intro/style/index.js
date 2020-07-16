@@ -59,7 +59,7 @@ export const IntroDiv = styled.div`
 		display: none;
 	}
 
-	button {
+	.skip-button {
 		position: absolute;
 		top: 0;
 		left: 45%;
@@ -97,9 +97,5 @@ export const IntroDiv = styled.div`
 		position: aboslute;
 		height: 100vh;
 		top: 0;
-	}
-
-	.main-search-div {
-		color: pink;
 	}
 `;
