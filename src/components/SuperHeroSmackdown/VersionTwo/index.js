@@ -1,12 +1,16 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setIntroDone } from '../../../actions';
 
 import { IntroDiv } from './style';
 import IntroMain from './IntroMain';
 import MainDiv from './MainDiv';
 
 function Intro() {
+	const dispatch = useDispatch();
+
+	if (localStorage.introDone) dispatch(setIntroDone(true));
 	const introDone = useSelector((state) => state.introDone);
 	////////////////////////////////
 	// must uncomment to make into run

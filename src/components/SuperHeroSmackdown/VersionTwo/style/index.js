@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import wp from '../../img/wpBW.jpg';
 import bangers from '../../../../font/Bangers-Regular.ttf';
 
-const transition = `50ms`;
+const transition = `20ms`;
 
 export const IntroDiv = styled.div`
 	* {
@@ -42,13 +42,22 @@ export const IntroDiv = styled.div`
 		height: 100%;
 		width: auto;
 		max-width: 100vw;
-		transform: scale(1);
+		/* transform: scale(0); */
 		transition: ${transition};
 	}
 
 	.image-fade {
-		/* opacity: 0.9; */
+		/* transform: scale(1.1); */
 		transition: ${transition};
+	}
+
+	@keyframes loadin {
+		0% {
+			transform: scale(0.8);
+		}
+		100% {
+			transform: scale(1);
+		}
 	}
 
 	.image-display {
@@ -170,13 +179,13 @@ export const IntroDiv = styled.div`
 			transform: translate(3px, 1px) rotate(-15deg);
 		}
 		80% {
-			transform: scale(1.4) translate(-1px, -1px) rotate(15deg);
+			transform: scale(1.4) translate(-5px, -7px) rotate(15deg);
 		}
 		90% {
-			transform: translate(1px, 2px) rotate(8deg);
+			transform: translate(-2.5px, -3.5px) rotate(8deg);
 		}
 		100% {
-			transform: scale(1.5) translate(1px, -2px) rotate(0deg);
+			transform: scale(1) translate(0) rotate(0deg);
 		}
 	}
 `;

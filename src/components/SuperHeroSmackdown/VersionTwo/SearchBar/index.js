@@ -19,7 +19,8 @@ function SearchBar() {
 	//refs
 	const input = useRef(),
 		modal = useRef(),
-		resultsDiv = useRef();
+		resultsDiv = useRef(),
+		wrapDiv = useRef();
 
 	// state
 	const [searching, setSearching] = useState(false),
@@ -300,26 +301,39 @@ function SearchBar() {
 		return `. . .`;
 	}
 
+	function delayFocus() {
+		window.setTimeout(() => {
+			if (wrapDiv.current) wrapDiv.current.style.visibility = 'unset';
+			if (modal.current) modal.current.style.visibility = 'unset';
+			if (input.current) input.current.focus();
+		}, 7000);
+	}
+
+	delayFocus();
 	return (
 		<SearchDiv>
-			<div className="modal" ref={modal}>
+			<div className="modal" ref={modal} style={{ visibility: 'hidden' }}>
 				<Modal />
 			</div>
-
-			<input
-				autoFocus
-				autoComplete="off"
-				id="searchA"
-				className="input"
-				type="text"
-				ref={input}
-				onKeyUp={handleChange}
-				onFocus={showResults}
-				onBlur={hideResults}
-				placeholder={setPlaceHolder(1)}
-			/>
-			<div id="results-div" ref={resultsDiv} className="results results-shown">
-				<ul className="results-ul">{resultsMap()}</ul>
+			<div ref={wrapDiv} style={{ visibility: 'hidden' }}>
+				<input
+					autoFocus
+					autoComplete="off"
+					id="searchA"
+					className="input"
+					type="text"
+					ref={input}
+					onKeyUp={handleChange}
+					onFocus={showResults}
+					onBlur={hideResults}
+					placeholder={setPlaceHolder(1)}
+				/>
+				<div
+					id="results-div"
+					ref={resultsDiv}
+					className="results results-shown">
+					<ul className="results-ul">{resultsMap()}</ul>
+				</div>
 			</div>
 		</SearchDiv>
 	);

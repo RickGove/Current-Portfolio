@@ -466,12 +466,14 @@ export default function BattleScene() {
 			}
 
 			//race
+
 			race = winner.appearance['race'];
 			Lrace = loser.appearance['race'];
-			if (race === 'null') {
+
+			if (race === null) {
 				race = '';
 			}
-			if (Lrace === 'null') {
+			if (Lrace === null) {
 				Lrace = '';
 			}
 

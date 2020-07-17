@@ -18,6 +18,7 @@ export const BattleDiv = styled.div`
 		width: 100%;
 		box-shadow: 0 15px grey;
 		align-items: center;
+		justify-content: center;
 		overflow: hidden;
 		animation: SMACK 2s;
 	}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import SearchBar from '../SearchBar/';
@@ -18,6 +18,8 @@ function Search() {
 		cardContainer = useRef(),
 		charCardA = useRef(),
 		charCardB = useRef(),
+		begin = useRef(),
+		delayedDiv = useRef(),
 		input = useRef();
 
 	// redux
@@ -26,6 +28,12 @@ function Search() {
 		ready = useSelector((state) => state.ready),
 		showMatchReport = useSelector((state) => state.showMatchReport),
 		dispatch = useDispatch();
+
+	// state vars
+	const [sized, setSized] = useState(false),
+		[showInput, setShowInput] = useState(false);
+
+	// var vars
 
 	// begin main fn
 	////
@@ -40,6 +48,9 @@ function Search() {
 				document.documentElement.clientHeight || 0,
 				window.innerHeight || 0
 			);
+
+		// hide main div
+		if (mainDiv.current) mainDiv.current.style.opacity = 0;
 
 		// resize main div
 		if (mainDiv.current) mainDiv.current.style.height = `${vh}px`;
@@ -77,14 +88,24 @@ function Search() {
 
 		// check it worked, else do again
 		window.setTimeout(() => {
-			if (mainDiv.current.style.width === 0) {
-				setDivSize();
+			if (mainDiv.current.clientWidth === 0) setDivSize();
+			else {
+				mainDiv.current.style.transition = '1ms';
+				mainDiv.current.style.opacity = 1;
+				setSized(true);
+				delayInput();
 			}
 		}, 500);
 	}
 
+	function delayButton() {
+		window.setTimeout(() => {
+			if (begin.current) begin.current.style.visibility = 'unset';
+		}, 3000);
+	}
+
 	useEffect(() => {
-		setDivSize();
+		if (!sized) setDivSize();
 	});
 
 	function beginBattle() {
@@ -92,11 +113,21 @@ function Search() {
 		dispatch(setReady(true));
 	}
 
+	function delayInput() {
+		window.setTimeout(() => {
+			if (delayedDiv.current) delayedDiv.current.style.visibility = 'unset';
+			if (input.current) input.current.focus();
+		}, 5000);
+	}
+
 	if (!fighterA || !fighterB) {
+		if (setSized) delayInput();
 		return (
 			<div id="image-div-search" ref={mainDiv}>
 				<img src={searchImg} ref={image} className="image-on-search" />
-				<SearchBar ref={input} />
+				<div ref={delayedDiv} style={{ visibility: 'hidden' }}>
+					<SearchBar ref={input} />
+				</div>
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
@@ -109,11 +140,16 @@ function Search() {
 			</div>
 		);
 	} else if (!ready) {
+		delayButton();
 		return (
 			<div id="image-div-search" ref={mainDiv}>
 				<img src={searchImg} ref={image} className="image-on-search" />
-				<button className="begin-button" onClick={beginBattle}>
-					Click to Begin Battle
+				<button
+					className="begin-button"
+					ref={begin}
+					style={{ visibility: 'hidden' }}
+					onClick={beginBattle}>
+					Begin Battle
 				</button>
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">

@@ -20,7 +20,6 @@ const CharacterCard = (props) => {
 		return (
 			<CharCard>
 				<img src={placeholder} />
-				<h1>who will you choose?</h1>
 			</CharCard>
 		);
 	} else {
