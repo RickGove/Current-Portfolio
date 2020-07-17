@@ -134,3 +134,38 @@ export const setIntroDone = (bool) => {
 		payload: bool,
 	};
 };
+
+export const setFighterA = (objData) => {
+	return {
+		type: 'SET_FIGHTER_A',
+		payload: objData,
+	};
+};
+
+export const setFighterB = (objData) => {
+	return {
+		type: 'SET_FIGHTER_B',
+		payload: objData,
+	};
+};
+
+export const setReady = (bool) => {
+	return {
+		type: 'SET_READY',
+		payload: bool,
+	};
+};
+
+export const setMatchReport = (report) => {
+	return {
+		type: 'SET_MATCH_REPORT',
+		payload: report,
+	};
+};
+
+export const setShowMatchReport = (report) => {
+	return {
+		type: 'SET_SHOW_REPORT',
+		payload: report,
+	};
+};

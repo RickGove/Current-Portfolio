@@ -1,26 +1,34 @@
 import React, { useRef, useState } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setFighterA, setFighterB } from '../../../../actions';
+
 import { Button, SearchDiv } from './style/';
 
 import { superHeroData, nameArray } from '../../data/data.js';
 
+import Modal from '../Modal/';
+
 function SearchBar() {
+	// redux
+	const dispatch = useDispatch(),
+		fighterA = useSelector((state) => state.fighterA),
+		fighterB = useSelector((state) => state.fighterB);
+
 	//refs
 	const input = useRef(),
+		modal = useRef(),
 		resultsDiv = useRef();
+
 	// state
-	const [canSearch, setCanSearch] = useState(true),
-		[searchResults, setSearchResults] = useState(), //name, image, id, powerstats
-		[searchDone, setSearchDone] = useState(false),
-		[fighter, setFighter] = useState('none'),
-		[highlighted, setHighlighted] = useState(),
-		[fullData, setFullData] = useState(''),
-		[totalButtons, setTotalButtons] = useState([]);
+	const [searching, setSearching] = useState(false),
+		[canSearch, setCanSearch] = useState(true),
+		[searchResults, setSearchResults] = useState(null),
+		[highlighted, setHighlighted] = useState();
 
 	function resultsMap() {
 		if (searchResults !== undefined) {
-			let newArray = [];
-			let el = input.current;
 			if (searchResults === '') {
 				return (
 					<li key="no-results">
@@ -33,9 +41,15 @@ function SearchBar() {
 						<Button>Searching</Button>
 					</li>
 				);
+			} else if (searchResults === null) {
+				return (
+					<li key="new-search">
+						<Button>Enter a search</Button>
+					</li>
+				);
 			} else {
 				return searchResults.map((a, b) => {
-					if (b <= 5) {
+					if (b < searchResults.length) {
 						let idName = `but-${b}`;
 						return (
 							<li key={a[2]}>
@@ -45,8 +59,8 @@ function SearchBar() {
 									result={b}
 									float="right"
 									onClick={handleClick}>
-									<img result={b} src={a[1]} className="hero-img" />
 									{a[0]}
+									<img result={b} src={a[1]} className="hero-img" />
 								</Button>
 							</li>
 						);
@@ -58,45 +72,8 @@ function SearchBar() {
 
 	function handleClick(e) {
 		if (e.target.attributes.result.value !== undefined) {
-			setFighter(searchResults[e.target.attributes.result.value]);
-
-			let fullArr = searchResults[e.target.attributes.result.value];
-			setFullData(fullArr[4]);
+			logFighterToState(searchResults[e.target.attributes.result.value]);
 		}
-	}
-
-	function binarySearch(arr, q, le, ri) {
-		console.log('bin search run');
-		console.log('arr:', arr);
-		console.log('q:', q);
-		console.log('le:', le);
-		console.log('ri:', ri);
-		let l = le || 0,
-			r = ri || arr.length - 1,
-			m = Math.floor((r + l) / 2),
-			subLen = q.length;
-
-		if (arr[m].substring(0, subLen) === q) {
-			return m;
-		}
-
-		if (arr[l].substring(0, subLen) === q) {
-			return l;
-		}
-
-		if (arr[r].substring(0, subLen) === q) {
-			return r;
-		}
-
-		if (q > arr[m].substring(0, subLen) && m + 1 < r) {
-			return binarySearch(arr, q, m, ri);
-		}
-
-		if (q < arr[m].substring(0, subLen) && m - 1 > l) {
-			return binarySearch(arr, q, le, m);
-		}
-
-		return -1;
 	}
 
 	function searchHeros(s) {
@@ -109,11 +86,12 @@ function SearchBar() {
 				results = '';
 			} else {
 				response.map((a, b) => {
-					let arr = [a.name, a.images.sm, a.id, a.powerstats, response[b]];
-					results.push(arr);
+					if (a) {
+						let arr = [a.name, a.images.sm, a.id, a.powerstats, response[b]];
+						results.push(arr);
+					}
 				});
 			}
-			setSearchDone(true);
 			setSearchResults(results);
 			window.setTimeout(() => {
 				setCanSearch(true);
@@ -151,13 +129,6 @@ function SearchBar() {
 			superHeroData[i + 3],
 			superHeroData[i + 4],
 			superHeroData[i + 5],
-			superHeroData[i + 6],
-			superHeroData[i + 7],
-			superHeroData[i + 8],
-			superHeroData[i + 9],
-			superHeroData[i + 10],
-			superHeroData[i + 11],
-			superHeroData[i + 12],
 		];
 		return data;
 	}
@@ -174,7 +145,6 @@ function SearchBar() {
 				}
 			}
 		}
-		setTotalButtons(newArray);
 		return newArray;
 	}
 
@@ -212,8 +182,16 @@ function SearchBar() {
 		input.current.blur();
 		if (highlighted !== undefined) {
 			clearAllHighlights();
-			setFighter(searchResults[highlighted]);
+			logFighterToState(searchResults[highlighted]);
 		}
+	}
+
+	function logFighterToState(choice) {
+		if (fighterA && fighterB) alert('both fighters set to state...');
+		if (!fighterA) dispatch(setFighterA(choice));
+		else dispatch(setFighterB(choice));
+		setSearchResults(null);
+		input.current.value = '';
 	}
 
 	function clearOldHighlights(a) {
@@ -255,7 +233,9 @@ function SearchBar() {
 			el = array[highlighted + 1];
 			high = highlighted + 1;
 		}
+
 		setHighlighted(high);
+
 		if (el !== undefined) {
 			let newStyle = `transform: scale(1.2);
         transition: 300ms;`;
@@ -282,13 +262,15 @@ function SearchBar() {
 		}
 		setHighlighted(high);
 		if (el !== undefined) {
-			let newStyle = `transform: scale(2);
+			let newStyle = `transform: scale(1.2);
         transition: 300ms;`;
 			el.style = newStyle;
 		}
 	}
 
 	function showResults() {
+		if (modal.current) modal.current.style.display = 'unset';
+
 		if (resultsDiv.current !== undefined) {
 			if (resultsDiv.current) resultsDiv.current.style = 'display: block;';
 			if (resultsDiv.current) resultsDiv.current.style = 'height: 0px;';
@@ -304,6 +286,8 @@ function SearchBar() {
 	}
 
 	function hideResults() {
+		if (modal.current) modal.current.style.display = 'none';
+
 		window.setTimeout(() => {
 			if (resultsDiv.current !== null) {
 				resultsDiv.current.style = 'box-shadow: none';
@@ -313,11 +297,15 @@ function SearchBar() {
 	}
 
 	function setPlaceHolder(n) {
-		return `Hero or Villain`;
+		return `. . .`;
 	}
 
 	return (
 		<SearchDiv>
+			<div className="modal" ref={modal}>
+				<Modal />
+			</div>
+
 			<input
 				autoFocus
 				autoComplete="off"
@@ -331,7 +319,7 @@ function SearchBar() {
 				placeholder={setPlaceHolder(1)}
 			/>
 			<div id="results-div" ref={resultsDiv} className="results results-shown">
-				<ul>{resultsMap()}</ul>
+				<ul className="results-ul">{resultsMap()}</ul>
 			</div>
 		</SearchDiv>
 	);

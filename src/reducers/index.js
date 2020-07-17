@@ -161,6 +161,46 @@ const introDone = (moveOn = false, action) => {
 	}
 };
 
+const fighterA = (chosen = null, action) => {
+	if (action.type === 'SET_FIGHTER_A') {
+		return action.payload;
+	} else {
+		return chosen;
+	}
+};
+
+const fighterB = (chosen = null, action) => {
+	if (action.type === 'SET_FIGHTER_B') {
+		return action.payload;
+	} else {
+		return chosen;
+	}
+};
+
+const ready = (readyOrNot = false, action) => {
+	if (action.type === 'SET_READY') {
+		return action.payload;
+	} else {
+		return readyOrNot;
+	}
+};
+
+const matchReport = (report = '', action) => {
+	if (action.type === 'SET_MATCH_REPORT') {
+		return action.payload;
+	} else {
+		return report;
+	}
+};
+
+const showMatchReport = (ready = false, action) => {
+	if (action.type === 'SET_SHOW_REPORT') {
+		return action.payload;
+	} else {
+		return ready;
+	}
+};
+
 const weatherApp = combineReducers({
 	system: selectedSystem,
 	location: inputLocation,
@@ -182,6 +222,12 @@ const weatherApp = combineReducers({
 	showLoader: showLoader,
 	// begin Super Hero Smackdown
 	introDone: introDone,
+	fighterA: fighterA,
+	fighterB: fighterB,
+	ready: ready,
+	matchReport: matchReport,
+	showMatchReport,
+	showMatchReport,
 });
 
 export default weatherApp;

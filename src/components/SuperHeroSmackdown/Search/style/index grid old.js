@@ -54,7 +54,6 @@ export const SearchDiv = styled.div`
 	}
 
 	.hero-img {
-		/* z-index: 10000; */
 		height: 8rem;
 		width: 8rem;
 		border-radius: 8rem;
@@ -84,7 +83,7 @@ export const SearchDiv = styled.div`
 		margin: auto;
 		background: white;
 		box-shadow: 10px 10px 10px 10px #aaaaaa;
-		z-index: 500;
+		/* z-index: 500; */
 		width: 300%;
 		height: auto;
 		position: relative;
@@ -253,7 +252,7 @@ export const SearchDiv = styled.div`
 		cursor: pointer;
 		display: block;
 		margin: auto;
-		z-index: 50000;
+		/* z-index: 50000; */
 		padding: 1rem;
 		background: black;
 		color: red;
@@ -365,7 +364,7 @@ export const Button = styled.button`
 	padding: 0.1rem;
 	font-size: ${(props) => (props.length > 8 ? '1rem' : '1.5rem')};
 	text-align: center;
-	z-index: 10;
+	/* z-index: 10; */
 
 	${mobile} {
 	font-size: ${(props) => (props.length > 8 ? '0.5rem' : '0.8rem')};

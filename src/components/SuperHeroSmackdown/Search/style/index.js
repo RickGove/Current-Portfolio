@@ -342,10 +342,10 @@ export const SearchDiv = styled.div`
 		box-shadow: 0 0 0 2pt yellow;
 	}
 
-	.results {
+	/* .results {
 		font: inherit;
 
-		/* div */
+		/*DIV
 		border-radius: 0 0 8px 8px;
 		height: 0px;
 		display: none;
@@ -367,7 +367,7 @@ export const SearchDiv = styled.div`
 		${mobile} {
 			width: ${widthMobile};
 		}
-	}
+	} */
 
 	#myUL {
 		font: inherit;
@@ -525,11 +525,11 @@ export const MatchReport = styled.div`
 		transform: scale(1) translateX(0);
 	}
 
-	.hidden {
+	/* .hidden {
 		display: none;
 		opacity: 0;
 		transition: 2s;
-	}
+	} */
 
 	.reset-from-report-btn {
 		font: inherit;
