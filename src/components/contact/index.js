@@ -4,6 +4,8 @@ import { ContactCon, ContactDiv, ContactA, EmailImg } from './ContactStyle';
 import { ShowH1 } from '../about/AboutStyle';
 import email from '../../img/logo_email.png';
 import linked from '../../img/logo_linked.png';
+import leet from '../../img/logo_leet.png';
+import logoGit from '../../img/logo_github.png';
 // import facebook from '../../img/logo_facebook.png';
 import twitter from '../../img/logo_twitter.png';
 
@@ -37,6 +39,12 @@ class Contact extends React.Component {
 				<ContactDiv>
 					<ShowH1 col="white">Contact Me</ShowH1>
 					<br />
+					<ContactA href="https://github.com/RickGove">
+						<EmailImg src={logoGit} />
+					</ContactA>
+					<ContactA href="https://leetcode.com/rickbgove/">
+						<EmailImg src={leet} />
+					</ContactA>
 					<ContactA href="mailto:rick.gove.developer@gmail.com">
 						<EmailImg src={email} />
 					</ContactA>

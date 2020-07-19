@@ -7,4 +7,6 @@ export const SearchDiv = styled.div`
 		margin: 0;
 	}
 	width: 25%;
+	position: relative;
+	top: 0;
 `;

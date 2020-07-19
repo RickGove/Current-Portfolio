@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import mag from '../../../img/intro/mag.png';
 
 const mobile = '@media (max-width: 550px)',
-	width = '100%',
-	widthMobile = '100%';
+	width = '90%',
+	widthMobile = '90%';
 
 export const Button = styled.button`
+	@import url('../../../../font');
+	font-family: 'Bangers', sans;
 	/* position: unset !important; */
 	background: white;
 	font: inherit;
@@ -22,7 +24,8 @@ export const Button = styled.button`
 	padding: 0.1rem;
 	font-size: ${(props) => (props.length > 8 ? '2rem' : '3rem')};
 	text-align: center;
-	z-index: 10;
+	position: relative;
+	z-index: 500;
 
 	* {
 		padding: 0;
@@ -44,25 +47,29 @@ export const SearchDiv = styled.div`
 
 	.modal {
 		position: absolute;
+		z-index: 5;
 		top: 0;
 		left: 0;
-		z-index: 10;
 		opacity: 1;
 		transition: 200ms;
+	}
+
+	.take-space {
+		visibility: hidden;
 	}
 
 	.input {
 		z-index: 500;
 		background-image: url(${mag});
 		background-position: left;
-		background-size: contain;
+		background-size: auto;
 		background-repeat: no-repeat;
 		text-align: center;
-		border: 4px solid yellow;
+		border: 4px solid black;
 		position: relative;
 		font: inherit;
 		width: ${width};
-		margin: auto;
+		margin: 0 auto auto auto;
 		display: block;
 		padding: 0.5rem;
 		border-radius: 8px 8px 8px 8px;
@@ -76,11 +83,14 @@ export const SearchDiv = styled.div`
 
 	#results-div {
 		font: inherit;
-
+		position: relative;
+		z-index: 500;
 		box-shadow: 0 0 0 2pt yellow;
 	}
 
 	.results-ul {
+		position: absolute;
+		z-index: 500;
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
@@ -88,6 +98,8 @@ export const SearchDiv = styled.div`
 	}
 
 	.results-ul li a {
+		position: relative;
+		z-index: 500;
 		margin: auto;
 		border: 1px solid #ddd;
 		margin-top: -1px;
@@ -100,8 +112,9 @@ export const SearchDiv = styled.div`
 	}
 
 	.results {
+		position: relative;
+		z-index: 500;
 		font: inherit;
-
 		/* div */
 		border-radius: 0 0 8px 8px;
 		height: 0px;
@@ -111,8 +124,8 @@ export const SearchDiv = styled.div`
 	}
 
 	.results-shown {
+		z-index: 500;
 		font: inherit;
-
 		height: auto;
 		margin: auto;
 		width: ${width};
@@ -123,7 +136,8 @@ export const SearchDiv = styled.div`
 	}
 
 	.hero-img {
-		margin-left: 5.5rem;
+		z-index: 500;
+		margin-left: 1rem;
 		height: 5rem;
 		width: 5rem;
 		border-radius: 8rem;

@@ -5,13 +5,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import HomePage from './HomePage';
 import Weather from './Weather/';
-import SuperHeroSmackdown from './SuperHeroSmackdown/';
 import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
-import Reset from './SuperHeroSmackdown/Reset/';
 import history from '../history';
 import Nastya from './Nastya';
 import My404Component from './404';
-import understandState from './understandState';
+// import understandState from './understandState';
 
 import weatherApp from '../reducers/';
 
@@ -29,15 +27,9 @@ function App() {
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/weather" exact component={Weather} />
-						<Route
-							path="/superherosmackdown"
-							exact
-							component={SuperHeroSmackdown}
-						/>
-						<Route path="/reset" exact component={Reset} />
-						<Route path="/intro" exact component={VersionTwo} />
-						<Route path="/AnastaciaKorotkevich" exact component={Nastya} />
-						<Route path="/learn" exact component={understandState} />
+						<Route path="/superherosmackdown" exact component={VersionTwo} />
+						{/* <Route path="/AnastaciaKorotkevich" exact component={Nastya} /> */}
+						{/* <Route path="/learn" exact component={understandState} /> */}
 						<Route path="*" exact component={My404Component} />
 					</Switch>
 				</React.Fragment>

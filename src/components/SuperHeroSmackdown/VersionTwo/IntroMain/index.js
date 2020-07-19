@@ -16,7 +16,7 @@ function IntroMain() {
 		let arr = [];
 		let i = 0;
 		while (i < total) {
-			let newFile = require(`../../img/intro/${i}.png`);
+			let newFile = require(`../../img/intro/${i}-min.png`);
 			arr.push(newFile);
 			i++;
 		}

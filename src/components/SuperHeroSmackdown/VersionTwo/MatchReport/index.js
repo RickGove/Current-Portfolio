@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../img/intro/logoReport.png';
 
 import playAgainImg from '../../img/bubble.png';
+import drawImg from '../../../../img/superIcon.png';
 
 import {
 	setReady,
@@ -46,12 +47,30 @@ export default function MatchReport() {
 		dispatch(setShowMatchReport(null));
 	}
 
+	function renderWinner() {
+		if (matchReport.winnerImg === 'draw') {
+			return 'DRAW';
+		} else {
+			return matchReport.winner;
+		}
+	}
+
+	function renderImg() {
+		if (matchReport.winnerImg !== 'draw') {
+			return (
+				<img className="macth-report__hero__img" src={matchReport.winnerImg} />
+			);
+		} else {
+			return <img className="macth-report__hero__img" src={drawImg} />;
+		}
+	}
+
 	return (
 		<MatchReportDiv>
 			<div className="match-report__inner__div">
 				<img src={logo} className="match-report__logo__img" />
-				<h1>{matchReport.winner}</h1>
-				<img className="macth-report__hero__img" src={matchReport.winnerImg} />
+				<h1>{renderWinner()}</h1>
+				{renderImg()}
 				<p className="match-report__p">{matchReport.report}</p>
 				<img
 					ref={playAgain}

@@ -302,20 +302,20 @@ function SearchBar() {
 	}
 
 	function delayFocus() {
-		window.setTimeout(() => {
-			if (wrapDiv.current) wrapDiv.current.style.visibility = 'unset';
-			if (modal.current) modal.current.style.visibility = 'unset';
-			if (input.current) input.current.focus();
-		}, 7000);
+		if (!fighterA || !fighterB) {
+			window.setTimeout(() => {
+				if (input.current) input.current.focus();
+			}, 7000);
+		}
 	}
 
 	delayFocus();
 	return (
 		<SearchDiv>
-			<div className="modal" ref={modal} style={{ visibility: 'hidden' }}>
+			<div className="modal" ref={modal}>
 				<Modal />
 			</div>
-			<div ref={wrapDiv} style={{ visibility: 'hidden' }}>
+			<div ref={wrapDiv}>
 				<input
 					autoFocus
 					autoComplete="off"

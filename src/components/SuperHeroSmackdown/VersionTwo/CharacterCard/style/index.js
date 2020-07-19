@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
+const landscape = `@media only screen and (max-height : 600px)`;
+
 export const CharCard = styled.div`
+	@import url('../../../../font');
+	font-family: 'Bangers', sans;
 	border: 3px solid white;
 	background: black;
 	color: white;
@@ -9,14 +13,18 @@ export const CharCard = styled.div`
 	border-radius: 2rem;
 	height: 100%;
 	display: flex;
-	width: 90%;
+	width: 70%;
 	overflow: hidden;
+
+	${landscape} {
+		flex-direction: column;
+		align-items: center;
+	}
 
 	.animate {
 	}
 
 	h1 {
-		margin: auto;
 		height: 3rem;
 	}
 
@@ -35,18 +43,32 @@ export const CharCard = styled.div`
 		&:hover {
 			opacity: 0.6;
 		}
+
+		${landscape} {
+			position: unset;
+		}
 	}
 
 	div {
 		display: flex;
 		width: 90%;
+		align-items: center;
+		justify-content: space-between;
+
+		${landscape} {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	img {
-		margin: auto;
 		height: 6rem;
 		width: 6rem;
 		border-radius: 10rem;
+
+		${landscape} {
+			width: 6rem;
+		}
 	}
 
 	@keyframes BATMAN {

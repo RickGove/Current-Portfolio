@@ -1,30 +1,48 @@
 import styled from 'styled-components';
 
+const landscape = `@media only screen and (max-height : 600px)`;
+
 export const BattleDiv = styled.div`
+	z-index: 500;
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
 	width: 100%;
-	background: black;
+	align-items: center;
+
+	${landscape} {
+		flex-direction: row;
+	}
 
 	.fighter {
+		overflow: hidden;
+		color: black;
 		margin-bottom: 0.2rem;
 		display: flex;
 		border-radius: 5rem;
 		flex-direction: column;
-		border: 2px solid black;
-		background: whitesmoke;
-		height: 50%;
-		width: 100%;
+		background: cadetblue;
+		height: 49%;
+		width: 80%;
 		box-shadow: 0 15px grey;
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
 		animation: SMACK 2s;
+
+		${landscape} {
+			height: 92%;
+			border: 2px solid black;
+		}
 	}
 
 	h1 {
-		font-size: 2.8rem;
+		font-size: 2.3rem;
+		transition: 200ms;
+
+		${landscape} {
+			font-size: 1.8rem;
+		}
 	}
 
 	img {
@@ -39,7 +57,7 @@ export const BattleDiv = styled.div`
 		text-align: left;
 		top: 2rem;
 		left: 2.5rem;
-		display: none;
+		visibility: hidden;
 	}
 
 	.grid-icons {
@@ -65,7 +83,6 @@ export const BattleDiv = styled.div`
 		margin: 0;
 		padding: 0;
 		transform: scale(5000);
-		color: black;
 		font-size: 1.6rem;
 		transition: 2000ms;
 		opacity: 0;
@@ -75,7 +92,6 @@ export const BattleDiv = styled.div`
 		font: inherit;
 		margin: 0;
 		padding: 0;
-		color: black;
 		font-size: 1.7rem;
 		transition: 2000ms;
 		transform: scale(5000);

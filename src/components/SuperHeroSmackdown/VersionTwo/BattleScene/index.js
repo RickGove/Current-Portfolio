@@ -641,11 +641,11 @@ export default function BattleScene() {
 
 		// make stats box display block
 		window.setTimeout(() => {
-			statsA.current.style = 'display: block';
+			statsA.current.style.visibility = 'unset';
 		}, interval * 2);
 
 		window.setTimeout(() => {
-			statsB.current.style = 'display: block';
+			statsB.current.style.visibility = 'unset';
 		}, interval * 2);
 
 		// begin displaying the stats

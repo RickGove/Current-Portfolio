@@ -4,7 +4,6 @@ import wp from '../../img/wpBW.jpg';
 // import bangers from '../../../../font/Bangers-Regular.ttf';
 
 const transition = `20ms`;
-const landscape = `@media only screen and (max-height : 600px)`;
 
 export const IntroDiv = styled.div`
 	@import url('../../../../font');
@@ -32,6 +31,7 @@ export const IntroDiv = styled.div`
 		background: white;
 		margin: auto;
 		height: 100%;
+		/* width: auto; */
 		max-width: 100vw;
 		max-height: 100vh;
 	}
@@ -83,25 +83,20 @@ export const IntroDiv = styled.div`
 		}
 	}
 
-	.logo-on-search {
-		height: 8rem;
-		width: 100%;
-		transition: 200ms;
-		border-radius: 2rem;
-	}
-
-	.logo-on-battle {
-		height: 6rem;
-		align-self: center;
-		width: 80%;
-		transition: 200ms;
-		border-radius: 2rem;
-		margin-left: auto;
-		margin-right: auto;
+	.image-on-search {
+		position: absolute;
+		top: 0;
+		z-index: 0;
+		height: 100%;
+		max-width: 100vw;
+		transform: scale(1);
+		transition: ${transition};
 	}
 
 	.begin-button {
-		top: 7rem;
+		position: relative;
+		z-index: 1;
+		top: 4rem;
 		margin: auto;
 		font: inherit;
 		padding: 1rem;
@@ -118,68 +113,44 @@ export const IntroDiv = styled.div`
 	}
 
 	.card-container {
-		margin-bottom: 1rem;
-		height: 100%;
+		z-index: 1;
+		margin-bottom: 2rem;
+		height: 63%;
 		width: 100%;
+		height: auto;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 		flex-direction: column;
-
-		${landscape} {
-			flex-direction: row;
-		}
 	}
 
 	.vs-img {
 		position: relative;
+		z-index: 1;
 		width: 7rem;
 		height: 5rem;
-
-		${landscape} {
-			width: 5rem;
-			height: 6rem;
-		}
 	}
 
 	.char-card {
+		position: relative;
+		z-index: 1;
 		width: 90%;
 		display: flex;
 		justify-content: center;
 	}
 
 	#image-div-search {
-		align-items: center;
-		width: 485px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		background: white;
-		border-radius: 2rem;
-		box-shadow: 22px 22px 60px grey;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		margin: auto;
+		/* margin: auto; */
 		height: 100%;
+		max-height: vh100;
 		max-width: 100vw;
 		max-height: 100vh;
-		background-size: cover;
+		background-size: contain;
 		background-repeat: no-repeat;
-	}
-
-	.transparent {
-		align-items: center;
-		width: 485px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		margin: auto;
-		height: 100%;
-		max-width: 100vw;
-		max-height: 100vh;
-		background-size: cover;
-		background-repeat: no-repeat;
-		align-items: center;
-		background: transparent;
-		box-shadow: unset;
 	}
 
 	.wrapper-div {
