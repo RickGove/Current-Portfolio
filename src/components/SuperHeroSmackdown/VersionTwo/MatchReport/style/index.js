@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const landscape = `@media (max-height: 575px)`;
+const landscape = `@media (max-height: 480px)`;
 
 export const MatchReportDiv = styled.div`
 	@import url('../../../../font');
@@ -43,6 +43,7 @@ export const MatchReportDiv = styled.div`
 	.macth-report__hero__img {
 		border-radius: 2rem;
 		width: 32%;
+		animation: happydance 2s infinite;
 
 		${landscape} {
 			width: 15%;
@@ -64,7 +65,7 @@ export const MatchReportDiv = styled.div`
 		height: 3rem;
 		width: 50%;
 		cursor: pointer;
-		animation: pulsate 4s infinite;
+		animation: pulsate 1s infinite;
 		visibility: hidden;
 		padding-bottom: 0.2rem;
 		background: yellow;
@@ -85,10 +86,26 @@ export const MatchReportDiv = styled.div`
 			transform: scale(1);
 		}
 		50% {
-			transform: scale(1.1);
+			transform: scale(0.6);
 		}
 		100% {
 			transform: scale(1);
+		}
+	}
+
+	@keyframes happydance {
+		0% {
+		}
+		25% {
+			transform: scale(0.9) rotateZ(10deg);
+			transform-origin: right middle;
+		}
+		50% {
+			transform: scale(1);
+		}
+		75% {
+			transform: scale(0.9) rotateZ(-10deg);
+			transform-origin: left middle;
 		}
 	}
 `;

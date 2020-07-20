@@ -70,6 +70,7 @@ export const IntroDiv = styled.div`
 	}
 
 	.skip-button {
+		font-family: 'Bangers', sans;
 		position: absolute;
 		top: 0;
 		left: 45%;
@@ -96,16 +97,6 @@ export const IntroDiv = styled.div`
 		font-size: 2.3rem;
 		background: yellow;
 	}
-
-	/* .logo-on-battle {
-		height: 6rem;
-		align-self: center;
-		width: 80%;
-		transition: 200ms;
-		border-radius: 2rem 2rem 0 0;
-		margin-left: auto;
-		margin-right: auto;
-	} */
 
 	.card-container {
 		padding-top: 2rem;

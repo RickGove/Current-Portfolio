@@ -54,8 +54,8 @@ export const BattleDiv = styled.div`
 
 	img {
 		vertical-align: middle;
-		height: 4rem;
-		width: 4rem;
+		height: 3rem;
+		width: 3rem;
 		border-radius: 2rem;
 	}
 

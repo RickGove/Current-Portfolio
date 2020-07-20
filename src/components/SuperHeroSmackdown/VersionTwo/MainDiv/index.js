@@ -71,7 +71,7 @@ function Search() {
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				<div ref={image} className="logo-on-search">
-					SUPERHERO SMACKDOW
+					<p>Superhero Smackdown</p>
 				</div>
 				<SearchBar />
 				<div ref={cardContainer} className="card-container">
@@ -90,7 +90,7 @@ function Search() {
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				<div ref={image} className="logo-on-search">
-					sUPERHERO SMACKDOWn
+					<p>Superhero Smackdown</p>
 				</div>
 
 				<div ref={cardContainer} className="card-container">
@@ -118,7 +118,7 @@ function Search() {
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				<div ref={image} className="logo-on-search">
-					sUPERHERO SMACKDOWn
+					<p>Superhero Smackdown</p>
 				</div>
 				<BattleScene />
 			</div>
