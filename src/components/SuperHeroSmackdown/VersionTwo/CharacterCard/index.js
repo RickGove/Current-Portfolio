@@ -18,13 +18,16 @@ const CharacterCard = (props) => {
 
 	if (!props.data) {
 		return (
-			<CharCard>
-				<img src={placeholder} />
+			<CharCard length={3}>
+				<div>
+					<img src={placeholder} />
+					<h1>???</h1>
+				</div>
 			</CharCard>
 		);
 	} else {
 		return (
-			<CharCard>
+			<CharCard length={props.data[0].length}>
 				<div>
 					<img src={props.data[1]} />
 					<h1>{props.data[0]}</h1>

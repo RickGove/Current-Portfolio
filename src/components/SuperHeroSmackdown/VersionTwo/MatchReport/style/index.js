@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const landscape = `@media only screen and (max-height : 600px)`;
+const landscape = `@media (max-height: 575px)`;
 
 export const MatchReportDiv = styled.div`
 	@import url('../../../../font');
@@ -12,7 +12,8 @@ export const MatchReportDiv = styled.div`
 	z-index: 500;
 
 	.match-report__inner__div {
-		width: 485px;
+		width: 400px;
+		max-width: 93vw;
 		height: 95%;
 		justify-content: space-around;
 		display: flex;
@@ -22,16 +23,21 @@ export const MatchReportDiv = styled.div`
 		color: black;
 		margin: auto;
 		border-radius: 2rem;
-		box-shadow: 22px 22px 60px white;
+		box-shadow: 6px 6px 8px grey;
+	}
 
-		${landscape} {
-			width: 295px;
-		}
+	h1 {
+		font-size: 3rem;
 	}
 
 	.match-report__logo__img {
 		margin-top: 0.5rem;
-		width: 64%;
+		width: 87%;
+		max-width: 64vw;
+
+		${landscape} {
+			width: 38%;
+		}
 	}
 
 	.macth-report__hero__img {
@@ -39,23 +45,35 @@ export const MatchReportDiv = styled.div`
 		width: 32%;
 
 		${landscape} {
-			width: 12%;
+			width: 15%;
 		}
 	}
 
 	.match-report__p {
 		padding: 1 rem;
 		text-align: center;
-		width: 50%;
+		width: 80%;
+
+		${landscape} {
+			font-size: 0.7rem;
+		}
 	}
 
 	.match-report__play__again {
+		font: inherit;
 		height: 3rem;
 		width: 50%;
 		cursor: pointer;
 		animation: pulsate 4s infinite;
 		visibility: hidden;
 		padding-bottom: 0.2rem;
+		background: yellow;
+		border: 2px solid red;
+
+		${landscape} {
+			height: 2rem;
+			width: 29%;
+		}
 
 		&:hover {
 			opacity: 0.5;

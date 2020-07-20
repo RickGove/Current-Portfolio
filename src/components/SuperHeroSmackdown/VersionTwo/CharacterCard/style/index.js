@@ -1,31 +1,26 @@
 import styled from 'styled-components';
 
-const landscape = `@media only screen and (max-height : 600px)`;
+const landscape = `@media all and (orientation:landscape)`;
 
 export const CharCard = styled.div`
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	border: 3px solid white;
-	background: black;
-	color: white;
+	background: linear-gradient(5deg, black, grey, transparent);
+	color: black;
 	box-shadow: 4px 6px grey;
 	padding: 1rem;
 	border-radius: 2rem;
 	height: 100%;
 	display: flex;
-	width: 70%;
+	width: 100%;
 	overflow: hidden;
-
-	${landscape} {
-		flex-direction: column;
-		align-items: center;
-	}
 
 	.animate {
 	}
 
 	h1 {
-		height: 3rem;
+		font-size: ${(props) => (props.length > 8 ? '1rem' : '2.3rem')};
 	}
 
 	h1,
@@ -54,37 +49,25 @@ export const CharCard = styled.div`
 		width: 90%;
 		align-items: center;
 		justify-content: space-between;
-
-		${landscape} {
-			flex-direction: column;
-			align-items: center;
-		}
 	}
 
 	img {
-		height: 6rem;
-		width: 6rem;
+		height: 4rem;
+		width: 4rem;
 		border-radius: 10rem;
-
-		${landscape} {
-			width: 6rem;
-		}
 	}
 
 	@keyframes BATMAN {
 		0% {
-			color: red;
-			transform: rotateZ(180deg) scale(2);
+			transform: rotateZ(350deg) scale(1);
 		}
 		40% {
-			transform: scale(12);
+			transform: scale(1.2);
 		}
-		60% {
-			transform: rotateZ(30deg);
-			letter-spacing: 0.3rem;
+		50% {
+			transform: rotateZ(150deg);
 		}
 		100% {
-			color: WHITE;
 			transform: scale(1) rotateZ(0);
 		}
 	}

@@ -4,7 +4,7 @@ import wp from '../../img/wpBW.jpg';
 // import bangers from '../../../../font/Bangers-Regular.ttf';
 
 const transition = `20ms`;
-const landscape = `@media only screen and (max-height : 600px)`;
+const landscape = `@media all and (orientation:landscape)`;
 
 export const IntroDiv = styled.div`
 	@import url('../../../../font');
@@ -84,27 +84,76 @@ export const IntroDiv = styled.div`
 	}
 
 	.logo-on-search {
-		height: 8rem;
+		@import url('../../../../font');
+		font-family: 'Futura LT', 'Bangers', sans;
+		height: 2rem;
 		width: 100%;
 		transition: 200ms;
-		border-radius: 2rem;
+		border-radius: 2rem 2rem 0 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 2.3rem;
+		background: yellow;
 	}
 
-	.logo-on-battle {
+	/* .logo-on-battle {
 		height: 6rem;
 		align-self: center;
 		width: 80%;
 		transition: 200ms;
-		border-radius: 2rem;
+		border-radius: 2rem 2rem 0 0;
 		margin-left: auto;
 		margin-right: auto;
+	} */
+
+	.card-container {
+		padding-top: 2rem;
+		height: 222%;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: space-evenly;
+
+		@media (max-height: 430px) {
+			padding-top: 0;
+		}
+	}
+
+	.vs-img {
+		position: relative;
+		width: 7rem;
+		height: 5rem;
+
+		@media (max-height: 430px) {
+			width: 4rem;
+			height: 2.5rem;
+		}
+	}
+
+	.char-card {
+		width: 90%;
+		display: flex;
+		justify-content: center;
+
+		${landscape} {
+			height: 90px;
+		}
+	}
+
+	.container-begin-button {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.begin-button {
-		top: 7rem;
-		margin: auto;
+		height: 43px;
+		width: 129px;
 		font: inherit;
-		padding: 1rem;
 		font-size: 1.4rem;
 		cursor: pointer;
 		display: block;
@@ -117,43 +166,12 @@ export const IntroDiv = styled.div`
 		animation-iteration-count: infinite;
 	}
 
-	.card-container {
-		margin-bottom: 1rem;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		flex-direction: column;
-
-		${landscape} {
-			flex-direction: row;
-		}
-	}
-
-	.vs-img {
-		position: relative;
-		width: 7rem;
-		height: 5rem;
-
-		${landscape} {
-			width: 5rem;
-			height: 6rem;
-		}
-	}
-
-	.char-card {
-		width: 90%;
-		display: flex;
-		justify-content: center;
-	}
-
-	#image-div-search {
+	#main-app-div {
 		align-items: center;
 		width: 485px;
 		background: white;
 		border-radius: 2rem;
-		box-shadow: 22px 22px 60px grey;
+		box-shadow: 16px 16px 7px grey;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -163,29 +181,6 @@ export const IntroDiv = styled.div`
 		max-height: 100vh;
 		background-size: cover;
 		background-repeat: no-repeat;
-	}
-
-	.transparent {
-		align-items: center;
-		width: 485px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		margin: auto;
-		height: 100%;
-		max-width: 100vw;
-		max-height: 100vh;
-		background-size: cover;
-		background-repeat: no-repeat;
-		align-items: center;
-		background: transparent;
-		box-shadow: unset;
-	}
-
-	.wrapper-div {
-		position: aboslute;
-		height: 100vh;
-		top: 0;
 	}
 
 	@keyframes shake {

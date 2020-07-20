@@ -72,12 +72,13 @@ export default function MatchReport() {
 				<h1>{renderWinner()}</h1>
 				{renderImg()}
 				<p className="match-report__p">{matchReport.report}</p>
-				<img
+				<button
 					ref={playAgain}
 					src={playAgainImg}
 					className="match-report__play__again"
-					onClick={newMatch}
-				/>
+					onClick={newMatch}>
+					Play Again
+				</button>
 			</div>
 		</MatchReportDiv>
 	);

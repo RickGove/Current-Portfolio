@@ -812,9 +812,9 @@ export default function BattleScene() {
 	}
 
 	return (
-		<BattleDiv>
+		<BattleDiv lengthA={fighterA[0].length} lengthB={fighterB[0].length}>
 			<div className="fighter">
-				<h1>
+				<h1 id="name-A">
 					{fighterA[0]}
 					{'  '}
 					<img src={fighterA[1]} />
@@ -822,7 +822,7 @@ export default function BattleScene() {
 				{showStatsA()}
 			</div>
 			<div className="fighter">
-				<h1>
+				<h1 id="name-B">
 					{fighterB[0]}
 					{'  '}
 					<img src={fighterB[1]} />

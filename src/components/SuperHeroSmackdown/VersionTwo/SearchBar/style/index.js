@@ -7,6 +7,8 @@ const mobile = '@media (max-width: 550px)',
 	widthMobile = '90%';
 
 export const Button = styled.button`
+	display: flex;
+	justify-content: space-around;
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	/* position: unset !important; */
@@ -22,8 +24,7 @@ export const Button = styled.button`
 	transition: 300ms;
 	line-height: 50px;
 	padding: 0.1rem;
-	font-size: ${(props) => (props.length > 8 ? '2rem' : '3rem')};
-	text-align: center;
+	font-size: ${(props) => (props.length > 8 ? '1rem' : '1.5rem')};
 	position: relative;
 	z-index: 500;
 
@@ -44,6 +45,11 @@ export const Button = styled.button`
 export const SearchDiv = styled.div`
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
+	width: 100%;
+
+	.div-with-input-and-results {
+		width: 100%;
+	}
 
 	.modal {
 		position: absolute;
@@ -62,18 +68,18 @@ export const SearchDiv = styled.div`
 		z-index: 500;
 		background-image: url(${mag});
 		background-position: left;
-		background-size: auto;
+		background-size: contain;
 		background-repeat: no-repeat;
-		text-align: center;
 		border: 4px solid black;
+		padding: 0.5rem;
+		padding-left: 3.5rem;
 		position: relative;
 		font: inherit;
 		width: ${width};
 		margin: 0 auto auto auto;
 		display: block;
-		padding: 0.5rem;
 		border-radius: 8px 8px 8px 8px;
-		font-size: 3rem;
+		font-size: 1.5rem;
 
 		&:focus {
 			box-shadow: 0 0 0 5pt yellow;
@@ -89,6 +95,7 @@ export const SearchDiv = styled.div`
 	}
 
 	.results-ul {
+		background: white;
 		position: absolute;
 		z-index: 500;
 		list-style-type: none;
@@ -138,8 +145,8 @@ export const SearchDiv = styled.div`
 	.hero-img {
 		z-index: 500;
 		margin-left: 1rem;
-		height: 5rem;
-		width: 5rem;
+		height: 3rem;
+		width: 3rem;
 		border-radius: 8rem;
 		vertical-align: middle;
 	}

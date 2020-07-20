@@ -69,13 +69,11 @@ function Search() {
 	if (!fighterA || !fighterB) {
 		delayInput();
 		return (
-			<div id="image-div-search" ref={mainDiv}>
-				<div>
-					<img src={searchImg} ref={image} className="logo-on-search" />
-					<div ref={delayedDiv} style={{ visibility: 'hidden' }}>
-						<SearchBar />
-					</div>
+			<div id="main-app-div" ref={mainDiv}>
+				<div ref={image} className="logo-on-search">
+					SUPERHERO SMACKDOW
 				</div>
+				<SearchBar />
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
@@ -90,17 +88,11 @@ function Search() {
 	} else if (!ready) {
 		delayButton();
 		return (
-			<div id="image-div-search" ref={mainDiv}>
-				<img src={searchImg} ref={image} className="logo-on-search" />
+			<div id="main-app-div" ref={mainDiv}>
+				<div ref={image} className="logo-on-search">
+					sUPERHERO SMACKDOWn
+				</div>
 
-				<button
-					autoFocus
-					className="begin-button"
-					ref={begin}
-					style={{ visibility: 'hidden' }}
-					onClick={beginBattle}>
-					Begin Battle
-				</button>
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
@@ -110,12 +102,24 @@ function Search() {
 						<CharacterCard AB="B" data={fighterB} />
 					</div>
 				</div>
+				<div className="container-begin-button">
+					<button
+						autoFocus
+						className="begin-button"
+						ref={begin}
+						style={{ visibility: 'hidden' }}
+						onClick={beginBattle}>
+						Begin Battle
+					</button>
+				</div>
 			</div>
 		);
 	} else if (!showMatchReport) {
 		return (
-			<div id="image-div-search" ref={mainDiv}>
-				<img src={searchImg} ref={image} className="logo-on-search" />
+			<div id="main-app-div" ref={mainDiv}>
+				<div ref={image} className="logo-on-search">
+					sUPERHERO SMACKDOWn
+				</div>
 				<BattleScene />
 			</div>
 		);

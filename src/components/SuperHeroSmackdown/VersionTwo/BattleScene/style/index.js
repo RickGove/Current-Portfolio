@@ -1,48 +1,55 @@
 import styled from 'styled-components';
 
-const landscape = `@media only screen and (max-height : 600px)`;
-
 export const BattleDiv = styled.div`
 	z-index: 500;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	align-items: center;
 
-	${landscape} {
+	@media (max-height: 560px) {
 		flex-direction: row;
 	}
 
 	.fighter {
+		border: 2px solid black;
+		margin: 1rem;
 		overflow: hidden;
 		color: black;
 		margin-bottom: 0.2rem;
 		display: flex;
-		border-radius: 5rem;
+		border-radius: 1rem;
 		flex-direction: column;
-		background: cadetblue;
-		height: 49%;
-		width: 80%;
-		box-shadow: 0 15px grey;
+		background: linear-gradient(71deg, grey, transparent);
+		height: 46%;
+		width: 54%;
+		box-shadow: 7px 15px 5px grey;
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
 		animation: SMACK 2s;
 
-		${landscape} {
-			height: 92%;
-			border: 2px solid black;
+		@media (max-height: 560px) {
+			height: 85%;
+			max-height: 275px;
+		}
+
+		@media (max-width: 500px) {
+			width: 80%;
 		}
 	}
 
 	h1 {
-		font-size: 2.3rem;
 		transition: 200ms;
+	}
 
-		${landscape} {
-			font-size: 1.8rem;
-		}
+	#name-A {
+		font-size: ${(props) => (props.lengthA > 8 ? '1rem' : '2.3rem')};
+	}
+
+	#name-B {
+		font-size: ${(props) => (props.lengthB > 8 ? '1rem' : '2.3rem')};
 	}
 
 	img {
@@ -61,6 +68,7 @@ export const BattleDiv = styled.div`
 	}
 
 	.grid-icons {
+		padding: 2px;
 		display: grid;
 		grid-template-columns: repeat(6, 16%);
 	}
@@ -72,10 +80,21 @@ export const BattleDiv = styled.div`
 	}
 
 	.shown-icon {
+		margin: auto;
+		padding: 1px;
+		background: black;
+		border-radius: 1rem;
 		transform: scale(1);
 		font-size: 1rem;
 		opacity: 1;
 		transition: 1000ms;
+	}
+
+	.loser,
+	.winner {
+		border: 1px solid black;
+		box-shadow: 1px 1px 2px black;
+		text-align: center;
 	}
 
 	.loser {
@@ -83,7 +102,7 @@ export const BattleDiv = styled.div`
 		margin: 0;
 		padding: 0;
 		transform: scale(5000);
-		font-size: 1.6rem;
+		font-size: 1rem;
 		transition: 2000ms;
 		opacity: 0;
 	}
@@ -92,7 +111,7 @@ export const BattleDiv = styled.div`
 		font: inherit;
 		margin: 0;
 		padding: 0;
-		font-size: 1.7rem;
+		font-size: 1.2rem;
 		transition: 2000ms;
 		transform: scale(5000);
 		opacity: 0;

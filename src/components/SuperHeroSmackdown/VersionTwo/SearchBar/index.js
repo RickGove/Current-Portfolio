@@ -45,7 +45,7 @@ function SearchBar() {
 			} else if (searchResults === null) {
 				return (
 					<li key="new-search">
-						<Button>Enter a search</Button>
+						<Button>Search For A Hero or Villain</Button>
 					</li>
 				);
 			} else {
@@ -130,6 +130,12 @@ function SearchBar() {
 			superHeroData[i + 3],
 			superHeroData[i + 4],
 			superHeroData[i + 5],
+			superHeroData[i + 6],
+			superHeroData[i + 7],
+			superHeroData[i + 8],
+			superHeroData[i + 9],
+			superHeroData[i + 10],
+			superHeroData[i + 11],
 		];
 		return data;
 	}
@@ -315,13 +321,13 @@ function SearchBar() {
 			<div className="modal" ref={modal}>
 				<Modal />
 			</div>
-			<div ref={wrapDiv}>
+			<div className="div-with-input-and-results" ref={wrapDiv}>
 				<input
 					autoFocus
 					autoComplete="off"
 					id="searchA"
 					className="input"
-					type="text"
+					type="search"
 					ref={input}
 					onKeyUp={handleChange}
 					onFocus={showResults}
