@@ -21,7 +21,8 @@ const CharacterCard = (props) => {
 			<CharCard length={3}>
 				<div>
 					<img src={placeholder} />
-					<h1>???</h1>
+					<h1>?</h1>
+					<p>{'   '}</p>
 				</div>
 			</CharCard>
 		);

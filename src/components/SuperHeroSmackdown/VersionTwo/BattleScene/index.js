@@ -490,10 +490,10 @@ export default function BattleScene() {
 
 			//RACE
 			if (race === 'null') {
-				race = '';
+				race = 'contestant';
 			}
 			if (Lrace === 'null') {
-				Lrace = '';
+				Lrace = 'contestant';
 			}
 			//genderPronoun
 			genderPronoun = 'their';
@@ -814,19 +814,16 @@ export default function BattleScene() {
 	return (
 		<BattleDiv lengthA={fighterA[0].length} lengthB={fighterB[0].length}>
 			<div className="fighter">
-				<h1 id="name-A">
-					{fighterA[0]}
-					{'  '}
-					<img src={fighterA[1]} />
-				</h1>
+				<h1 id="name-A">{fighterA[0]}</h1>
+				<img src={fighterA[1]} />
 				{showStatsA()}
 			</div>
+			<div className="vs-h1">
+				<h1>VS</h1>
+			</div>
 			<div className="fighter">
-				<h1 id="name-B">
-					{fighterB[0]}
-					{'  '}
-					<img src={fighterB[1]} />
-				</h1>
+				<h1 id="name-B">{fighterB[0]}</h1>
+				<img src={fighterB[1]} />
 				{showStatsB()}
 			</div>
 		</BattleDiv>

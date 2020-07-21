@@ -7,12 +7,15 @@ export const BattleDiv = styled.div`
 	height: 100%;
 	width: 100%;
 	align-items: center;
+	justify-content: space-evenly;
 
 	@media (max-height: 560px) {
 		flex-direction: row;
 	}
 
 	.fighter {
+		max-height: 260px;
+		max-width: 168px;
 		border: 2px solid black;
 		margin: 1rem;
 		overflow: hidden;
@@ -44,12 +47,23 @@ export const BattleDiv = styled.div`
 		transition: 200ms;
 	}
 
+	.vs-h1 {
+		transform: rotateZ(-15deg);
+		background: black;
+		color: yellow;
+		height: 2.5rem;
+		width: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	#name-A {
-		font-size: ${(props) => (props.lengthA > 8 ? '1rem' : '2.3rem')};
+		font-size: ${(props) => (props.lengthA > 5 ? '1.3rem' : '2.3rem')};
 	}
 
 	#name-B {
-		font-size: ${(props) => (props.lengthB > 8 ? '1rem' : '2.3rem')};
+		font-size: ${(props) => (props.lengthB > 5 ? '1.3rem' : '2.3rem')};
 	}
 
 	img {
@@ -62,14 +76,17 @@ export const BattleDiv = styled.div`
 	.stats-hidden {
 		font: inherit;
 		text-align: left;
-		top: 2rem;
-		left: 2.5rem;
+		width: 80%;
+		transform: rotateZ(5deg);
+
 		visibility: hidden;
 	}
 
 	.grid-icons {
 		padding: 2px;
+		height: 2.2rem;
 		display: grid;
+		width: 100%;
 		grid-template-columns: repeat(6, 16%);
 	}
 

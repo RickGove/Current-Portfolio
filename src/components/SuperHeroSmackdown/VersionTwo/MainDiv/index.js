@@ -66,19 +66,28 @@ function Search() {
 		}
 	}
 
+	function makeHeader() {
+		return (
+			<div className="header-title">
+				<h2 className="header-title__heading">SUPERHERO SMACKDOWN</h2>
+			</div>
+		);
+	}
+
 	if (!fighterA || !fighterB) {
 		delayInput();
 		return (
 			<div id="main-app-div" ref={mainDiv}>
-				<div ref={image} className="logo-on-search">
-					<p>Superhero Smackdown</p>
-				</div>
+				{makeHeader()}
+
 				<SearchBar />
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
 					</div>
-					<img src={vs} className="vs-img" />
+					<div className="vs-h1">
+						<h1>VS</h1>
+					</div>
 					<div ref={charCardB} className="char-card">
 						<CharacterCard AB="B" data={fighterB} />
 					</div>
@@ -89,15 +98,15 @@ function Search() {
 		delayButton();
 		return (
 			<div id="main-app-div" ref={mainDiv}>
-				<div ref={image} className="logo-on-search">
-					<p>Superhero Smackdown</p>
-				</div>
+				{makeHeader()}
 
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
 					</div>
-					<img src={vs} className="vs-img" />
+					<div className="vs-h1">
+						<h1>VS</h1>
+					</div>
 					<div ref={charCardB} className="char-card">
 						<CharacterCard AB="B" data={fighterB} />
 					</div>
@@ -117,9 +126,7 @@ function Search() {
 	} else if (!showMatchReport) {
 		return (
 			<div id="main-app-div" ref={mainDiv}>
-				<div ref={image} className="logo-on-search">
-					<p>Superhero Smackdown</p>
-				</div>
+				{makeHeader()}
 				<BattleScene />
 			</div>
 		);

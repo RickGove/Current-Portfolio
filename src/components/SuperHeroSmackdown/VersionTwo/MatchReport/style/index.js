@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-const landscape = `@media (max-height: 480px)`;
+const landscape = `@media (max-height: 400px)`;
 
 export const MatchReportDiv = styled.div`
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	display: flex;
-	background: rgba(0, 0, 0, 0.7);
 	height: 100%;
 	width: 100%;
 	z-index: 500;
+	max-height: 650px;
 
 	.match-report__inner__div {
 		width: 400px;

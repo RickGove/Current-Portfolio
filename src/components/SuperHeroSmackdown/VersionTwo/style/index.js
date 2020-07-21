@@ -7,15 +7,25 @@ const transition = `20ms`;
 const landscape = `@media all and (orientation:landscape)`;
 
 export const IntroDiv = styled.div`
-	@import url('../../../../font');
-	font-family: 'Bangers', sans;
-
 	* {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
 
+	.header-title {
+		height: 5rem;
+		width: 100%;
+		background: yellow;
+		display: flex;
+		justify-content: center;
+		border-bottom: 1px solid black;
+		border-radius: 2rem 2rem 0 0;
+		margin-bottom: 1px;
+	}
+
+	@import url('../../../../font');
+	font-family: 'Bangers', sans;
 	background: url(${wp});
 	background-size: cover;
 	padding: 0;
@@ -40,12 +50,10 @@ export const IntroDiv = styled.div`
 		height: 100%;
 		width: auto;
 		max-width: 100vw;
-		/* transform: scale(0); */
 		transition: ${transition};
 	}
 
 	.image-fade {
-		/* transform: scale(1.1); */
 		transition: ${transition};
 	}
 
@@ -56,9 +64,6 @@ export const IntroDiv = styled.div`
 		100% {
 			transform: scale(1);
 		}
-	}
-
-	.image-display {
 	}
 
 	.show-search {
@@ -82,20 +87,6 @@ export const IntroDiv = styled.div`
 		&:hover {
 			opacity: 0.5;
 		}
-	}
-
-	.logo-on-search {
-		@import url('../../../../font');
-		font-family: 'Futura LT', 'Bangers', sans;
-		height: 2rem;
-		width: 100%;
-		transition: 200ms;
-		border-radius: 2rem 2rem 0 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 2.3rem;
-		background: yellow;
 	}
 
 	.card-container {
@@ -172,6 +163,17 @@ export const IntroDiv = styled.div`
 		max-height: 100vh;
 		background-size: cover;
 		background-repeat: no-repeat;
+	}
+
+	.vs-h1 {
+		transform: rotateZ(-15deg);
+		background: black;
+		color: yellow;
+		height: 2.5rem;
+		width: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	@keyframes shake {

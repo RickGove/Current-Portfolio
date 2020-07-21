@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,7 +27,12 @@ function SearchBar() {
 		[canSearch, setCanSearch] = useState(true),
 		[searchResults, setSearchResults] = useState(null),
 		[highlighted, setHighlighted] = useState();
-
+	// useEffect
+	useEffect(() => {
+		return function hideModal() {
+			if (modal.current) modal.current.style.display = 'none';
+		};
+	});
 	function resultsMap() {
 		if (searchResults !== undefined) {
 			if (searchResults === '') {

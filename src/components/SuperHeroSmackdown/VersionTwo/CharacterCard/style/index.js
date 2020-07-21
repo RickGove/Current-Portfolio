@@ -20,7 +20,8 @@ export const CharCard = styled.div`
 	}
 
 	h1 {
-		font-size: ${(props) => (props.length > 8 ? '1rem' : '2.3rem')};
+		text-align: center;
+		font-size: ${(props) => (props.length > 8 ? '2rem' : '2.3rem')};
 	}
 
 	h1,

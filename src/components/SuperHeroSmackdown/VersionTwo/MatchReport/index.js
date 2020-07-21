@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import logo from '../../img/intro/logoReport.png';
+import logo from '../../img/intro/logoReport-min.png';
 
 import playAgainImg from '../../img/bubble.png';
 import drawImg from '../../../../img/superIcon.png';
@@ -27,6 +27,12 @@ export default function MatchReport() {
 	useEffect(() => {
 		window.setTimeout(() => {
 			if (playAgain.current) playAgain.current.style.visibility = 'unset';
+			document.addEventListener('keyup', (e) => {
+				e.preventDefault();
+				if (e.keyCode === 13) {
+					newMatch();
+				}
+			});
 		}, 2000);
 	});
 

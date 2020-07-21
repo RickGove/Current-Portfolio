@@ -20,17 +20,13 @@ const composeEnhancers = composeWithDevTools({
 });
 export const store = createStore(weatherApp, composeEnhancers());
 function App() {
-	function sayBye() {
-		alert('Bye bye');
-	}
-
 	return (
 		<Provider store={store}>
 			<Router history={history}>
 				<React.Fragment>
 					<Switch>
 						<Route path="/" exact component={HomePage} />
-						<Route path="/weather" exact component={Weather} onleave={sayBye} />
+						<Route path="/weather" exact component={Weather} />
 						<Route path="/superherosmackdown" exact component={VersionTwo} />
 						{/* <Route path="/AnastaciaKorotkevich" exact component={Nastya} /> */}
 						{/* <Route path="/learn" exact component={understandState} /> */}
