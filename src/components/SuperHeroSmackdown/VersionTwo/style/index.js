@@ -109,13 +109,18 @@ export const IntroDiv = styled.div`
 	}
 
 	.char-card {
-		height: 51vh;
-		width: 21vw;
+		height: 54vh;
+		width: 27vw;
+		max-width: 240px;
 		min-width: 135px;
 		min-height: 230px;
-		max-height: 300px;
+		max-height: 360px;
 		display: flex;
 		justify-content: center;
+
+		@media (max-height: 600px) {
+			max-width: 180px;
+		}
 
 		${narrow} {
 			max-width: unset;
@@ -124,6 +129,29 @@ export const IntroDiv = styled.div`
 			width: 45vw;
 			margin: unset;
 		}
+	}
+
+	.div-back-card-title {
+		display: flex;
+		flex-direction: row;
+		height: 3rem;
+		border: 0;
+	}
+
+	.div-back-card-image {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		width: 4rem;
+	}
+
+	.img-back-card {
+		margin: auto;
+	}
+
+	.h3-back-card {
+		border-bottom: 2px solid black;
+		width: 68%;
 	}
 
 	.container-begin-button {

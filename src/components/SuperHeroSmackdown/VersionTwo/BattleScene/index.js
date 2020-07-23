@@ -6,6 +6,8 @@ import { setMatchReport, setShowMatchReport } from '../../../../actions';
 
 import { BattleDiv } from './style';
 
+import { CharCard } from '../CharacterCard/style';
+
 export default function BattleScene() {
 	//refs
 	const statsA = useRef(null),
@@ -813,18 +815,41 @@ export default function BattleScene() {
 
 	return (
 		<BattleDiv lengthA={fighterA[0].length} lengthB={fighterB[0].length}>
-			<div className="fighter">
-				<h1 id="name-A">{fighterA[0]}</h1>
-				<img src={fighterA[1]} />
-				{showStatsA()}
-			</div>
-			<div className="vs-h1">
-				<h1>VS</h1>
-			</div>
-			<div className="fighter">
-				<h1 id="name-B">{fighterB[0]}</h1>
-				<img src={fighterB[1]} />
-				{showStatsB()}
+			<div className="card-container">
+				<div className="char-card">
+					<CharCard>
+						<div className="char-card">
+							<div className="div-back-card-title">
+								<div className="div-back-card-image">
+									<img src={fighterA[1]} className="img-back-card" />
+								</div>
+								<h3 className="h3-back-card" id="name-A">
+									{fighterA[0]}
+								</h3>
+							</div>
+							{showStatsA()}
+						</div>
+					</CharCard>
+				</div>
+
+				<div className="vs-h1">
+					<h1>VS</h1>
+				</div>
+				<div className="char-card">
+					<CharCard>
+						<div className="char-card">
+							<div className="div-back-card-title">
+								<div className="div-back-card-image">
+									<img src={fighterB[1]} className="img-back-card" />
+								</div>
+								<h3 className="h3-back-card" id="name-B">
+									{fighterB[0]}
+								</h3>
+							</div>
+							{showStatsB()}
+						</div>
+					</CharCard>
+				</div>
 			</div>
 		</BattleDiv>
 	);

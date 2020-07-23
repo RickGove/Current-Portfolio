@@ -14,33 +14,14 @@ export const BattleDiv = styled.div`
 	}
 
 	.fighter {
-		max-height: 260px;
-		max-width: 168px;
-		border: 2px solid black;
-		margin: 1rem;
 		overflow: hidden;
 		color: black;
-		margin-bottom: 0.2rem;
 		display: flex;
 		border-radius: 1rem;
 		flex-direction: column;
-		background: linear-gradient(71deg, grey, transparent);
-		height: 46%;
-		width: 54%;
-		box-shadow: 7px 15px 5px grey;
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
-		animation: SMACK 2s;
-
-		@media (max-height: 560px) {
-			height: 85%;
-			max-height: 275px;
-		}
-
-		@media (max-width: 500px) {
-			width: 80%;
-		}
 	}
 
 	h1 {
@@ -59,11 +40,11 @@ export const BattleDiv = styled.div`
 	}
 
 	#name-A {
-		font-size: ${(props) => (props.lengthA > 5 ? '1.3rem' : '2.3rem')};
+		font-size: ${(props) => (props.lengthA > 5 ? '1.3rem' : '1.3rem')};
 	}
 
 	#name-B {
-		font-size: ${(props) => (props.lengthB > 5 ? '1.3rem' : '2.3rem')};
+		font-size: ${(props) => (props.lengthB > 5 ? '1.3rem' : '1.3rem')};
 	}
 
 	img {
@@ -78,60 +59,64 @@ export const BattleDiv = styled.div`
 		text-align: left;
 		width: 80%;
 		transform: rotateZ(5deg);
-
+		border: 0;
 		visibility: hidden;
+		justify-content: center;
 	}
 
 	.grid-icons {
-		padding: 2px;
-		height: 2.2rem;
+		border: 0;
+		padding: 0px;
+		height: 2rem;
 		display: grid;
-		width: 100%;
+		width: 80%;
 		grid-template-columns: repeat(6, 16%);
 	}
 
 	.hidden-icon {
-		font-size: 0.8rem;
+		font-size: 1rem;
 		transform: scale(10);
 		opacity: 0;
-		transition: 1000ms;
+		transition: 400ms;
 	}
 
 	.shown-icon {
 		margin: auto;
-		padding: 0.7px;
+		padding: 2px;
 		background: black;
 		border-radius: 1rem;
+		border: 1px solid white;
 		transform: scale(1);
-		font-size: 0.8rem;
+		font-size: 1rem;
 		opacity: 1;
-		transition: 1000ms;
+		transition: 400ms;
 	}
 
 	.loser,
 	.winner {
 		border: 1px solid black;
-		box-shadow: 1px 1px 2px black;
+		/* box-shadow: 1px 1px 2px black; */
+		box-shadow: 6px 2px 11px black;
+		margin: 2px;
 		text-align: center;
+		font-size: 1.1rem;
+		width: 95%;
+		padding: 1px;
 	}
 
 	.loser {
 		font: inherit;
-		margin: 0;
-		padding: 0;
-		transform: scale(5000);
+		transform: scale(20);
 		font-size: 1rem;
-		transition: 2000ms;
+		transition: 400ms;
 		opacity: 0;
 	}
 
 	.winner {
 		font: inherit;
-		margin: 0;
-		padding: 0;
 		font-size: 1.2rem;
-		transition: 2000ms;
-		transform: scale(5000);
+		transition: 400ms;
+		transform: scale(20);
 		opacity: 0;
 	}
 

@@ -16,6 +16,7 @@ export const CharCard = styled.div`
 	flex-direction: column;
 	width: 100%;
 	overflow: hidden;
+	animation: BATMAN 1s;
 
 	.animate {
 	}
@@ -31,7 +32,6 @@ export const CharCard = styled.div`
 
 	h1,
 	img {
-		animation: BATMAN 3s;
 	}
 
 	h2 {
@@ -74,16 +74,11 @@ export const CharCard = styled.div`
 
 	@keyframes BATMAN {
 		0% {
-			transform: rotateZ(350deg) scale(1);
+			transform: rotateY(90deg);
 		}
-		40% {
-			transform: scale(1.2);
-		}
-		50% {
-			transform: rotateZ(150deg);
-		}
+
 		100% {
-			transform: scale(1) rotateZ(0);
+			transform: rotateY(0);
 		}
 	}
 `;

@@ -4,6 +4,7 @@ import mag from '../../../img/intro/mag.png';
 
 const mobile = '@media (max-width: 550px)',
 	width = '90%',
+	maxWidth = 'max-width: 20rem',
 	widthMobile = '90%';
 
 export const Button = styled.button`
@@ -76,6 +77,7 @@ export const SearchDiv = styled.div`
 		position: relative;
 		font: inherit;
 		width: ${width};
+		${maxWidth};
 		margin: 0 auto auto auto;
 		display: block;
 		border-radius: 8px 8px 8px 8px;
@@ -136,10 +138,8 @@ export const SearchDiv = styled.div`
 		height: auto;
 		margin: auto;
 		width: ${width};
+		${maxWidth};
 		display: block;
-		${mobile} {
-			width: ${widthMobile};
-		}
 	}
 
 	.hero-img {

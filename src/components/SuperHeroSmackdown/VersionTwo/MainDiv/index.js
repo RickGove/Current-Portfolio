@@ -74,8 +74,23 @@ function Search() {
 		);
 	}
 
-	if (!fighterA || !fighterB) {
+	if (!fighterA && !fighterB) {
 		delayInput();
+		return (
+			<div id="main-app-div" ref={mainDiv}>
+				{makeHeader()}
+
+				<SearchBar />
+				<div ref={cardContainer} className="card-container">
+					<div ref={charCardA} className="char-card"></div>
+					<div className="vs-h1">
+						<h1>VS</h1>
+					</div>
+					<div ref={charCardB} className="char-card"></div>
+				</div>
+			</div>
+		);
+	} else if (fighterA && !fighterB) {
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				{makeHeader()}
@@ -88,18 +103,15 @@ function Search() {
 					<div className="vs-h1">
 						<h1>VS</h1>
 					</div>
-					<div ref={charCardB} className="char-card">
-						<CharacterCard AB="B" data={fighterB} />
-					</div>
+					<div ref={charCardB} className="char-card"></div>
 				</div>
 			</div>
 		);
-	} else if (!ready) {
+	} else if (fighterA && fighterB && !ready) {
 		delayButton();
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				{makeHeader()}
-
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
@@ -121,6 +133,32 @@ function Search() {
 						Begin Battle
 					</button>
 				</div>
+			</div>
+		);
+	} else if (!fighterA && fighterB) {
+		return (
+			<div id="main-app-div" ref={mainDiv}>
+				{makeHeader()}
+				<SearchBar />
+
+				<div ref={cardContainer} className="card-container">
+					<div ref={charCardA} className="char-card"></div>
+					<div className="vs-h1">
+						<h1>VS</h1>
+					</div>
+					<div ref={charCardB} className="char-card">
+						<CharacterCard AB="B" data={fighterB} />
+					</div>
+				</div>
+			</div>
+		);
+	} else if (ready) {
+		delayButton();
+		return (
+			<div id="main-app-div" ref={mainDiv}>
+				{makeHeader()}
+
+				<BattleScene />
 			</div>
 		);
 	} else if (!showMatchReport) {

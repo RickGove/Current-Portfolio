@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setFighterA, setFighterB } from '../../../../actions';
 
@@ -9,9 +9,14 @@ import placeholder from '../../img/intro/placeholder.png';
 import { CharCard } from './style';
 
 const CharacterCard = (props) => {
-	const dispatch = useDispatch();
+	const dispatch = useDispatch(),
+		ready = useSelector((state) => state.ready),
+		fighterA = useSelector((state) => state.fighterA),
+		fighterB = useSelector((state) => state.fighterB);
 
 	const charDiv = useRef();
+
+	let thisFighter = [];
 
 	function clearData() {
 		if (props.AB === 'A') dispatch(setFighterA(null));
@@ -20,9 +25,15 @@ const CharacterCard = (props) => {
 
 	useEffect(() => {
 		//set BG
+		if (props.AB === 'A') thisFighter = fighterA;
+		else thisFighter = fighterB;
 		if (!props.data)
 			charDiv.current.style.backgroundImage = `url(${placeholder})`;
-		else charDiv.current.style.backgroundImage = `url(${props.data[1]})`;
+		else charDiv.current.style.backgroundImage = `url(${thisFighter[1]})`;
+		if (ready) {
+			charDiv.current.style.backgroundImage = `unset`;
+			charDiv.current.style.background = 'grey';
+		}
 	});
 
 	if (!props.data) {
