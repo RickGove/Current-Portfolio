@@ -17,7 +17,6 @@ export const MatchReportDiv = styled.div`
 		height: 95%;
 		justify-content: space-around;
 		display: flex;
-		flex-direction: column;
 		background: white;
 		align-items: center;
 		color: black;

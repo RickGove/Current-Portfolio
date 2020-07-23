@@ -4,26 +4,8 @@ import wp from '../../img/wpBW.jpg';
 // import bangers from '../../../../font/Bangers-Regular.ttf';
 
 const transition = `20ms`;
-const landscape = `@media all and (orientation:landscape)`;
 
 export const IntroDiv = styled.div`
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-
-	.header-title {
-		height: 5rem;
-		width: 100%;
-		background: yellow;
-		display: flex;
-		justify-content: center;
-		border-bottom: 1px solid black;
-		border-radius: 2rem 2rem 0 0;
-		margin-bottom: 1px;
-	}
-
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	background: url(${wp});
@@ -37,6 +19,25 @@ export const IntroDiv = styled.div`
 	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	.header-title {
+		height: auto;
+		min-height: 1.8rem;
+		align-items: end;
+		width: 100%;
+		background: yellow;
+		display: flex;
+		justify-content: center;
+		border-bottom: 1px solid black;
+		border-radius: 2rem 2rem 0 0;
+		margin-bottom: 1px;
+	}
 
 	#image-div {
 		background: white;
@@ -55,15 +56,6 @@ export const IntroDiv = styled.div`
 
 	.image-fade {
 		transition: ${transition};
-	}
-
-	@keyframes loadin {
-		0% {
-			transform: scale(0.8);
-		}
-		100% {
-			transform: scale(1);
-		}
 	}
 
 	.show-search {
@@ -90,16 +82,14 @@ export const IntroDiv = styled.div`
 	}
 
 	.card-container {
-		padding-top: 2rem;
-		height: 222%;
+		padding: 1.4rem;
 		width: 100%;
 		display: flex;
 		align-items: center;
-		flex-direction: column;
 		justify-content: space-evenly;
 
-		@media (max-height: 430px) {
-			padding-top: 0;
+		@media (max-width: 488px) {
+			flex-direction: column;
 		}
 	}
 
@@ -115,16 +105,19 @@ export const IntroDiv = styled.div`
 	}
 
 	.char-card {
-		width: 90%;
+		width: 13rem;
+		height: 19rem;
 		display: flex;
 		justify-content: center;
 
-		${landscape} {
-			height: 90px;
+		@media (max-height: 800px) {
+			height: 13rem;
+			width: 9.5rem;
 		}
 	}
 
 	.container-begin-button {
+		margin: 0.5rem;
 		height: 100%;
 		width: 100%;
 		display: flex;
@@ -149,23 +142,25 @@ export const IntroDiv = styled.div`
 	}
 
 	#main-app-div {
+		/* max-height: 27.5rem; */
 		align-items: center;
 		width: 485px;
-		background: white;
+		background: radial-gradient(lightgoldenrodyellow, lightgray, gray, black);
 		border-radius: 2rem;
 		box-shadow: 16px 16px 7px grey;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		margin: auto;
-		height: 100%;
+		/* height: 100%; */
 		max-width: 100vw;
-		max-height: 100vh;
+		/* max-height: 100vh; */
 		background-size: cover;
 		background-repeat: no-repeat;
 	}
 
 	.vs-h1 {
+		margin: 0.7rem;
 		transform: rotateZ(-15deg);
 		background: black;
 		color: yellow;
@@ -184,31 +179,40 @@ export const IntroDiv = styled.div`
 			transform: translate(-1px, -2px) rotate(-15deg);
 		}
 		20% {
-			transform: scale(1.1) translate(-3px, 0px) rotate(15deg);
+			transform: scale(0.9) translate(-3px, 0px) rotate(15deg);
 		}
 		30% {
 			transform: translate(3px, 2px) rotate(0deg);
 		}
 		40% {
-			transform: scale(1.2) translate(1px, -1px) rotate(15deg);
+			transform: scale(0.8) translate(1px, -1px) rotate(15deg);
 		}
 		50% {
 			transform: translate(-1px, 2px) rotate(-15deg);
 		}
 		60% {
-			transform: scale(1.3) translate(-3px, 1px) rotate(0deg);
+			transform: scale(0.7) translate(-3px, 1px) rotate(0deg);
 		}
 		70% {
 			transform: translate(3px, 1px) rotate(-15deg);
 		}
 		80% {
-			transform: scale(1.4) translate(-5px, -7px) rotate(15deg);
+			transform: scale(0.6) translate(-5px, -7px) rotate(15deg);
 		}
 		90% {
 			transform: translate(-2.5px, -3.5px) rotate(8deg);
 		}
 		100% {
 			transform: scale(1) translate(0) rotate(0deg);
+		}
+	}
+
+	@keyframes loadin {
+		0% {
+			transform: scale(0.8);
+		}
+		100% {
+			transform: scale(1);
 		}
 	}
 `;

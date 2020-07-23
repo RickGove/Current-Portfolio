@@ -1,0 +1,14 @@
+
+
+
+ // on desktop everything must be bigger!!!!
+
+ // cheetah III is now Chris Kelly
+
+*** div inside char-card: background set to the current battlers image with js, or the question mark img by default
+div with image and h1 of charcters name
+remove the img from it
+make it look like a hockey card now
+
+
+

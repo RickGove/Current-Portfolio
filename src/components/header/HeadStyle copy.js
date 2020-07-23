@@ -3,6 +3,8 @@ import { data } from '../data/Data';
 
 const media = `@media (min-width: 950px)`;
 
+const mobile = `@media (max-width: 388px)`;
+
 let HeadSizeFull = `@media (min-width: 1250px) {
 	height: 70px;
 }`;
@@ -59,6 +61,10 @@ export const HeadCon = styled.div`
 		/* border: 2px solid blue; */
 		height: 50px;
 		vertical-align: middle;
+
+		${mobile} {
+			height: 38px;
+		}
 	}
 
 	.projects-nav {
@@ -89,6 +95,10 @@ export const HeadCon = styled.div`
 			opacity: 0.6;
 			transform: scale(1.6) translateY(0.5em);
 			transition: 500ms;
+		}
+
+		${mobile} {
+			height: 2.5rem;
 		}
 	}
 
@@ -137,6 +147,9 @@ export const Hamburger = styled.div`
 		${media} {
 			display: none;
 		}
+		${mobile}{
+			height: 38px;
+		}
 	}
 	/* // div holding image */
 	.dropdown { 
@@ -145,8 +158,13 @@ export const Hamburger = styled.div`
 		top: 22px;
 		display: inline-block;
 		/* border: 2px solid blue; */
+	
 		@media (min-width: 950px){
 			display:none;
+		}
+	
+		${mobile}{
+			left: 8.2rem
 		}
 	}
 
@@ -163,6 +181,7 @@ export const Hamburger = styled.div`
 			display: none;
 			box-shadow: none;
 		}
+
 		
 	}
 

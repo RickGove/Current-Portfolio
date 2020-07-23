@@ -91,6 +91,7 @@ export const BattleDiv = styled.div`
 	}
 
 	.hidden-icon {
+		font-size: 0.8rem;
 		transform: scale(10);
 		opacity: 0;
 		transition: 1000ms;
@@ -98,11 +99,11 @@ export const BattleDiv = styled.div`
 
 	.shown-icon {
 		margin: auto;
-		padding: 1px;
+		padding: 0.7px;
 		background: black;
 		border-radius: 1rem;
 		transform: scale(1);
-		font-size: 1rem;
+		font-size: 0.8rem;
 		opacity: 1;
 		transition: 1000ms;
 	}

@@ -6,7 +6,7 @@ export const CharCard = styled.div`
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	border: 3px solid white;
-	background: linear-gradient(5deg, black, grey, transparent);
+	background: white;
 	color: black;
 	box-shadow: 4px 6px grey;
 	padding: 1rem;
