@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import wp from '../../img/wpBW.jpg';
 // import bangers from '../../../../font/Bangers-Regular.ttf';
 
+const narrow = `@media (max-width: 488px)`;
+
 const transition = `20ms`;
 
 export const IntroDiv = styled.div`
@@ -82,14 +84,16 @@ export const IntroDiv = styled.div`
 	}
 
 	.card-container {
-		padding: 1.4rem;
+		margin: auto;
 		width: 100%;
+		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-evenly;
 
-		@media (max-width: 488px) {
+		${narrow} {
 			flex-direction: column;
+			margin: unset;
 		}
 	}
 
@@ -105,24 +109,33 @@ export const IntroDiv = styled.div`
 	}
 
 	.char-card {
-		width: 13rem;
-		height: 19rem;
+		height: 51vh;
+		width: 21vw;
+		min-width: 135px;
+		min-height: 230px;
+		max-height: 300px;
 		display: flex;
 		justify-content: center;
 
-		@media (max-height: 800px) {
-			height: 13rem;
-			width: 9.5rem;
+		${narrow} {
+			max-width: unset;
+			max-height: unset;
+			height: 34vh;
+			width: 45vw;
+			margin: unset;
 		}
 	}
 
 	.container-begin-button {
-		margin: 0.5rem;
-		height: 100%;
-		width: 100%;
+		position: absolute;
+		top: 31%;
+		left: 50;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		${narrow} {
+			top: 50%;
+		}
 	}
 
 	.begin-button {
@@ -142,21 +155,25 @@ export const IntroDiv = styled.div`
 	}
 
 	#main-app-div {
-		/* max-height: 27.5rem; */
+		height: 97vh;
+		width: 76vw;
+		max-height: 600px;
 		align-items: center;
-		width: 485px;
 		background: radial-gradient(lightgoldenrodyellow, lightgray, gray, black);
 		border-radius: 2rem;
 		box-shadow: 16px 16px 7px grey;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: flex-start;
 		margin: auto;
-		/* height: 100%; */
-		max-width: 100vw;
-		/* max-height: 100vh; */
 		background-size: cover;
 		background-repeat: no-repeat;
+
+		${narrow} {
+			max-height: unset;
+			width: 100vw;
+			height: 100vh;
+		}
 	}
 
 	.vs-h1 {
