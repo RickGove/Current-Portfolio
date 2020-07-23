@@ -147,11 +147,20 @@ export const IntroDiv = styled.div`
 
 	.img-back-card {
 		margin: auto;
+
+		${narrow} {
+			height: 2rem;
+			width: 2rem;
+		}
 	}
 
 	.h3-back-card {
 		border-bottom: 2px solid black;
 		width: 68%;
+
+		${narrow} {
+			font-size: 1rem;
+		}
 	}
 
 	.container-begin-button {
@@ -187,7 +196,23 @@ export const IntroDiv = styled.div`
 		width: 76vw;
 		max-height: 600px;
 		align-items: center;
-		background: radial-gradient(lightgoldenrodyellow, lightgray, gray, black);
+		background: rgb(238, 232, 174);
+		background: -moz-linear-gradient(
+			62deg,
+			rgba(238, 232, 174, 1) 0%,
+			rgba(148, 187, 233, 1) 100%
+		);
+		background: -webkit-linear-gradient(
+			62deg,
+			rgba(238, 232, 174, 1) 0%,
+			rgba(148, 187, 233, 1) 100%
+		);
+		background: linear-gradient(
+			62deg,
+			rgba(238, 232, 174, 1) 0%,
+			rgba(148, 187, 233, 1) 100%
+		);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eee8ae",endColorstr="#94bbe9",GradientType=1);
 		border-radius: 2rem;
 		box-shadow: 16px 16px 7px grey;
 		display: flex;

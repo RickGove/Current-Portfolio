@@ -6,11 +6,6 @@ import CharacterCard from '../CharacterCard';
 import BattleScene from '../BattleScene';
 import MatchReport from '../MatchReport';
 
-import searchImg from '../../img/intro/watchlogo-min.png';
-import battleLogo from '../../img/intro/logoBattle.png';
-
-import vs from '../../img/intro/vs.png';
-
 import { setReady } from '../../../../actions';
 
 function Search() {
@@ -40,7 +35,11 @@ function Search() {
 	useEffect(() => {
 		document.addEventListener('keyup', (e) => {
 			e.preventDefault();
-			if (e.keyCode === 13 && begin.current) {
+			if (
+				e.keyCode === 13 &&
+				begin.current &&
+				begin.current.style.visibility === 'unset'
+			) {
 				beginBattle();
 			}
 		});
@@ -50,7 +49,7 @@ function Search() {
 		window.setTimeout(() => {
 			if (begin.current) begin.current.style.visibility = 'unset';
 			if (begin.current) begin.current.focus();
-		}, 3000);
+		}, 2000);
 	}
 
 	function beginBattle() {
@@ -59,10 +58,12 @@ function Search() {
 	}
 
 	function delayInput() {
+		if (delayedDiv.current) delayedDiv.current.style.visibility = 'hidden';
 		if (!ready) {
 			window.setTimeout(() => {
 				if (delayedDiv.current) delayedDiv.current.style.visibility = 'unset';
-			}, 5000);
+				if (delayedDiv.current) delayedDiv.current.focus();
+			}, 2500);
 		}
 	}
 
@@ -74,13 +75,17 @@ function Search() {
 		);
 	}
 
-	if (!fighterA && !fighterB) {
+	if (showMatchReport) {
+		return <MatchReport />;
+	} else if (!fighterA && !fighterB) {
 		delayInput();
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				{makeHeader()}
 
-				<SearchBar />
+				<div ref={delayedDiv} style={{ visibility: 'hidden' }}>
+					<SearchBar />
+				</div>
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card"></div>
 					<div className="vs-h1">
@@ -91,11 +96,14 @@ function Search() {
 			</div>
 		);
 	} else if (fighterA && !fighterB) {
+		delayInput();
+
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				{makeHeader()}
-
-				<SearchBar />
+				<div ref={delayedDiv} style={{ visibility: 'hidden' }}>
+					<SearchBar />
+				</div>
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
@@ -136,10 +144,14 @@ function Search() {
 			</div>
 		);
 	} else if (!fighterA && fighterB) {
+		delayInput();
+
 		return (
 			<div id="main-app-div" ref={mainDiv}>
 				{makeHeader()}
-				<SearchBar />
+				<div ref={delayedDiv} style={{ visibility: 'hidden' }}>
+					<SearchBar />
+				</div>
 
 				<div ref={cardContainer} className="card-container">
 					<div ref={charCardA} className="char-card"></div>
@@ -168,8 +180,6 @@ function Search() {
 				<BattleScene />
 			</div>
 		);
-	} else {
-		return <MatchReport />;
 	}
 }
 

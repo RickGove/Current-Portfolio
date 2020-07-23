@@ -28,11 +28,13 @@ function SearchBar() {
 		[searchResults, setSearchResults] = useState(null),
 		[highlighted, setHighlighted] = useState();
 	// useEffect
+
 	useEffect(() => {
-		return function hideModal() {
-			if (modal.current) modal.current.style.display = 'none';
-		};
+		// return function hideModal() {
+		// 	if (modal.current) modal.current.style.display = 'none';
+		// };
 	});
+
 	function resultsMap() {
 		if (searchResults !== undefined) {
 			if (searchResults === '') {
@@ -316,7 +318,7 @@ function SearchBar() {
 		if (!fighterA || !fighterB) {
 			window.setTimeout(() => {
 				if (input.current) input.current.focus();
-			}, 7000);
+			}, 2500);
 		}
 	}
 

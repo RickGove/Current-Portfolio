@@ -6,6 +6,7 @@ export const MatchReportDiv = styled.div`
 	@import url('../../../../font');
 	font-family: 'Bangers', sans;
 	display: flex;
+	flex-direction: column;
 	height: 100%;
 	width: 100%;
 	z-index: 500;
@@ -17,6 +18,8 @@ export const MatchReportDiv = styled.div`
 		height: 95%;
 		justify-content: space-around;
 		display: flex;
+		flex-direction: column;
+
 		background: white;
 		align-items: center;
 		color: black;
@@ -77,6 +80,13 @@ export const MatchReportDiv = styled.div`
 
 		&:hover {
 			opacity: 0.5;
+		}
+
+		@media (max-height: 545px) {
+			position: absolute;
+			top: 50%;
+			right: 9rem;
+			width: 5rem;
 		}
 	}
 

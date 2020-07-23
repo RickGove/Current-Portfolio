@@ -68,28 +68,41 @@ export const BattleDiv = styled.div`
 		border: 0;
 		padding: 0px;
 		height: 2rem;
-		display: grid;
-		width: 80%;
-		grid-template-columns: repeat(6, 16%);
+		display: flex;
+		width: 85%;
+		flex-direction: row;
+		transition: 400ms;
+
+		@media (max-width: 680px) {
+			height: 1rem;
+		}
 	}
 
 	.hidden-icon {
-		font-size: 1rem;
+		font-size: 0.1rem;
 		transform: scale(10);
 		opacity: 0;
 		transition: 400ms;
 	}
 
 	.shown-icon {
+		display: unset;
 		margin: auto;
 		padding: 2px;
 		background: black;
 		border-radius: 1rem;
-		border: 1px solid white;
 		transform: scale(1);
 		font-size: 1rem;
 		opacity: 1;
 		transition: 400ms;
+
+		@media (max-width: 680px) {
+			font-size: 0.6rem;
+		}
+
+		@media (max-width: 546px) {
+			font-size: 0.4rem;
+		}
 	}
 
 	.loser,
@@ -102,19 +115,19 @@ export const BattleDiv = styled.div`
 		font-size: 1.1rem;
 		width: 95%;
 		padding: 1px;
+
+		@media (max-width: 680px) {
+			font-size: 0.8rem;
+		}
 	}
 
 	.loser {
-		font: inherit;
 		transform: scale(20);
-		font-size: 1rem;
 		transition: 400ms;
 		opacity: 0;
 	}
 
 	.winner {
-		font: inherit;
-		font-size: 1.2rem;
 		transition: 400ms;
 		transform: scale(20);
 		opacity: 0;
