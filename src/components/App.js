@@ -4,21 +4,30 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import HomePage from './HomePage';
+import Dice from './DiceGame/dice';
 import Weather from './Weather/';
+import Cookies from './cookies/';
+
 import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
-import history from '../history';
+import DiceGame from './DiceGame/';
+
 import Nastya from './Nastya';
 import My404Component from './404';
 // import understandState from './understandState';
 
+import history from '../history';
+
 import weatherApp from '../reducers/';
 
 // let store = createStore(weatherApp);
+
 const composeEnhancers = composeWithDevTools({
 	trace: true,
 	traceLimit: 25,
 });
+
 export const store = createStore(weatherApp, composeEnhancers());
+
 function App() {
 	return (
 		<Provider store={store}>
@@ -28,6 +37,10 @@ function App() {
 						<Route path="/" exact component={HomePage} />
 						<Route path="/weather" exact component={Weather} />
 						<Route path="/superherosmackdown" exact component={VersionTwo} />
+						<Route path="/dicegame" exact component={DiceGame} />
+						<Route path="/dice" exact component={Dice} />
+						<Route path="/cookies" exact component={Cookies} />
+
 						{/* <Route path="/AnastaciaKorotkevich" exact component={Nastya} /> */}
 						{/* <Route path="/learn" exact component={understandState} /> */}
 						<Route path="*" exact component={My404Component} />

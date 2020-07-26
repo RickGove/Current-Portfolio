@@ -80,13 +80,12 @@ export const projects = [
 		link: [`#/SuperHeroSmackdown`],
 	},
 	{
-		name: `Unnamed Mad Libs Project`,
+		name: `Pig - A Dice Game`,
 		image: 'none',
 		description: [
-			`All websites deal with forms, and I wanted to make a site to get batter at dealing with them. I read about the MadLibs API, and, having used them while teaching English due to my fandom as a kid, I decided to make a simple project with the API. very under construction at the moment as I finish my JavaScript algortithms and advanced data structures course.`,
-			`COMING SOON`,
+			`Adpated from a JavaScript course I took. I moved it to React and Styled-Components. A simple dice game. Fully repsonsive.`,
 		],
-		tools: [CONSTRUCT, CONSTRUCT, CONSTRUCT, CONSTRUCT],
+		tools: [CONSTRUCT, HTML, CSS, JS, logoREACT, STYLED, CONSTRUCT],
 		link: 'none',
 	},
 ];

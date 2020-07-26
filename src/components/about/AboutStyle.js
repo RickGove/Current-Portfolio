@@ -17,27 +17,48 @@ export const AboutWPDiv = styled.div`
 
 export const ShowCaseCon = styled.div`
 	min-height: 100px;
-	/* background-image: url(${wallpaper});
-	background-attachment: fixed;  */
-	width: 60%;
+	width: 100%;
 	margin: auto;
-	/* background: ${data.styles.lightBg}; */
 	color: white;
 	font-weight: bold;
 	padding-bottom: 100px;
 	text-align: center;
+
+	.hidden-data {
+		display: none;
+	}
+
+	p {
+		margin: 2rem;
+	}
+
+	button {
+		display: block;
+		margin: auto;
+		margin-top: 4.5rem;
+		border-radius: 2rem;
+		padding: 0.5rem 3rem;
+		font: inherit;
+		background: rgba(0, 0, 0, 0.6);
+		color: white;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.4;
+		}
+	}
 `;
 
 export const AboutTitle = styled.div`
-	padding-top: 80px;
-	padding-bottom: 150px;
+	padding-top: 3rem;
+	padding-bottom: 0;
 `;
 
 export const ShowImg = styled.img`
 	border-radius: 50%;
 	float: top;
+	max-width: 13rem;
 	width: 27%;
-	padding-bottom: 25px;
 `;
 
 export const ShowH1 = styled.span`
@@ -61,4 +82,5 @@ export const ShowP = styled.p`
 
 export const ShowSubhead = styled.h2`
 	font-style: italic;
+	margin: 3rem;
 `;

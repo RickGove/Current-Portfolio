@@ -7,6 +7,8 @@ const media = {
 	anchored: '@media (min-width: 760px)',
 };
 
+const mobile = `@media (max-width: 388px)`;
+
 export const DDownDiv = styled.div`
 	/* Style The Dropdown Image */
 	.dropimg {
@@ -17,6 +19,10 @@ export const DDownDiv = styled.div`
 
 		${media.desktop} {
 			display: none;
+		}
+
+		${mobile} {
+			height: 38px;
 		}
 	}
 

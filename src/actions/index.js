@@ -169,3 +169,52 @@ export const setShowMatchReport = (report) => {
 		payload: report,
 	};
 };
+
+export const setRolled = (rolled) => {
+	return {
+		type: 'SET_ROLLED',
+		payload: rolled,
+	};
+};
+
+export const setScores = (scores) => {
+	return {
+		type: 'SET_SCORES',
+		payload: scores,
+	};
+};
+
+export const setRoundScore = (score) => {
+	return {
+		type: 'SET_ROUND_SCORE',
+		payload: score,
+	};
+};
+
+export const setActivePlayer = (player) => {
+	return {
+		type: 'SET_ACTIVE_PLAYER',
+		payload: player,
+	};
+};
+
+export const setGamePlaying = (bool) => {
+	return {
+		type: 'SET_GAME_PLAYING',
+		payload: bool,
+	};
+};
+
+export const setIsRolling = (bool) => {
+	return {
+		type: 'SET_IS_ROLLING',
+		payload: bool,
+	};
+};
+
+export const setCookies = (bool) => {
+	return {
+		type: 'SET_COOKIES',
+		payload: bool,
+	};
+};

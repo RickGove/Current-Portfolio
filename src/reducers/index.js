@@ -201,7 +201,64 @@ const showMatchReport = (ready = false, action) => {
 	}
 };
 
+const rolled = (dice = 1, action) => {
+	if (action.type === 'SET_ROLLED') {
+		return action.payload;
+	} else {
+		return dice;
+	}
+};
+
+const scores = (both = [0, 0], action) => {
+	if (action.type === 'SET_SCORES') {
+		return action.payload;
+	} else {
+		return both;
+	}
+};
+
+const roundScore = (current = 0, action) => {
+	if (action.type === 'SET_ROUND_SCORE') {
+		return action.payload;
+	} else {
+		return current;
+	}
+};
+
+const activePlayer = (act = 0, action) => {
+	if (action.type === 'SET_ACTIVE_PLAYER') {
+		return action.payload;
+	} else {
+		return act;
+	}
+};
+
+const gamePlaying = (inPlay = true, action) => {
+	if (action.type === 'SET_GAME_PLAYING') {
+		return action.payload;
+	} else {
+		return inPlay;
+	}
+};
+
+const isRolling = (inPlay = true, action) => {
+	if (action.type === 'SET_IS_ROLLING') {
+		return action.payload;
+	} else {
+		return inPlay;
+	}
+};
+
+const cookies = (allow = false, action) => {
+	if (action.type === 'SET_COOKIES') {
+		return action.payload;
+	} else {
+		return allow;
+	}
+};
+
 const weatherApp = combineReducers({
+	cookies,
 	system: selectedSystem,
 	location: inputLocation,
 	searchedLocation: searchedLocation,
@@ -227,7 +284,13 @@ const weatherApp = combineReducers({
 	ready: ready,
 	matchReport: matchReport,
 	showMatchReport,
-	showMatchReport,
+	// Dice Game
+	rolled,
+	scores,
+	roundScore,
+	activePlayer,
+	gamePlaying,
+	isRolling,
 });
 
 export default weatherApp;

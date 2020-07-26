@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { data } from '../data/Data';
 
 export const ContactCon = styled.div`
-	display: grid;
-	grid-template-columns: 10% auto 10%;
+	display: flex;
+	justify-content: center;
 	background-color: ${data.styles.darkBg};
 	border-bottom: ${data.styles.borderDef};
 	border-top: ${data.styles.borderDef};

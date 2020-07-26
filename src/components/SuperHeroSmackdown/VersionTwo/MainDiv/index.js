@@ -124,22 +124,19 @@ function Search() {
 					<div ref={charCardA} className="char-card">
 						<CharacterCard AB="A" data={fighterA} />
 					</div>
-					<div className="vs-h1">
-						<h1>VS</h1>
+					<div className="container-begin-button">
+						<button
+							autoFocus
+							className="begin-button"
+							ref={begin}
+							style={{ visibility: 'hidden' }}
+							onClick={beginBattle}>
+							Begin Battle
+						</button>
 					</div>
 					<div ref={charCardB} className="char-card">
 						<CharacterCard AB="B" data={fighterB} />
 					</div>
-				</div>
-				<div className="container-begin-button">
-					<button
-						autoFocus
-						className="begin-button"
-						ref={begin}
-						style={{ visibility: 'hidden' }}
-						onClick={beginBattle}>
-						Begin Battle
-					</button>
 				</div>
 			</div>
 		);

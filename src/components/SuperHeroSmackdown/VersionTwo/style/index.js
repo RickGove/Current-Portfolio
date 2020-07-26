@@ -164,22 +164,16 @@ export const IntroDiv = styled.div`
 	}
 
 	.container-begin-button {
-		position: absolute;
-		top: 31%;
-		left: 50;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		${narrow} {
-			top: 50%;
-		}
 	}
 
 	.begin-button {
-		height: 43px;
-		width: 129px;
+		padding: 0.3rem;
+		border-radius: 1rem;
 		font: inherit;
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		cursor: pointer;
 		display: block;
 		color: black;

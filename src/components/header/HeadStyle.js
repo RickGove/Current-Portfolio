@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { data } from '../data/Data';
 
-const media = `@media (min-width: 950px)`;
-
 let HeadSizeFull = `@media (min-width: 1250px) {
 	height: 70px;
 }`;
@@ -10,6 +8,8 @@ let HeadSizeFull = `@media (min-width: 1250px) {
 let HeadSizeTablet = `@media (min-width: 768px) {
 	height: 70px;
 }`;
+
+const mobile = `@media (max-width: 388px)`;
 
 let HeadSizeMobile = `height: 70px`;
 
@@ -48,8 +48,8 @@ export const HeadCon = styled.div`
 		height: 50px;
 		vertical-align: middle;
 
-		@media (max-width: 760px) {
-			padding-right: ;
+		${mobile} {
+			height: 38px;
 		}
 	}
 
@@ -68,6 +68,10 @@ export const HeadCon = styled.div`
 			opacity: 0.6;
 			transform: scale(1.6) translateY(0.5em);
 			transition: 500ms;
+		}
+
+		${mobile} {
+			height: 2.5rem;
 		}
 	}
 
