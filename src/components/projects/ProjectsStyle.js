@@ -52,9 +52,10 @@ export const ProjectsTitleCon = styled.div`
 		transition: 1s;
 		vertical-align: middle;
 		padding-left: 0.3rem;
+		display: block;
 
 		&:hover {
-			transform: scale(3) translateX(60px);
+			transform: scale(1.5);
 			opacity: 1;
 			transition: 1s;
 		}

@@ -12,7 +12,7 @@ import Footer from './footer/';
 class App extends React.Component {
 	render() {
 		return (
-			<>
+			<React.Fragment>
 				<GlobalStyle />
 				<HeaderDeterminer />
 				<ScrollToTop />
@@ -21,7 +21,7 @@ class App extends React.Component {
 				<Tools id="Tools" />
 				<Projects />
 				<Footer />
-			</>
+			</React.Fragment>
 		);
 	}
 }

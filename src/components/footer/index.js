@@ -5,7 +5,7 @@ import email from '../../img/logo_email.png';
 import linked from '../../img/logo_linked.png';
 import twitter from '../../img/logo_twitter.png';
 import logo from '../../img/logo.png';
-import by from '../../img/by.png';
+import by from '../../img/by.jpg';
 
 function Footer() {
 	return (

@@ -15,7 +15,6 @@ import { ShowH1 } from '../about/AboutStyle';
 import { projects } from '../data/Data'; //name, description, tools
 
 import toolsUsed from '../../img/logo_toolsUsed.png';
-import weatherGif from '../../img/weather.gif';
 
 class ProjectMain extends React.Component {
 	constructor(props) {

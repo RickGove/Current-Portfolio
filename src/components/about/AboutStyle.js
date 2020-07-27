@@ -42,6 +42,7 @@ export const ShowCaseCon = styled.div`
 		background: rgba(0, 0, 0, 0.6);
 		color: white;
 		cursor: pointer;
+		outline: none;
 
 		&:hover {
 			opacity: 0.4;

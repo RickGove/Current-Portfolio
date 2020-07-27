@@ -12,8 +12,11 @@ import NPM from '../../img/logo_npm.png';
 import CONSTRUCT from '../../img/logo_construction.png';
 import GIT from '../../img/logo_git.png';
 import GITHUB from '../../img/logo_github.svg';
-import WEATHER from '../../img/weather.gif';
-import SUPER from '../../img/superherosmackdown.gif';
+import GSAP from '../../img/logo_gsap.svg';
+
+import WEATHER from '../../img/weather.png';
+import PIG from '../../img/dicegame.png';
+import SUPER from '../../img/superherosmackdown.png';
 
 // import LEET from '../'
 
@@ -81,12 +84,12 @@ export const projects = [
 	},
 	{
 		name: `Pig - A Dice Game`,
-		image: 'none',
+		image: PIG,
 		description: [
-			`Adpated from a JavaScript course I took. I moved it to React and Styled-Components. A simple dice game. Fully repsonsive.`,
+			`A project from a JavaScript course I took. I moved it into React, added some GSAP animation and other features to flesh it out fully.`,
 		],
-		tools: [CONSTRUCT, HTML, CSS, JS, logoREACT, STYLED, CONSTRUCT],
-		link: 'none',
+		tools: [HTML, CSS, JS, logoREACT, GSAP, STYLED],
+		link: '#/DiceGame',
 	},
 ];
 
@@ -170,6 +173,11 @@ export const tools = [
 		name: `GitHub`,
 		Description: `The world's leading software development platform; GitHub brings together the world's largest community of developers to discover, share, and build better software.`,
 		logo: GITHUB,
+	},
+	{
+		name: `GreenSock Animation`,
+		Description: `GreenSock, or GSAP, is a fast, robust and smooth animation tool for JavaScript`,
+		logo: GSAP,
 	},
 ];
 

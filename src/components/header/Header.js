@@ -10,7 +10,7 @@ import menu from '../../img/logo_menu.png';
 import logo from '../../img/logo.png';
 import weather from '../../img/weatherIconNew.png';
 import superHSD from '../../img/superIcon.png';
-import navigate from '../../img/navigate.png';
+import diceGame from '../../img/pigIconNew.png';
 
 function Header() {
 	function renderSections() {
@@ -72,15 +72,18 @@ function Header() {
 					<div className="dropdown-content">{renderSectionsDrop()}</div>
 				</div>
 			</DDownDivAnchored>
-			<a className="first-right project-icon-link" href="/#/weather">
-				<img alt="Gove Weather" className="project__icon" src={weather} />
-			</a>
-			<a className="last-right project-icon-link" href="/#/SuperHeroSmackDown">
+			<a className="first-right project-icon-link" href="/#/SuperHeroSmackDown">
 				<img
 					alt="Super Hero Smack Down"
 					className="project__icon"
 					src={superHSD}
 				/>
+			</a>
+			<a className="project-icon-link" href="/#/DiceGame">
+				<img alt="Pig A Dice Game" className="project__icon" src={diceGame} />
+			</a>
+			<a className="last-right project-icon-link" href="/#/weather">
+				<img alt="Gove Weather" className="project__icon" src={weather} />
 			</a>
 		</HeadCon>
 	);

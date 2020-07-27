@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,8 +19,16 @@ export default function Dice() {
 	const roundScore = useSelector((state) => state.roundScore);
 	const activePlayer = useSelector((state) => state.activePlayer);
 	const rolledLast = useSelector((state) => state.rolled);
+	const tl = new TimelineMax({ paused: true, repeat: 3 });
 
-	//////////// Copy Pasta ////////
+	useEffect(() => {
+		TweenMax.set(sceneRef.current, { perspective: 0 });
+		tl.to(cubeRef.current, 1, { rotation: 360 })
+			.to(cubeRef.current, 1, { rotationY: 360, rotationX: 360 }, '-=1')
+			.to(sceneRef.current, 1, { scale: 0.2 }, '-=1')
+			.to(cubeRef.current, 1, { x: 500 }, '-=1')
+			.timeScale(1);
+	}, []);
 
 	const cubeRef = useRef();
 	const sceneRef = useRef();
@@ -39,8 +47,6 @@ export default function Dice() {
 		'rotateX(180deg)',
 		'rotateX(270deg)',
 	];
-
-	TweenMax.set(sceneRef.current, { perspective: 0 });
 
 	//Rotates through cubeFace array on each click.
 	//If i>cubeFace reset to 0 and preform 1st step.
@@ -68,17 +74,6 @@ export default function Dice() {
 		TweenMax.to(cubeRef.current, 0.5, { transform: 'rotateY(' + i + 'deg)' });
 		i += 90;
 	};
-
-	//Random Experimental Scene
-	const tl = new TimelineMax({ paused: true, repeat: 3 });
-	tl.yoyo(true);
-	tl.to(cubeRef.current, 1, { rotation: 360 })
-
-		.to(cubeRef.current, 1, { rotationY: 360, rotationX: 360 }, '-=1')
-		.to(sceneRef.current, 1, { scale: 0.2 }, '-=1')
-		.to(cubeRef.current, 1, { x: 500 }, '-=1');
-
-	tl.timeScale(1);
 
 	const start = function () {
 		tl.restart();

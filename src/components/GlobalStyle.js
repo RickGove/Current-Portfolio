@@ -4,8 +4,9 @@ import { data } from './data/Data';
 
 export const GlobalStyle = createGlobalStyle`
 body {
-    
-    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    /* font-family: Arial, Helvetica, sans-serif; */
+	font-family: 'Lato', sans-serif;
     font-size:15px;
     line-height:1.5; 
     opacity: 0.95;
