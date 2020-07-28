@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TweenMax, Linear, TimelineMax } from 'gsap';
+import { gsap } from 'gsap';
 
 import { DiceWrap } from './style';
 
@@ -19,28 +19,15 @@ export default function Dice() {
 	const roundScore = useSelector((state) => state.roundScore);
 	const activePlayer = useSelector((state) => state.activePlayer);
 	const rolledLast = useSelector((state) => state.rolled);
-	const tl = new TimelineMax({ paused: true, repeat: 3 });
-
-	useEffect(() => {
-		TweenMax.set(sceneRef.current, { perspective: 0 });
-		tl.to(cubeRef.current, 1, { rotation: 360 })
-			.to(cubeRef.current, 1, { rotationY: 360, rotationX: 360 }, '-=1')
-			.to(sceneRef.current, 1, { scale: 0.2 }, '-=1')
-			.to(cubeRef.current, 1, { x: 500 }, '-=1')
-			.timeScale(1);
-	}, []);
-
 	const cubeRef = useRef();
 	const sceneRef = useRef();
+	const tl = useRef();
 
 	let canRoll = true;
 
 	let i = 90;
 	let j = 0;
 
-	//Main DOM Variables and Selectors
-
-	//Selects Cube Face X via CSS Degree Rotatation
 	const cubeFace = [
 		'translateX(200px)',
 		'rotateX(90deg)',
@@ -48,13 +35,23 @@ export default function Dice() {
 		'rotateX(270deg)',
 	];
 
-	//Rotates through cubeFace array on each click.
-	//If i>cubeFace reset to 0 and preform 1st step.
+	useEffect(() => {
+		gsap.set(sceneRef.current, { perspective: 0 });
+		tl.current = gsap.timeline({ paused: true, repeat: 3 });
+		tl.to(cubeRef.current, 1, { rotationY: 360, rotationX: 360 }, '-=1')
+			.to(sceneRef.current, 1, { scale: 0.2 }, '-=1')
+			.to(cubeRef.current, 1, { x: 500 }, '-=1')
+			.timeScale(1);
+
+		return () => {
+			tl.current.kill();
+		};
+	}, []);
 
 	const RotateY = function () {
-		TweenMax.to(cubeRef.current, 0.5, {
+		gsap.to(cubeRef.current, 0.5, {
 			transform: cubeFace[i],
-			ease: Linear.easeNone,
+			ease: 'none',
 		});
 
 		if (i < cubeFace.length) {
@@ -62,16 +59,16 @@ export default function Dice() {
 			console.log(i);
 		} else {
 			i = 1;
-			TweenMax.to(cubeRef.current, 0.5, {
+			gsap.to(cubeRef.current, 0.5, {
 				transform: cubeFace[0],
-				ease: Linear.easeNone,
+				ease: 'none',
 			});
 			console.log(i);
 		}
-	}; //RotateY Function
+	};
 
 	const RotateX = function () {
-		TweenMax.to(cubeRef.current, 0.5, { transform: 'rotateY(' + i + 'deg)' });
+		gsap.to(cubeRef.current, 0.5, { transform: 'rotateY(' + i + 'deg)' });
 		i += 90;
 	};
 
@@ -79,14 +76,13 @@ export default function Dice() {
 		tl.restart();
 	};
 
-	//Roll Die Timeline
 	const startRoll = function () {
 		if (canRoll) {
 			dispatch(setIsRolling(true));
 			canRoll = false;
 			const duration = 1500;
 			let randomNum = Math.floor(Math.random() * 3); //between 0 and 5
-			let rl = new TimelineMax({ onComplete: faceRoll });
+			let rl = new gsap.timeline({ onComplete: faceRoll });
 			rl.to(cubeRef.current, 0.01, { rotationY: 0, rotationX: 0 });
 			rl.to(cubeRef.current, 3, { rotationY: 1800, rotationX: 1800 });
 			rl.to(sceneRef.current, 3, { scale: 0.2 }, '-.1');
@@ -98,28 +94,28 @@ export default function Dice() {
 	const faceRoll = function () {
 		var randomNum = Math.floor(Math.random() * 6); //between 0 and 5
 		if (randomNum === 0) {
-			TweenMax.to(cubeRef.current, 0.2, { rotationY: 0, rotationX: 0 }, '-1');
-			TweenMax.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
+			gsap.to(cubeRef.current, 0.2, { rotationY: 0, rotationX: 0 }, '-1');
+			gsap.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
 		}
 		if (randomNum === 5) {
-			TweenMax.to(cubeRef.current, 0.2, { rotationX: 90, scale: 1 }, '-1');
-			TweenMax.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
+			gsap.to(cubeRef.current, 0.2, { rotationX: 90, scale: 1 }, '-1');
+			gsap.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
 		}
 		if (randomNum === 1) {
-			TweenMax.to(cubeRef.current, 0.2, { rotationX: 180, scale: 1 }, '-1');
-			TweenMax.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
+			gsap.to(cubeRef.current, 0.2, { rotationX: 180, scale: 1 }, '-1');
+			gsap.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
 		}
 		if (randomNum === 4) {
-			TweenMax.to(cubeRef.current, 0.2, { rotationX: 270, scale: 1 }, '-1');
-			TweenMax.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
+			gsap.to(cubeRef.current, 0.2, { rotationX: 270, scale: 1 }, '-1');
+			gsap.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
 		}
 		if (randomNum === 2) {
-			TweenMax.to(cubeRef.current, 0.2, { rotationY: 90, scale: 1 }, '-1');
-			TweenMax.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
+			gsap.to(cubeRef.current, 0.2, { rotationY: 90, scale: 1 }, '-1');
+			gsap.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
 		}
 		if (randomNum === 3) {
-			TweenMax.to(cubeRef.current, 0.2, { rotationY: 270, scale: 1 }, '-1');
-			TweenMax.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
+			gsap.to(cubeRef.current, 0.2, { rotationY: 270, scale: 1 }, '-1');
+			gsap.to(sceneRef.current, 0.2, { scale: 1 }, '-1');
 		}
 
 		window.setTimeout(() => {
@@ -136,9 +132,7 @@ export default function Dice() {
 				dispatch(setRoundScore(roundScore + randomNum + 1));
 			}
 		}, 500);
-	}; //FaceRoll If Statement
-
-	/////////////////////
+	};
 
 	return (
 		<DiceWrap>

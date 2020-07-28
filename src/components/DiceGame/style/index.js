@@ -24,6 +24,11 @@ export const DiceDiv = styled.div`
 		box-sizing: border-box;
 	}
 
+	.go-home__wrapper {
+		max-height: 3.2rem;
+		max-width: 3.2rem;
+	}
+
 	.final-score {
 		position: absolute;
 		left: 50%;
@@ -47,6 +52,8 @@ export const DiceDiv = styled.div`
 	}
 
 	.dice-wrap {
+		height: 80px;
+		width: 80px;
 		position: absolute;
 		transform: translateX(-50%);
 		left: 50%;
@@ -202,6 +209,13 @@ export const DiceDiv = styled.div`
 	#rules-btn:hover + .rules-div {
 		transition: all 700ms ease-out;
 		opacity: 1;
+		height: 83vh;
+		width: 80vw;
+	}
+
+	.show-rules {
+		transition: all 700ms ease-out;
+		opacity: 1;
 		height: 75vh;
 		width: 80vw;
 	}
@@ -214,6 +228,7 @@ export const DiceDiv = styled.div`
 	}
 
 	.rules-div {
+		transition: all 700ms;
 		display: flex;
 		overflow: hidden;
 		opacity: 0;
@@ -222,6 +237,7 @@ export const DiceDiv = styled.div`
 		height: 0px;
 		width: 0px;
 		position: absolute;
+		overflow-y: scroll;
 		left: 50%;
 		top: 2.5rem;
 		transform: translateX(-50%);
@@ -237,7 +253,15 @@ export const DiceDiv = styled.div`
 		justify-content: space-around;
 	}
 
+	li {
+		padding: 0.18rem;
+	}
+
 	.got-it-btn {
+		border: 1px solid black;
+		padding: 0.2rem 2rem;
+		border-radius: 2rem;
+		outline: none;
 		position: relative;
 		transform: translateX(0);
 		width: unset;
@@ -271,7 +295,8 @@ export const DiceDiv = styled.div`
 		top: 23rem;
 	}
 	.btn-hold {
-		top: 8rem;
+		position: relative;
+		bottom: -2rem;
 	}
 
 	.dice {
@@ -286,6 +311,7 @@ export const DiceDiv = styled.div`
 	.winner {
 		background-color: #f7f7f7;
 	}
+
 	.winner .player-name {
 		font-weight: 300;
 		color: #eb4d4d;

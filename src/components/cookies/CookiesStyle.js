@@ -5,8 +5,8 @@ let border = `none`;
 
 export const CookiesCon = styled.div`
 	z-index: 100000;
-	height: 100%;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 	background: rgba(0, 0, 0, 0.5);
 	overflow: hidden;
 	position: absolute;
@@ -20,10 +20,20 @@ export const CookiesCon = styled.div`
 	text-align: center;
 	overflow-y: hidden;
 
+	@media (max-width: 910px) {
+		width: 100%;
+	}
+
 	* {
 		box-sizing: border-box;
 		@import url('../../font/BioRhyme-ExtraBold.ttf');
 		font-family: 'BioRhyme', serif;
+	}
+
+	h1 {
+		@media (max-width: 910px) {
+			font-size: ;
+		}
 	}
 
 	div {

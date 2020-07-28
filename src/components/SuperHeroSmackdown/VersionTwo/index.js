@@ -7,6 +7,8 @@ import { IntroDiv } from './style';
 import IntroMain from './IntroMain';
 import MainDiv from './MainDiv';
 
+import GoHome from '../../GoHome';
+
 function SuperHeroVersionTwo() {
 	const dispatch = useDispatch();
 
@@ -27,6 +29,9 @@ function SuperHeroVersionTwo() {
 	} else {
 		return (
 			<IntroDiv>
+				{/* <div className="go-home__wrapper">
+					<GoHome />
+				</div> */}
 				<MainDiv />
 			</IntroDiv>
 		);

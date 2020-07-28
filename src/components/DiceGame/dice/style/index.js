@@ -12,7 +12,10 @@ const fullSize = `${size}px`;
 const halfSize = `${size / 2}px`;
 
 export const DiceWrap = styled.div`
-	.cube{
+	height: 85px;
+  width: 85px;
+
+  .cube{
   margin-top:80px;
   margin:auto;
   width:${fullSize};

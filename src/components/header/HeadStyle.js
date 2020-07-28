@@ -29,7 +29,6 @@ export const HeadCon = styled.div`
 	top: 0;
 	right: 0;
 	left: 0;
-	/* border: 2px solid orange; */
 	background: black;
 
 	.first-right {
@@ -43,13 +42,11 @@ export const HeadCon = styled.div`
 	.logo {
 		padding-left: 1rem;
 		padding-right: 1rem;
-		/* padding-right: 40px; */
-		/* border: 2px solid blue; */
 		height: 50px;
 		vertical-align: middle;
 
 		${mobile} {
-			height: 38px;
+			height: 30px;
 		}
 	}
 
@@ -71,15 +68,14 @@ export const HeadCon = styled.div`
 		}
 
 		${mobile} {
-			height: 2.5rem;
+			height: 1.9rem;
 		}
 	}
 
 	.head-link {
 		/* border: 2px solid maroon; */
 		font-size: 1rem;
-		padding-left: 5px;
-		padding-right: 5px;
+		padding-left: 1.2rem;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		color: white;

@@ -28,6 +28,11 @@ export const IntroDiv = styled.div`
 		padding: 0;
 	}
 
+	.go-home__wrapper {
+		max-height: 3.2rem;
+		max-width: 3.2rem;
+	}
+
 	.header-title {
 		height: auto;
 		min-height: 1.8rem;

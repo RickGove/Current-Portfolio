@@ -84,8 +84,8 @@ export const MatchReportDiv = styled.div`
 
 		@media (max-height: 545px) {
 			position: absolute;
-			top: 0;
-			left: 0;
+			top: 5%;
+			left: 5%;
 			width: 5rem;
 		}
 	}
