@@ -23,7 +23,8 @@ function SearchBar() {
 		wrapDiv = useRef();
 
 	// state
-	const [canSearch, setCanSearch] = useState(true),
+	const [searching, setSearching] = useState(false),
+		[canSearch, setCanSearch] = useState(true),
 		[searchResults, setSearchResults] = useState(null),
 		[highlighted, setHighlighted] = useState();
 	// useEffect
@@ -55,7 +56,7 @@ function SearchBar() {
 					</li>
 				);
 			} else {
-				return searchResults.forEach((a, b) => {
+				return searchResults.map((a, b) => {
 					if (b < searchResults.length) {
 						let idName = `but-${b}`;
 						return (
@@ -67,12 +68,11 @@ function SearchBar() {
 									float="right"
 									onClick={handleClick}>
 									{a[0]}
-									<img alt={a[0]} result={b} src={a[1]} className="hero-img" />
+									<img result={b} src={a[1]} className="hero-img" />
 								</Button>
 							</li>
 						);
 					}
-					return;
 				});
 			}
 		}
@@ -93,12 +93,11 @@ function SearchBar() {
 			if (response === -1) {
 				results = '';
 			} else {
-				response.forEach((a, b) => {
+				response.map((a, b) => {
 					if (a) {
 						let arr = [a.name, a.images.sm, a.id, a.powerstats, response[b]];
 						results.push(arr);
 					}
-					return;
 				});
 			}
 			setSearchResults(results);
@@ -210,7 +209,7 @@ function SearchBar() {
 	}
 
 	function clearOldHighlights(a) {
-		a.forEach((i) => {
+		a.map((i) => {
 			if (i !== null) {
 				i.style = '';
 			}
