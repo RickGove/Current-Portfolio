@@ -4,18 +4,15 @@ import { useSelector } from 'react-redux';
 import nextImg from '../img/next.png';
 import prevImg from '../img/prev.png';
 
-import { ImagesDiv, Modal, ImageContainer } from './style';
+import { ImagesDiv, Modal } from './style';
 
 function Images() {
 	// refs
-	const imageRefArr = useRef([]);
-	const imageRef = useRef();
 	const imagesDiv = useRef();
 
 	const modal = useRef();
 	const next = useRef();
 	const prev = useRef();
-	const navButtons = useRef();
 	// state
 
 	const [images, setImages] = useState({});
@@ -24,7 +21,6 @@ function Images() {
 	const [showPrev, setShowPrev] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [modalImage, setModalImage] = useState('');
-	const [modalImageIndex, setModalImageIndex] = useState(null);
 	const [modalUserLink, setModalUserLink] = useState('');
 	const [modalImageUser, setModalImageUser] = useState('');
 	const [modalImageAvatar, setModalImageAvatar] = useState('');
@@ -56,7 +52,7 @@ function Images() {
 				images.data.results[firstImage + 3],
 			];
 
-			return imgArr.map((i, item) => {
+			return imgArr.forEach((i, item) => {
 				if (i !== undefined) {
 					return (
 						<div
@@ -68,6 +64,7 @@ function Images() {
 							onClick={handleImageClick}
 							key={item}>
 							<img
+								alt=""
 								className="image__preview"
 								username={i.user.name}
 								avatar={i.user.profile_image.medium}
@@ -75,7 +72,11 @@ function Images() {
 								src={i.urls.regular}
 							/>
 							<span className="image__taker">
-								<img className="user-image" src={i.user.profile_image.large} />{' '}
+								<img
+									alt=""
+									className="user-image"
+									src={i.user.profile_image.large}
+								/>{' '}
 								{i.user.name}
 							</span>
 						</div>
@@ -135,7 +136,7 @@ function Images() {
 				<img
 					className="image-image"
 					src={modalImage}
-					alt="Unsplash Image"
+					alt="Unsplash"
 					onClick={openImageNewWindow}
 				/>
 			</React.Fragment>
@@ -172,7 +173,7 @@ function Images() {
 	}
 
 	function showPrevModalImg() {
-		images.data.results.map((item, index) => {
+		images.data.results.forEach((item, index) => {
 			if (images.data.results[index - 1] !== undefined) {
 				if (modalImage === images.data.results[index].urls.regular) {
 					setModalImageUser(images.data.results[index - 1].user.name);
@@ -187,7 +188,7 @@ function Images() {
 	}
 
 	function showNextModalImg() {
-		images.data.results.map((item, index) => {
+		images.data.results.forEach((item, index) => {
 			if (images.data.results[index + 1] !== undefined) {
 				if (modalImage === images.data.results[index].urls.regular) {
 					setModalImageUser(images.data.results[index + 1].user.name);
@@ -217,6 +218,7 @@ function Images() {
 				{renderModalPrev()}
 				<span onClick={openNewWindow}>
 					<img
+						alt=""
 						id="modal-user-avatar"
 						className="user-name-and-avatar__avatar"
 						src={modalImageAvatar}
@@ -236,7 +238,10 @@ function Images() {
 			<div className="unsplash-notice">
 				<a href="https://unsplash.com/">
 					Images courtesy of Unsplash{' '}
-					<img src="https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/21/63/db/2163db41-fede-7076-7478-e6adedb7eb0e/AppIcon-85-220-0-4-2x.png/1200x630bb.png" />{' '}
+					<img
+						alt=""
+						src="https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/21/63/db/2163db41-fede-7076-7478-e6adedb7eb0e/AppIcon-85-220-0-4-2x.png/1200x630bb.png"
+					/>{' '}
 				</a>
 			</div>
 		);
@@ -245,9 +250,9 @@ function Images() {
 	function renderNextButton() {
 		return (
 			<img
+				alt=""
 				src={nextImg}
 				className={showNext ? 'next-image' : 'next-image inactive'}
-				alt="next images"
 				onClick={displayNext}
 				ref={next}
 			/>
@@ -283,7 +288,7 @@ function Images() {
 			<img
 				src={prevImg}
 				className={showPrev ? 'prev-image' : 'prev-image inactive'}
-				alt="prev image"
+				alt="prev"
 				onClick={displayPrev}
 				ref={prev}
 			/>

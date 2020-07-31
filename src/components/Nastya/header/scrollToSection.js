@@ -6,7 +6,6 @@ export const scrollToSection = (s) => {
 		inline: 'nearest',
 	});
 	setTimeout(() => {
-		console.log(s);
 		if (s === ' About') {
 			window.scrollBy(0, 500);
 		} else {

@@ -2,10 +2,8 @@ import styled from 'styled-components';
 
 import mag from '../../../img/intro/mag.png';
 
-const mobile = '@media (max-width: 550px)',
-	width = '90%',
-	maxWidth = 'max-width: 20rem',
-	widthMobile = '90%';
+const width = '90%',
+	maxWidth = 'max-width: 20rem';
 
 export const Button = styled.button`
 	display: flex;

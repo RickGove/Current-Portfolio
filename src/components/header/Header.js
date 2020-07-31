@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HeadCon } from './HeadStyle';
-import { Hamburger } from './HeadStyle';
+// import { Hamburger } from './HeadStyle';
 import { DDownDivAnchored } from '../DropDown/DropDownStyle';
 
 import { sections } from '../data/Data';
@@ -18,7 +18,10 @@ function Header() {
 			let sect = section.toString();
 			if (i !== 0) {
 				return (
-					<p className="head-link" onClick={() => scrollToSection(sect)}>
+					<p
+						className="head-link"
+						key={section}
+						onClick={() => scrollToSection(sect)}>
 						{section}
 					</p>
 				);
@@ -53,9 +56,9 @@ function Header() {
 			(section) => {
 				let sect = section.toString();
 				return (
-					<a key={section} onClick={() => scrollToSection(sect)}>
+					<p key={section} onClick={() => scrollToSection(sect)}>
 						{section}
-					</a>
+					</p>
 				);
 			}
 			// else statement here Deafult way{

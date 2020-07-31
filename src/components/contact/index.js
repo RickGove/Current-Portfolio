@@ -24,12 +24,11 @@ class Contact extends React.Component {
 		let comp = document.getElementById('Contact');
 		if (comp !== null) {
 			// Get it's position in the viewport
+
 			let bounding = comp.getBoundingClientRect();
 
 			if (bounding.top <= 0 && bounding.top >= ~bounding.height) {
-				// console.log('In the viewport');
 			} else {
-				// console.log('Not in the viewport');
 			}
 		}
 	}

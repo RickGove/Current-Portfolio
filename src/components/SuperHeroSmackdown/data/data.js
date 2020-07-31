@@ -1,5 +1,3 @@
-import rick from '../../../img/RBG.jpg';
-
 export const nameArray = [
 	'a-bomb',
 	'abe sapien',
@@ -6819,7 +6817,7 @@ export const superHeroData = [
 		biography: {
 			fullName: 'Chris Kelly',
 			alterEgos: 'No alter egos found.',
-			aliases: ['CK', ,],
+			aliases: ['CK'],
 			placeOfBirth: 'Glasgow, Scotland',
 			firstAppearance: 'Akcent',
 			publisher: 'Akcent',

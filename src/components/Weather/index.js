@@ -11,7 +11,6 @@ import Daily from './Daily';
 import Footer from '../footer';
 import Images from './Images';
 import Wallpaper from './Wallpaper';
-import Cookies from '../cookies/';
 
 function Weather() {
 	const hide = useSelector((state) => state.hideOrShow);

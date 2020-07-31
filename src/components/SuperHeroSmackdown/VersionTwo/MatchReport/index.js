@@ -64,17 +64,23 @@ export default function MatchReport() {
 	function renderImg() {
 		if (matchReport.winnerImg !== 'draw') {
 			return (
-				<img className="macth-report__hero__img" src={matchReport.winnerImg} />
+				<img
+					alt="winner"
+					className="macth-report__hero__img"
+					src={matchReport.winnerImg}
+				/>
 			);
 		} else {
-			return <img className="macth-report__hero__img" src={drawImg} />;
+			return (
+				<img alt="winner" className="macth-report__hero__img" src={drawImg} />
+			);
 		}
 	}
 
 	return (
 		<MatchReportDiv>
 			<div className="match-report__inner__div">
-				<img src={logo} className="match-report__logo__img" />
+				<img alt="logo" src={logo} className="match-report__logo__img" />
 				<h1>{renderWinner()}</h1>
 				{renderImg()}
 				<p className="match-report__p">{matchReport.report}</p>

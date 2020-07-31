@@ -9,7 +9,7 @@ import STYLED from '../../img/logo_SC.png';
 import REACTrouter from '../../img/logo_reactRouter.png';
 import CAKE from '../../img/cake.png';
 import NPM from '../../img/logo_npm.png';
-import CONSTRUCT from '../../img/logo_construction.png';
+// import CONSTRUCT from '../../img/logo_construction.png';
 import GIT from '../../img/logo_git.png';
 import GITHUB from '../../img/logo_github.svg';
 import GSAP from '../../img/logo_gsap.svg';

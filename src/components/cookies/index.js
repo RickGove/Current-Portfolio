@@ -21,15 +21,15 @@ export default function Cookies() {
 		dispatch(setCookies(true));
 	}
 
-	function showModal() {
-		let el = document.getElementById('more');
-		el.style.display = 'block';
-	}
+	// function showModal() {
+	// 	let el = document.getElementById('more');
+	// 	el.style.display = 'block';
+	// }
 
-	function refuseCookies() {
-		window.localStorage.setItem('cookies', 'no');
-		// this.props.agreeCookies('no');
-	}
+	// function refuseCookies() {
+	// 	window.localStorage.setItem('cookies', 'no');
+	// 	// this.props.agreeCookies('no');
+	// }
 
 	//1. Test for empty localstorage
 	//2. render based on cookie selection

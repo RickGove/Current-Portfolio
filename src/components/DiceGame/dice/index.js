@@ -18,24 +18,13 @@ export default function Dice() {
 
 	const roundScore = useSelector((state) => state.roundScore);
 	const activePlayer = useSelector((state) => state.activePlayer);
-	const rolledLast = useSelector((state) => state.rolled);
 	const cubeRef = useRef();
 	const sceneRef = useRef();
-	const tl = useRef();
 
 	let canRoll = true;
 
-	let i = 90;
-	let j = 0;
-
-	const cubeFace = [
-		'translateX(200px)',
-		'rotateX(90deg)',
-		'rotateX(180deg)',
-		'rotateX(270deg)',
-	];
-
 	useEffect(() => {
+		const tl = new gsap.timeline({ paused: true, repeat: 3 });
 		gsap.set(sceneRef.current, { perspective: 0 });
 		tl.current = gsap.timeline({ paused: true, repeat: 3 });
 		tl.to(cubeRef.current, 1, { rotationY: 360, rotationX: 360 }, '-=1')
@@ -48,40 +37,10 @@ export default function Dice() {
 		};
 	}, []);
 
-	const RotateY = function () {
-		gsap.to(cubeRef.current, 0.5, {
-			transform: cubeFace[i],
-			ease: 'none',
-		});
-
-		if (i < cubeFace.length) {
-			i++;
-			console.log(i);
-		} else {
-			i = 1;
-			gsap.to(cubeRef.current, 0.5, {
-				transform: cubeFace[0],
-				ease: 'none',
-			});
-			console.log(i);
-		}
-	};
-
-	const RotateX = function () {
-		gsap.to(cubeRef.current, 0.5, { transform: 'rotateY(' + i + 'deg)' });
-		i += 90;
-	};
-
-	const start = function () {
-		tl.restart();
-	};
-
 	const startRoll = function () {
 		if (canRoll) {
 			dispatch(setIsRolling(true));
 			canRoll = false;
-			const duration = 1500;
-			let randomNum = Math.floor(Math.random() * 3); //between 0 and 5
 			let rl = new gsap.timeline({ onComplete: faceRoll });
 			rl.to(cubeRef.current, 0.01, { rotationY: 0, rotationX: 0 });
 			rl.to(cubeRef.current, 3, { rotationY: 1800, rotationX: 1800 });

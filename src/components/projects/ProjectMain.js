@@ -52,12 +52,12 @@ class ProjectMain extends React.Component {
 
 	renderProjectDesc(pro) {
 		return pro.description.map((item, i) => {
-			return <p>{pro.description[i]}</p>;
+			return <p key={pro.description}>{pro.description[i]}</p>;
 		});
 	}
 
 	renderGif(im) {
-		if (im !== 'none') return <img src={im} className="gif" />;
+		if (im !== 'none') return <img alt="project" src={im} className="gif" />;
 	}
 	renderProjects = () => {
 		return projects.map((pro, i) => {

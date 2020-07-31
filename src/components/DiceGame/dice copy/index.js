@@ -94,22 +94,22 @@ export default function Dice() {
 			<div id="view">
 				<div id="dice" ref={diceRef} onClick={roll}>
 					<div className="diceFace" id="front">
-						<img src={DiceSix} />
+						<img alt="dice face" src={DiceSix} />
 					</div>
 					<div className="diceFace" id="right">
-						<img src={DiceFive} />
+						<img alt="dice face" src={DiceFive} />
 					</div>
 					<div className="diceFace" id="back">
-						<img src={DiceFour} />
+						<img alt="dice face" src={DiceFour} />
 					</div>
 					<div className="diceFace" id="left">
-						<img src={DiceThree} />
+						<img alt="dice face" src={DiceThree} />
 					</div>
 					<div className="diceFace" id="top">
-						<img src={DiceTwo} />
+						<img alt="dice face" src={DiceTwo} />
 					</div>
 					<div className="diceFace" id="bottom">
-						<img src={DiceOne} />
+						<img alt="dice face" src={DiceOne} />
 					</div>
 				</div>
 			</div>

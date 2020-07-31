@@ -17,6 +17,8 @@ const CharacterCard = (props) => {
 	const charDiv = useRef();
 
 	let thisFighter = [];
+	if (props.AB === 'A') thisFighter = fighterA;
+	else thisFighter = fighterB;
 
 	function clearData() {
 		if (props.AB === 'A') dispatch(setFighterA(null));
@@ -25,8 +27,6 @@ const CharacterCard = (props) => {
 
 	useEffect(() => {
 		//set BG
-		if (props.AB === 'A') thisFighter = fighterA;
-		else thisFighter = fighterB;
 		if (!props.data)
 			charDiv.current.style.backgroundImage = `url(${placeholder})`;
 		else charDiv.current.style.backgroundImage = `url(${thisFighter[1]})`;

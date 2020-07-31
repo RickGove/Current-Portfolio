@@ -85,7 +85,7 @@ function Title() {
 		let stored = false;
 
 		// search the array of faves
-		faveArray.map((item, index) => {
+		faveArray.forEach((item, index) => {
 			// set the current localstorage key name
 			let current = `favourite${index}`;
 
@@ -139,7 +139,7 @@ function Title() {
 		let found = false;
 
 		// set what to return
-		faveArray.map((item, index) => {
+		faveArray.forEach((item, index) => {
 			if (item === currentId && found === false) {
 				found = true;
 			}

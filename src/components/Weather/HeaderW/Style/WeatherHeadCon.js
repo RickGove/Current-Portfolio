@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
-// let border = `none`;
-let border = `solid`;
-
 let blue = `#1E7CFF`;
 
-const media1100 = `@media (max-width: 1100px)`;
 const mobile = `@media (max-width: 768px)`;
 const media850 = `@media (max-width: 850px)`;
 

@@ -13,11 +13,7 @@ class ScrollToTop extends React.Component {
 	}
 	scrollListen = () => {
 		let scroll = document.body.scrollTop || document.documentElement.scrollTop;
-		////////////// Tetsing //////////////////////////////
-		// console.log(
-		// 	`Shooter scroll: ${scroll}, state.visible: ${this.state.visible}`
-		// );
-		////////////////////////////////////////////////////
+
 		if (scroll > 600) {
 			this.setState({ visible: 'block' });
 		} else {

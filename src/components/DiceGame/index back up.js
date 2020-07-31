@@ -6,8 +6,6 @@ import Dice from './dice copy/';
 
 import { DiceDiv } from './style';
 
-import GoHome from '../GoHome';
-
 import {
 	setScores,
 	setRoundScore,

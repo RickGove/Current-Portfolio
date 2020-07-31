@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import SearchBar from '../SearchBar';
@@ -10,8 +10,7 @@ import { setReady } from '../../../../actions';
 
 function Search() {
 	///refs
-	const image = useRef(),
-		mainDiv = useRef(),
+	const mainDiv = useRef(),
 		cardContainer = useRef(),
 		charCardA = useRef(),
 		charCardB = useRef(),
@@ -26,7 +25,6 @@ function Search() {
 		dispatch = useDispatch();
 
 	// state vars
-	const [showInput, setShowInput] = useState(false);
 
 	// var vars
 

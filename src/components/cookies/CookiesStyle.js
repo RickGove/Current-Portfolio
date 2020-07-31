@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-// let border = `solid`;
-let border = `none`;
-
 export const CookiesCon = styled.div`
 	z-index: 100000;
 	height: 100vh;

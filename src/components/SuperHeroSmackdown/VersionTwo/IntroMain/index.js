@@ -65,7 +65,7 @@ function IntroMain() {
 
 	return (
 		<div id="image-div" ref={imageDiv}>
-			<img src="" ref={image} className="image" />
+			<img alt="intro" src="" ref={image} className="image" />
 			<button className="skip-button" onClick={moveOn}>
 				SKIP INTRO > > >
 			</button>

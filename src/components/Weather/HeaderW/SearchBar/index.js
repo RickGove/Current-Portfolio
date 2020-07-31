@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 // json to convert country codes
@@ -169,7 +169,7 @@ function SearchBar() {
 	}
 
 	function clearOldHighlights(a) {
-		a.map((i) => {
+		a.forEach((i) => {
 			// toUnhighlight = document.getElementById(i);
 			if (i !== null) {
 				i.style = '';
@@ -244,11 +244,11 @@ function SearchBar() {
 
 	function getFlagImg(countryCode) {
 		if (countryCode === undefined) {
-			console.log('flag is undefined');
 		} else {
 			const flagImage = require(`../../img/flags/${countryCode}.png`);
 			return (
 				<img
+					alt=""
 					src={flagImage}
 					onMouseLeave={handleMouseLeave}
 					onMouseOver={handleMouseOverImg}
@@ -258,7 +258,6 @@ function SearchBar() {
 	}
 
 	function handleMouseOverImg(e) {
-		console.log(e.target.parentElement);
 		clearAllHighlights();
 		setHighlighted(e.target.parentElement);
 		if (e.target.src !== undefined) {
@@ -269,11 +268,8 @@ function SearchBar() {
 	function handleMouseOver(e) {
 		clearAllHighlights();
 		if (e.target.src !== undefined) {
-			console.log(e.target.parentElement);
 			setHighlighted(e.target.parentElement);
 		} else {
-			console.log(e.target);
-
 			setHighlighted(e.target);
 		}
 	}
@@ -316,7 +312,7 @@ function SearchBar() {
 			// remove white spaces
 			let nameNoSpaces = labelArr[i].trim();
 			//prevent duplicates
-			if (labelArr[i] != labelArr[i - 1]) {
+			if (labelArr[i] !== labelArr[i - 1]) {
 				if (i === labelArr.length - 1) {
 					newArr.push(`${nameNoSpaces}`);
 				} else {
@@ -333,7 +329,7 @@ function SearchBar() {
 		let suggs = [];
 		const results = r.data.suggestions;
 		if (results !== undefined) {
-			results.map((item) => {
+			results.forEach((item) => {
 				//change country code to be usable by flags
 				let countryCode = convert3to2(item.countryCode).toLowerCase();
 
@@ -416,14 +412,10 @@ function SearchBar() {
 
 	function buildLocationForState(fullWeatherInfo) {
 		// set the current location
-		console.log(fullWeatherInfo);
-		let icon = fullWeatherInfo.data.weather[0].icon;
 		let cityName = fullWeatherInfo.data.name;
-		let tempHere = fullWeatherInfo.data.main.temp;
 		let flagCode = fullWeatherInfo.data.sys.country;
 		let lat = fullWeatherInfo.data.coord.lat;
 		let lon = fullWeatherInfo.data.coord.lon;
-		let newLocation = [cityName, tempHere, flagCode, icon, lat, lon];
 		let countryName = convert2toFull(flagCode.toUpperCase());
 
 		dispatch(
@@ -498,6 +490,7 @@ function SearchBar() {
 					onMouseLeave={handleMouseLeave}
 					onMouseOver={handleMouseOver}>
 					<img
+						alt=""
 						className="gps-img"
 						src={gps}
 						onMouseLeave={handleMouseLeave}
@@ -587,7 +580,7 @@ function SearchBar() {
 		let favesList = buildFaves();
 
 		if (favesList.length !== 0) {
-			return favesList.map((item, i) => {
+			return favesList.forEach((item, i) => {
 				let idName = `but-fave-${i}`;
 				// build buttons with the faves
 				return (
@@ -604,6 +597,7 @@ function SearchBar() {
 						onMouseOver={handleMouseOver}>
 						{getFlagImg(item[2].toLowerCase())}
 						<img
+							alt=""
 							src={fave}
 							onMouseLeave={handleMouseLeave}
 							onMouseOver={handleMouseOverImg}
@@ -623,7 +617,7 @@ function SearchBar() {
 
 	function showSearchResults() {
 		if (suggestions.length !== 0) {
-			return suggestions.map((item, i) => {
+			return suggestions.forEach((item, i) => {
 				let fullCountry = convert2toFull(item.countryCode.toUpperCase());
 				let idName = `but-${i}`;
 
@@ -670,7 +664,6 @@ function SearchBar() {
 		axios
 			.get(site)
 			.then((response) => {
-				let coord = [response.data.coord.lat, response.data.coord.lon];
 				getFullWeatherInfo(lat, lon, city, country);
 				dispatch(newSearchLocation(response));
 				dispatch(logFullSearchName(city));
@@ -826,7 +819,6 @@ function SearchBar() {
 					let id = searchBut.attributes.locationid.value;
 					let flagCode = searchBut.attributes.countrycode.value;
 
-					// 		console.log(selection.id, cityName, fullCountry);
 					dispatch(
 						setNeededForFavorite({
 							id: id,

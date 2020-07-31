@@ -343,7 +343,7 @@ function HeaderW() {
 		if (suggestions.length === 0) {
 			return <button>Enter your search...</button>;
 		} else {
-			return suggestions.map((item, i) => {
+			return suggestions.forEach((item, i) => {
 				let flagImage = '';
 				if (suggsFlags.length > 0) {
 					let x = suggsFlags[i];
@@ -363,17 +363,15 @@ function HeaderW() {
 								<img alt="flag" src={flagImage} />
 							</button>
 						);
-						break;
 					case 1:
 						return (
 							<button
 								id="suggestion-1"
 								key={item}
 								onMouseOver={chooseSuggestion1}>
-								{item} <img src={flagImage} />
+								{item} <img alt="" src={flagImage} />
 							</button>
 						);
-						break;
 					case 2:
 						return (
 							<button
@@ -381,10 +379,9 @@ function HeaderW() {
 								key={item}
 								onMouseOver={chooseSuggestion2}>
 								{item}
-								<img src={flagImage} />
+								<img alt="" src={flagImage} />
 							</button>
 						);
-						break;
 					case 3:
 						return (
 							<button
@@ -392,10 +389,9 @@ function HeaderW() {
 								key={item}
 								onMouseOver={chooseSuggestion3}>
 								{item}
-								<img src={flagImage} />
+								<img alt="" src={flagImage} />
 							</button>
 						);
-						break;
 					case 4:
 						return (
 							<button
@@ -403,10 +399,9 @@ function HeaderW() {
 								key={item}
 								onMouseOver={chooseSuggestion4}>
 								{item}
-								<img src={flagImage} />
+								<img alt="" src={flagImage} />
 							</button>
 						);
-						break;
 					default:
 						break;
 				}
@@ -671,6 +666,7 @@ function HeaderW() {
 			case 4:
 				chooseSuggestion4();
 				break;
+			default:
 		}
 		/// make sure that the choose suggestion functions also highlight the siggestions...
 	}
@@ -681,6 +677,7 @@ function HeaderW() {
 			<WeatherHeadCon>
 				<div ref={modal} className={showModal ? 'modal show-modal' : 'modal'}>
 					<img
+						alt=""
 						className={showLoader ? 'loader' : 'loader hidden'}
 						src={loader}
 					/>

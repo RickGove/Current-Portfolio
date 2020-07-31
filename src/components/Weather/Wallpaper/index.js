@@ -1,12 +1,6 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import {
-	searchedWeatherData,
-	locationError,
-	enterTimeAtSearch,
-} from '../../../actions';
+import { useSelector } from 'react-redux';
 
 import { WallPic } from './style/';
 
@@ -20,7 +14,6 @@ import earth from '../img/earth.jpg';
 function Wallpaper() {
 	//redux
 	const searchWeatherData = useSelector((state) => state.searchWeatherData);
-	const errorInSearch = useSelector((state) => state.errorInSearch);
 	const timeAtSearch = useSelector((state) => state.timeAtSearch);
 	const searchLocation = useSelector((state) => state.searchedLocation); //may break shit
 
@@ -32,15 +25,15 @@ function Wallpaper() {
 
 	function getSrc(arr) {
 		if (arr[2] === 'Rain') {
-			return <img src={rain} />;
+			return <img alt="" src={rain} />;
 		} else if (arr[2] === 'Snow') {
-			return <img src={snow} />;
+			return <img alt="" src={snow} />;
 		} else if (arr[1] === 'clouds') {
-			return <img src={clouds} />;
+			return <img alt="" src={clouds} />;
 		} else if (arr[0] === 'night') {
-			return <img src={clearskyNight} />;
+			return <img alt="" src={clearskyNight} />;
 		} else {
-			return <img src={clearsky} />;
+			return <img alt="" src={clearsky} />;
 		}
 	}
 
@@ -95,13 +88,13 @@ function Wallpaper() {
 	} else {
 		return (
 			<WallPic>
-				<img src={earth} />
+				<img alt="" src={earth} />
 				<div id="load-pics">
-					<img src={rain} />
-					<img src={snow} />
-					<img src={clouds} />
-					<img src={clearskyNight} />
-					<img src={clearsky} />
+					<img alt="" src={rain} />
+					<img alt="" src={snow} />
+					<img alt="" src={clouds} />
+					<img alt="" src={clearskyNight} />
+					<img alt="" src={clearsky} />
 				</div>
 			</WallPic>
 		);

@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import { reducer as formReducer } from 'redux-form';
+
 const searchedLocation = (loc = 'none', action) => {
 	if (action.type === 'NEW_SEARCH_LOCATION') {
 		return action.payload;
@@ -291,6 +293,7 @@ const weatherApp = combineReducers({
 	activePlayer,
 	gamePlaying,
 	isRolling,
+	form: formReducer,
 });
 
 export default weatherApp;

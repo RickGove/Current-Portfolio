@@ -34,6 +34,7 @@ class HeaderDeterminer extends React.Component {
 				}
 				return activeSection;
 			}
+			return activeSection;
 		});
 		if (this.state.active !== activeSection) {
 			this.setState({ active: activeSection });
@@ -42,10 +43,6 @@ class HeaderDeterminer extends React.Component {
 
 	chooseHeader = () => {
 		let scroll = document.body.scrollTop || document.documentElement.scrollTop;
-
-		////// TESTING /////
-		// console.log(scroll);
-		///// end TEST /////
 
 		if (scroll >= 150) {
 			this.setState({ anchor: 1 });

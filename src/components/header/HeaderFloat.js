@@ -25,19 +25,18 @@ class Header extends React.Component {
 			// if props say it's active
 			if (this.props.active === section) {
 				return (
-					<a
+					<p
 						key={section}
 						className="active"
-						href=""
 						onClick={() => this.scrollToSection(sect)}>
 						{section}
-					</a>
+					</p>
 				);
 			} else {
 				return (
-					<a key={section} onClick={() => this.scrollToSection(sect)}>
+					<p key={section} onClick={() => this.scrollToSection(sect)}>
 						{section}
-					</a>
+					</p>
 				);
 			}
 			// else statement here Deafult way{

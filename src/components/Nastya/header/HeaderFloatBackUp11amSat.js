@@ -25,10 +25,7 @@ class Header extends React.Component {
 		this.setState({ active: this.props.active });
 	}
 
-	componentDidUpdate() {
-		// console.log(this.props.active);
-		// this.setState({ active: this.props.active });
-	}
+	componentDidUpdate() {}
 
 	goToTop() {
 		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
@@ -65,7 +62,6 @@ class Header extends React.Component {
 			///////////
 			// testing
 			//
-			console.log(act);
 			//
 			/////////
 
@@ -98,7 +94,6 @@ class Header extends React.Component {
 			});
 		}
 		setTimeout(() => {
-			console.log(s);
 			if (s === ' About') {
 				window.scrollBy(0, 500);
 			} else {

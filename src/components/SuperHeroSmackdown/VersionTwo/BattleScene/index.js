@@ -44,10 +44,6 @@ export default function BattleScene() {
 
 	// global vars
 	let champVar = '',
-		fighterBStats = '',
-		fighterAStats = '',
-		fighterAUsableStatsVar,
-		fighterBUsableStatsVar,
 		intelWinVar = '',
 		combatWinVar = '',
 		duraWinVar = '',
@@ -65,51 +61,55 @@ export default function BattleScene() {
 		return (
 			<React.Fragment>
 				<p
-					className="ind-stat"
 					className={
-						intelWinVar === 'A' || intelWinVar === 'tie' ? 'winner' : 'loser'
+						intelWinVar === 'A' || intelWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={intelA}>
 					Intelligence: {fighterA[3].intelligence}
 				</p>
 				<p
-					className="ind-stat"
 					className={
 						strengthWinVar === 'A' || strengthWinVar === 'tie'
-							? 'winner'
-							: 'loser'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={strengthA}>
 					Strength: {fighterA[3].strength}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						speedWinVar === 'A' || speedWinVar === 'tie' ? 'winner' : 'loser'
+						speedWinVar === 'A' || speedWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={speedA}>
 					Speed: {fighterA[3].speed}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						duraWinVar === 'A' || duraWinVar === 'tie' ? 'winner' : 'loser'
+						duraWinVar === 'A' || duraWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={duraA}>
 					Durability: {fighterA[3].durability}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						powerWinVar === 'A' || powerWinVar === 'tie' ? 'winner' : 'loser'
+						powerWinVar === 'A' || powerWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={powerA}>
 					Power: {fighterA[3].power}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						combatWinVar === 'A' || combatWinVar === 'tie' ? 'winner' : 'loser'
+						combatWinVar === 'A' || combatWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={combatA}>
 					Combat: {fighterA[3].combat}
@@ -122,51 +122,55 @@ export default function BattleScene() {
 		return (
 			<React.Fragment>
 				<p
-					className="ind-stat"
 					className={
-						intelWinVar === 'B' || intelWinVar === 'tie' ? 'winner' : 'loser'
+						intelWinVar === 'B' || intelWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={intelB}>
 					Intelligence: {fighterB[3].intelligence}
 				</p>
 				<p
-					className="ind-stat"
 					className={
 						strengthWinVar === 'B' || strengthWinVar === 'tie'
-							? 'winner'
-							: 'loser'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={strengthB}>
 					Strength: {fighterB[3].strength}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						speedWinVar === 'B' || speedWinVar === 'tie' ? 'winner' : 'loser'
+						speedWinVar === 'B' || speedWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={speedB}>
 					Speed: {fighterB[3].speed}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						duraWinVar === 'B' || duraWinVar === 'tie' ? 'winner' : 'loser'
+						duraWinVar === 'B' || duraWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={duraB}>
 					Durability: {fighterB[3].durability}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						powerWinVar === 'B' || powerWinVar === 'tie' ? 'winner' : 'loser'
+						powerWinVar === 'B' || powerWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={powerB}>
 					Power : {fighterB[3].power}
 				</p>
 				<p
-					className="ind-stat"
 					className={
-						combatWinVar === 'B' || combatWinVar === 'tie' ? 'winner' : 'loser'
+						combatWinVar === 'B' || combatWinVar === 'tie'
+							? 'ind-stat winner'
+							: 'ind-stat loser'
 					}
 					ref={combatB}>
 					Combat: {fighterB[3].combat}
@@ -325,8 +329,6 @@ export default function BattleScene() {
 			LplaceOfBirth,
 			publisher,
 			Lpublisher,
-			genderPronoun,
-			LgenderPronoun,
 			champName,
 			loserName;
 
@@ -396,10 +398,9 @@ export default function BattleScene() {
 
 			let aWins = [],
 				bWins = [],
-				champWins = [],
-				loserWins = [];
+				champWins = [];
 
-			arr.map((item, index) => {
+			arr.forEach((item, index) => {
 				if (item === 'A') {
 					aWins.push(names[index]);
 				} else if (item === 'B') {
@@ -408,11 +409,9 @@ export default function BattleScene() {
 			});
 
 			if (champVar !== 'A') {
-				champWins = aWins;
-				loserWins = bWins;
-			} else {
 				champWins = bWins;
-				loserWins = aWins;
+			} else {
+				champWins = aWins;
 			}
 
 			// height
@@ -497,9 +496,6 @@ export default function BattleScene() {
 			if (Lrace === 'null') {
 				Lrace = 'contestant';
 			}
-			//genderPronoun
-			genderPronoun = 'their';
-			LgenderPronoun = 'their';
 
 			let winnerImg;
 			if (champVar === 'A') winnerImg = fighterA[1];
@@ -507,7 +503,7 @@ export default function BattleScene() {
 
 			dispatch(
 				setMatchReport({
-					report: `In a ${closeness} battle, the ${Wheight} ${eyeColor} ${hairColor} ${race} from ${placeOfBirth} in the ${publisher} universe known as ${champName} was able to use their${loserWins} to defeat the ${Lheight} ${LeyeColor} ${LhairColor} ${Lrace} from ${LplaceOfBirth} in the ${Lpublisher} universe known as ${loserName}`,
+					report: `In a ${closeness} battle, the ${Wheight} ${eyeColor} ${hairColor} ${race} from ${placeOfBirth} in the ${publisher} universe known as ${champName} was able to use their${champWins} to defeat the ${Lheight} ${LeyeColor} ${LhairColor} ${Lrace} from ${LplaceOfBirth} in the ${Lpublisher} universe known as ${loserName}`,
 					winner: champName,
 					winnerImg: winnerImg,
 					loser: loserName,
@@ -529,17 +525,9 @@ export default function BattleScene() {
 	}
 
 	function convertStrToIntAndRemoveNulls(obj) {
-		let stats = [
-			'intelligence',
-			'strength',
-			'speed',
-			'durability',
-			'power',
-			'combat',
-		];
-		let newObj = new Object();
+		let newObj = {};
 		let arr = [];
-		for (const [key, value] of Object.entries(obj)) {
+		for (const [, value] of Object.entries(obj)) {
 			if (value === 'null') {
 				let random = Math.floor(Math.random() * 101);
 				arr.push(random);
@@ -562,8 +550,6 @@ export default function BattleScene() {
 	function decideWinner() {
 		let fighterAStats = convertStrToIntAndRemoveNulls(fighterA[3]);
 		let fighterBStats = convertStrToIntAndRemoveNulls(fighterB[3]);
-		fighterAUsableStatsVar = fighterAStats;
-		fighterBUsableStatsVar = fighterBStats;
 		// removeNullsAnd100s(fighterAStats, fighterBStats);
 
 		//intel
@@ -821,7 +807,11 @@ export default function BattleScene() {
 						<div className="char-card">
 							<div className="div-back-card-title">
 								<div className="div-back-card-image">
-									<img src={fighterA[1]} className="img-back-card" />
+									<img
+										alt={fighterA[0]}
+										src={fighterA[1]}
+										className="img-back-card"
+									/>
 								</div>
 								<h3 className="h3-back-card" id="name-A">
 									{fighterA[0]}
@@ -840,7 +830,11 @@ export default function BattleScene() {
 						<div className="char-card">
 							<div className="div-back-card-title">
 								<div className="div-back-card-image">
-									<img src={fighterB[1]} className="img-back-card" />
+									<img
+										alt={fighterB[0]}
+										src={fighterB[1]}
+										className="img-back-card"
+									/>
 								</div>
 								<h3 className="h3-back-card" id="name-B">
 									{fighterB[0]}

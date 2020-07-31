@@ -9,7 +9,6 @@ import DiceSix from '../faces/dice-6.png';
 
 const size = 80;
 const fullSize = `${size}px`;
-const halfSize = `${size / 2}px`;
 
 export const DiceWrap = styled.div`
 	height: 85px;

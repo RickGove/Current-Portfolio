@@ -1,25 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+
 import HomePage from './HomePage';
 import Dice from './DiceGame/dice';
 import Weather from './Weather/';
 import Cookies from './cookies/';
-
-import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
 import DiceGame from './DiceGame/';
-
-import Nastya from './Nastya';
-import My404Component from './404';
-// import understandState from './understandState';
+import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
+import noSite from './404';
 
 import history from '../history';
 
 import weatherApp from '../reducers/';
-
-// let store = createStore(weatherApp);
 
 const composeEnhancers = composeWithDevTools({
 	trace: true,
@@ -40,10 +37,7 @@ function App() {
 						<Route path="/dicegame" exact component={DiceGame} />
 						<Route path="/dice" exact component={Dice} />
 						<Route path="/cookies" exact component={Cookies} />
-
-						{/* <Route path="/AnastaciaKorotkevich" exact component={Nastya} /> */}
-						{/* <Route path="/learn" exact component={understandState} /> */}
-						<Route path="*" exact component={My404Component} />
+						<Route path="*" exact component={noSite} />
 					</Switch>
 				</React.Fragment>
 			</Router>

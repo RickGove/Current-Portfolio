@@ -175,8 +175,6 @@ class HeaderW extends React.Component {
 	};
 
 	buttonClick = (e) => {
-		// console.log(e.target);
-		// hack work around because the clicking is fucked up
 		if (e.target.id === 'root') {
 			this.searchSubmit();
 		}

@@ -20,7 +20,6 @@ export const searchImagesByCountry = (country) => {
 };
 
 export const searchImagesByCity = (city, country) => {
-	console.log('unsplash city search');
 	axios
 		.get('https://api.unsplash.com/search/photos', {
 			params: { query: city, orientation: 'landscape' },
