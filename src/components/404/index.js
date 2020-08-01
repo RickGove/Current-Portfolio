@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { FourOhFour } from './style/';
+import { FourOhFourDiv } from './style/';
 
 function noSite() {
 	return (
-		<FourOhFour>
+		<FourOhFourDiv>
 			<h1>Error 404: Site Not Found</h1>
 			<ul>
 				<li>
@@ -17,7 +17,7 @@ function noSite() {
 					<a href="/#/superherosmackdown">GO TO SUPER HERO SMACKDOWN</a>
 				</li>
 			</ul>
-		</FourOhFour>
+		</FourOhFourDiv>
 	);
 }
 

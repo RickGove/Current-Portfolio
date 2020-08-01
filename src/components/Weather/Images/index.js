@@ -9,7 +9,6 @@ import { ImagesDiv, Modal } from './style';
 function Images() {
 	// refs
 	const imagesDiv = useRef();
-
 	const modal = useRef();
 	const next = useRef();
 	const prev = useRef();
@@ -52,8 +51,19 @@ function Images() {
 				images.data.results[firstImage + 3],
 			];
 
-			return imgArr.forEach((i, item) => {
-				if (i !== undefined) {
+			return imgArr.map((i, item) => {
+				if (i === undefined) {
+					return (
+						<div
+							className={
+								showModal
+									? 'image-container-no-animation'
+									: 'image-container-individual'
+							}
+							key="none found"
+						/>
+					);
+				} else {
 					return (
 						<div
 							className={
@@ -64,7 +74,7 @@ function Images() {
 							onClick={handleImageClick}
 							key={item}>
 							<img
-								alt=""
+								alt={i.urls.regular}
 								className="image__preview"
 								username={i.user.name}
 								avatar={i.user.profile_image.medium}
@@ -73,9 +83,9 @@ function Images() {
 							/>
 							<span className="image__taker">
 								<img
-									alt=""
 									className="user-image"
 									src={i.user.profile_image.large}
+									alt={i.user.name}
 								/>{' '}
 								{i.user.name}
 							</span>
@@ -125,9 +135,7 @@ function Images() {
 	}
 
 	function keyDown(i) {
-		if (i.code === 'Escape') {
-			hideModal();
-		}
+		if (i.code === 'Escape') hideModal();
 	}
 
 	function renderModalImage() {
@@ -136,7 +144,7 @@ function Images() {
 				<img
 					className="image-image"
 					src={modalImage}
-					alt="Unsplash"
+					alt="Unsplash Logo"
 					onClick={openImageNewWindow}
 				/>
 			</React.Fragment>
@@ -218,7 +226,7 @@ function Images() {
 				{renderModalPrev()}
 				<span onClick={openNewWindow}>
 					<img
-						alt=""
+						alt={modalImageUser}
 						id="modal-user-avatar"
 						className="user-name-and-avatar__avatar"
 						src={modalImageAvatar}
@@ -239,7 +247,7 @@ function Images() {
 				<a href="https://unsplash.com/">
 					Images courtesy of Unsplash{' '}
 					<img
-						alt=""
+						alt="unsplash logo"
 						src="https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/21/63/db/2163db41-fede-7076-7478-e6adedb7eb0e/AppIcon-85-220-0-4-2x.png/1200x630bb.png"
 					/>{' '}
 				</a>
@@ -250,9 +258,9 @@ function Images() {
 	function renderNextButton() {
 		return (
 			<img
-				alt=""
 				src={nextImg}
 				className={showNext ? 'next-image' : 'next-image inactive'}
+				alt="next"
 				onClick={displayNext}
 				ref={next}
 			/>

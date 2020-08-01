@@ -8,9 +8,9 @@ import { sections } from '../data/Data';
 
 import menu from '../../img/logo_menu.png';
 import logo from '../../img/logo.png';
-import weather from '../../img/weatherIconNew.png';
+import weatherLogo from '../../img/weatherIconNew.png';
 import superHSD from '../../img/superIcon.png';
-import diceGame from '../../img/pigIconNew.png';
+import diceGameLogo from '../../img/pigIconNew.png';
 
 function Header() {
 	function renderSections() {
@@ -83,10 +83,14 @@ function Header() {
 				/>
 			</a>
 			<a className="project-icon-link" href="/#/DiceGame">
-				<img alt="Pig A Dice Game" className="project__icon" src={diceGame} />
+				<img
+					alt="Pig A Dice Game"
+					className="project__icon"
+					src={diceGameLogo}
+				/>
 			</a>
 			<a className="last-right project-icon-link" href="/#/weather">
-				<img alt="Gove Weather" className="project__icon" src={weather} />
+				<img alt="Gove Weather" className="project__icon" src={weatherLogo} />
 			</a>
 		</HeadCon>
 	);

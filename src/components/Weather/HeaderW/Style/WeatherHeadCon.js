@@ -11,6 +11,10 @@ export const WeatherHeadCon = styled.div`
 		box-sizing: border-box;
 		color: ${blue};
 	}
+
+	.title-h1{
+		font-family: 'Lora', serif;
+	}
 	
 	z-index: 1;
 	position: sticky;

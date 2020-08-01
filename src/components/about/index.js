@@ -8,7 +8,7 @@ import {
 	AboutWPDiv,
 } from './AboutStyle';
 
-import me from '../../img/RBG.jpg';
+import meA from '../../img/RBG.jpg';
 
 import { data } from '../data/Data';
 
@@ -26,7 +26,7 @@ function ShowCase() {
 					<ShowH1>Hi, I'm Rick Gove</ShowH1>
 					<ShowSubhead>Junior Web Developer</ShowSubhead>
 				</AboutTitle>
-				<ShowImg src={me}></ShowImg>
+				<ShowImg src={meA}></ShowImg>
 				<button className="btn-see-more" onClick={showMore}>
 					{hideData ? 'Show Less' : 'Find Out More'}
 				</button>

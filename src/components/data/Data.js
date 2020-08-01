@@ -1,20 +1,20 @@
 // import icons
-import CSS from '../../img/logo_css.png';
-import HTML from '../../img/logo_html.png';
-import JS from '../../img/logo_js.png';
-import NODE from '../../img/logo_node.png';
-import REDUX from '../../img/logo_redux.png';
+import CSSLOGO from '../../img/logo_css.png';
+import HTMLLOGO from '../../img/logo_html.png';
+import JSLOGO from '../../img/logo_js.png';
+import NODELOGO from '../../img/logo_node.png';
+import REDUXLOGO from '../../img/logo_redux.png';
 import logoREACT from '../../img/logo_react.png';
-import STYLED from '../../img/logo_SC.png';
+import STYLEDLOGO from '../../img/logo_SC.png';
 import REACTrouter from '../../img/logo_reactRouter.png';
 import CAKE from '../../img/cake.png';
-import NPM from '../../img/logo_npm.png';
+import NPMLOGO from '../../img/logo_npm.png';
 // import CONSTRUCT from '../../img/logo_construction.png';
-import GIT from '../../img/logo_git.png';
-import GITHUB from '../../img/logo_github.svg';
-import GSAP from '../../img/logo_gsap.svg';
+import GITLOGO from '../../img/logo_git.png';
+import GITHUBLOGO from '../../img/logo_github.svg';
+import GSAPLOGO from '../../img/logo_gsap.svg';
 
-import WEATHER from '../../img/weather.png';
+import WEATHERLOGO from '../../img/weather.png';
 import PIG from '../../img/dicegame.png';
 import SUPER from '../../img/superherosmackdown.png';
 
@@ -31,7 +31,7 @@ export const data = {
 		textLight: '#f4f4f4',
 		textDark: 'black',
 		////////
-		// border-bottom:
+		//  ottom:
 		borderDef: `none`,
 		borderSpan: `5px solid darkgrey`,
 		////////
@@ -56,19 +56,19 @@ export const projects = [
 			` The site you're currently on... A modern single page website with a goal of order, simplicity and user experience. Organized to ensure content and navigation stay on the same page and hoping to bring out a flawless and efficient user experience.`,
 			`Using cutting-edge CSS like flexbox and grid displays; React for modern HTML display; Styled-Components CSS for readable code, this page shows off what I have learned so far in React.`,
 		],
-		tools: [HTML, CSS, JS, logoREACT, STYLED, NPM],
+		tools: [HTMLLOGO, CSSLOGO, JSLOGO, logoREACT, STYLEDLOGO, NPMLOGO],
 		link: '#',
 	},
 	{
 		name: `Gove's Weather`,
-		image: WEATHER,
+		image: WEATHERLOGO,
 		description: [
-			`A weather site that's a cut above. Features a built-in image finder based on the search. `,
+			`A weather site that features a built-in image finder based on the search. `,
 			`
 		Using React for UI/UX and Redux for state management, this project taught me how to use Redux to do many things: such as store information, and manipluate DOM elements' styling using React Refs via conditional CSS Styling.`,
 			`Additionally, I learned about React hooks, and how to consume several different APIs and to  display the information needed.`,
 		],
-		tools: [HTML, CSS, JS, logoREACT, STYLED, REDUX],
+		tools: [HTMLLOGO, CSSLOGO, JSLOGO, logoREACT, STYLEDLOGO, REDUXLOGO],
 		link: '#/weather',
 	},
 	{
@@ -79,7 +79,7 @@ export const projects = [
 			`I read about the Super Hero API and I immediately wanted to make a project using it. I was very interested in manipulating DOM elements using JavaScript, React Refs and CSS animations, and I wanted to learn more about React reds. It also taught me about the useState hook.`,
 			`So, this is the project I decided to build to create something fun and colourful using JavaScript timeouts, and CSS transitions, transformations, and keyframes.`,
 		],
-		tools: [HTML, CSS, JS, logoREACT, STYLED],
+		tools: [HTMLLOGO, CSSLOGO, JSLOGO, logoREACT, STYLEDLOGO],
 		link: [`#/SuperHeroSmackdown`],
 	},
 	{
@@ -88,7 +88,7 @@ export const projects = [
 		description: [
 			`A project from a JavaScript course I took. I moved it into React, added some GSAP animation and other features to flesh it out fully.`,
 		],
-		tools: [HTML, CSS, JS, logoREACT, GSAP, STYLED],
+		tools: [HTMLLOGO, CSSLOGO, JSLOGO, logoREACT, GSAPLOGO, STYLEDLOGO],
 		link: '#/DiceGame',
 	},
 ];
@@ -112,13 +112,13 @@ export const tools = [
 		name: 'HTML 5',
 		Description:
 			'HTML5 is the basis for structuring and presenting content on the Internet.',
-		logo: HTML,
+		logo: HTMLLOGO,
 	},
 	{
 		name: 'JavaScript',
 		Description:
 			'JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, etc...',
-		logo: JS,
+		logo: JSLOGO,
 	},
 	{
 		name: 'CSS 3',
@@ -140,13 +140,13 @@ export const tools = [
 		name: 'Styled-Components',
 		Description:
 			'Styled-Components combines React and CSS to make reading and writing code easier and cleaner.',
-		logo: STYLED,
+		logo: STYLEDLOGO,
 	},
 	{
 		name: 'Redux',
 		Description:
 			'Redux is a JavaScript library for managing data - known as state - in a React app.',
-		logo: REDUX,
+		logo: REDUXLOGO,
 	},
 	{
 		name: 'React Router',
@@ -157,27 +157,27 @@ export const tools = [
 	{
 		name: `NPM`,
 		Description: `NPM is used to create and install libraries into a React App`,
-		logo: NPM,
+		logo: NPMLOGO,
 	},
 	{
 		name: 'Node JS',
 		Description: `Node. js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications.`,
-		logo: NODE,
+		logo: NODELOGO,
 	},
 	{
 		name: `Git`,
 		Description: `Git is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers.`,
-		logo: GIT,
+		logo: GITLOGO,
 	},
 	{
 		name: `GitHub`,
 		Description: `The world's leading software development platform; GitHub brings together the world's largest community of developers to discover, share, and build better software.`,
-		logo: GITHUB,
+		logo: GITHUBLOGO,
 	},
 	{
 		name: `GreenSock Animation`,
 		Description: `GreenSock, or GSAP, is a fast, robust and smooth animation tool for JavaScript`,
-		logo: GSAP,
+		logo: GSAPLOGO,
 	},
 ];
 

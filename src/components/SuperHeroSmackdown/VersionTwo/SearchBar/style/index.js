@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 import mag from '../../../img/intro/mag.png';
 
-const width = '90%',
-	maxWidth = 'max-width: 20rem';
+const width = '100%';
 
 export const Button = styled.button`
+	border: 0;
+	border-radius: 2rem;
 	display: flex;
 	justify-content: space-around;
 	@import url('../../../../font');
@@ -26,6 +27,7 @@ export const Button = styled.button`
 	font-size: ${(props) => (props.length > 8 ? '1rem' : '1.5rem')};
 	position: relative;
 	z-index: 500;
+	outline: none;
 
 	* {
 		padding: 0;
@@ -35,8 +37,10 @@ export const Button = styled.button`
 
 	@media (hover: hover) {
 		&:hover {
-			transform: scale(1.2);
-			transition: 300ms;
+			${(props) =>
+				props.hover === 'false'
+					? ''
+					: 'transform: scale(1.2); transition: 300ms;'}
 		}
 	}
 `;
@@ -63,27 +67,56 @@ export const SearchDiv = styled.div`
 		visibility: hidden;
 	}
 
-	.input {
-		z-index: 500;
+	form {
+		display: flex;
+	}
+
+	.input-container {
+		display: flex;
+		background: white;
+		border: 1px solid gray;
+		border-radius: 2rem 2rem 0 0;
+		display: flex;
+		padding: 0.3rem 2rem;
+		z-index: 5;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.input-on-super {
+		border: 0;
+		z-index: 5;
 		background-image: url(${mag});
 		background-position: left;
 		background-size: contain;
 		background-repeat: no-repeat;
-		border: 4px solid black;
-		padding: 0.5rem;
+		padding: 0.6rem;
 		padding-left: 3.5rem;
 		position: relative;
 		font: inherit;
 		width: ${width};
-		${maxWidth};
-		margin: 0 auto auto auto;
 		display: block;
 		border-radius: 8px 8px 8px 8px;
 		font-size: 1.5rem;
 
 		&:focus {
-			box-shadow: 0 0 0 5pt yellow;
-			outline: red;
+			border: none;
+			outline: none;
+		}
+	}
+
+	.clear-search__btn {
+		cursor: pointer;
+		outline: none;
+		background: none;
+		border: none;
+		font-size: 2.5rem;
+		position: relative;
+		z-index: 7;
+		color: red;
+		font-family: bangers;
+		&:hover {
+			opacity: 0.7;
 		}
 	}
 
@@ -91,10 +124,12 @@ export const SearchDiv = styled.div`
 		font: inherit;
 		position: relative;
 		z-index: 500;
-		box-shadow: 0 0 0 2pt yellow;
 	}
 
 	.results-ul {
+		border: 1px solid grey;
+		border-top: 0;
+		border-radius: 0 0 2rem 2rem;
 		background: white;
 		position: absolute;
 		z-index: 500;
@@ -122,10 +157,8 @@ export const SearchDiv = styled.div`
 		position: relative;
 		z-index: 500;
 		font: inherit;
-		/* div */
 		border-radius: 0 0 8px 8px;
 		height: 0px;
-		/* display: none; */
 		width: 0px;
 		background-color: grey;
 	}
@@ -136,7 +169,6 @@ export const SearchDiv = styled.div`
 		height: auto;
 		margin: auto;
 		width: ${width};
-		${maxWidth};
 		display: block;
 	}
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FourOhFour = styled.div`
+export const FourOhFourDiv = styled.div`
 	h1 {
 		text-align: center;
 	}

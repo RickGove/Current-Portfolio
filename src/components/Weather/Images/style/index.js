@@ -50,24 +50,24 @@ export const ImagesDiv = styled.div`
 	}
 
 	.images-grid {
-		display: grid;
-		grid-template-columns: 5% repeat(4, 22.5%) 5%;
-		grid-template-areas: 'prev 0 1 2 3 next';
-		grid-template-rows: 185px;
+		display: flex;
+		align-items: center;
 	}
 
 	.image-container-individual {
 		display: grid;
 		grid-template-rows: 90%, 10%;
-		padding: 1rem;
+		padding: 0;
 		height: 100%;
-		width: 100%;
-		transition: 0.7s;
+		min-height: 100px;
+		width: 18vw;
+		margin: auto;
+		transition: 2s;
 	}
 
 	.image-container-individual:hover {
 		transform: scale(1.4);
-		transition: 0.4s;
+		transition: all 0.8s;
 		opacity: 0.9;
 
 		${media900} {
@@ -75,10 +75,7 @@ export const ImagesDiv = styled.div`
 		}
 	}
 
-	.image-container-individual:hover .image__taker {
-		display: none;
-	}
-
+	
 	.image-container-no-animation {
 		display: grid;
 		grid-template-rows: 90%, 10%;
@@ -92,10 +89,11 @@ export const ImagesDiv = styled.div`
 		align-self: center;
 		justify-self: center;
 		height: auto;
-		width: 95%;
+		width: 100%;
 	}
 
 	.image__taker {
+		text-align: center;
 		align-self: center;
 		position: relative;
 		justify-self: end;
@@ -105,10 +103,7 @@ export const ImagesDiv = styled.div`
 		vertical-align: middle;
 	}
 
-	.image__taker:hover {
-		display: none;
-	}
-
+	
 	.user-image {
 		height: auto;
 		width: 10%;
@@ -116,30 +111,22 @@ export const ImagesDiv = styled.div`
 		vertical-align: middle;
 	}
 
-	.next-image {
-		grid-area: next;
-		width: 100%;
+	.next-image, .prev-image {
+		width: 30vw;
+		max-width: 3.5rem;
 		align-self: center;
 		justify-self: center;
 		cursor: pointer;
-		transition: 0.3s;
-	}
+		transition: 0.8s;
 
-	.prev-image {
-		grid-area: prev;
-		width: 100%;
-		cursor: pointer;
-		align-self: center;
-		justify-self: center;
-		transition: 0.3s;
-	}
-
-	.next-image:hover,
-	.prev-image:hover {
-		opacity: 0.6;
+		&:hover{
+			opacity: 0.6;
 		transform: scale(1.3);
 		transition: 0.3s;
+		}
 	}
+
+
 
 	.inactive {
 		visibility: hidden;

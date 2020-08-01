@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import SearchBar from '../SearchBar';
+import SearchBar from '../SearchBar/';
 import CharacterCard from '../CharacterCard';
 import BattleScene from '../BattleScene';
 import MatchReport from '../MatchReport';

@@ -218,3 +218,17 @@ export const setCookies = (bool) => {
 		payload: bool,
 	};
 };
+
+export const setSuperSearch = (bool) => {
+	return {
+		type: 'SET_SUPER_SEARCH',
+		payload: bool,
+	};
+};
+
+export const setWeatherSearch = (bool) => {
+	return {
+		type: 'SET_WEATHER_SEARCH',
+		payload: bool,
+	};
+};

@@ -1,7 +1,7 @@
-import wallpaper from '../../img/WallPapers/wallpaperA.jpg';
+import wallpaperAA from '../../img/WallPapers/wallpaperA.jpg';
 
 export const wallPaperSettings = `
-background-image: url(${wallpaper});
+background-image: url(${wallpaperAA});
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;

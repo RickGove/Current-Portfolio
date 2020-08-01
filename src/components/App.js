@@ -14,8 +14,6 @@ import DiceGame from './DiceGame/';
 import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
 import noSite from './404';
 
-import history from '../history';
-
 import weatherApp from '../reducers/';
 
 const composeEnhancers = composeWithDevTools({
@@ -28,7 +26,7 @@ export const store = createStore(weatherApp, composeEnhancers());
 function App() {
 	return (
 		<Provider store={store}>
-			<Router history={history}>
+			<Router>
 				<React.Fragment>
 					<Switch>
 						<Route path="/" exact component={HomePage} />

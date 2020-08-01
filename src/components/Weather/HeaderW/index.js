@@ -7,7 +7,6 @@ import axios from 'axios';
 import { WeatherHeadCon } from './Style/WeatherHeadCon';
 import SearchBar from './SearchBar/';
 
-import logo from '../img/Logo.png';
 import { GlobalStyle } from '../../GlobalStyle';
 import loader from '../img/loader.png';
 
@@ -683,7 +682,7 @@ function HeaderW() {
 					/>
 				</div>
 				<div id="modal-for-search-focus"></div>
-				<img alt="logo" className="logo" src={logo} />
+				<h2 className="title-h1">Gove's Weather</h2>
 
 				<div className="search-container">
 					<SearchBar />

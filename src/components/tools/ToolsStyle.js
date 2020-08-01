@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { data } from '../data/Data';
 
-import wallpaper from '../../img/WallPapers/wallpaperB.jpg';
+import wallpaperB from '../../img/WallPapers/wallpaperB.jpg';
 
 const wallPaperSettings = `
-background-image: url(${wallpaper});
+background-image: url(${wallpaperB});
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;

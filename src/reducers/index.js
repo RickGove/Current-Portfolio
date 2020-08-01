@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 
-import { reducer as formReducer } from 'redux-form';
-
 const searchedLocation = (loc = 'none', action) => {
 	if (action.type === 'NEW_SEARCH_LOCATION') {
 		return action.payload;
@@ -259,6 +257,28 @@ const cookies = (allow = false, action) => {
 	}
 };
 
+const superSearch = (
+	props = { value: '', focus: false, blur: true },
+	action
+) => {
+	if (action.type === 'SET_COOKIES') {
+		return action.payload;
+	} else {
+		return props;
+	}
+};
+
+const weatherSearch = (
+	props = { value: '', focus: false, blur: true },
+	action
+) => {
+	if (action.type === 'SET_COOKIES') {
+		return action.payload;
+	} else {
+		return props;
+	}
+};
+
 const weatherApp = combineReducers({
 	cookies,
 	system: selectedSystem,
@@ -293,7 +313,8 @@ const weatherApp = combineReducers({
 	activePlayer,
 	gamePlaying,
 	isRolling,
-	form: formReducer,
+	superSearch,
+	weatherSearch,
 });
 
 export default weatherApp;
