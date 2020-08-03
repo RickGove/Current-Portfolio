@@ -14,7 +14,7 @@ function Title() {
 
 	const dispatch = useDispatch();
 	const currentLocation = useSelector((state) => state.location);
-	const searchLocation = useSelector((state) => state.searchedLocation); //may break shit
+	const searchLocation = useSelector((state) => state.searchedLocation);
 	const searchWeatherData = useSelector((state) => state.searchWeatherData);
 	const errorInSearch = useSelector((state) => state.errorInSearch);
 	const fullSearchName = useSelector((state) => state.fullSearchName);

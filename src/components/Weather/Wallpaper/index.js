@@ -15,7 +15,7 @@ function Wallpaper() {
 	//redux
 	const searchWeatherData = useSelector((state) => state.searchWeatherData);
 	const timeAtSearch = useSelector((state) => state.timeAtSearch);
-	const searchLocation = useSelector((state) => state.searchedLocation); //may break shit
+	const searchLocation = useSelector((state) => state.searchedLocation);
 
 	function renderWallPaper() {
 		let wp;

@@ -18,10 +18,6 @@ import WEATHERLOGO from '../../img/weather.png';
 import PIG from '../../img/dicegame.png';
 import SUPER from '../../img/superherosmackdown.png';
 
-// import LEET from '../'
-
-//
-
 export const data = {
 	styles: {
 		accent: '#2DAEFF',

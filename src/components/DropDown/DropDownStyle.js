@@ -29,21 +29,22 @@ export const DDownDiv = styled.div`
 	/* The container <div> - needed to position the dropdown content */
 	.dropdown {
 		position: absolute;
-		right: 5%;
 		top: 25px;
+		right: 3%;
 		display: inline-block;
-		/* border: 2px solid green; */
 	}
 
 	/* Dropdown Content (Hidden by Default) */
 	.dropdown-content {
+		padding: 6px;
 		display: none;
+		box-shadow: 0px 0px 8px 1px #37b1fe;
 		position: absolute;
-		right: -19px;
+		right: 0.5rem;
 		background-color: #f9f9f9;
 		min-width: 100px;
-		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 		z-index: 1;
+
 		${media.desktop} {
 			top: 50px;
 			display: none;
@@ -68,32 +69,47 @@ export const DDownDiv = styled.div`
 	}
 
 	.dropdown-content .active {
-		color: black;
+		color: #37b1fe;
 		cursor: pointer;
 		text-transform: uppercase;
 		text-decoration: underline;
 		font-weight: bold;
 	}
 
-	/* Change color of dropdown links on hover */
+	.dropdown-content p {
+		writing-mode: unset;
+		position: unset;
+		top: unset;
+		left: unset;
+		opacity: unset;
+		font-size: unset;
+		cursor: pointer;
+
+		&:hover {
+			background: grey;
+			opacity: 0.6;
+		}
+	}
+
 	.dropdown-content a:hover {
 		background-color: #f1f1f1;
 		opacity: 0.5;
 	}
 
-	/* Show the dropdown menu on hover */
 	.dropdown:hover .dropdown-content {
 		display: block;
 	}
 
-	/* Change the background color of the dropdown image when the dropdown content is shown */
 	.dropdown:hover .dropimg {
 		opacity: 0.2;
+	}
+
+	.hidden {
+		display: none;
 	}
 `;
 
 export const DDownDivAnchored = styled.div`
-	/* Style The Dropdown Image */
 	.dropimg {
 		padding: 5px;
 		height: 50px;
@@ -106,7 +122,6 @@ export const DDownDivAnchored = styled.div`
 		}
 	}
 
-	/* The container <div> - needed to position the dropdown content */
 	.dropdown {
 		right: 3%;
 		top: 25px;
@@ -114,19 +129,15 @@ export const DDownDivAnchored = styled.div`
 		/* border: 2px solid green; */
 	}
 
-	/* Dropdown Content (Hidden by Default) */
 	.dropdown-content {
 		display: none;
 		position: absolute;
-		top: 3.5rem;
-		left: 11rem;
 		box-shadow: 0px 0px 8px 1px #37b1fe;
 		background-color: #f9f9f9;
 		min-width: 100px;
 		z-index: 1;
 	}
 
-	/* Links inside the dropdown */
 	.dropdown-content a {
 		color: ${data.styles.accent};
 		padding: 12px 16px;
@@ -149,19 +160,25 @@ export const DDownDivAnchored = styled.div`
 		font-weight: bold;
 	}
 
-	/* Change color of dropdown links on hover */
-	.dropdown-content a:hover {
-		background-color: #f1f1f1;
+	.dropdown-content p {
+		padding: 6px;
+		cursor: pointer;
+	}
+
+	.dropdown-content p:hover {
+		background-color: grey;
 		opacity: 0.5;
 	}
 
-	/* Show the dropdown menu on hover */
 	.dropdown:hover .dropdown-content {
 		display: block;
 	}
 
-	/* Change the background color of the dropdown image when the dropdown content is shown */
 	.dropdown:hover .dropimg {
 		opacity: 0.2;
+	}
+
+	.hidden {
+		display: none;
 	}
 `;

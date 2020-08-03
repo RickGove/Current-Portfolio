@@ -15,10 +15,4 @@ export const TitleDiv = styled.div`
 	.current {
 		grid-area: current-name;
 	}
-
-	h1 {
-	}
-
-	img {
-	}
 `;

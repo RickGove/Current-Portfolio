@@ -118,7 +118,7 @@ function Images() {
 			setShowModal(false);
 			window.setTimeout(() => {
 				setModalImage('');
-				if (modal.current !== undefined) {
+				if (modal.current !== null) {
 					modal.current.style.display = 'none';
 
 					prev.current.style.visibility = 'visible';

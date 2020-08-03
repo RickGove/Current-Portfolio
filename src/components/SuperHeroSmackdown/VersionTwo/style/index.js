@@ -34,16 +34,21 @@ export const IntroDiv = styled.div`
 	}
 
 	.header-title {
+		color: yellow;
 		height: auto;
 		min-height: 1.8rem;
 		align-items: end;
 		width: 100%;
-		background: yellow;
+		background: black;
 		display: flex;
 		justify-content: center;
 		border-bottom: 1px solid black;
 		border-radius: 2rem 2rem 0 0;
 		margin-bottom: 1px;
+	}
+
+	h2 {
+		z-index: 50;
 	}
 
 	#image-div {

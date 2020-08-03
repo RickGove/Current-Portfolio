@@ -19,7 +19,6 @@ class HeaderDeterminer extends React.Component {
 	};
 
 	findActiveSection = () => {
-		// console.loKg(sections);
 		let activeSection = '';
 		sections.map((sec) => {
 			// Get the current component

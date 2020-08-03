@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HeadCon } from './HeadStyle';
-// import { Hamburger } from './HeadStyle';
+
 import { DDownDivAnchored } from '../DropDown/DropDownStyle';
 
 import { sections } from '../data/Data';
@@ -52,17 +52,19 @@ function Header() {
 	}
 
 	function renderSectionsDrop() {
-		return sections.map(
-			(section) => {
-				let sect = section.toString();
-				return (
-					<p key={section} onClick={() => scrollToSection(sect)}>
-						{section}
-					</p>
-				);
-			}
-			// else statement here Deafult way{
-		);
+		return sections.map((section) => {
+			let sect = section.toString();
+			return (
+				<p key={section} onClick={() => scrollToSection(sect)}>
+					{section}
+				</p>
+			);
+		});
+	}
+
+	function toggleDropDown() {
+		let el = document.getElementById('drop-content');
+		el.classList.toggle('hidden');
 	}
 
 	return (
@@ -70,9 +72,16 @@ function Header() {
 			<img alt="logo" className="logo" src={logo} />
 			{renderSections()}
 			<DDownDivAnchored>
-				<div className="dropdown">
-					<img alt="menu" src={menu} className="dropimg" />
-					<div className="dropdown-content">{renderSectionsDrop()}</div>
+				<div className="dropdown" onClick={toggleDropDown}>
+					<img
+						onClick={toggleDropDown}
+						alt="menu"
+						src={menu}
+						className="dropimg"
+					/>
+					<div id="drop-content" className="dropdown-content hidden">
+						{renderSectionsDrop()}
+					</div>
 				</div>
 			</DDownDivAnchored>
 			<a className="first-right project-icon-link" href="/#/SuperHeroSmackDown">

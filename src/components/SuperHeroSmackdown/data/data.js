@@ -21587,7 +21587,7 @@ export const superHeroData = [
 			placeOfBirth: 'Portland-ish, Maine, USA',
 			firstAppearance: 'Tbilisi',
 			publisher: 'TLG',
-			alignment: 'Good (as fuck)',
+			alignment: 'Good',
 		},
 		work: {
 			occupation: 'English Teacher Extraordinaire',

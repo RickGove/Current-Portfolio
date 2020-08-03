@@ -23,10 +23,8 @@ class ProjectMain extends React.Component {
 	}
 
 	renderIcons(tool) {
-		return tool.map((logo) => {
-			let random = Math.random();
-			let key = `${logo} ${random}`;
-			return <ProjectsToolsImg key={key} src={logo} />;
+		return tool.map((logo, i) => {
+			return <ProjectsToolsImg key={i} src={logo} />;
 		});
 	}
 
@@ -52,7 +50,7 @@ class ProjectMain extends React.Component {
 
 	renderProjectDesc(pro) {
 		return pro.description.map((item, i) => {
-			return <p key={pro.description}>{pro.description[i]}</p>;
+			return <p key={i}>{pro.description[i]}</p>;
 		});
 	}
 
@@ -61,10 +59,8 @@ class ProjectMain extends React.Component {
 	}
 	renderProjects = () => {
 		return projects.map((pro, i) => {
-			let random = Math.random();
-			let key = `${pro.name} ${random}`;
 			return (
-				<div key={key}>
+				<div key={i}>
 					<AlternatingColorCon id="AltColorCon" bgCol={this.renderBgColor(i)}>
 						<a href={pro.link} style={{ textDecoration: 'none' }}>
 							<ProjectsTitleCon id={pro.name}>

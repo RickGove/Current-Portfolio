@@ -33,14 +33,9 @@ function SearchBar() {
 	// state
 	const [totalButtons, setTotalButtons] = useState([]);
 	const [suggestions, setSuggestions] = useState([]);
-	const [value, setValue] = useState('Search here');
+	const [value, setValue] = useState('');
 	const [highlighted, setHighlighted] = useState();
 	const [locationRefused, setLocationRefused] = useState(false);
-
-	//////////////////////////////////////////////////////////////
-	//// for favourites in the future, might be better in redux
-	// const [favesList, setFavesList] = useState([])
-	/////
 
 	// redux
 	// state
@@ -118,6 +113,8 @@ function SearchBar() {
 	}
 
 	function handleEnter() {
+		hideResults();
+
 		inputRef.current.blur();
 	}
 
@@ -128,19 +125,21 @@ function SearchBar() {
 	function makeButtonsArray() {
 		let el,
 			newArray = [];
+
 		//////////////////////////////////////
-		// handle adding the location button to the array
-		el = document.getElementById('but-location');
+		/// add searches
+		el = document.getElementById('but-0');
 		if (el !== null) {
-			// add el to array
-			newArray[0] = el;
+			// run through the list of suggestions and add each to the array
+			for (let i = 0; i < suggestions.length; i++) {
+				el = document.getElementById(`but-${i}`);
+
+				newArray.push(el);
+			}
 		}
 
 		////////////////////////
-		// / add faves
-		/// doesn't exist yet through
-
-		// add favesList to state, or redux or something
+		//  add faves
 
 		el = document.getElementById('but-fave-0');
 		if (el !== null) {
@@ -154,16 +153,13 @@ function SearchBar() {
 		}
 
 		//////////////////////////////////////
-		/// add searches
-		el = document.getElementById('but-0');
+		// handle adding the location button to the array
+		el = document.getElementById('but-location');
 		if (el !== null) {
-			// run through the list of suggestions and add each to the array
-			for (let i = 0; i < suggestions.length; i++) {
-				el = document.getElementById(`but-${i}`);
-
-				newArray.push(el);
-			}
+			// add el to array
+			newArray.push(el);
 		}
+
 		setTotalButtons(newArray);
 		return newArray;
 	}
@@ -403,8 +399,11 @@ function SearchBar() {
 			return false;
 		}
 	}
+
 	function handleClickLocation() {
 		getCoords();
+		hideResults();
+
 		dispatch(setShowLoader(true));
 	}
 
@@ -479,13 +478,7 @@ function SearchBar() {
 			return (
 				<button
 					key="location-but"
-					// name={currentLocation[0]}
-					// orderindex="location"
 					id="but-location"
-					// country={fullCountry}
-					// countrycode={currentLocation[2]}
-					// lat={currentLocation[4]}
-					// lon={currentLocation[5]}
 					onClick={handleClickLocation}
 					onMouseLeave={handleMouseLeave}
 					onMouseOver={handleMouseOver}>
@@ -495,7 +488,6 @@ function SearchBar() {
 						src={gps}
 						onMouseLeave={handleMouseLeave}
 						onMouseOver={handleMouseOverImg}
-						// onClick={handleClickLocation}
 					/>
 					{'   '}
 					Search Current Location
@@ -564,7 +556,6 @@ function SearchBar() {
 						fullsearchname={item[1]}
 						countrycode={item[2]}
 						displayname={item[1]}
-						// onClick={handleClick}
 						onMouseLeave={handleMouseLeave}
 						onMouseOver={handleMouseOver}>
 						{getFlagImg(item[2].toLowerCase())}
@@ -604,7 +595,6 @@ function SearchBar() {
 						fullsearchname={item.fullName}
 						locationid={item.id}
 						displayname={item.displayName}
-						// onClick={handleClick}
 						onMouseLeave={handleMouseLeave}
 						onMouseOver={handleMouseOver}>
 						{getFlagImg(item.countryCode)}
@@ -617,10 +607,6 @@ function SearchBar() {
 	}
 
 	/////////////////////////////////////// end of buttons ///////////////////
-	/////////////////////////////////
-	///
-	///////
-	///
 
 	function searchLocation(city, lat, lon, country) {
 		dispatch(hideAllComps(true));
@@ -672,9 +658,17 @@ function SearchBar() {
 				dispatch(setImagesFound(''));
 
 				dispatch(setShowModal(false));
+
 				dispatch(setShowLoader(false));
 				dispatch(hideAllComps(false));
 			});
+	}
+
+	function hideResults() {
+		let el = document.getElementById('search-results');
+		el.style.transform = 'scale(0)';
+		el = document.getElementById('input-container');
+		el.style.borderRadius = '1rem';
 	}
 
 	async function getTimeAtSearch(tz) {
@@ -750,18 +744,14 @@ function SearchBar() {
 				let searchBut = totalButtons[highlighted];
 
 				// if button is location, search location
-				if (searchBut.id === 'but-location') {
-					//pressing enter on location
-					// works
+				if (searchBut !== undefined && searchBut.id === 'but-location') {
+					hideResults();
 
 					handleClickLocation();
-
-					//fave info works
 				} // else if it's fave
 				else if (searchBut.id.includes('fave')) {
 					// pressing enter on fave
-					// searchOpenWeatherById(searchBut.attributes.searchid.value);
-					// needs to be written still
+					hideResults();
 
 					// set faveoutite info
 					let id = searchBut.attributes.searchid.value;
@@ -780,10 +770,12 @@ function SearchBar() {
 
 					// search for weather
 					dispatch(setShowLoader(true));
+
 					searchByOpenWeatherId(id, cityName, fullCountry);
 				} else {
 					// pressing enter on suggestion
-					//works
+					hideResults();
+
 					let fullCountry = searchBut.attributes.country.value;
 					let cityName = reverseLabel(
 						searchBut.attributes.fullsearchname.value
@@ -807,6 +799,8 @@ function SearchBar() {
 				if (highlighted.id === 'but-location') {
 					// clicking location
 					// works
+					hideResults();
+
 					handleClickLocation();
 				} else if (highlighted.id.includes('fave')) {
 					// clicking a fave
@@ -816,6 +810,7 @@ function SearchBar() {
 					let countryArr = highlighted.attributes.displayname.value.split(',');
 					let fullCountry = countryArr[countryArr.length - 1].trim();
 					let flagCode = highlighted.attributes.countrycode.value;
+					hideResults();
 
 					// set fave info
 					dispatch(
@@ -831,7 +826,8 @@ function SearchBar() {
 					searchByOpenWeatherId(id, cityName, fullCountry);
 				} else {
 					//clicking on suggestion
-					// works
+					hideResults();
+
 					let id = highlighted.attributes.locationid.value;
 					let cityName = highlighted.attributes.displayname.value;
 					let fullCountry = highlighted.attributes.country.value;
@@ -853,43 +849,62 @@ function SearchBar() {
 				// search suggestion
 			}
 		} else {
+			hideResults();
+
 			dispatch(setShowModal(false));
 		}
 	}
 
 	function showModal(e) {
 		e.preventDefault();
-		if (inputRef.current !== undefined) {
-			inputRef.current.value = value;
-		}
 		dispatch(setShowModal(true));
+
+		// set results div show and adjust border-radius
+		let el = document.getElementById('search-results');
+		el.style.transform = 'scale(1)';
+		el = document.getElementById('input-container');
+		el.style.borderRadius = '1rem 1rem 0 0';
+	}
+
+	function reset() {
+		setValue('');
 	}
 
 	return (
 		<React.Fragment>
-			<input
-				ref={inputRef}
-				id="search"
-				type="text"
-				autoComplete="off"
-				value={value}
-				placeholder={value}
-				className="search"
-				onFocus={showModal}
-				onChange={() => setValue(inputRef.current.value)}
-				onBlur={handleBlur}
-				onKeyUp={handleKey}
-				// onKeyPress={handleChange}
-				autoFocus={true}
-			/>
-			<div className="search__results" id="search-results">
-				<ul>
-					{showSearchResults()}
-					{favesDivider()}
-					{showFaves()}
-					{locationDivider()}
-					{showLocation()}
-				</ul>
+			<div>
+				<form>
+					<div id="input-container" className="input-container">
+						<span role="img" aria-label="search">
+							🔎
+						</span>
+						<input
+							ref={inputRef}
+							id="search"
+							type="text"
+							autoComplete="off"
+							value={value}
+							className="search"
+							onFocus={showModal}
+							onChange={(e) => setValue(e.target.value)}
+							onBlur={handleBlur}
+							onKeyUp={handleKey}
+							autoFocus={true}
+						/>
+						<button className="clear-search__btn" type="button" onClick={reset}>
+							X
+						</button>
+					</div>
+				</form>
+				<div className="search__results" id="search-results">
+					<ul>
+						{showSearchResults()}
+						{favesDivider()}
+						{showFaves()}
+						{locationDivider()}
+						{showLocation()}
+					</ul>
+				</div>
 			</div>
 		</React.Fragment>
 	);

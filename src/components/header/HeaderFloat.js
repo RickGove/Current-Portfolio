@@ -84,15 +84,27 @@ class Header extends React.Component {
 		}, 1000);
 	};
 
+	toggleDropDown = () => {
+		let el = document.getElementById('drop-content');
+		el.classList.toggle('hidden');
+	};
+
 	render() {
 		return (
 			<HeadFloatCon>
 				<HeadImg id="Img" src={icon} onClick={this.goToTop} />
 				<p>{this.props.active}</p>
 				<DDownDiv>
-					<div className="dropdown">
-						<img alt="menu" src={menu} className="dropimg" />
-						<div className="dropdown-content">{this.renderSections()}</div>
+					<div onClick={this.toggleDropDown} className="dropdown">
+						<img
+							onClick={this.toggleDropDown}
+							alt="menu"
+							src={menu}
+							className="dropimg"
+						/>
+						<div id="drop-content" className="dropdown-content">
+							{this.renderSections()}
+						</div>
 					</div>
 				</DDownDiv>
 			</HeadFloatCon>

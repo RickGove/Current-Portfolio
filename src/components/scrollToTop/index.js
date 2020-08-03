@@ -20,16 +20,12 @@ class ScrollToTop extends React.Component {
 			this.setState({ visible: 'none' });
 		}
 	};
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.scrollListen);
+	}
 	ScrollTop() {
 		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-		// let elm;
-		// elm = document.getElementById('Projects');
-
-		// elm.scrollIntoView({
-		// 	behavior: 'smooth',
-		// 	block: 'start',
-		// 	inline: 'nearest',
-		// });
 	}
 	render() {
 		return (

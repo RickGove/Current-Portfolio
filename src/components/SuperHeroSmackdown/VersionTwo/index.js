@@ -16,8 +16,7 @@ function SuperHeroVersionTwo() {
 
 	if (localStorage.introDone) dispatch(setIntroDone(true));
 	const introDone = useSelector((state) => state.introDone);
-	////////////////////////////////
-	// must uncomment to make into run
+
 	if (!introDone) {
 		return (
 			<IntroDiv>
