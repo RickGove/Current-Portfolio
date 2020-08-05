@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import offlineResults from './offlineResults.json';
 
-import { setRecipeResults } from '../../../../actions';
+import { setRecipeResults, setInputFocus } from '../../../../actions';
 
 export default function SearchBar() {
 	const [value, setValue] = useState('');
@@ -15,6 +15,8 @@ export default function SearchBar() {
 
 	function fakeSearch() {
 		dispatch(setRecipeResults(offlineResults));
+		const formEl = document.getElementById('search-form');
+		formEl.blur();
 	}
 
 	// async function getResults() {
@@ -28,12 +30,24 @@ export default function SearchBar() {
 	// 		console.log(result);
 	// 	} catch (error) {
 	// 		alert(error);
-	// 	}
 	// }
+	// const formEl = document.getElementById('search-form');
+	// formEl.blur();
+	// }
+
+	function setFocus() {
+		dispatch(setInputFocus(true));
+	}
+
+	function setBlur() {
+		dispatch(setInputFocus(false));
+	}
 
 	return (
 		<div className="search-container">
 			<form
+				onFocus={setFocus}
+				onBlur={setBlur}
 				// onSubmit={getResults}
 				onSubmit={fakeSearch}
 				className="search">
@@ -41,6 +55,7 @@ export default function SearchBar() {
 					🔎
 				</span>
 				<input
+					id="search-form"
 					autoFocus={true}
 					placeholder={'1,000,000+ Recipes'}
 					value={value}

@@ -290,6 +290,22 @@ const recipeResults = (recipes = [], action) => {
 	}
 };
 
+const recipeDetails = (recipe = [], action) => {
+	if (action.type === 'SET_RECIPE_DETAILS') {
+		return action.payload;
+	} else {
+		return recipe;
+	}
+};
+
+const inputFocus = (bool = false, action) => {
+	if (action.type === 'SET_INPUT_FOCUS') {
+		return action.payload;
+	} else {
+		return bool;
+	}
+};
+
 const weatherApp = combineReducers({
 	cookies,
 	system: selectedSystem,
@@ -328,6 +344,8 @@ const weatherApp = combineReducers({
 	superSearch,
 	// Recipes
 	recipeResults,
+	recipeDetails,
+	inputFocus,
 });
 
 export default weatherApp;

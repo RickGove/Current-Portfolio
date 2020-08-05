@@ -21,6 +21,7 @@
 		"redux": "^4.0.5",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-form": "^8.3.6",
+		"simplebar-react": "^2.2.1",
 		"styled-components": "^5.1.0"
 	},
 	"scripts": {

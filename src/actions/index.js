@@ -242,3 +242,17 @@ export const setRecipeResults = (results) => {
 		payload: results,
 	};
 };
+
+export const setRecipeDetails = (recipe) => {
+	return {
+		type: 'SET_RECIPE_DETAILS',
+		payload: recipe,
+	};
+};
+
+export const setInputFocus = (bool) => {
+	return {
+		type: 'SET_INPUT_FOCUS',
+		payload: bool,
+	};
+};

@@ -1,0 +1,480 @@
+{
+	"vegetarian": true,
+	"vegan": false,
+	"glutenFree": false,
+	"dairyFree": false,
+	"veryHealthy": false,
+	"cheap": false,
+	"veryPopular": false,
+	"sustainable": false,
+	"weightWatcherSmartPoints": 15,
+	"gaps": "no",
+	"lowFodmap": false,
+	"preparationMinutes": 10,
+	"cookingMinutes": 50,
+	"aggregateLikes": 19,
+	"spoonacularScore": 62,
+	"healthScore": 12,
+	"pricePerServing": 119.17,
+	"extendedIngredients": [
+		{
+			"id": 1001,
+			"aisle": "Milk, Eggs, Other Dairy",
+			"image": "butter-sliced.jpg",
+			"consistency": "solid",
+			"name": "butter",
+			"original": "50g butter",
+			"originalString": "50g butter",
+			"originalName": "butter",
+			"amount": 50,
+			"unit": "g",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 1.764,
+					"unitShort": "oz",
+					"unitLong": "ounces"
+				},
+				"metric": {
+					"amount": 50,
+					"unitShort": "g",
+					"unitLong": "grams"
+				}
+			}
+		},
+		{
+			"id": 20081,
+			"aisle": "Baking",
+			"image": "flour.png",
+			"consistency": "solid",
+			"name": "flour",
+			"original": "2 tbsp flour",
+			"originalString": "2 tbsp flour",
+			"originalName": "flour",
+			"amount": 2,
+			"unit": "tbsp",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 2,
+					"unitShort": "Tbsps",
+					"unitLong": "Tbsps"
+				},
+				"metric": {
+					"amount": 2,
+					"unitShort": "Tbsps",
+					"unitLong": "Tbsps"
+				}
+			}
+		},
+		{
+			"id": 11282,
+			"aisle": "Produce",
+			"image": "brown-onion.png",
+			"consistency": "solid",
+			"name": "onion",
+			"original": "1 onion, finely chopped",
+			"originalString": "1 onion, finely chopped",
+			"originalName": "onion, finely chopped",
+			"amount": 1,
+			"unit": "",
+			"meta": ["finely chopped"],
+			"metaInformation": ["finely chopped"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				}
+			}
+		},
+		{
+			"id": 11215,
+			"aisle": "Produce",
+			"image": "garlic.png",
+			"consistency": "solid",
+			"name": "garlic clove",
+			"original": "1 garlic clove, crushed",
+			"originalString": "1 garlic clove, crushed",
+			"originalName": "garlic clove, crushed",
+			"amount": 1,
+			"unit": "",
+			"meta": ["crushed"],
+			"metaInformation": ["crushed"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				}
+			}
+		},
+		{
+			"id": 93820,
+			"aisle": "Cheese",
+			"image": "white-cream-fluffy.jpg",
+			"consistency": "solid",
+			"name": "mascarpone",
+			"original": "½ 250g tub mascarpone",
+			"originalString": "½ 250g tub mascarpone",
+			"originalName": "mascarpone",
+			"amount": 250.5,
+			"unit": "g",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 8.836,
+					"unitShort": "oz",
+					"unitLong": "ounces"
+				},
+				"metric": {
+					"amount": 250.5,
+					"unitShort": "g",
+					"unitLong": "grams"
+				}
+			}
+		},
+		{
+			"id": 11463,
+			"aisle": "Frozen",
+			"image": "spinach-frozen.jpg",
+			"consistency": "solid",
+			"name": "frozen spinach",
+			"original": "500g frozen chopped spinach, thawed and liquid collected",
+			"originalString": "500g frozen chopped spinach, thawed and liquid collected",
+			"originalName": "frozen chopped spinach, thawed and liquid collected",
+			"amount": 500,
+			"unit": "g",
+			"meta": ["frozen", "thawed", "chopped"],
+			"metaInformation": ["frozen", "thawed", "chopped"],
+			"measures": {
+				"us": {
+					"amount": 1.102,
+					"unitShort": "lb",
+					"unitLong": "pounds"
+				},
+				"metric": {
+					"amount": 500,
+					"unitShort": "g",
+					"unitLong": "grams"
+				}
+			}
+		},
+		{
+			"id": 1009,
+			"aisle": "Cheese",
+			"image": "cheddar-cheese.png",
+			"consistency": "solid",
+			"name": "cheddar",
+			"original": "140g grated cheddar",
+			"originalString": "140g grated cheddar",
+			"originalName": "grated cheddar",
+			"amount": 140,
+			"unit": "g",
+			"meta": ["grated"],
+			"metaInformation": ["grated"],
+			"measures": {
+				"us": {
+					"amount": 4.938,
+					"unitShort": "oz",
+					"unitLong": "ounces"
+				},
+				"metric": {
+					"amount": 140,
+					"unitShort": "g",
+					"unitLong": "grams"
+				}
+			}
+		},
+		{
+			"id": 11979,
+			"aisle": "Canned and Jarred;Produce;Ethnic Foods",
+			"image": "jalapeno-pepper.png",
+			"consistency": "solid",
+			"name": "jalapeno pepper",
+			"original": "1 tbsp jalapeño pepper from a jar, drained and chopped",
+			"originalString": "1 tbsp jalapeño pepper from a jar, drained and chopped",
+			"originalName": "jalapeño pepper from a jar, drained and chopped",
+			"amount": 1,
+			"unit": "tbsp",
+			"meta": ["drained", "chopped"],
+			"metaInformation": ["drained", "chopped"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "Tbsp",
+					"unitLong": "Tbsp"
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "Tbsp",
+					"unitLong": "Tbsp"
+				}
+			}
+		},
+		{
+			"id": 1052047,
+			"aisle": "Spices and Seasonings",
+			"image": "garlic-salt.jpg",
+			"consistency": "solid",
+			"name": "celery salt",
+			"original": "½ tsp celery salt",
+			"originalString": "½ tsp celery salt",
+			"originalName": "celery salt",
+			"amount": 0.5,
+			"unit": "tsp",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 0.5,
+					"unitShort": "tsps",
+					"unitLong": "teaspoons"
+				},
+				"metric": {
+					"amount": 0.5,
+					"unitShort": "tsps",
+					"unitLong": "teaspoons"
+				}
+			}
+		},
+		{
+			"id": 2028,
+			"aisle": "Spices and Seasonings",
+			"image": "paprika.jpg",
+			"consistency": "solid",
+			"name": "paprika",
+			"original": "¼ tsp paprika",
+			"originalString": "¼ tsp paprika",
+			"originalName": "paprika",
+			"amount": 0.25,
+			"unit": "tsp",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 0.25,
+					"unitShort": "tsps",
+					"unitLong": "teaspoons"
+				},
+				"metric": {
+					"amount": 0.25,
+					"unitShort": "tsps",
+					"unitLong": "teaspoons"
+				}
+			}
+		}
+	],
+	"id": 215527,
+	"title": "Spinach madeleine",
+	"readyInMinutes": 60,
+	"servings": 6,
+	"sourceUrl": "https://www.bbcgoodfood.com/recipes/848636/spinach-madeleine",
+	"image": "https://spoonacular.com/recipeImages/215527-556x370.jpg",
+	"imageType": "jpg",
+	"summary": "Spinach madeleine could be just the <b>lacto ovo vegetarian</b> recipe you've been looking for. For <b>$1.19 per serving</b>, this recipe <b>covers 20%</b> of your daily requirements of vitamins and minerals. This recipe serves 6. One serving contains <b>384 calories</b>, <b>12g of protein</b>, and <b>34g of fat</b>. 19 people found this recipe to be flavorful and satisfying. It is brought to you by BBC Good Food. Head to the store and pick up jalapeño pepper from a jar, flour, paprika, and a few other things to make it today. From preparation to the plate, this recipe takes about <b>1 hour</b>. Overall, this recipe earns a <b>solid spoonacular score of 62%</b>. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/madeleine-cookies-511508\">Madeleine Cookies</a>, <a href=\"https://spoonacular.com/recipes/chocolate-madeleine-cake-60365\">Chocolate Madeleine Cake</a>, and <a href=\"https://spoonacular.com/recipes/hazelnut-madeleine-cookies-373429\">Hazelnut Madeleine Cookies</a>.",
+	"cuisines": [],
+	"dishTypes": [],
+	"diets": ["lacto ovo vegetarian"],
+	"occasions": [],
+	"winePairing": {
+		"pairedWines": [
+			"cream sherry",
+			"madeira",
+			"moscato dasti",
+			"port",
+			"prosecco"
+		],
+		"pairingText": "Cream Sherry, Madeira, and Moscato d'Asti are my top picks for Madeleine. Sweet bubbly Prosecco doesn't overwhelm simple sugar or shortbread cookies, a sweet cream sherry complements spiced cookies, and madeira's nutty notes match cookies with nuts perfectly. The NV Johnson Estate Cream Sherry with a 5 out of 5 star rating seems like a good match. It costs about 19 dollars per bottle.",
+		"productMatches": [
+			{
+				"id": 430626,
+				"title": "NV Johnson Estate Cream Sherry",
+				"description": "Very aromatic with notes of hazelnut, vanilla, and a touch of oak followed by sweet raisins and a touch of yeast. Clean lasting finish. Good now but will reward those allow it to age\"\". A favorite pre-prandial beverage. Consider it with nuts before dinner as an aperitif, or after dinner with dessert, especially chocolates and fruit-based desserts. Also wonderful on cold afternoons, served with biscotti to dip in \"\"Italian-style\"\". \"",
+				"price": "$19.49",
+				"imageUrl": "https://spoonacular.com/productImages/430626-312x231.jpg",
+				"averageRating": 1,
+				"ratingCount": 2,
+				"score": 0.8571428571428572,
+				"link": "https://www.amazon.com/Johnson-Estate-Cream-Sherry-750/dp/B00D3GQSRW?tag=spoonacular-20"
+			}
+		]
+	},
+	"instructions": "Heat oven to 190C/170C fan/gas 5. Melt the butter in a pan, stir in the flour and cook for 2 mins. Add the onion and garlic and cook for 3-5 mins until soft. Add the mascarpone, then slowly add the spinach liquid, stirring until smooth. Cook for 4-5 mins until the sauce thickens.\nStir in the cheddar, jalapeos, celery salt, paprika and spinach. Transfer to a baking dish and bake for 40 mins until golden.",
+	"analyzedInstructions": [
+		{
+			"name": "",
+			"steps": [
+				{
+					"number": 1,
+					"step": "Heat oven to 190C/170C fan/gas",
+					"ingredients": [],
+					"equipment": [
+						{
+							"id": 404784,
+							"name": "oven",
+							"localizedName": "oven",
+							"image": "oven.jpg",
+							"temperature": {
+								"number": 190,
+								"unit": "Celsius"
+							}
+						}
+					]
+				},
+				{
+					"number": 2,
+					"step": "Melt the butter in a pan, stir in the flour and cook for 2 mins.",
+					"ingredients": [
+						{
+							"id": 1001,
+							"name": "butter",
+							"localizedName": "butter",
+							"image": "butter-sliced.jpg"
+						},
+						{
+							"id": 20081,
+							"name": "all purpose flour",
+							"localizedName": "all purpose flour",
+							"image": "flour.png"
+						}
+					],
+					"equipment": [
+						{
+							"id": 404645,
+							"name": "frying pan",
+							"localizedName": "frying pan",
+							"image": "pan.png"
+						}
+					],
+					"length": {
+						"number": 2,
+						"unit": "minutes"
+					}
+				},
+				{
+					"number": 3,
+					"step": "Add the onion and garlic and cook for 3-5 mins until soft.",
+					"ingredients": [
+						{
+							"id": 11215,
+							"name": "garlic",
+							"localizedName": "garlic",
+							"image": "garlic.png"
+						},
+						{
+							"id": 11282,
+							"name": "onion",
+							"localizedName": "onion",
+							"image": "brown-onion.png"
+						}
+					],
+					"equipment": [],
+					"length": {
+						"number": 5,
+						"unit": "minutes"
+					}
+				},
+				{
+					"number": 4,
+					"step": "Add the mascarpone, then slowly add the spinach liquid, stirring until smooth. Cook for 4-5 mins until the sauce thickens.",
+					"ingredients": [
+						{
+							"id": 93820,
+							"name": "mascarpone",
+							"localizedName": "mascarpone",
+							"image": "white-cream-fluffy.jpg"
+						},
+						{
+							"id": 10011457,
+							"name": "spinach",
+							"localizedName": "spinach",
+							"image": "spinach.jpg"
+						},
+						{
+							"id": 0,
+							"name": "sauce",
+							"localizedName": "sauce",
+							"image": ""
+						}
+					],
+					"equipment": [],
+					"length": {
+						"number": 5,
+						"unit": "minutes"
+					}
+				},
+				{
+					"number": 5,
+					"step": "Stir in the cheddar, jalapeos, celery salt, paprika and spinach.",
+					"ingredients": [
+						{
+							"id": 1052047,
+							"name": "celery salt",
+							"localizedName": "celery salt",
+							"image": "garlic-salt.jpg"
+						},
+						{
+							"id": 1009,
+							"name": "cheddar cheese",
+							"localizedName": "cheddar cheese",
+							"image": "cheddar-cheese.png"
+						},
+						{
+							"id": 2028,
+							"name": "paprika",
+							"localizedName": "paprika",
+							"image": "paprika.jpg"
+						},
+						{
+							"id": 10011457,
+							"name": "spinach",
+							"localizedName": "spinach",
+							"image": "spinach.jpg"
+						}
+					],
+					"equipment": []
+				},
+				{
+					"number": 6,
+					"step": "Transfer to a baking dish and bake for 40 mins until golden.",
+					"ingredients": [],
+					"equipment": [
+						{
+							"id": 404646,
+							"name": "baking pan",
+							"localizedName": "baking pan",
+							"image": "roasting-pan.jpg"
+						},
+						{
+							"id": 404784,
+							"name": "oven",
+							"localizedName": "oven",
+							"image": "oven.jpg"
+						}
+					],
+					"length": {
+						"number": 40,
+						"unit": "minutes"
+					}
+				}
+			]
+		}
+	],
+	"sourceName": null,
+	"creditsText": null,
+	"originalId": null
+}

@@ -1,0 +1,444 @@
+{
+	"vegetarian": true,
+	"vegan": false,
+	"glutenFree": true,
+	"dairyFree": true,
+	"veryHealthy": false,
+	"cheap": false,
+	"veryPopular": false,
+	"sustainable": false,
+	"weightWatcherSmartPoints": 7,
+	"gaps": "no",
+	"lowFodmap": false,
+	"preparationMinutes": 10,
+	"cookingMinutes": 8,
+	"aggregateLikes": 3,
+	"spoonacularScore": 85,
+	"healthScore": 50,
+	"pricePerServing": 220.62,
+	"extendedIngredients": [
+		{
+			"id": 9037,
+			"aisle": "Produce",
+			"image": "avocado.jpg",
+			"consistency": "solid",
+			"name": "avocado",
+			"original": "1 avocado, diced",
+			"originalString": "1 avocado, diced",
+			"originalName": "avocado, diced",
+			"amount": 1,
+			"unit": "",
+			"meta": ["diced"],
+			"metaInformation": ["diced"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				}
+			}
+		},
+		{
+			"id": 11457,
+			"aisle": "Produce",
+			"image": "spinach.jpg",
+			"consistency": "solid",
+			"name": "baby spinach",
+			"original": "5 cups baby spinach",
+			"originalString": "5 cups baby spinach",
+			"originalName": "baby spinach",
+			"amount": 5,
+			"unit": "cups",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 5,
+					"unitShort": "cups",
+					"unitLong": "cups"
+				},
+				"metric": {
+					"amount": 1.183,
+					"unitShort": "l",
+					"unitLong": "liters"
+				}
+			}
+		},
+		{
+			"id": 19296,
+			"aisle": "Nut butters, Jams, and Honey",
+			"image": "honey.png",
+			"consistency": "liquid",
+			"name": "honey",
+			"original": "2 teaspoons honey",
+			"originalString": "2 teaspoons honey",
+			"originalName": "honey",
+			"amount": 2,
+			"unit": "teaspoons",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 2,
+					"unitShort": "tsps",
+					"unitLong": "teaspoons"
+				},
+				"metric": {
+					"amount": 2,
+					"unitShort": "tsps",
+					"unitLong": "teaspoons"
+				}
+			}
+		},
+		{
+			"id": 9191,
+			"aisle": "Produce",
+			"image": "nectarines.jpg",
+			"consistency": "solid",
+			"name": "nectarine",
+			"original": "1 nectarine, pitted and sliced",
+			"originalString": "1 nectarine, pitted and sliced",
+			"originalName": "nectarine, pitted and sliced",
+			"amount": 1,
+			"unit": "",
+			"meta": ["pitted", "sliced"],
+			"metaInformation": ["pitted", "sliced"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				}
+			}
+		},
+		{
+			"id": 9236,
+			"aisle": "Produce",
+			"image": "peach.png",
+			"consistency": "solid",
+			"name": "peach",
+			"original": "1 peach, pitted and sliced",
+			"originalString": "1 peach, pitted and sliced",
+			"originalName": "peach, pitted and sliced",
+			"amount": 1,
+			"unit": "",
+			"meta": ["pitted", "sliced"],
+			"metaInformation": ["pitted", "sliced"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "",
+					"unitLong": ""
+				}
+			}
+		},
+		{
+			"id": 1002030,
+			"aisle": "Spices and Seasonings",
+			"image": "pepper.jpg",
+			"consistency": "solid",
+			"name": "pepper",
+			"original": "dash black pepper, to taste",
+			"originalString": "dash black pepper, to taste",
+			"originalName": "black pepper, to taste",
+			"amount": 1,
+			"unit": "dash",
+			"meta": ["black", "to taste"],
+			"metaInformation": ["black", "to taste"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "dash",
+					"unitLong": "dash"
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "dash",
+					"unitLong": "dash"
+				}
+			}
+		},
+		{
+			"id": 2047,
+			"aisle": "Spices and Seasonings",
+			"image": "salt.jpg",
+			"consistency": "solid",
+			"name": "salt",
+			"original": "dash salt, to taste",
+			"originalString": "dash salt, to taste",
+			"originalName": "salt, to taste",
+			"amount": 1,
+			"unit": "dash",
+			"meta": ["to taste"],
+			"metaInformation": ["to taste"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "dash",
+					"unitLong": "dash"
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "dash",
+					"unitLong": "dash"
+				}
+			}
+		},
+		{
+			"id": 9070,
+			"aisle": "Produce",
+			"image": "cherries.jpg",
+			"consistency": "solid",
+			"name": "sweet cherries",
+			"original": "1 cup sweet cherries, pitted and chopped",
+			"originalString": "1 cup sweet cherries, pitted and chopped",
+			"originalName": "sweet cherries, pitted and chopped",
+			"amount": 1,
+			"unit": "cup",
+			"meta": ["sweet", "pitted", "chopped"],
+			"metaInformation": ["sweet", "pitted", "chopped"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "cup",
+					"unitLong": "cup"
+				},
+				"metric": {
+					"amount": 236.588,
+					"unitShort": "ml",
+					"unitLong": "milliliters"
+				}
+			}
+		},
+		{
+			"id": 4528,
+			"aisle": "Oil, Vinegar, Salad Dressing",
+			"image": "walnut-oil.jpg",
+			"consistency": "liquid",
+			"name": "walnut oil",
+			"original": "2 tablespoons walnut oil",
+			"originalString": "2 tablespoons walnut oil",
+			"originalName": "walnut oil",
+			"amount": 2,
+			"unit": "tablespoons",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 2,
+					"unitShort": "Tbsps",
+					"unitLong": "Tbsps"
+				},
+				"metric": {
+					"amount": 2,
+					"unitShort": "Tbsps",
+					"unitLong": "Tbsps"
+				}
+			}
+		},
+		{
+			"id": 12155,
+			"aisle": "Nuts;Savory Snacks;Baking",
+			"image": "walnuts.jpg",
+			"consistency": "solid",
+			"name": "walnuts",
+			"original": "3 tablespoons walnuts, roasted",
+			"originalString": "3 tablespoons walnuts, roasted",
+			"originalName": "walnuts, roasted",
+			"amount": 3,
+			"unit": "tablespoons",
+			"meta": [],
+			"metaInformation": [],
+			"measures": {
+				"us": {
+					"amount": 3,
+					"unitShort": "Tbsps",
+					"unitLong": "Tbsps"
+				},
+				"metric": {
+					"amount": 3,
+					"unitShort": "Tbsps",
+					"unitLong": "Tbsps"
+				}
+			}
+		},
+		{
+			"id": 14106,
+			"aisle": "Alcoholic Beverages",
+			"image": "white-wine.jpg",
+			"consistency": "liquid",
+			"name": "white wine",
+			"original": "1/2 cup sweet white wine",
+			"originalString": "1/2 cup sweet white wine",
+			"originalName": "sweet white wine",
+			"amount": 0.5,
+			"unit": "cup",
+			"meta": ["sweet", "white"],
+			"metaInformation": ["sweet", "white"],
+			"measures": {
+				"us": {
+					"amount": 0.5,
+					"unitShort": "cups",
+					"unitLong": "cups"
+				},
+				"metric": {
+					"amount": 118.294,
+					"unitShort": "ml",
+					"unitLong": "milliliters"
+				}
+			}
+		},
+		{
+			"id": 1002068,
+			"aisle": "Oil, Vinegar, Salad Dressing",
+			"image": "vinegar-(white).jpg",
+			"consistency": "liquid",
+			"name": "white wine vinegar",
+			"original": "1 tablespoon white wine vinegar",
+			"originalString": "1 tablespoon white wine vinegar",
+			"originalName": "white wine vinegar",
+			"amount": 1,
+			"unit": "tablespoon",
+			"meta": ["white"],
+			"metaInformation": ["white"],
+			"measures": {
+				"us": {
+					"amount": 1,
+					"unitShort": "Tbsp",
+					"unitLong": "Tbsp"
+				},
+				"metric": {
+					"amount": 1,
+					"unitShort": "Tbsp",
+					"unitLong": "Tbsp"
+				}
+			}
+		}
+	],
+	"id": 580081,
+	"title": "Spinach Salad",
+	"readyInMinutes": 18,
+	"servings": 4,
+	"sourceUrl": "http://www.foodfanatic.com/recipes/spinach-salad-recipe/",
+	"image": "https://spoonacular.com/recipeImages/580081-556x370.jpg",
+	"imageType": "jpg",
+	"summary": "Spinach Salad might be just the side dish you are searching for. Watching your figure? This caveman, gluten free, dairy free, and primal recipe has <b>288 calories</b>, <b>4g of protein</b>, and <b>20g of fat</b> per serving. For <b>$2.21 per serving</b>, this recipe <b>covers 19%</b> of your daily requirements of vitamins and minerals. 3 people were impressed by this recipe. If you have peach, walnuts, walnut oil, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes about <b>18 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 87%</b>. This score is spectacular. Try <a href=\"https://spoonacular.com/recipes/greek-spinach-salad-in-mini-phyllo-cupgreek-spinach-salad-in-mi-19441\">Greek Spinach Salad In Mini Phyllo Cupgreek Spinach Salad In Mi</a>, <a href=\"https://spoonacular.com/recipes/spinach-salad-a-tangy-twist-to-the-old-fashioned-spinach-salad-599570\">Spinach Salad – a tangy twist to the old fashioned spinach salad</a>, and <a href=\"https://spoonacular.com/recipes/spinach-ohitashi-japanese-spinach-salad-with-bonito-flakes-540725\">Spinach Ohitashi (Japanese Spinach Salad with Bonito Flakes)</a> for similar recipes.",
+	"cuisines": [],
+	"dishTypes": ["salad"],
+	"diets": ["gluten free", "dairy free", "lacto ovo vegetarian"],
+	"occasions": [],
+	"winePairing": {},
+	"instructions": "In a small skillet or saucepan, heat the white wine until it is reduced to 2 tablespoons, about 8 to 10 minutes.Remove from heat and whisk in the oil, vinegar and honey. Add a sprinkle of salt and pepper to taste.To serve the salad, toss all of the ingredients together in the white wine dressing. Serve immediately.",
+	"analyzedInstructions": [
+		{
+			"name": "",
+			"steps": [
+				{
+					"number": 1,
+					"step": "In a small skillet or saucepan, heat the white wine until it is reduced to 2 tablespoons, about 8 to 10 minutes.",
+					"ingredients": [
+						{
+							"id": 14106,
+							"name": "white wine",
+							"localizedName": "white wine",
+							"image": "white-wine.jpg"
+						}
+					],
+					"equipment": [
+						{
+							"id": 404669,
+							"name": "sauce pan",
+							"localizedName": "sauce pan",
+							"image": "sauce-pan.jpg"
+						},
+						{
+							"id": 404645,
+							"name": "frying pan",
+							"localizedName": "frying pan",
+							"image": "pan.png"
+						}
+					],
+					"length": {
+						"number": 8,
+						"unit": "minutes"
+					}
+				},
+				{
+					"number": 2,
+					"step": "Remove from heat and whisk in the oil, vinegar and honey.",
+					"ingredients": [
+						{
+							"id": 2053,
+							"name": "vinegar",
+							"localizedName": "vinegar",
+							"image": "vinegar-(white).jpg"
+						},
+						{
+							"id": 19296,
+							"name": "honey",
+							"localizedName": "honey",
+							"image": "honey.png"
+						},
+						{
+							"id": 4582,
+							"name": "cooking oil",
+							"localizedName": "cooking oil",
+							"image": "vegetable-oil.jpg"
+						}
+					],
+					"equipment": [
+						{
+							"id": 404661,
+							"name": "whisk",
+							"localizedName": "whisk",
+							"image": "whisk.png"
+						}
+					]
+				},
+				{
+					"number": 3,
+					"step": "Add a sprinkle of salt and pepper to taste.To serve the salad, toss all of the ingredients together in the white wine dressing.",
+					"ingredients": [
+						{
+							"id": 1102047,
+							"name": "salt and pepper",
+							"localizedName": "salt and pepper",
+							"image": "salt-and-pepper.jpg"
+						},
+						{
+							"id": 14106,
+							"name": "white wine",
+							"localizedName": "white wine",
+							"image": "white-wine.jpg"
+						}
+					],
+					"equipment": []
+				},
+				{
+					"number": 4,
+					"step": "Serve immediately.",
+					"ingredients": [],
+					"equipment": []
+				}
+			]
+		}
+	],
+	"sourceName": null,
+	"creditsText": null,
+	"originalId": null
+}
