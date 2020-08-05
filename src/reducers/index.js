@@ -149,6 +149,17 @@ const showLoader = (show = false, action) => {
 	}
 };
 
+const weatherSearch = (
+	props = { value: '', focus: false, blur: true },
+	action
+) => {
+	if (action.type === 'SET_COOKIES') {
+		return action.payload;
+	} else {
+		return props;
+	}
+};
+
 ///////////////////////////////////
 //
 //  Super Hero Smackdown State
@@ -268,14 +279,14 @@ const superSearch = (
 	}
 };
 
-const weatherSearch = (
-	props = { value: '', focus: false, blur: true },
-	action
-) => {
-	if (action.type === 'SET_COOKIES') {
+/////////////////////////
+// Recipes
+
+const recipeResults = (recipes = [], action) => {
+	if (action.type === 'SET_RECIPE_RESULTS') {
 		return action.payload;
 	} else {
-		return props;
+		return recipes;
 	}
 };
 
@@ -299,6 +310,7 @@ const weatherApp = combineReducers({
 	neededForFavorite: neededForFavorite,
 	showModal: showModal,
 	showLoader: showLoader,
+	weatherSearch,
 	// begin Super Hero Smackdown
 	introDone: introDone,
 	fighterA: fighterA,
@@ -314,7 +326,8 @@ const weatherApp = combineReducers({
 	gamePlaying,
 	isRolling,
 	superSearch,
-	weatherSearch,
+	// Recipes
+	recipeResults,
 });
 
 export default weatherApp;

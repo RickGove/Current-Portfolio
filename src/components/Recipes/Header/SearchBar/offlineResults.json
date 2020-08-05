@@ -1,0 +1,901 @@
+[
+	{
+		"id": 486754,
+		"title": "corn spinach , how to make corn spinach or corn palak",
+		"readyInMinutes": 50,
+		"servings": 4,
+		"sourceUrl": "http://www.vegrecipesofindia.com/corn-spinach-recipe/",
+		"openLicense": 0,
+		"image": "corn-spinach---how-to-make-corn-spinach-or-corn-palak-486754.jpg"
+	},
+	{
+		"id": 19204,
+		"title": "Lemon Spinach",
+		"readyInMinutes": 45,
+		"servings": 4,
+		"sourceUrl": "http://www.myrecipes.com/recipe/lemon-spinach-10000000524301/",
+		"openLicense": 0,
+		"image": "lemon-spinach-19204.jpg"
+	},
+	{
+		"id": 215527,
+		"title": "Spinach madeleine",
+		"readyInMinutes": 60,
+		"servings": 6,
+		"sourceUrl": "https://www.bbcgoodfood.com/recipes/848636/spinach-madeleine",
+		"openLicense": 0,
+		"image": "Spinach-madeleine-215527.jpg"
+	},
+	{
+		"id": 244368,
+		"title": "My Way Spinach Bake",
+		"readyInMinutes": 30,
+		"servings": 6,
+		"sourceUrl": "http://www.deepsouthdish.com/2010/04/my-way-spinach-bake-and-original.html",
+		"openLicense": 0,
+		"image": "My-Way-Spinach-Bake-244368.jpg"
+	},
+	{
+		"id": 312973,
+		"title": "Braised Spinach",
+		"readyInMinutes": 20,
+		"servings": 6,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/giada-de-laurentiis/braised-spinach-recipe.html",
+		"openLicense": 0,
+		"image": "braised-spinach-312973.jpeg"
+	},
+	{
+		"id": 484238,
+		"title": "Spinach Scramble",
+		"readyInMinutes": 20,
+		"servings": 3,
+		"sourceUrl": "http://healthyrecipesblogs.com/2014/05/29/spinach-scramble/",
+		"openLicense": 0,
+		"image": "Spinach-Scramble-484238.jpg"
+	},
+	{
+		"id": 489637,
+		"title": "Spinach Pesto",
+		"readyInMinutes": 10,
+		"servings": 8,
+		"sourceUrl": "http://dinnersdishesanddesserts.com/spinach-pesto/",
+		"openLicense": 0,
+		"image": "Spinach-Pesto-489637.jpg"
+	},
+	{
+		"id": 580081,
+		"title": "Spinach Salad",
+		"readyInMinutes": 18,
+		"servings": 4,
+		"sourceUrl": "http://www.foodfanatic.com/recipes/spinach-salad-recipe/",
+		"openLicense": 0,
+		"image": "Spinach-Salad-580081.jpg"
+	},
+	{
+		"id": 625548,
+		"title": "Spinach Meatballs",
+		"readyInMinutes": 45,
+		"servings": 4,
+		"sourceUrl": "http://www.slenderkitchen.com/spinach-meatballs/",
+		"openLicense": 0,
+		"image": "Spinach-Meatballs-625548.jpg"
+	},
+	{
+		"id": 769266,
+		"title": "Creamed Spinach",
+		"readyInMinutes": 15,
+		"servings": 2,
+		"sourceUrl": "http://www.tasteaholics.com/recipes/low-carb-keto/creamed-spinach/",
+		"openLicense": 0,
+		"image": "creamed-spinach-769266.jpg"
+	},
+	{
+		"id": 1441423,
+		"title": "Spinach Balls",
+		"readyInMinutes": 45,
+		"servings": 32,
+		"sourceUrl": "https://emilybites.com/2020/04/spinach-balls.html",
+		"openLicense": 0,
+		"image": "spinach-balls-1441423.jpg"
+	},
+	{
+		"id": 18150,
+		"title": "Farfalle with Spinach and Peas",
+		"readyInMinutes": 15,
+		"servings": 4,
+		"sourceUrl": "http://www.myrecipes.com/recipe/farfalle-with-spinach-peas-10000000524350/",
+		"openLicense": 0,
+		"image": "farfalle-with-spinach-and-peas-18150.jpg"
+	},
+	{
+		"id": 19310,
+		"title": "Winter Spinach Salad",
+		"readyInMinutes": 2,
+		"servings": 4,
+		"sourceUrl": "http://www.marthastewart.com/316707/winter-spinach-salad",
+		"openLicense": 0,
+		"image": "winter-spinach-salad-2-19310.jpg"
+	},
+	{
+		"id": 19570,
+		"title": "Lemon-Spinach Chickpeas",
+		"readyInMinutes": 45,
+		"servings": 4,
+		"sourceUrl": "http://www.myrecipes.com/recipe/lemon-spinach-chickpeas-10000001635628/",
+		"openLicense": 0,
+		"image": "lemon-spinach-chickpeas-19570.jpg"
+	},
+	{
+		"id": 19645,
+		"title": "Spinach Artichoke Pasta",
+		"readyInMinutes": 30,
+		"servings": 10,
+		"sourceUrl": "http://thepioneerwoman.com/cooking/2012/10/spinach-artichoke-pasta/",
+		"openLicense": 0,
+		"image": "spinach_artichoke_pasta-19645.jpg"
+	},
+	{
+		"id": 19813,
+		"title": "Cottage Shells 'N Spinach",
+		"readyInMinutes": 25,
+		"servings": 6,
+		"sourceUrl": "http://www.kraftrecipes.com/recipes/cottage-shells-n-spinach-56091.aspx",
+		"openLicense": 0,
+		"image": "cottage-shells-n-spinach-19813.jpg"
+	},
+	{
+		"id": 19904,
+		"title": "Sauteed Chicken With Spinach",
+		"readyInMinutes": 30,
+		"servings": 1,
+		"sourceUrl": "http://www.marthastewart.com/336391/sauteed-chicken-with-spinach",
+		"openLicense": 0,
+		"image": "sauteed-chicken-with-spinach-2-19904.jpg"
+	},
+	{
+		"id": 73500,
+		"title": "Spinach and Mushroom Turnovers",
+		"readyInMinutes": 40,
+		"servings": 8,
+		"sourceUrl": "http://www.kraftrecipes.com/recipes/spinach-mushroom-turnovers-50688.aspx",
+		"openLicense": 0
+	},
+	{
+		"id": 76582,
+		"title": "Mussels With Potatoes And Spinach",
+		"readyInMinutes": 40,
+		"servings": 2,
+		"sourceUrl": "http://www.epicurious.com/recipes/food/views/Mussels-with-Potatoes-and-Spinach-103318",
+		"openLicense": 0,
+		"image": "mussels-with-potatoes-and-spinach-2-76582.jpg"
+	},
+	{
+		"id": 92124,
+		"title": "Spinach Fried Rice",
+		"readyInMinutes": 25,
+		"servings": 4,
+		"sourceUrl": "http://www.food.com/recipe/spinach-fried-rice-24418",
+		"openLicense": 0,
+		"image": "spinach-fried-rice-2-92124.jpg"
+	},
+	{
+		"id": 98865,
+		"title": "Layered Spinach Salad",
+		"readyInMinutes": 195,
+		"servings": 8,
+		"sourceUrl": "http://www.food.com/recipe/layered-spinach-salad-11605",
+		"openLicense": 0,
+		"image": "layered-spinach-salad-2-98865.jpg"
+	},
+	{
+		"id": 101457,
+		"title": "Chicken and Spinach Curry",
+		"readyInMinutes": 75,
+		"servings": 4,
+		"sourceUrl": "http://www.food.com/recipe/chicken-and-spinach-curry-210350",
+		"openLicense": 0,
+		"image": "chicken-and-spinach-curry-101457.jpg"
+	},
+	{
+		"id": 165393,
+		"title": "Egg and Spinach Pizza",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.bettycrocker.com/recipes/egg-and-spinach-pizza/6d6926e3-8350-4400-a853-e07b26800e7c",
+		"openLicense": 0,
+		"image": "egg-and-spinach-pizza-165393.jpg"
+	},
+	{
+		"id": 172212,
+		"title": "Turkey-Spinach Wraps",
+		"readyInMinutes": 75,
+		"servings": 32,
+		"sourceUrl": "http://www.bettycrocker.com/recipes/turkey-spinach-wraps/6b616b40-33b0-4a37-aa98-8b3af696bc48",
+		"openLicense": 0,
+		"image": "turkey-spinach-wraps-172212.jpg"
+	},
+	{
+		"id": 181485,
+		"title": "Creamy Spinach Enchiladas",
+		"readyInMinutes": 60,
+		"servings": 6,
+		"sourceUrl": "https://www.bettycrocker.com/recipes/creamy-spinach-enchiladas/87e00ef4-f821-48a4-bc28-1b00293453c9",
+		"openLicense": 0,
+		"image": "Creamy-Spinach-Enchiladas-181485.jpg"
+	},
+	{
+		"id": 176512,
+		"title": "Spinach and Cabbage Slaw",
+		"readyInMinutes": 25,
+		"servings": 6,
+		"sourceUrl": "http://www.BettyCrocker.com/recipes/spinach-and-cabbage-slaw/a149fb2f-f0fc-4bfd-9326-9dfd616125bf",
+		"openLicense": 0,
+		"image": "spinach-and-cabbage-slaw-176512.jpg"
+	},
+	{
+		"id": 184428,
+		"title": "Mushroom and Spinach Fettuccine",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.bettycrocker.com/recipes/mushroom-and-spinach-fettuccine/4754161f-397e-4937-b956-7a0258054064",
+		"openLicense": 0,
+		"image": "mushroom-and-spinach-fettuccine-184428.jpg"
+	},
+	{
+		"id": 187418,
+		"title": "Spinach-Cheese Swirls",
+		"readyInMinutes": 85,
+		"servings": 10,
+		"sourceUrl": "http://www.epicurious.com/recipes/food/views/51132600",
+		"openLicense": 0,
+		"image": "Spinach-Cheese-Swirls-187418.jpg"
+	},
+	{
+		"id": 205643,
+		"title": "Spinach-and-Herb Pastatta",
+		"readyInMinutes": 105,
+		"servings": 8,
+		"sourceUrl": "http://www.myrecipes.com/recipe/spinach-herb-pastatta-50400000130098/",
+		"openLicense": 0,
+		"image": "spinach-and-herb-pastatta-205643.jpg"
+	},
+	{
+		"id": 209579,
+		"title": "Spinach and Onion Pizza",
+		"readyInMinutes": 55,
+		"servings": 4,
+		"sourceUrl": "http://www.myrecipes.com/m/recipe/spinach-onion-pizza-50400000122929/",
+		"openLicense": 0,
+		"image": "spinach-and-onion-pizza-209579.jpg"
+	},
+	{
+		"id": 246932,
+		"title": "Spinach and Chickpeas Gravy",
+		"readyInMinutes": 25,
+		"servings": 4,
+		"sourceUrl": "http://www.egglesscooking.com/2008/05/22/spinach-chickpeas-gravy/",
+		"openLicense": 0,
+		"image": "Spinach-and-Chickpeas-Gravy-246932.jpg"
+	},
+	{
+		"id": 427179,
+		"title": "Spinach Festival Salad",
+		"readyInMinutes": 30,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-festival-salad",
+		"openLicense": 0,
+		"image": "Spinach-Festival-Salad-427179.jpg"
+	},
+	{
+		"id": 263846,
+		"title": "Saag (Indian Spinach)",
+		"readyInMinutes": 45,
+		"servings": 2,
+		"sourceUrl": "https://happyherbivore.com/recipe/red-lentil-dal-2/",
+		"openLicense": 0,
+		"image": "Saag-(Indian-Spinach)-263846.jpg"
+	},
+	{
+		"id": 276475,
+		"title": "Easy Spinach Dip",
+		"readyInMinutes": 195,
+		"servings": 15,
+		"sourceUrl": "http://www.Kraftrecipes.com/recipes/creamy-spinach-dip-54333.aspx",
+		"openLicense": 0,
+		"image": "easy-spinach-dip-276475.jpg"
+	},
+	{
+		"id": 283795,
+		"title": "Spinach Mozzarella Bites",
+		"readyInMinutes": 30,
+		"servings": 16,
+		"sourceUrl": "http://www.kraftrecipes.com/recipes/spinach-mozzarella-bites-57420.aspx",
+		"openLicense": 0,
+		"image": "spinach-mozzarella-bites-283795.jpg"
+	},
+	{
+		"id": 289164,
+		"title": "Spinach Stuffed Zucchini",
+		"readyInMinutes": 55,
+		"servings": 10,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/paula-deen/spinach-stuffed-squash-recipe.html",
+		"openLicense": 0,
+		"image": "spinach-stuffed-zucchini-289164.jpeg"
+	},
+	{
+		"id": 294868,
+		"title": "Spinach-Ricotta Dip",
+		"readyInMinutes": 6,
+		"servings": 8,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/aida-mollenkamp/spinach-ricotta-dip-recipe.html",
+		"openLicense": 0,
+		"image": "spinach-ricotta-dip-294868.jpeg"
+	},
+	{
+		"id": 307634,
+		"title": "Orzo with Garlicky Spinach",
+		"readyInMinutes": 45,
+		"servings": 6,
+		"sourceUrl": "http://www.myrecipes.com/recipe/orzo-garlicky-spinach-50400000127511/",
+		"openLicense": 0,
+		"image": "orzo-with-garlicky-spinach-307634.jpg"
+	},
+	{
+		"id": 315550,
+		"title": "Squash and Spinach Lasagna",
+		"readyInMinutes": 100,
+		"servings": 8,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/food-network-kitchens/squash-and-spinach-lasagna-recipe.html",
+		"openLicense": 0,
+		"image": "squash-and-spinach-lasagna-315550.jpeg"
+	},
+	{
+		"id": 334675,
+		"title": "Claire's Spinach Carbonara",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/claire-robinson/claires-spinach-carbonara-recipe.html",
+		"openLicense": 0,
+		"image": "claires-spinach-carbonara-334675.jpeg"
+	},
+	{
+		"id": 350751,
+		"title": "Spinach and Lychee Salad",
+		"readyInMinutes": 10,
+		"servings": 4,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/spinach-and-lychee-salad-recipe.html",
+		"openLicense": 0,
+		"image": "spinach-and-lychee-salad-350751.jpeg"
+	},
+	{
+		"id": 351118,
+		"title": "Spinach-Artichoke Rollatini",
+		"readyInMinutes": 165,
+		"servings": 6,
+		"sourceUrl": "http://www.foodnetwork.com/recipes/food-network-kitchens/spinach-artichoke-rollatini.html",
+		"openLicense": 0,
+		"image": "spinach-artichoke-rollatini-351118.jpeg"
+	},
+	{
+		"id": 377274,
+		"title": "Sausage Spinach Pizza",
+		"readyInMinutes": 45,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/sausage-spinach-pizza",
+		"openLicense": 0,
+		"image": "Sausage-Spinach-Pizza-377274.jpg"
+	},
+	{
+		"id": 377564,
+		"title": "Spinach Alfredo Lasagna",
+		"readyInMinutes": 65,
+		"servings": 10,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-alfredo-lasagna",
+		"openLicense": 0,
+		"image": "Spinach-Alfredo-Lasagna-377564.jpg"
+	},
+	{
+		"id": 398048,
+		"title": "Mushroom Spinach Omelet",
+		"readyInMinutes": 20,
+		"servings": 2,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/mushroom-spinach-omelet",
+		"openLicense": 0,
+		"image": "Mushroom-Spinach-Omelet-398048.jpg"
+	},
+	{
+		"id": 389172,
+		"title": "Apple Spinach Salad",
+		"readyInMinutes": 15,
+		"servings": 2,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/apple-spinach-salad",
+		"openLicense": 0,
+		"image": "Apple-Spinach-Salad-389172.jpg"
+	},
+	{
+		"id": 392191,
+		"title": "Sausage Spinach Bake",
+		"readyInMinutes": 55,
+		"servings": 12,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/sausage-spinach-bake",
+		"openLicense": 0,
+		"image": "Sausage-Spinach-Bake-392191.jpg"
+	},
+	{
+		"id": 392892,
+		"title": "Spinach Potato Soup",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-potato-soup",
+		"openLicense": 0,
+		"image": "Spinach-Potato-Soup-392892.jpg"
+	},
+	{
+		"id": 397010,
+		"title": "Savory Spinach Chicken",
+		"readyInMinutes": 35,
+		"servings": 1,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/savory-spinach-chicken",
+		"openLicense": 0,
+		"image": "Savory-Spinach-Chicken-397010.jpg"
+	},
+	{
+		"id": 401617,
+		"title": "Portobello-Spinach Salad",
+		"readyInMinutes": 20,
+		"servings": 2,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/portobello-spinach-salad",
+		"openLicense": 0,
+		"image": "Portobello-Spinach-Salad-401617.jpg"
+	},
+	{
+		"id": 402425,
+		"title": "Creamy Parmesan Spinach",
+		"readyInMinutes": 20,
+		"servings": 3,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/creamy-parmesan-spinach",
+		"openLicense": 0,
+		"image": "Creamy-Parmesan-Spinach-402425.jpg"
+	},
+	{
+		"id": 403660,
+		"title": "Pomegranate Spinach Salad",
+		"readyInMinutes": 25,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/pomegranate-spinach-salad",
+		"openLicense": 0,
+		"image": "Pomegranate-Spinach-Salad-403660.jpg"
+	},
+	{
+		"id": 405202,
+		"title": "Tomato Spinach Spirals",
+		"readyInMinutes": 25,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/tomato-spinach-spirals",
+		"openLicense": 0,
+		"image": "Tomato-Spinach-Spirals-405202.jpg"
+	},
+	{
+		"id": 406070,
+		"title": "Spinach Cheese Strata",
+		"readyInMinutes": 60,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-cheese-strata",
+		"openLicense": 0,
+		"image": "Spinach-Cheese-Strata-406070.jpg"
+	},
+	{
+		"id": 406695,
+		"title": "Swiss Spinach Salad",
+		"readyInMinutes": 10,
+		"servings": 4,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/swiss-spinach-salad",
+		"openLicense": 0,
+		"image": "Swiss-Spinach-Salad-406695.jpg"
+	},
+	{
+		"id": 409198,
+		"title": "Mushroom Spinach Salad",
+		"readyInMinutes": 10,
+		"servings": 4,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/mushroom-spinach-salad",
+		"openLicense": 0,
+		"image": "Mushroom-Spinach-Salad-409198.jpg"
+	},
+	{
+		"id": 410203,
+		"title": "Spinach Stuffed Zucchini",
+		"readyInMinutes": 65,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-stuffed-zucchini",
+		"openLicense": 0,
+		"image": "Spinach-Stuffed-Zucchini-410203.jpg"
+	},
+	{
+		"id": 412735,
+		"title": "Easy Sauteed Spinach for Two",
+		"readyInMinutes": 20,
+		"servings": 2,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/easy-sauteed-spinach-for-two",
+		"openLicense": 0,
+		"image": "Easy-Sauteed-Spinach-for-Two-412735.jpg"
+	},
+	{
+		"id": 413865,
+		"title": "Jalapeno Spinach Dip",
+		"readyInMinutes": 130,
+		"servings": 16,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/jalapeno-spinach-dip",
+		"openLicense": 0,
+		"image": "Jalapeno-Spinach-Dip-413865.jpg"
+	},
+	{
+		"id": 419112,
+		"title": "Spinach Strawberry Salad",
+		"readyInMinutes": 25,
+		"servings": 10,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/spinach-strawberry-salad",
+		"openLicense": 0,
+		"image": "Spinach-Strawberry-Salad-419112.jpg"
+	},
+	{
+		"id": 416609,
+		"title": "German-Style Spinach",
+		"readyInMinutes": 20,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/german-style-spinach",
+		"openLicense": 0,
+		"image": "German-Style-Spinach-416609.jpg"
+	},
+	{
+		"id": 420529,
+		"title": "Mushroom Spinach Salad",
+		"readyInMinutes": 35,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/mushroom-spinach-salad-4",
+		"openLicense": 0,
+		"image": "Mushroom-Spinach-Salad-420529.jpg"
+	},
+	{
+		"id": 426829,
+		"title": "Spinach Stuffed Pizza",
+		"readyInMinutes": 50,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/spinach-stuffed-pizza",
+		"openLicense": 0,
+		"image": "Spinach-Stuffed-Pizza-426829.jpg"
+	},
+	{
+		"id": 427591,
+		"title": "Spinach Cheese Bake",
+		"readyInMinutes": 65,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-cheese-bake",
+		"openLicense": 0,
+		"image": "Spinach-Cheese-Bake-427591.jpg"
+	},
+	{
+		"id": 431907,
+		"title": "Spinach Shrimp Fettuccine",
+		"readyInMinutes": 20,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-shrimp-fettuccine",
+		"openLicense": 0,
+		"image": "Spinach-Shrimp-Fettuccine-431907.jpg"
+	},
+	{
+		"id": 434622,
+		"title": "Mediterranean Spinach & Beans",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/mediterranean-spinach---beans",
+		"openLicense": 0,
+		"image": "Mediterranean-Spinach---Beans-434622.jpg"
+	},
+	{
+		"id": 436193,
+		"title": "Fruit & Spinach Salad",
+		"readyInMinutes": 10,
+		"servings": 2,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/fruit---spinach-salad",
+		"openLicense": 0,
+		"image": "Fruit---Spinach-Salad-436193.jpg"
+	},
+	{
+		"id": 436361,
+		"title": "Spinach and Bacon Casserole",
+		"readyInMinutes": 30,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/Recipes/spinach-and-bacon-casserole",
+		"openLicense": 0,
+		"image": "Spinach-and-Bacon-Casserole-436361.jpg"
+	},
+	{
+		"id": 445390,
+		"title": "Warm Spinach Dip",
+		"readyInMinutes": 20,
+		"servings": 8,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/warm-spinach-dip",
+		"openLicense": 0,
+		"image": "Warm-Spinach-Dip-445390.jpg"
+	},
+	{
+		"id": 448182,
+		"title": "Spinach Salad with Almonds",
+		"readyInMinutes": 20,
+		"servings": 4,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/spinach-salad-with-almonds",
+		"openLicense": 0,
+		"image": "Spinach-Salad-with-Almonds-448182.jpg"
+	},
+	{
+		"id": 448563,
+		"title": "Lemon Pasta with Spinach",
+		"readyInMinutes": 25,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/lemon-pasta-with-spinach",
+		"openLicense": 0,
+		"image": "Lemon-Pasta-with-Spinach-448563.jpg"
+	},
+	{
+		"id": 449646,
+		"title": "Spinach Vegetable Soup",
+		"readyInMinutes": 40,
+		"servings": 6,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/spinach-vegetable-soup",
+		"openLicense": 0,
+		"image": "Spinach-Vegetable-Soup-449646.jpg"
+	},
+	{
+		"id": 450453,
+		"title": "Spinach Chicken Roll",
+		"readyInMinutes": 35,
+		"servings": 1,
+		"sourceUrl": "http://www.tasteofhome.com/recipes/spinach-chicken-roll",
+		"openLicense": 0,
+		"image": "Spinach-Chicken-Roll-450453.jpg"
+	},
+	{
+		"id": 485641,
+		"title": "Cheesy Spinach Soufflé",
+		"readyInMinutes": 65,
+		"servings": 10,
+		"sourceUrl": "http://simplylitebites.com/spinach-cheese-souffle/",
+		"openLicense": 0,
+		"image": "Cheesy-Spinach-Souffl-485641.jpg"
+	},
+	{
+		"id": 486449,
+		"title": "Spinach and Three Cheese Pie",
+		"readyInMinutes": 50,
+		"servings": 4,
+		"sourceUrl": "http://ahealthylifeforme.com/spinach-and-three-cheese-pie/",
+		"openLicense": 0,
+		"image": "Spinach-and-Three-Cheese-Pie-486449.jpg"
+	},
+	{
+		"id": 494136,
+		"title": "[] Turkey & Spinach Bolognese",
+		"readyInMinutes": 45,
+		"servings": 4,
+		"sourceUrl": "http://www.fussfreecooking.com/recipe-categories/meat-recipes/recipe-turkey-spinach-bolognese/",
+		"openLicense": 0,
+		"image": "[]-Turkey---Spinach-Bolognese-494136.jpg"
+	},
+	{
+		"id": 500100,
+		"title": "Classic Spinach Dip",
+		"readyInMinutes": 15,
+		"servings": 25,
+		"sourceUrl": "http://cantstayoutofthekitchen.com/2012/07/18/classic-spinach-dip/",
+		"openLicense": 0,
+		"image": "Classic-Spinach-Dip-500100.jpg"
+	},
+	{
+		"id": 510226,
+		"title": "Two Potato and Spinach Salad",
+		"readyInMinutes": 45,
+		"servings": 8,
+		"sourceUrl": "http://www.beantownbaker.com/2010/08/two-potato-and-spinach-salad.html",
+		"openLicense": 0,
+		"image": "Two-Potato-and-Spinach-Salad-510226.jpg"
+	},
+	{
+		"id": 513338,
+		"title": "Creamy Spinach Rigatoni",
+		"readyInMinutes": 60,
+		"servings": 4,
+		"sourceUrl": "http://recipesfoodandcooking.com/2013/04/24/creamy-spinach-rigatoni/",
+		"openLicense": 0,
+		"image": "Creamy-Spinach-Rigatoni-513338.jpg"
+	},
+	{
+		"id": 527309,
+		"title": "Spinach Artichoke Hummus",
+		"readyInMinutes": 45,
+		"servings": 3,
+		"sourceUrl": "http://www.gimmesomeoven.com/spinach-artichoke-hummus/",
+		"openLicense": 0,
+		"image": "Spinach-Artichoke-Hummus-527309.jpg"
+	},
+	{
+		"id": 544131,
+		"title": "Healthier Creamed Spinach",
+		"readyInMinutes": 10,
+		"servings": 4,
+		"sourceUrl": "http://weelicious.com/2012/01/23/a-healthier-creamed-spinach/",
+		"openLicense": 0,
+		"image": "healthier-creamed-spinach-544131.jpg"
+	},
+	{
+		"id": 544223,
+		"title": "Spinach Ricotta Bites",
+		"readyInMinutes": 30,
+		"servings": 20,
+		"sourceUrl": "http://weelicious.com/2010/07/29/spinach-ricotta-bites/",
+		"openLicense": 0,
+		"image": "spinach-ricotta-bites-544223.jpg"
+	},
+	{
+		"id": 548052,
+		"title": "Spinach Mushroom Cannelloni",
+		"readyInMinutes": 35,
+		"servings": 12,
+		"sourceUrl": "http://www.twopeasandtheirpod.com/spinach-mushroom-cannelloni/",
+		"openLicense": 0,
+		"image": "spinach-mushroom-cannelloni-548052.jpg"
+	},
+	{
+		"id": 549881,
+		"title": "Chickpea and Spinach Curry",
+		"readyInMinutes": 15,
+		"servings": 3,
+		"sourceUrl": "http://www.grumpyshoneybunch.com/2013/02/chickpea-and-spinach-curry.html",
+		"openLicense": 0,
+		"image": "Chickpea-and-Spinach-Curry-549881.jpg"
+	},
+	{
+		"id": 550080,
+		"title": "Spinach and Artichoke Melts",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.halfbakedharvest.com/spinach-and-artichoke-melts/",
+		"openLicense": 0,
+		"image": "Spinach-and-Artichoke-Melts-550080.jpg"
+	},
+	{
+		"id": 558927,
+		"title": "Spinach Artichoke Spread",
+		"readyInMinutes": 45,
+		"servings": 4,
+		"sourceUrl": "http://www.fifteenspatulas.com/spinach-artichoke-spread/",
+		"openLicense": 0,
+		"image": "Spinach-Artichoke-Spread-558927.jpg"
+	},
+	{
+		"id": 578480,
+		"title": "Spinach and ricotta dumplings",
+		"readyInMinutes": 40,
+		"servings": 3,
+		"sourceUrl": "http://www.amuse-your-bouche.com/spinach-and-ricotta-dumplings/",
+		"openLicense": 0,
+		"image": "Spinach-and-ricotta-dumplings-578480.jpg"
+	},
+	{
+		"id": 584229,
+		"title": "Artichoke and Spinach Hummus",
+		"readyInMinutes": 10,
+		"servings": 4,
+		"sourceUrl": "http://andreasrecipes.com/artichoke-spinach-hummus/",
+		"openLicense": 0,
+		"image": "Artichoke-and-Spinach-Hummus-584229.jpg"
+	},
+	{
+		"id": 588942,
+		"title": "Spinach-Mushroom Quiche",
+		"readyInMinutes": 45,
+		"servings": 4,
+		"sourceUrl": "http://www.sweethappylife.com/2012/easy-family-recipes/spinach-mushroom-quiche-cheesy-pie/",
+		"openLicense": 0,
+		"image": "Spinach-Mushroom-Quiche-588942.jpg"
+	},
+	{
+		"id": 595927,
+		"title": "Spinach and Cheddar Quiche",
+		"readyInMinutes": 105,
+		"servings": 8,
+		"sourceUrl": "http://www.afamilyfeast.com/spinach-and-cheddar-quiche/",
+		"openLicense": 0,
+		"image": "Spinach-and-Cheddar-Quiche-595927.jpg"
+	},
+	{
+		"id": 599283,
+		"title": "Pepperoni Spinach Frittata",
+		"readyInMinutes": 25,
+		"servings": 4,
+		"sourceUrl": "http://leitesculinaria.com/22262/recipes-pepperoni-spinach-frittata.html",
+		"openLicense": 0,
+		"image": "Pepperoni-Spinach-Frittata-599283.jpg"
+	},
+	{
+		"id": 601526,
+		"title": "Spinach Artichoke Pasta",
+		"readyInMinutes": 45,
+		"servings": 1,
+		"sourceUrl": "http://pinchofyum.com/spinach-artichoke-pasta",
+		"openLicense": 0,
+		"image": "Spinach-Artichoke-Pasta-601526.jpeg"
+	},
+	{
+		"id": 608359,
+		"title": "The Best No Bake Spinach Dip",
+		"readyInMinutes": 8,
+		"servings": 8,
+		"sourceUrl": "http://www.sugardishme.com/2014/08/18/best-no-bake-spinach-dip/",
+		"openLicense": 0,
+		"image": "The-Best-No-Bake-Spinach-Dip-608359.jpg"
+	},
+	{
+		"id": 615358,
+		"title": "Quinoa Spinach Patties",
+		"readyInMinutes": 20,
+		"servings": 12,
+		"sourceUrl": "http://mywholefoodlife.com/2014/10/02/quinoa-spinach-patties/",
+		"openLicense": 0,
+		"image": "Quinoa-Spinach-Patties-615358.jpg"
+	},
+	{
+		"id": 616167,
+		"title": "Sindhi Curried Spinach",
+		"readyInMinutes": 45,
+		"servings": 8,
+		"sourceUrl": "http://foodandspice.blogspot.de/2014/09/sindhi-curried-spinach-and-vegetables.html",
+		"openLicense": 0,
+		"image": "sindhi-curried-spinach-616167.jpg"
+	},
+	{
+		"id": 619645,
+		"title": "Spinach Whole Wheat Quesadillas",
+		"readyInMinutes": 20,
+		"servings": 1,
+		"sourceUrl": "http://allrecipes.com/recipe/spinach-whole-wheat-quesadillas/detail.aspx",
+		"openLicense": 0,
+		"image": "Spinach-Whole-Wheat-Quesadillas-619645.jpg"
+	},
+	{
+		"id": 626036,
+		"title": "Feta and spinach muffins",
+		"readyInMinutes": 45,
+		"servings": 12,
+		"sourceUrl": "http://homegrownandhealthy.com/feta-spinach-muffins/",
+		"openLicense": 0,
+		"image": "Feta-and-spinach-muffins-626036.jpg"
+	},
+	{
+		"id": 629894,
+		"title": "Coconut Creamed Spinach",
+		"readyInMinutes": 30,
+		"servings": 4,
+		"sourceUrl": "http://www.purewow.com/recipes/Coconut-Creamed-Spinach?utm_medium=email",
+		"openLicense": 0,
+		"image": "Coconut-Creamed-Spinach-629894.png"
+	},
+	{
+		"id": 695631,
+		"title": "Mushroom & Spinach Crepes",
+		"readyInMinutes": 70,
+		"servings": 6,
+		"sourceUrl": "http://www.eatingwell.com/recipes/mushroom_crepes.html",
+		"openLicense": 0,
+		"image": "mushroom-spinach-crepes-695631.jpg"
+	},
+	{
+		"id": 697216,
+		"title": "Spinach & Tomato Omelet",
+		"readyInMinutes": 20,
+		"servings": 1,
+		"sourceUrl": "http://www.eatingwell.com/recipes/spinach_tomato_omelet.html",
+		"openLicense": 0,
+		"image": "spinach-tomato-omelet-697216.jpg"
+	}
+]

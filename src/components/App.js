@@ -12,6 +12,7 @@ import Weather from './Weather/';
 import Cookies from './cookies/';
 import DiceGame from './DiceGame/';
 import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
+import recipes from './Recipes/';
 import noSite from './404';
 
 import weatherApp from '../reducers/';
@@ -35,6 +36,7 @@ function App() {
 						<Route path="/dicegame" exact component={DiceGame} />
 						<Route path="/dice" exact component={Dice} />
 						<Route path="/cookies" exact component={Cookies} />
+						<Route path="/recipes" exact component={recipes} />
 						<Route path="*" exact component={noSite} />
 					</Switch>
 				</React.Fragment>

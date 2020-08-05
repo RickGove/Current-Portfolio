@@ -232,3 +232,13 @@ export const setWeatherSearch = (bool) => {
 		payload: bool,
 	};
 };
+
+//////////////////////////////////////
+// Recipes
+
+export const setRecipeResults = (results) => {
+	return {
+		type: 'SET_RECIPE_RESULTS',
+		payload: results,
+	};
+};
