@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // import axios from 'axios';
+
+import { gsap } from 'gsap';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,8 +12,6 @@ import x from '../RecipeView/offlineRecipe.json';
 
 import { setRecipeDetails } from '../../../actions';
 
-import LandingPage from './LandingPage';
-
 export default function Results() {
 	const results = useSelector((state) => state.recipeResults);
 	const dispatch = useDispatch();
@@ -19,6 +19,19 @@ export default function Results() {
 	const [firstResult, setFirstResult] = useState(0);
 	const [firstPage, setFirstPage] = useState(true);
 	const [lastPage, setLastPage] = useState(false);
+
+	useEffect(() => {
+		gsap.to('.results__link', {
+			delay: 0.5,
+			opacity: 1,
+			duration: 0.3,
+			stagger: 0.1,
+		});
+		// return function(){
+		// 	gsap.to('.results__link', { opacity: 0, duration: 0.3, stagger: 0.1 });
+
+		// }
+	});
 
 	// async function getDetails(url) {
 	// 	const key = `ca73346a72cb4ae09a9119aafe5026ee`;
@@ -94,20 +107,28 @@ export default function Results() {
 		});
 	}
 
+	function hideResults() {
+		gsap.to('.results__link', { opacity: 0, duration: 0.1, stagger: 0.1 });
+	}
+
 	function nextPage() {
-		let nextFirst = firstResult + 10;
-		if (nextFirst > results.length - 11) setLastPage(true);
-		setFirstPage(false);
-		setFirstResult(nextFirst);
+		hideResults();
+		window.setTimeout(() => {
+			let nextFirst = firstResult + 10;
+			if (nextFirst > results.length - 11) setLastPage(true);
+			setFirstPage(false);
+			setFirstResult(nextFirst);
+		}, 500);
 	}
 
 	function prevPage() {
-		setLastPage(false);
-		let nextFirst = firstResult - 10;
-		console.log('nextFirst:', nextFirst);
-		console.log('results.length:', results.length);
-		if (nextFirst <= 0) setFirstPage(true);
-		setFirstResult(nextFirst);
+		hideResults();
+		window.setTimeout(() => {
+			setLastPage(false);
+			let nextFirst = firstResult - 10;
+			if (nextFirst <= 0) setFirstPage(true);
+			setFirstResult(nextFirst);
+		}, 500);
 	}
 
 	function renderPageBtns() {
@@ -138,12 +159,13 @@ export default function Results() {
 			return <div></div>;
 		}
 	}
-	if (results.length > 0) {
-		return (
+
+	return (
+		<div className="div-with-bg">
 			<div className="results">
-				<ul className="results__list">{renderResults()}</ul>
 				{renderPageBtns()}
+				<ul className="results__list">{renderResults()}</ul>
 			</div>
-		);
-	} else return <LandingPage />;
+		</div>
+	);
 }

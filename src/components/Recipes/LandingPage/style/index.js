@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import wallpaperA from '../../../img/wp.jpg';
+import wallpaperA from '../../img/wp.jpg';
 
 let wallPaperSettings = `
 background-image: url(${wallpaperA});
