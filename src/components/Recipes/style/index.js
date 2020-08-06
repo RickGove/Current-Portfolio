@@ -5,12 +5,14 @@ const mainColor = `#37b1fe`;
 const mobileWidth = `@media (max-width:900px)`;
 
 export const RecipeContainer = styled.div`
+	* {
+		font-family: 'Holtwood One SC', serif;
+	}
 	.body-div {
 		color: #655a56;
 		background-image: ${linGrad};
 		background-size: cover;
 		background-repeat: no-repeat;
-		height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -38,17 +40,10 @@ export const RecipeContainer = styled.div`
 	}
 
 	.container {
-		overflow-y: scroll;
-		height: 90vh;
-		width: 90vw;
+		width: 100vw;
 		max-width: 120rem;
 		background-color: #fff;
-		border-radius: 6px;
 		box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
-		display: grid;
-		grid-template-rows: 6rem minmax(100rem, auto);
-		grid-template-columns: 1.3fr 2fr 1.1fr;
-		grid-template-areas: 'head head head' 'recipe recipe recipe';
 	}
 
 	.pagination-div {
@@ -72,7 +67,10 @@ export const RecipeContainer = styled.div`
 
 	.hidden-page-button {
 		visibility: hidden;
-		font-size: 1.8rem;
+	}
+
+	.search__btn {
+		padding: 0.2rem 1.3rem;
 	}
 
 	.btn,
@@ -80,7 +78,6 @@ export const RecipeContainer = styled.div`
 	.btn-small:link,
 	.btn-small:visited {
 		background-image: ${linGrad};
-		border-radius: 10rem;
 		border: none;
 		text-transform: uppercase;
 		color: #fff;
@@ -241,28 +238,27 @@ export const RecipeContainer = styled.div`
 		z-index: 5;
 		position: sticky;
 		top: 0;
-		height: 6rem;
+		height: 4rem;
 		width: 100%;
 		grid-area: head;
-		background-color: #f9f5f3;
+		background-color: #141414;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 	}
 
 	.header__logo {
-		font-family: 'Holtwood One SC', serif;
-		height: 4.5rem;
+		height: 4rem;
 		width: 6rem;
 		display: flex;
-		font-size: 3rem;
+		font-size: 2rem;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.header__logo span {
 		background-image: ${linGrad};
-		border-radius: 1rem;
+		border-radius: 0.3rem;
 		padding: 0 0.5rem 0 0.5rem;
 	}
 
@@ -275,9 +271,9 @@ export const RecipeContainer = styled.div`
 	}
 
 	.search {
-		height: 3rem;
+		border: 1.5px solid ${mainColor};
+		height: 2rem;
 		background-color: #fff;
-		border-radius: 10rem;
 		display: flex;
 		align-items: center;
 		padding-left: 3rem;
@@ -290,19 +286,12 @@ export const RecipeContainer = styled.div`
 		margin-right: 0.8rem;
 	}
 
-	.search:focus-within {
-		box-shadow: 0 0.7rem 3rem #fbdb89;
+	.search button {
+		padding: 0.2rem 1.3rem;
+	}
 
-		&::after {
-			position: absolute;
-			font-size: 1rem;
-			content: 'Search name or ingredients';
-			transform: translateY(135%);
-			color: white;
-			background-image: ${linGrad};
-			border-radius: 2rem;
-			padding: 0.2rem 1rem;
-		}
+	.search:focus-within {
+		border: 1px rgba(74, 141, 185, 0.5);
 	}
 
 	.search__field {
@@ -329,7 +318,6 @@ export const RecipeContainer = styled.div`
 
 	.likes__field {
 		cursor: pointer;
-		padding: 0 4rem;
 		display: flex;
 		align-items: center;
 		height: 100%;
@@ -337,7 +325,7 @@ export const RecipeContainer = styled.div`
 	}
 
 	.likes__field:hover {
-		background-color: #f2efee;
+		opacity: 0.6;
 	}
 
 	.likes__panel:hover,
@@ -395,9 +383,10 @@ export const RecipeContainer = styled.div`
 
 	.results__link,
 	.likes__link {
+		background: white;
 		margin-bottom: 1px;
 		box-sizing: border-box;
-		border: 1px solid ${mainColor};
+		border: none;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -409,15 +398,22 @@ export const RecipeContainer = styled.div`
 		cursor: pointer;
 	}
 
-	.results__link:hover,
-	.likes__link:hover {
-		background-color: #f9f5f3;
-		opacity: 0.6;
+	.results__link * {
+		animation: BUTTONFADE 4s 1;
 	}
 
-	.results__link--active,
-	.likes__link--active {
-		background-color: #f9f5f3;
+	@keyframes BUTTONFADE {
+		0% {
+			opacity: 0.01;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.results__link:hover,
+	.likes__link:hover {
+		opacity: 0.6;
 	}
 
 	.results__fig,

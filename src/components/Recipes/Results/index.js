@@ -10,6 +10,8 @@ import x from '../RecipeView/offlineRecipe.json';
 
 import { setRecipeDetails } from '../../../actions';
 
+import LandingPage from './LandingPage';
+
 export default function Results() {
 	const results = useSelector((state) => state.recipeResults);
 	const dispatch = useDispatch();
@@ -17,6 +19,7 @@ export default function Results() {
 	const [firstResult, setFirstResult] = useState(0);
 	const [firstPage, setFirstPage] = useState(true);
 	const [lastPage, setLastPage] = useState(false);
+
 	// async function getDetails(url) {
 	// 	const key = `ca73346a72cb4ae09a9119aafe5026ee`;
 	// 	const site = `https://api.spoonacular.com/recipes/extract?url=${url}&apiKey=${key}`;
@@ -51,46 +54,44 @@ export default function Results() {
 	}
 
 	function renderResults() {
-		if (results.length > 0) {
-			let i = 0;
-			let resultsToShow = [];
+		let i = 0;
+		let resultsToShow = [];
 
-			while (i < 10 && i + firstResult < results.length) {
-				resultsToShow.push(results[firstResult + i]);
-				i++;
-			}
-			return resultsToShow.map((item, i) => {
-				let img = `https://spoonacular.com/recipeImages/${item.id}-90x90.jpg`;
-				const newTitle = limitRecipeTitle(item.title);
-				return (
-					<li key={i}>
-						<button
-							recurl={item.sourceUrl}
-							// onClick={() => getDetails(item.sourceUrl)}
-							onClick={logFakeData}
-							className="results__link results__link--active">
-							<div className="results__list-img-div">
-								<img src={img} alt={newTitle} />
+		while (i < 10 && i + firstResult < results.length) {
+			resultsToShow.push(results[firstResult + i]);
+			i++;
+		}
+		return resultsToShow.map((item, i) => {
+			let img = `https://spoonacular.com/recipeImages/${item.id}-90x90.jpg`;
+			const newTitle = limitRecipeTitle(item.title);
+			return (
+				<li key={i}>
+					<button
+						recurl={item.sourceUrl}
+						// onClick={() => getDetails(item.sourceUrl)}
+						onClick={logFakeData}
+						className="results__link">
+						<div className="results__list-img-div">
+							<img src={img} alt={newTitle} />
+						</div>
+						<div className="results__data">
+							<h4 className="results__name">{newTitle}</h4>
+							<div className="results__detail">
+								<p className="results__author">
+									<span role="img" aria-label="time">
+										🕒
+									</span>
+									{'  '}
+									{item.readyInMinutes}
+									{'  '}m
+								</p>
+								<p className="results__author">Serves: {item.servings}</p>
 							</div>
-							<div className="results__data">
-								<h4 className="results__name">{newTitle}</h4>
-								<div className="results__detail">
-									<p className="results__author">
-										<span role="img" aria-label="time">
-											🕒
-										</span>
-										{'  '}
-										{item.readyInMinutes}
-										{'  '}m
-									</p>
-									<p className="results__author">Serves: {item.servings}</p>
-								</div>
-							</div>
-						</button>
-					</li>
-				);
-			});
-		} else return <div>No results yet...</div>;
+						</div>
+					</button>
+				</li>
+			);
+		});
 	}
 
 	function nextPage() {
@@ -101,6 +102,7 @@ export default function Results() {
 	}
 
 	function prevPage() {
+		setLastPage(false);
 		let nextFirst = firstResult - 10;
 		console.log('nextFirst:', nextFirst);
 		console.log('results.length:', results.length);
@@ -114,14 +116,18 @@ export default function Results() {
 				<div className="pagination-div">
 					<button
 						onClick={prevPage}
-						className={firstPage ? 'hidden-page-button' : 'page-btn prev'}>
+						className={
+							firstPage ? 'page-btn hidden-page-button' : 'page-btn prev'
+						}>
 						<span role="img" aria-label="prev">
 							◀️
 						</span>
 					</button>{' '}
 					<button
 						onClick={nextPage}
-						className={lastPage ? 'hidden-page-button' : 'page-btn next'}>
+						className={
+							lastPage ? 'page-btn hidden-page-button' : 'page-btn next'
+						}>
 						<span role="img" aria-label="prev">
 							▶️
 						</span>
@@ -132,11 +138,12 @@ export default function Results() {
 			return <div></div>;
 		}
 	}
-
-	return (
-		<div className="results">
-			<ul className="results__list">{renderResults()}</ul>
-			{renderPageBtns()}
-		</div>
-	);
+	if (results.length > 0) {
+		return (
+			<div className="results">
+				<ul className="results__list">{renderResults()}</ul>
+				{renderPageBtns()}
+			</div>
+		);
+	} else return <LandingPage />;
 }
