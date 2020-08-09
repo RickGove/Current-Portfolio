@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "905ac1079bef5db1631e858a43e42538",
+    "revision": "30cdcea3d44461fd3fc35b4510d7792a",
     "url": "/index.html"
   },
   {
-    "revision": "fd88891817f9a4fcc421",
-    "url": "/static/js/2.2971ab73.chunk.js"
+    "revision": "e30a8435721c77214165",
+    "url": "/static/js/2.cfbe0c84.chunk.js"
   },
   {
-    "revision": "f5327a3e8204f21ff1b2e5af38bc59ba",
-    "url": "/static/js/2.2971ab73.chunk.js.LICENSE.txt"
+    "revision": "8cf5276ebada7570b9a7162d09ef7afe",
+    "url": "/static/js/2.cfbe0c84.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "641ed740459d1367158d",
-    "url": "/static/js/main.06dd8dd5.chunk.js"
+    "revision": "894002405a9f9de62364",
+    "url": "/static/js/main.d45687a3.chunk.js"
   },
   {
     "revision": "bd3bbfe48c82e953e6e6",
@@ -374,6 +374,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5fa80e64a5e6f1b1c26c2cc41900c32e",
     "url": "/static/media/weather.5fa80e64.png"
+  },
+  {
+    "revision": "1d1e51fbff500a8cfd48b7446df71fb9",
+    "url": "/static/media/wp.1d1e51fb.jpg"
   },
   {
     "revision": "ea9dc4f9d85c6f6f57cf84424c3af103",
