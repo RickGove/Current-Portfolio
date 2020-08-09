@@ -35,7 +35,7 @@ export const BoxGrid = styled.div`
 
 export const ToolsTitle = styled.div`
 	text-align: center;
-	padding-bottom: 150px;
+	padding-bottom: 2rem;
 	padding-top: 80px;
 `;
 

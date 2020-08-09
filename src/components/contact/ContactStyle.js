@@ -13,6 +13,15 @@ export const ContactDiv = styled.div`
 	grid-column-start: 2;
 	padding: 75px;
 	text-align: center;
+
+	.anImg {
+		display: inline-block;
+	}
+
+	.endTriggerContact {
+		position: relative;
+		top: 8rem;
+	}
 `;
 
 export const ContactA = styled.a`

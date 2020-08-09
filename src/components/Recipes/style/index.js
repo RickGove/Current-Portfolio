@@ -47,7 +47,6 @@ export const RecipeContainer = styled.div`
 	.div-with-bg {
 		${wallPaperSettings};
 		grid-area: recipes;
-		width: 100vw;
 		height: 100vh;
 		display: flex;
 		justify-content: center;
@@ -212,13 +211,28 @@ export const RecipeContainer = styled.div`
 	}
 
 	.heading-2 {
-		font-size: 1.3rem;
+		font-size: 2.3rem;
 		font-weight: 600;
 		color: ${mainColor};
 		text-transform: uppercase;
 		margin-bottom: 2.5rem;
-		text-align: center;
-		transform: translateX(-2rem) skewY(-3deg);
+	}
+
+	.step-ingredients {
+		padding-top: 1rem;
+		text-decoration: underline;
+	}
+
+	..step-ingredients ul {
+		padding-left: 4rem;
+	}
+
+	.add-info {
+		width: 60%;
+	}
+
+	.add-info__span {
+		font-weight: bold;
 	}
 
 	.copyright {
@@ -331,6 +345,7 @@ export const RecipeContainer = styled.div`
 	}
 
 	.likes {
+		width: 6rem;
 		position: relative;
 		align-self: stretch;
 		padding: 0 !important;
@@ -560,7 +575,9 @@ export const RecipeContainer = styled.div`
 
 	.recipe__title-wrap {
 		background: ${wallPaperSettings};
-		padding: 3rem 0 4rem 0;
+		padding: 1rem 0 0rem 0;
+		align-items: center;
+		flex-direction: column;
 		position: sticky;
 		top: 4rem;
 		box-sizing: border-box;
@@ -571,7 +588,6 @@ export const RecipeContainer = styled.div`
 
 	.recipe__title {
 		font-family: 'Playfair Display', serif;
-		transform: skewY(-6deg);
 		color: #fff;
 		font-weight: 700;
 		font-size: 2rem;
@@ -582,18 +598,16 @@ export const RecipeContainer = styled.div`
 	}
 
 	.recipe__title span {
-		-webkit-box-decoration-break: clone;
-		box-decoration-break: clone;
 		padding: 1.3rem 2rem;
-		background-image: ${linGrad};
 	}
 
 	.recipe__details {
 		display: flex;
-		justify-content: center;
+		padding-top: 2rem;
+		justify-content: space-between;
 		align-items: center;
 		width: 52%;
-		padding: 5rem;
+		padding: 1rem;
 		margin-left: auto;
 		margin-right: auto;
 		align-items: center;
@@ -622,32 +636,26 @@ export const RecipeContainer = styled.div`
 		font-weight: 600;
 	}
 
-	.recipe__info-buttons {
-		display: flex;
-		margin-left: 1.5rem;
-		visibility: hidden;
-		opacity: 0;
-		transform: translateY(5px);
-		transition: all 0.4s;
-	}
-
 	.recipe:hover .recipe__info-buttons {
 		visibility: visible;
 		opacity: 1;
-		transform: translateY(0);
 	}
 
 	.recipe__love {
 		font-size: 1rem;
 		color: white;
 		background-image: ${linGrad};
-		border-radius: 50%;
+		border-radius: 2rem;
 		border: none;
-		height: 3.5rem;
-		width: 3.5rem;
 		display: flex;
+		padding: 0.2rem 2rem;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.recipe__love-title {
+		width: 60%;
+		padding: 0;
 	}
 
 	.recipe__love:focus {
@@ -679,12 +687,36 @@ export const RecipeContainer = styled.div`
 		margin-bottom: 3rem;
 	}
 
+	.ingredients-title {
+		display: flex;
+		width: 60%;
+		justify-content: space-around;
+	}
+
+	.ingredients-title button {
+		padding: 0;
+		height: 3rem;
+		margin-right: 0.2rem;
+		margin-left: 0.2rem;
+		padding: 0 1rem;
+	}
+
 	.recipe__item {
 		display: flex;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.9;
+		}
+		&:hover::after {
+			content: 'Add to shopping list';
+			position: absolute;
+			transform: translateY(-2rem);
+			background: white;
+		}
 	}
 
 	.direction__li {
-		padding-bottom: 1rem;
+		padding-bottom: 5rem;
 		font-size: 1.3rem;
 	}
 

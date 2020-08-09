@@ -17,7 +17,7 @@ export const HeadCon = styled.div`
 	* {
 		box-sizing: border-box;
 	}
-
+	z-index: 1;
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -121,7 +121,7 @@ export const HeadFloatCon = styled.div`
 
 	p {
 		color: black;
-		font-size: 30px;
+		font-size: 5rem;
 		position: absolute;
 		top: 100px;
 		left: -10px;
@@ -201,6 +201,9 @@ export const HeadImg = styled.img`
 	display: ${(props) => props.show};
 	&:hover {
 		opacity: 0.2;
+	}
+
+	p {
 	}
 `;
 

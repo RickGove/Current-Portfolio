@@ -1,3 +1,13 @@
+export const setHideData = (bool) => {
+	return {
+		type: 'SET_HIDE_DATA',
+		payload: bool,
+	};
+};
+
+////////////////////////////
+// weather site below
+
 export const changeSystem = (sys) => {
 	return {
 		type: 'CHANGE_SYSTEM',

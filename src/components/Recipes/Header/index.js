@@ -14,13 +14,18 @@ export default function Header() {
 
 			<div className="likes">
 				<div className="likes__field">
-					<svg className="likes__icon">
-						<use href="img/icons.svg#icon-heart"></use>
-					</svg>
+					<div className="header__logo">
+						<span role="img" aria-label="logo">
+							📝
+						</span>
+					</div>
 				</div>
 				<div className="likes__panel">
 					<ul className="likes__list">
+						<li>HELLO JOE</li>
+						an>
 						{/* 
+						
                     <li>
                         <a className="likes__link" href="#23456">
                             <figure className="likes__fig">
@@ -31,7 +36,7 @@ export default function Header() {
                                 <p className="likes__author">The Pioneer Woman</p>
                             </div>
                         </a>
-                    </li>
+                    </>
                  */}
 					</ul>
 				</div>

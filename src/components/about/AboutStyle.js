@@ -16,16 +16,38 @@ export const AboutWPDiv = styled.div`
 `;
 
 export const ShowCaseCon = styled.div`
-	min-height: 100px;
+	min-height: 80vh;
 	width: 100%;
 	margin: auto;
 	color: white;
 	font-weight: bold;
-	padding-bottom: 100px;
+	padding-bottom: 3.5rem;
 	text-align: center;
 
+	.anB {
+		overflow: hidden;
+		margin-top: 3rem;
+	}
+
+	.more-info {
+		width: 80%;
+		margin: 0 auto;
+		overflow: hidden;
+		transition: all 1s;
+	}
+
 	.hidden-data {
+		overflow: hidden;
+		transition: all 1s;
+		height: 0;
+	}
+
+	.btn-see-more__hidden {
 		display: none;
+	}
+
+	.find-more {
+		box-shadow: 0rem 4rem 1rem gray;
 	}
 
 	p {
@@ -53,6 +75,7 @@ export const ShowCaseCon = styled.div`
 export const AboutTitle = styled.div`
 	padding-top: 3rem;
 	padding-bottom: 0;
+	overflow: hidden;
 `;
 
 export const ShowImg = styled.img`

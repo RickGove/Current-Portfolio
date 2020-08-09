@@ -1,5 +1,17 @@
 import { combineReducers } from 'redux';
 
+import offlineRec from '../components/Recipes/RecipeView/offlineRecipeB.json';
+
+const hideData = (hidden = false, action) => {
+	if (action.type === 'SET_HIDE_DATA') {
+		return action.payload;
+	} else {
+		return hidden;
+	}
+};
+
+//// weather
+
 const searchedLocation = (loc = 'none', action) => {
 	if (action.type === 'NEW_SEARCH_LOCATION') {
 		return action.payload;
@@ -290,7 +302,15 @@ const recipeResults = (recipes = [], action) => {
 	}
 };
 
-const recipeDetails = (recipe = [], action) => {
+// const recipeDetails = (recipe = [], action) => {
+// 	if (action.type === 'SET_RECIPE_DETAILS') {
+// 		return action.payload;
+// 	} else {
+// 		return recipe;
+// 	}
+// };
+
+const recipeDetails = (recipe = offlineRec, action) => {
 	if (action.type === 'SET_RECIPE_DETAILS') {
 		return action.payload;
 	} else {
@@ -307,6 +327,7 @@ const inputFocus = (bool = false, action) => {
 };
 
 const weatherApp = combineReducers({
+	hideData,
 	cookies,
 	system: selectedSystem,
 	location: inputLocation,

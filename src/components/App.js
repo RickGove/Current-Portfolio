@@ -15,6 +15,8 @@ import VersionTwo from './SuperHeroSmackdown/VersionTwo/';
 import recipes from './Recipes/';
 import noSite from './404';
 
+import Intro from './Intro';
+
 import weatherApp from '../reducers/';
 
 const composeEnhancers = composeWithDevTools({
@@ -37,6 +39,7 @@ function App() {
 						<Route path="/dice" exact component={Dice} />
 						<Route path="/cookies" exact component={Cookies} />
 						<Route path="/recipes" exact component={recipes} />
+						<Route path="/scrollmagic" exact component={Intro} />
 						<Route path="*" exact component={noSite} />
 					</Switch>
 				</React.Fragment>

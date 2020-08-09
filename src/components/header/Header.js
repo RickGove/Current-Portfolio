@@ -68,40 +68,44 @@ function Header() {
 	}
 
 	return (
-		<HeadCon id="HeadCon">
-			<img alt="logo" className="logo" src={logo} />
-			{renderSections()}
-			<DDownDivAnchored>
-				<div className="dropdown" onClick={toggleDropDown}>
-					<img
-						onClick={toggleDropDown}
-						alt="menu"
-						src={menu}
-						className="dropimg"
-					/>
-					<div id="drop-content" className="dropdown-content hidden">
-						{renderSectionsDrop()}
+		<div className="head-animate" style={{ opacity: 1 }}>
+			<HeadCon id="HeadCon">
+				<img alt="logo" className="logo" src={logo} />
+				{renderSections()}
+				<DDownDivAnchored>
+					<div className="dropdown" onClick={toggleDropDown}>
+						<img
+							onClick={toggleDropDown}
+							alt="menu"
+							src={menu}
+							className="dropimg"
+						/>
+						<div id="drop-content" className="dropdown-content hidden">
+							{renderSectionsDrop()}
+						</div>
 					</div>
-				</div>
-			</DDownDivAnchored>
-			<a className="first-right project-icon-link" href="/#/SuperHeroSmackDown">
-				<img
-					alt="Super Hero Smack Down"
-					className="project__icon"
-					src={superHSD}
-				/>
-			</a>
-			<a className="project-icon-link" href="/#/DiceGame">
-				<img
-					alt="Pig A Dice Game"
-					className="project__icon"
-					src={diceGameLogo}
-				/>
-			</a>
-			<a className="last-right project-icon-link" href="/#/weather">
-				<img alt="Gove Weather" className="project__icon" src={weatherLogo} />
-			</a>
-		</HeadCon>
+				</DDownDivAnchored>
+				<a
+					className="first-right project-icon-link"
+					href="/#/SuperHeroSmackDown">
+					<img
+						alt="Super Hero Smack Down"
+						className="project__icon"
+						src={superHSD}
+					/>
+				</a>
+				<a className="project-icon-link" href="/#/DiceGame">
+					<img
+						alt="Pig A Dice Game"
+						className="project__icon"
+						src={diceGameLogo}
+					/>
+				</a>
+				<a className="last-right project-icon-link" href="/#/weather">
+					<img alt="Gove Weather" className="project__icon" src={weatherLogo} />
+				</a>
+			</HeadCon>
+		</div>
 	);
 }
 

@@ -43,7 +43,7 @@ class HeaderDeterminer extends React.Component {
 	chooseHeader = () => {
 		let scroll = document.body.scrollTop || document.documentElement.scrollTop;
 
-		if (scroll >= 150) {
+		if (scroll >= 70) {
 			this.setState({ anchor: 1 });
 		} else {
 			this.setState({ anchor: 0 });

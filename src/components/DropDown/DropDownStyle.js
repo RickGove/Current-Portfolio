@@ -17,9 +17,9 @@ export const DDownDiv = styled.div`
 		cursor: pointer;
 		opacity: 0.8;
 
-		${media.desktop} {
+		/* ${media.desktop} {
 			display: none;
-		}
+		} */
 
 		${mobile} {
 			height: 38px;
