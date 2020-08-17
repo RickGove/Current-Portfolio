@@ -16,7 +16,6 @@ background-attachment: fixed;`;
 
 export const RecipeContainer = styled.div`
 	* {
-		font-family: 'Holtwood One SC', serif;
 		list-style: none;
 	}
 	.body-div {

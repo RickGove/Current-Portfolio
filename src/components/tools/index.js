@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -22,34 +22,36 @@ import { ShowH1 } from '../about/AboutStyle';
 import logoTool from '../../img/logo_tools.png';
 
 export default function Boxes() {
-	const stTools = {
-		trigger: '.anTitleTools',
-		start: 'top 50%',
-		end: 'bottom 100%',
-		endTrigger: '.toolsTriggerEnd',
-		toggleActions: 'play reverse play reverse',
-	};
+	const anTool = useRef(),
+		anTitleTools = useRef(),
+		triggerTools = useRef(),
+		toolsTriggerEnd = useRef();
 
 	useEffect(() => {
+		const stTools = {
+			trigger: triggerTools.current,
+			start: 'top 50%',
+			end: 'bottom 60%',
+			endTrigger: toolsTriggerEnd.current,
+			toggleActions: 'play reverse play reverse',
+		};
 		gsap.registerPlugin(ScrollTrigger);
-		gsap.from('.anTool', {
+		gsap.from(anTool.current, {
 			opacity: 0,
 			scale: 0,
-			endTrigger: 200,
 			stagger: 0.4,
 			duration: 1.5,
-			pin: true,
 			ease: 'slow',
 			scrollTrigger: stTools,
 		});
-		gsap.from('.anTitleTools', {
+		gsap.from(anTitleTools.current, {
 			opacity: 0,
 			scale: 0,
 			ease: 'power4',
 			duration: 2,
 			scrollTrigger: stTools,
 		});
-	});
+	}, []);
 
 	function renderTools() {
 		const colors = [
@@ -80,20 +82,21 @@ export default function Boxes() {
 
 	return (
 		<BoxCon id="Tools">
+			<div ref={triggerTools} />
 			<Container>
 				<ToolsTitle>
 					<ShowH1 col="black">
-						<div className="anTitleTools">
+						<div ref={anTitleTools} className="anTitleTools">
 							<BoxImg src={logoTool} r="30px" sz="45px" />
 							Tools
 						</div>
 					</ShowH1>
 				</ToolsTitle>
 
-				<BoxGrid className="anTool" id="BoxGrid">
+				<BoxGrid ref={anTool} className="anTool" id="BoxGrid">
 					{renderTools()}
 				</BoxGrid>
-				<div className="toolsTriggerEnd" />
+				<div ref={toolsTriggerEnd} className="toolsTriggerEnd" />
 			</Container>
 		</BoxCon>
 	);

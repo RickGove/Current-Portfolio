@@ -52,7 +52,15 @@ export const projects = [
 			` The site you're currently on... A modern single page website with a goal of order, simplicity and user experience. Organized to ensure content and navigation stay on the same page and hoping to bring out a flawless and efficient user experience.`,
 			`Using cutting-edge CSS like flexbox and grid displays; React for modern HTML display; Styled-Components CSS for readable code, this page shows off what I have learned so far in React.`,
 		],
-		tools: [HTMLLOGO, CSSLOGO, JSLOGO, logoREACT, STYLEDLOGO, NPMLOGO],
+		tools: [
+			HTMLLOGO,
+			CSSLOGO,
+			JSLOGO,
+			logoREACT,
+			STYLEDLOGO,
+			GSAPLOGO,
+			NPMLOGO,
+		],
 		link: '#',
 	},
 	{
@@ -119,7 +127,7 @@ export const tools = [
 	{
 		name: 'CSS 3',
 		Description: `CSS is used for styling HTML and websites. Cutting edge CSS like 'grid' and 'flex-box' are used on this site you see now.`,
-		logo: CSS,
+		logo: CSSLOGO,
 	},
 	{
 		name: 'Cornerstone Technologies',

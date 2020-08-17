@@ -68,5 +68,5 @@ export const H3Box = styled.h3`
 
 export const PBox = styled.p`
 	margin: 0;
-	padding: 0;
+	padding: 0.6;
 `;

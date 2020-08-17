@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import {
 	ShowSubhead,
@@ -19,63 +18,56 @@ import FindOutMore from '../FindOutMore/';
 import meA from '../../img/RBG.jpg';
 
 function ShowCase() {
-	useEffect(() => {
-		gsap.registerPlugin(ScrollTrigger);
+	const triggerAbout = useRef(),
+		anName = useRef(),
+		anSub = useRef(),
+		anB = useRef();
 
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: '.triggerAbout',
-				toggleActions: 'play reset play reset',
-				start: -600,
-			},
-		});
+	useEffect(() => {
+		const tl = gsap.timeline();
 		const delay = 2;
 		const stagger = 0.5;
 
-		tl.from('.anName', {
+		tl.from(anName.current, {
 			duration: delay,
 			opacity: 0,
 			x: -1000,
 			ease: 'power4',
 		});
-		tl.from('.anB', {
+		tl.from(anB.current, {
 			duration: delay / 2,
 			opacity: 0,
 			y: -100,
 			stagger: stagger,
 			ease: 'bounce',
 		});
-		tl.from('.anSub', {
+		tl.from(anSub.current, {
 			duration: delay / 2,
 			opacity: 0,
 			y: -100,
 			ease: 'bounce',
 		});
-		tl.from('.anC', {
-			y: -100,
-			duration: delay,
-			opacity: 0,
-			ease: 'power3',
-		});
 
 		return function () {
 			tl.kill();
 		};
-	});
+	}, []);
 
 	return (
 		<AboutWPDiv>
-			<div classname="triggerAbout" />
+			<div ref={triggerAbout} className="triggerAbout" />
 			<ShowCaseCon id="About">
 				<AboutTitle>
-					<div className="anName">
+					<div ref={anName} className="anName">
 						<ShowH1>Hi, I'm Rick Gove</ShowH1>
 					</div>
 				</AboutTitle>
-				<div className="anB">
+				<div ref={anB} className="anB">
 					<ShowImg src={meA}></ShowImg>
 				</div>
-				<ShowSubhead className="anSub">Junior Web Developer</ShowSubhead>
+				<ShowSubhead ref={anSub} className="anSub">
+					Junior Web Developer
+				</ShowSubhead>
 				<div>
 					<FindOutMore />
 					<MoreInfo />

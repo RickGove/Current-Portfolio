@@ -13,6 +13,10 @@ class HeaderDeterminer extends React.Component {
 		window.addEventListener('scroll', this.listenScroll);
 	}
 
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.listenScroll);
+	}
+
 	listenScroll = () => {
 		this.chooseHeader();
 		this.findActiveSection();

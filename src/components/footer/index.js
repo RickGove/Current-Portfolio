@@ -25,8 +25,13 @@ function Footer() {
 			<div className="middle">
 				<ul className="middle__list">
 					<li>
-						Built in Navapolatsk, Belarus <img alt="Belarus" src={by} />
+						Built with{' '}
+						<span role="img" aria-label="love">
+							❤️
+						</span>{' '}
+						in Navapolatsk, Belarus <img alt="Belarus" src={by} />
 					</li>
+					<li>Жыве Беларусь! #BlackLivesMatter</li>
 					<li className="copyright">
 						&copy; 2020 Rick Gove. All right reserved.
 					</li>

@@ -3,9 +3,9 @@ import React from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import HeaderDeterminer from './header/HeaderDeterminer';
 import ScrollToTop from './scrollToTop/';
-import About from './about/';
+import ShowCase from './about/';
 import Contact from './contact/';
-import Tools from './tools/';
+import Boxes from './tools/';
 import Projects from './projects/Projects';
 import Footer from './footer/';
 
@@ -16,9 +16,9 @@ class App extends React.Component {
 				<GlobalStyle />
 				<HeaderDeterminer />
 				<ScrollToTop />
-				<About />
+				<ShowCase />
 				<Contact />
-				<Tools id="Tools" />
+				<Boxes id="Tools" />
 				<Projects />
 				<Footer />
 			</React.Fragment>

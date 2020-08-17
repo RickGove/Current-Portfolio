@@ -105,6 +105,7 @@ export const ShowP = styled.p`
 `;
 
 export const ShowSubhead = styled.h2`
+	font-family: 'Montserrat', sans-serif;
 	font-style: italic;
 	margin: 3rem;
 `;
